@@ -1,0 +1,209 @@
+<!DOCTYPE html> <html lang=en><!--
+ Page saved with SingleFile 
+ url: https://www.360doc.cn/article/78068035_1008472234.html 
+ saved date: Fri Sep 27 2024 07:23:54 GMT+0800 (中国标准时间)
+--><meta charset=utf-8><meta id=viewport name=viewport content="width=device-width, initial-scale=1.0"><meta http-equiv=Cache-Control content=no-transform><meta http-equiv=Cache-Control content=no-siteapp><meta itemprop=image content=//www.360doc.cn/images/logo/120.png><meta property=og:image content=//www.360doc.cn/images/logo/120.png><link rel=apple-touch-icon-precomposed href=data:, data-sf-original-href=https://www.360doc.cn/images/logo/120.png><meta name=twitter:image content=//www.360doc.cn/images/logo/120.png><meta content="浅谈底层固件安全性（强解BL，隐藏ID机等等背后的真相） 来自 Jpnx49Db0" name=description><meta content=bl,bootrom,漏洞 name=keywords><title>
+浅谈底层固件安全性（强解BL，隐藏ID机等等背后的真相） 来自 Jpnx49Db0
+</title>
+<link rel=canonical href=http://www.360doc.com/content/21/1213/10/78068035_1008472234.shtml><meta name=referrer content=no-referrer><link type=image/x-icon rel="shortcut icon" href=data:, data-sf-original-href=https://www.360doc.cn/favicon.ico><meta http-equiv=content-security-policy content="default-src 'none'; font-src 'self' data:; img-src 'self' data:; style-src 'unsafe-inline'; media-src 'self' data:; script-src 'unsafe-inline' data:; object-src 'self' data:; frame-src 'self' data:;"><style>img[src="data:,"],source[src="data:,"]{display:none!important}</style></head>
+<body>
+<a href=javascript:void(0) class=backtop></a>
+<div id=bdUserDefInlay_u2561428>
+</div>
+<input name=follownamediv type=hidden id=follownamediv>
+<input type=hidden id=isowner value=False>
+<input type=hidden value=1008472234 id=hiddenartid>
+<input type=hidden value=1008472234 id=hiddenfirstartid>
+<input name=hiddenuserid type=hidden id=hiddenuserid value=78068035>
+<input name=hiddenmyuserid type=hidden id=hiddenmyuserid>
+<input name=hiddenisfirst type=hidden id=hiddenisfirst value=1>
+<input name=hiddenoriginal type=hidden id=hiddenoriginal>
+<input type=hidden id=isshowimg value=1>
+<input name=readroomclassid type=hidden id=readroomclassid value=0>
+<input name=hid_classid type=hidden id=hid_classid value=70>
+<input name=threekeywords type=hidden id=threekeywords value="pbl bootrom 漏洞">
+<input name=hiddeFirstSaverUserID type=hidden id=hiddeFirstSaverUserID value=78068035>
+<input type=hidden id=hidsubclassid value=-1>
+<input type=hidden value id=tt>
+<input type=hidden value=0 id=hiddenArtType>
+<input name=hiddenVipArticle type=hidden id=hiddenVipArticle value=0>
+<input name=hiddenArtpermission type=hidden id=hiddenArtpermission value=0>
+<input name=artmsg type=hidden id=artmsg>
+<header class="head2020 min">
+<span class=back_></span>
+<a href=https://www.360doc.cn/ aria-label=home class=wicob_></a>
+<div class=search_>
+<input id=searchinput type=text placeholder="搜文章 找知识" readonly>
+<i class=wicob_></i>
+</div>
+<span class=openapp_>打开APP</span>
+<div class=select>
+<span><img id=_userphoto_ src=data:, alt=userphoto data-sf-original-src=/images/index/dingtu.png></span>
+<div>
+<div class=d1>
+<div class="d1_face fl">
+<img id=card_userphoto src=data:, data-sf-original-src=/images/index/dingtu.png>
+</div>
+<div class="d1_data fr">
+<div><span id=card_nickname>未登录</span><span id=card_viplevel class="newico vip_ lv1 overdue"></span></div>
+<p id=card_vipdesc>开通VIP，畅享免费电子书等14项超值服</p>
+</div>
+<a class=tovip id=card_pay_vip>开通VIP</a>
+</div>
+<div class=nav_>
+<a class=a1 href=https://www.360doc.cn/><span class=newbefore></span><p>首页</p></a>
+<a class=a2 href="https://www.360doc.cn/index.html?classid=1&amp;subclassid=0"><span class=newbefore></span><p>好书</p></a>
+<a class=a4 href="https://www.360doc.cn/advice.aspx?type=0"><span class=newbefore></span><p>留言交流</p></a>
+<a class=a5><span class=newbefore></span><p>下载APP</p></a>
+<a class=a3><span class=newbefore></span><p>联系客服</p></a>
+</div>
+</div>
+</div>
+</header>
+<div></div>
+<div></div>
+<section>
+<div>
+<div class=headyin2 id=headyinid></div>
+</div>
+<div id=currbackgroudcolor>
+<div class=w1 id=upartcolor>
+<div id=doctitlediv class=wztit>浅谈底层固件安全性（强解BL，隐藏ID机等等背后的真相） 来自 Jpnx49Db0</div>
+<audio id=audioID preload=auto></audio>
+<div>
+<div class=oothers>
+<a href=https://www.360doc.cn/userhome/78068035.html id=userphotohtml><img src=data:, class=ouser_photo alt=userphoto data-sf-original-src=//pubimage.360doc.com/head/weixin/100.jpg></a>
+<div class=ouser_data id=ouser_data>
+<div id=userinfo class="d1 nobreak_"><a href=https://www.360doc.cn/userhome/78068035.html class=a1>WISELY</a>&nbsp;<a href=https://www.360doc.cn/userhome/78068035/-1000.html> &gt;《待分类》</a></div>
+<div class=d2>
+<p class=nobreak_><span id=savedatespan>2021.12.13 </span></p>
+</div>
+</div>
+<a class=ogz>关注</a>
+</div>
+</div>
+<div class=article id=artcontentdiv>
+<div id=copyall>
+<p>在开始之前，先了解一下高通平台的启动流程，以下为启动流程图<p></p><center><div class=imgcenter><img id=img0 src=data:, data-sf-original-src=//image109.360doc.cn/DownloadImg/2021/12/1310/235810477_1_20211213100036881.jpg></div></center><p><p>高通平台启动流程图<p>从图中看出，按下电源键后，运行的第一段代码便是PBL（高通称其为Primary Boot Loader，通用的叫法为BootROM，BootROM是在SoC生产时就已经写死在芯片内部的，不可以更改），PBL负责验证并加载下一阶段的BootLoader（XBL或SBL，在16年之前被称为SBL），并响应异常情况，还会读取QFUSE来执行相应的策略，这部分在文章后面再说。XBL会验证并加载TEE以及ABL（TEE的具体加载流程在文章后面），ABL是指Android BootLoader，也就是大家熟悉的FastBoot线刷时所处的位置，ABL会执行AVB（Android Verified Boot安卓验证启动）策略，比如说检查BL锁状态来决定是否执行下一阶段的启动验证，检查软件版本，防止未经授权的降级等等。如果检测到用户按下某些按键，或者触发某些事件（如OTA升级，恢复出厂设置等等）则会启动到Recovery模式，正常启动时会验证并加载Boot分区（Android系统的Linux内核部分），最后由Linux内核验证并加载Android系统剩余部分。至于图中的TrustZone，则是XBL负责加载的，详情文章后面再说。<p>我们再来看一下ATF（ARM Trusted Firmware 可信固件）架构<p></p><center><div class=imgcenter><img id=img1 src=data:, data-sf-original-src=//image109.360doc.cn/DownloadImg/2021/12/1310/235810477_2_2021121310003737.jpg></div></center><p><p>ATF架构图<p>大多数ARM SoC的安全启动架构基于ATF，其中BL1对应BootROM，BL2对应XBL，BL33对应着ABL和之后的启动流程部分，BL32和BL31提供了TEE（Trusted Execution Environment可信执行环境，用于处理如生物识别数据等对安全性高度敏感的场景），其中BL31负责Normal World与Trusted World之间的数据交互，BL32负责运行TEE操作系统（如OPTEE，QTEE，Trusty等），TA（Trusted Application 可信应用）运行在TEE操作系统上，就像我们在Andoid系统上安装的应用，只不过TA不能由用户自由安装，只能由OEM决定，TA是具体执行各种需要安全性任务的应用程序，如生物数据的识别与存储，DRM的实现（如最著名的Widevine），各种凭据的验证与存储，各种文件的系统加密等等。<p>Normal World和Trusted World之间通过ARM TrustZone技术隔离，原理是利用硬件控制器强制隔离两者的寄存器，RAM等资源，各种运算器采用分时复用的方式同时处理来自两者的指令，Normal World不可以直接访问Trusted World的资源，反过来Trusted World可以访问Normal World的资源，我们常见的Android系统运行在Normal World上，而TEE操作系统等运行在在Trusted World上（具体看上图，有详细的划分）。<p>除了以上的隔离措施，ARM还准备了更细粒度的权限控制框架，叫做EL（Exception Level），分为EL3，EL2，EL1，EL0，权限依次由大减小，权限大的可以访问权限小的资源，反之不行。注意，权限的控制还要符合以上Trusted World与Normal World的隔离规则，比如说Normal World EL2虽然数字大于Secure World EL0，但是也无法直接访问Secure World EL0的资源，因为违反了Secure World 与Normal World之间的隔离规则。以上的ATF框架图涂有不同颜色的部分代表其中所处的EL，说明在图中右下方。<p></p><center><div class=imgcenter><img id=img2 src=data:, data-sf-original-src=//image109.360doc.cn/DownloadImg/2021/12/1310/235810477_3_20211213100037115.gif></div></center><p><p>EL框架图，图中Secure World等同于Trusted World<p>聪明的读者可能会发现，BL2处于Secure EL1，BL31处于EL3，而BL31是由BL2负责加载的，按照通常的情况，先加载的权限是大于后加载的，那这是怎么做到的呢？答案是BL2通过向BL1的SMC handler发送SMC指令初始化BL31运行所需的环境，间接地实现写入比自身权限更高才能访问的资源，当然这个过程是受监控和限制的，不能随便乱来，这也是SMC存在的意义。<p>有了以上内容的铺垫，我们来看一下实际的攻击案例。<p>高通EDL模式（9008模式）的漏洞<p>回顾以上高通平台的启动流程，PBL会响应各种异常情况，出现异常情况后，PBL会进入EDL模式，高通准备了以下方式进入EDL：按键组合（只有部分OEM会选择实现这种方式，如一加，联想，moto等）；主板触点短接（几乎所有机型都会有）；USB接口触点短接，俗称深度刷机线（新机器基本上都禁用了这种方式）；软件方式，如adb指令，部分OEM只有在解锁BL后才会正确响应；启动流程中ABL及之前的流程校验失败，所有机型都有。<p>进入到EDL模式后，需要通过USB使用Sahara协议发送Programmer，Programmer本质上是XBL的变种，只不过XBL是PBL由硬盘里加载的，Programmer是PBL由USB加载的，来源不同而已。PBL的EDL模式本身只实现了Sahara协议，并验证和加载Programmer，其它功能需要由Programmer实现。Programmer需要OEM的有效签名，不能自己编写，不然PBL会拒绝加载。<p></p><center><div class=imgcenter><img id=img3 src=data:, data-sf-original-src=//image109.360doc.cn/DownloadImg/2021/12/1310/235810477_4_20211213100037209.jpg></div></center><p><p>短接图中黄色方框的触点即可进入EDL模式，不用机型位置不同<p></p><center><div class=imgcenter><img id=img4 src=data:, data-sf-original-src=//image109.360doc.cn/DownloadImg/2021/12/1310/235810477_5_20211213100037318.jpg></div></center><p><p>俗称“深度刷机线”<p>Programmer通常不会被OEM公开，但是有一些例外，如小米的官方线刷包里都会有Programmer，一加的ColorOS尝鲜版刷机包里也有Programmer，联想和moto官方的刷机程序也会自动下载对应机型的Programmer等等。但是不公开不等于没有，有很多从不公开的OEM，网上也会有内鬼泄露的Programmer，不然某宝上满大街的刷机服务是怎么来的<p></p><center><div class=imgcenter><img doc360img-src=http://image109.360doc.cn/DownloadImg/2021/12/1310/235810477_6_20211213100037380.png id=img5 src=data:, data-sf-original-src=//pubimage.360doc.com/wz/default.gif></div></center><p><p>Programmer可以由OEM定制，大部分OEM会选用Firehose Programmer，高通官方默认的Programmer，只做少许的修改以实现OEM自定义的功能，如小米的售后账号授权机制。<p>搞到了Programmer后，尝试执行降级攻击，一般情况下，锁定BL时是不允许刷写任何分区的，但是这个机制是由ABL实现的，在启动流程中处于较为靠后的位置，Programmer处于启动流程的第二步，处于非常靠前的位置，权限比ABL高得多（Programmer处于Secure EL1，ABL处于Non-Secure EL2），自然有能力访问，写入任何分区。在部分机型上有已知的漏洞，这里以一加3T为例，将ABL降级到易受攻击的版本，易受攻击版本有以下漏洞，CVE-2017-5626和CVE-2017-5624，在Fastboot模式下输入以下指令，并返回了以下信息<p>$ fastboot oem disable_dm_verity<p>...<p>OKAY [ 0.045s]<p>finished. total time: 0.045s<p>$ fastboot oem 4F500301<p>...<p>OKAY [ 0.020s]<p>finished. total time: 0.020s<p>这时验证启动被关闭，BL锁被解除，但是没有触发恢复出厂设置，此时可以刷入第三方REC提取出data分区的所有数据，无需验证锁屏密码，造成严重的隐私泄露。（手动开启安全启动即可避免数据被提取，不过默认情况下不会开启，大部分普通用户受到此漏洞的威胁）<p>这里再说一个较为新的例子，原帖在以下链接<p>查看链接<p>具体来说，在一加Nord 2上有Root Shell 漏洞，启动到REC模式下，停留在语言选择界面，然后连接电脑和手机，在adb下输入adb root，然后就获取了root权限，而且不会触发数据清除，可以利用这个漏洞绕过锁屏密码提取隐私数据，还可以在不清除数据的情况下安装具有root权限的木马，危害极大，目前这个漏洞已经修复，不过还没人测试过降级攻击是否凑效，若降级REC后仍然可以正常启动，那么这个漏洞等于没修复。<p>再来一个红米Note 5A的例子，读取devinfo分区，稍作修改再写回去，可以发现BL锁被解除还没有触发数据清除，数据提取方式如一加3T。<p>一加3T和Note 5A的例子来源于AlephSecurity，针对高通平台EDL的研究和BootROM漏洞的开发利用也是AlephSecurity，感兴趣的读者可以访问他们的官网查看链接<p>现在暂时访问不了，可以通过查看链接<p>访问历史镜像（要t）<p>以上的攻击是针对存储的，最强大的攻击方式是针对RAM和寄存器的攻击，通过一定的漏洞利用方法，可以做到以EL3的最高权限执行任意代码，限于篇幅和个人水平，这里不做详细的原理解析，基本思路是想方设法绕过内存地址的访问和写入限制，将恶意代码通过缓冲区溢出的方式写入执行位，导致任意代码的执行，这种攻击无法通过软件更新修复（有一些例外，接下来会举例），可以干几乎任何事情，包括但不限于暴力破解密码，伪造指纹支付请求，解密受DRM保护的媒体等，具体实现上由于TEE部分的闭源，实际上很难实现。以下我将介绍这种攻击方式的实例。<p>mtk kamakiri漏洞：最早由XDA用户xyz`发现，联合XDA用户k4y0z发布了第一个实际用例，解开Fire TV Stick 4K的BL锁，原帖地址：<p>查看链接<p></p><center><div class=imgcenter><img doc360img-src=http://image109.360doc.cn/DownloadImg/2021/12/1310/235810477_7_20211213100037474.jpg id=img6 src=data:, data-sf-original-src=//pubimage.360doc.com/wz/default.gif></div></center><p><p>Fire TV Stick 4K拆开后的样子<p>后来基于这个漏洞，k4y0z开发出了现在著名的SLA/DAA绕过工具，也是众多联发科机型秒解BL能够实现的基础，原帖地址：<p>查看链接<p>名词解释：<p>SLA（Serial Link Authentication 串行链路认证）<p>开启了SLA的机型，需要在SP Flash Tool加载特定的.auth文件才可以让BootROM接收并加载来自USB发送的DA，不然会拒绝加载。<p>DAA（Download Agent Authentication 下载代理认证）<p>DA（Download Agent 下载代理）类似于上文提到的Programmer，是Preloader的变种（Preloader类似于上文提到的XBL，同样处于ATF的BL2级别）,OEM可以自行定制DA以实现不同的DAA方式，同样以小米为例，较新的联发科机器会要求登录售后小米账号才可以进行深度刷机。BootROM加载的DA仍然需要有效的OEM签名（不能自己编写DA），不然即使通过了SLA也会拒绝加载。<p>SLA和DAA可以同时存在，也可以只存在其中一种，取决于OEM，其中SLA政策是烧写入SoC内部的eFuse（电子熔丝），是一个密钥，需要拥有这个密钥的人才可以通过SLA，一旦烧写就无法更改 或擦除。<p>Amlogic BootROM漏洞：由fred发现，个人主页：<p>查看链接<p>此人从Khadas VIM3L 开发板上转储了S905D3 SoC的BootROM镜像，正常来说，BootROM镜像是不可以由外界读取的，Normal World也无法读取，只能由Secure World读取，但这个开发板是没有烧写过eFuse的，意味着并没有开启安全启动，于是他编译了自定义的BL2，在Secure World里获取到了BootROM，然后通过UART端口传输出来。在分析后他发现了BootROM级别的漏洞，然后找来了搭载S905D3G的Chromecast with Google TV，大家可以去了解一下Chromecast with Google TV，这是谷歌推出的电视盒子，搭载Android TV 10系统（Google TV UI）在我看来这是全世界最安全的电视相关的设备（Apple TV除外），为什么这么说？首先它是全球第一批底层为Android 10的电视设备之一，针对Android TV分支，10相比9有重大安全性改进，根据Android CDD要求，所有出厂时搭载Android 10及以上（升级到Android 10及以上的旧设备没有强制要求）的设备必须开启FBE强制加密，还要实现基于硬件的安全启动和防回滚（防降级），在Android 9 CDD里只针对手持设备（手机和平板）强制要求，对于电视类，车机等等其它安卓设备不做这方面的强制要求。除此之外Chromecast with Google TV还做了额外的保护，使用了AES-CBC 256算法高强度加密了U-Boot镜像（处于BL33，等同于ABL），密钥存储在SoC内部的eFuse里，只有处于Secure World才能获取，使得分析更加困难，这种做法在业内罕见，连手机都没有这么保密<p></p><center><div class=imgcenter><img doc360img-src=http://image109.360doc.cn/DownloadImg/2021/12/1310/235810477_8_20211213100037709.png id=img7 src=data:, data-sf-original-src=//pubimage.360doc.com/wz/default.gif></div></center><p><p>。但是最终还是被击败了，锅在Amlogic上，S905D3和S905D3G的BootROM几乎一样，此前他发现的BootROM漏洞成功在Chromecast with Google TV复现，也就有了接下来的故事。<p></p><center><div class=imgcenter><img doc360img-src=http://image109.360doc.cn/DownloadImg/2021/12/1310/235810477_9_20211213100037927.jpg id=img8 src=data:, data-sf-original-src=//pubimage.360doc.com/wz/default.gif></div></center><p><p>Chromecast with Google TV实拍图<p></p><center><div class=imgcenter><img doc360img-src=http://image109.360doc.cn/DownloadImg/2021/12/1310/235810477_10_20211213100037990.jpg id=img9 src=data:, data-sf-original-src=//pubimage.360doc.com/wz/default.gif></div></center><p><p>Chromecast with Google TV拆开后的样子<p>首先他利用了BootROM漏洞获取了U-Boot加密密钥，禁用了BL2的的ARB（Anti-rollback防回滚）检查，禁用了BL33的镜像验证，最后利用获取的密钥加密了修改好的U-boot镜像，最后重启，再次利用BootROM漏洞加载修改后的BL2，然后通过USB加载处理好的U-boot镜像，最后成功启动了Ubuntu系统。<p>另一个人利用了这个BootROM漏洞，开发了Chromecast with Google TV解锁BL工具，这是项目地址<p>查看链接<p>原理是修改env分区对应的比特位。<p>图文中还有一些名词没有解释清楚，还有一些厂商的应对措施，安全建议和现状，在以下做出补充。<p>eFuse和QFUSE：除了高通的EFUSE，都是指SoC内部的电子熔丝，一旦烧写就无法变更或擦除，一个SoC内有多个熔丝，高通的EFUSE基于RPMB实现，可以在TEE内更改，是非永久性的。QFUSE等同于eFuse，只不过QFUSE是高通的叫法。<p>RPMB：具体解释可以利用搜索引擎，我在某个帖子的热评里有详细的解释<p>查看链接<p>简单来说，RPMB具有防篡改，防伪造，防重放功能，外界无法写入数据到RPMB，只有本机SoC可以写入，SoC可以确保从RPMB里读取的数据不是攻击者伪造的，也不是之前读取过的数据，可以保证时效性，具有防重放特性。像各种序列号，各种证书，各种加密文件系统的元数据，BL锁状态，自定义信任根（刷入第三方ROM后锁定BL，只有部分机型支持），查找手机相关数据（激活锁）等会放入RPMB。<p>KeyMaster：安卓系统上用于存储和验证各种凭据的服务，如锁屏密码，帐户凭据等。可以运行在TEE或者SE中。<p>SE（Secure Element）：安全组件的统称，指有自己独立的安全运算器，安全存储器，独立的TRNG等组件的芯片，不与其他部分共用资源，相比TEE减少了许多攻击面，可以集成入SoC（如高通骁龙888及更新的SoC，麒麟的部分SoC，苹果A7及之后的SoC等等），也可以做成独立的芯片，如Pixel手机搭载的Titan M，电脑上常见的dTPM等。<p>厂商后续的缓解措施：Fire TV在后续生产的批次直接禁用了Download模式，使得外界无法与BootROM进行交互，自然也就间接地缓解了这个漏洞，这个禁用策略是烧写入eFuse的；Chromecast with Google TV则是在2020年1<p>2月以后生产的批次和2021年2月的固件更新启用了burn-mode password，这意味着没有密码将无法与BootROM进行交互，自然也就无法利用BootROM漏洞了，为了使这个密码不被破解，我估计谷歌是使用了由SoC内部的TRNG（真随机数发生器）生成的高熵密码，写入了eFuse，这样子就没有任何人可以与BootROM进行交互了，包括谷歌自己<p></p><center><div class=imgcenter><img doc360img-src=http://image109.360doc.cn/DownloadImg/2021/12/1310/235810477_6_20211213100037380.png id=img10 src=data:, data-sf-original-src=//pubimage.360doc.com/wz/default.gif></div></center><p><p>。好在电视盒子类的硬件非常便宜，如果有问题无法刷机还不如直接换新了，可以这么搞。<p>安全建议以及现状：<p>防降级：<p>大部分SoC是支持利用eFuse/QFUSE实现底层固件防降级的，启用了这个功能，可以实现BL33及之前的部分防降级，如果强刷降级，会导致设备进入到EDL/Download模式。三星和moto开启了这个功能，其它OEM则大都没有开启，有一定的安全隐患，这也和谷歌的要求有一定的联系，目前谷歌只要求ABL之后的组件实现防降级，这是基于RPMB实现的，将版本信息写入RPMB，如果低于规定的版本，则不得解密data分区，但是如果漏洞出现在ABL及之前，这个限制将毫无作用，一样会有泄露隐私数据的风险，谷歌对于ABL及之前的组件防降级只是建议，毕竟连谷歌自己的手机都没有做到<p></p><center><div class=imgcenter><img doc360img-src=http://image109.360doc.cn/DownloadImg/2021/12/1310/235810477_11_2021121310003868.png id=img11 src=data:, data-sf-original-src=//pubimage.360doc.com/wz/default.gif></div></center><p><p>。但是谷歌另辟蹊径，将KeyMaster从TEE搬到了外置SE（Titan M芯片），来平衡安全性以及易用性（使用Pixel的开发者有降级刷机的需求），Titan M可以将用户数据与版本号绑定，如果在没有输入正确密码的情况下，强制升级或者降级都会导致无法解密用户数据。<p>号称最难刷机的ViVO/iQOO：蓝厂的联发科机型同样受到BootROM漏洞的影响，同样可以秒解BL，但是蓝厂的ABL是魔改过的，虽然会检测BL锁状态并作出相应提示，但是无论BL是否解锁，一律不会禁用AVB，刷入非官方ROM会拒绝启动，解了个寂寞<p></p><center><div class=imgcenter><img doc360img-src=http://image109.360doc.cn/DownloadImg/2021/12/1310/235810477_6_20211213100037380.png id=img12 src=data:, data-sf-original-src=//pubimage.360doc.com/wz/default.gif></div></center><p><p>。虽然说BootROM漏洞可以无视系统更新，但是这个漏洞的利用是临时的，要是改动了系统相关分区，重启之后就会变砖，需要重新连接电脑再次利用漏洞，使用起来非常不方便。再说了蓝厂不开源，就算能刷进去第三方ROM，适配是个大问题。<p>隐藏ID机：上面说到，一些手机的Programmer或DA能力过于强大，授权又没做好，或者BootROM有无法修复的漏洞导致任意代码以EL3权限执行，这时就可以利用这些漏洞，篡改存储在RPMB里的查找手机相关数据，关闭激活锁，一些系统还会在使用时联网验证，如果没有处理好会导致激活锁回锁，强解BL后刷入非官方ROM是ID机常见的处理方式。还有一种隐藏ID机是纯手撕的，原理是利用系统UI层面的漏洞导致激活锁界面被跳过，这种漏洞真是多如牛毛，网上一搜一大把<p></p><center><div class=imgcenter><img doc360img-src=http://image109.360doc.cn/DownloadImg/2021/12/1310/235810477_6_20211213100037380.png id=img13 src=data:, data-sf-original-src=//pubimage.360doc.com/wz/default.gif></div></center><p><p>，最离谱的是Android自带的FRP（中国大陆地区的ROM也有FRP的底层代码，但是不会呈现在UI上，原因是FRP依赖于GMS，GMS在中国大陆地区的ROM默认隐藏了），没有一款手机的FRP是没有漏洞的，油管上搜手机品牌+FRP就能搜出一堆教程，而FRP一旦成功绕过，可以随便恢复出厂设置，随便刷机都不用担心回锁，因为FRP相关信息只会保存在手机本地。在UI层面防护做的最好的应该是MIUI了，强制显示特定的Activity，一旦检测到有其它Activity覆盖了窗口，立马强制启动特定的Activity将非法Activity弹下去，基本上没有手撕成功的例子<p></p><center><div class=imgcenter><img doc360img-src=http://image109.360doc.cn/DownloadImg/2021/12/1310/235810477_6_20211213100037380.png id=img14 src=data:, data-sf-original-src=//pubimage.360doc.com/wz/default.gif></div></center><p><p>。这方面我就得夸一下苹果了，激活锁信息保存在云端，刷机后想要正常使用必须强制联网激活，联网就会触发激活锁，不是主人无法激活使用，可惜Checkm8漏洞（A11及之前的SoC有BootROM级别的漏洞，无法通过软件更新修复，可以用于越狱跳过激活锁页面）影响范围实在太广，旧手机的防盗不给力了。不过在iPhone 12和13这代苹果在防盗方面上升到一个全新高度，想要防止被查找只能拔电池或者放入信号屏蔽袋，有激活锁的12和13拆配件也没人要，因为苹果将几乎所有带芯片的组件都做了加密绑定，放在其它机器上无法正常使用让脏机的价值大大降低，这是业界首次将手机防盗做到如此极致。<p>底层固件开发的安全建议：<p>虽然理论上不泄露Programmer，DA，用于SLA的.auth文件可以避免通过底层固件进行攻击（前提是BootROM没有漏洞，或者具有缓解措施，在上面的例子里有提到。联发科可以抬走了，从19年发现到现在的天玑1200还没完全修复这么严重的BootROM级别漏洞，秒解BL影响了多少手机<p></p><center><div class=imgcenter><img doc360img-src=http://image109.360doc.cn/DownloadImg/2021/12/1310/235810477_6_20211213100037380.png id=img15 src=data:, data-sf-original-src=//pubimage.360doc.com/wz/default.gif></div></center><p><p>），但是这是不太可能的，因为这些东西售后会广泛使用，全世界那么多售后网点不可能完全保密的，总有机会会被泄露出来，一种较好的做法是限制Programmer和DA的能力，让其只能读写普通分区，不要给其编辑RPMB区的能力，就像三星，只通过Programmer写入S-Boot（三星对于BL2和BL33的称呼）来救死砖，可以进入ODIN模式后再刷写剩下的分区。或者将Programmer和DA做成苹果DFU那种动态加载模式，在云端进行权限的控制和身份验证，这是最佳做法，可以保证安全性和易用性，又无需担心Programmer和DA甚至是.auth文件的泄露，但是目前没一个OEM这样做，只停留在我的理论当中。<p>结语：码字一整天，查阅了许多资料，难免会有些许错误，如果有知道的朋友可以指出来，让我们多交流交流</p>
+</div>
+<div id=divtort><div>本站仅提供存储服务，所有内容均由用户发布，如发现有害或侵权内容，请<a href="https://www.360doc.cn/complaint/index.html?articleid=1008472234&amp;username=">点击举报</a>。</div></div>
+</div>
+</div>
+<a class=abtn_openapp href=javascript:void(0)>打开APP，阅读全文并永久保存</a>
+<a href=https://www.360doc.cn/relevant/1008472234.html id=relevantmore_top class=abtn_openvip>查看更多类似文章</a>
+</div>
+<div class=w1>
+<div class=youlike>
+<div class=green_box></div>猜你喜欢
+</div>
+</div>
+<div class=like_content>
+</div>
+<div class=w1>
+<div class=lswztit>类似文章</div>
+</div>
+<div id=relearticle><a id=artid_1090698238 href=https://www.360doc.cn/article/473725_1090698238.html><div class=listd1>当我们谈论解锁 BootLoader 时，我们在谈论什么？</div></a><a id=artid_751046463 href=https://www.360doc.cn/article/38089173_751046463.html><div class=listd2>关于A4芯片的bootrom漏洞的解释</div></a><a id=artid_1072314490 href=https://www.360doc.cn/article/99071_1072314490.html><div class=listd1>Efuse介绍及安全启动浅析</div></a><a id=artid_1076114568 href=https://www.360doc.cn/article/74487539_1076114568.html><div class=listd2>英伟达系列芯片如何用于自动驾驶开发之（二）：硬件电源设计</div></a><a id=artid_298270943 href=https://www.360doc.cn/article/535749_298270943.html><div class=listd1>科技早点：苹果兵败新兴市场 完败竞争对手</div></a><a id=artid_476662074 href=https://www.360doc.cn/article/20625683_476662074.html><div class=listd2>第一届MOSEC移动安全技术峰会全程全纪实（多图）</div></a></div>
+<div id=relevantmorediv>
+<a href=https://www.360doc.cn/relevant/1008472234.html id=relevantlink class=p_newsmore>更多类似文章 &gt;&gt;</a>
+</div>
+<div class=like_content>
+</div>
+<div class=w1>
+<div class=youlike>
+<div class=green_box></div>
+生活服务
+</div>
+</div>
+<div class=like_content>
+</div>
+<div>
+</div>
+<div class=w1>
+<div class=youlike>
+<div class=green_box></div>热点新闻
+</div>
+</div>
+<ul class=bdartlist id=bdartlist>
+</ul>
+<div>
+<div id=gg_40000><a id=adhref1 href=https://www.360doc.cn/article/78068035_1008472234.html target=_blank><img id=adimgsrc1 src=data:, data-sf-original-src></a></div>
+<div id=gg_80000><a id=adhref8 href=https://www.360doc.cn/article/78068035_1008472234.html target=_blank><img id=adimgsrc8 src=data:, data-sf-original-src></a></div>
+</div>
+<div class=footer_nav_box>
+<ul class=footer_nav_ul>
+<li><a href=https://www.360doc.cn/>首页</a></li>
+<li><a href="https://www.360doc.cn/index.html?classid=2">万象</a></li>
+<li><a href="https://www.360doc.cn/index.html?classid=3">文化</a></li>
+<li><a href="https://www.360doc.cn/index.html?classid=4">人生</a></li>
+<li><a href="https://www.360doc.cn/index.html?classid=5">生活</a></li>
+<li class=last_li><a href="https://www.360doc.cn/index.html?classid=6">健康</a></li>
+</ul>
+<div></div>
+<ul class=footer_nav_ul>
+<li><a href="https://www.360doc.cn/index.html?classid=7">教育</a></li>
+<li><a href="https://www.360doc.cn/index.html?classid=8">职场</a></li>
+<li><a href="https://www.360doc.cn/index.html?classid=9">理财</a></li>
+<li><a href="https://www.360doc.cn/index.html?classid=10">娱乐</a></li>
+<li><a href="https://www.360doc.cn/index.html?classid=11">艺术</a></li>
+<li class=last_li><a href="https://www.360doc.cn/index.html?classid=12">上网</a></li>
+</ul>
+</div>
+</section>
+<div>
+<div class=pic_nav_box>
+<div class="pic_nav pic_nav1 fl"><a href="https://www.360doc.cn/advice.aspx?type=0">留言交流</a></div>
+<div class="pic_nav pic_nav3 fr"><a href=javascript:void(0)>回顶部</a></div>
+<div class="pic_nav pic_nav2"><a href=https://www.360doc.cn/lianxiwomen.aspx>联系我们</a></div>
+</div>
+</div>
+<footer data-sudaclick=footer>
+<div class=p_footer>
+<p class=p_foot_v>
+<a href=https://www.360doc.cn/ class=active>触屏版</a>|
+<a href=javascript:void(0)>下载APP</a>
+</p>
+<p class=p_foot_t>京ICP证090625号&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=https://beian.miit.gov.cn/ target=_blank>京ICP备05038915号</a></p>
+<p class=p_foot_t>京网文[2022]3822-110号&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;京公网安备 11010502030377号</p>
+</div>
+</footer>
+<div id=tipiphonediv></div>
+<script type=application/ld+json>{"@context":"//ziyuan.baidu.com/contexts/cambrian.jsonld","@id":"https://www.360doc.cn/article/78068035_1008472234.html","appid":"1549328666522086","title":"浅谈底层固件安全性（强解BL，隐藏ID机等等背后的真相） 来自 Jpnx49Db0","images":[],"pubDate":"2021-12-13T10:00:36"}</script>
+<div class=fixedtoolbar id=copytoolbar>
+<a class=a2 href=javascript:void(0)>分享</a>
+<a class=a1 href=javascript:void(0) id=isresaveidBottom><span id=savernum_span>收藏</span><div id=autoresavetips>点击这里，查看已保存的文章</div></a>
+<a class=a5 id=ArticleLongImgBtn>导长图</a>
+<a class=awx href=javascript:void(0) id=wxgzh>关注</a>
+<a class=a4 href=javascript:void(0) id=CopyBtn>一键复制</a>
+<a class=a6 href=javascript:void(0) id=ExportWordBtn>下载文章</a>
+</div>
+<div id=logandpay class=logandpay>
+</div>
+<div class=viphelper id=viphelper>
+<div class=d1>绑定账号成功<br>后续可登录账号畅享VIP特权！</div>
+<div class=d2>如果VIP功能使用有故障，<br>可点击这里联系客服！<i class=newico></i><div class=serv><span class=newbefore></span><p>联系客服</p></div></div>
+</div>
+<div class=wx_logging_in>
+<div>
+<img src=data:, data-sf-original-src=/images/index/loading.gif>
+<p>微信登录中...<br>请勿关闭此页面</p>
+</div>
+</div>
+<div id=couponDiv class=coupon_>
+<div>
+<div class=d1>
+<div class=str_>先别划走！</div>
+<div class=txt_>送你5元优惠券，购买VIP限时立减！</div>
+<div class=k_>
+<div>
+<div class=l_><span>5</span>元</div>
+<div class=r_>优惠券</div>
+</div>
+</div>
+<div class=time_>优惠券还有<span id=djsTimeSpan>10:00</span>过期</div>
+<a class=btn_ href=javascript:void(0)>马上使用</a>
+</div>
+<a class=closer href=javascript:void(0)>×</a>
+</div>
+</div>
+<div></div>
+<script data-template-shadow-root>(()=>{document.currentScript.remove();processNode(document);function processNode(node){node.querySelectorAll("template[shadowrootmode]").forEach(element=>{let shadowRoot = element.parentElement.shadowRoot;if (!shadowRoot) {try {shadowRoot=element.parentElement.attachShadow({mode:element.getAttribute("shadowrootmode"),delegatesFocus:element.getAttribute("shadowrootdelegatesfocus")!=null,clonable:element.getAttribute("shadowrootclonable")!=null,serializable:element.getAttribute("shadowrootserializable")!=null});shadowRoot.innerHTML=element.innerHTML;element.remove()} catch (error) {} if (shadowRoot) {processNode(shadowRoot)}}})}})()</script>
