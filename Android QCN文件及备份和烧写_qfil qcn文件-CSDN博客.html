@@ -1,0 +1,855 @@
+<!DOCTYPE html> <html><!--
+ Page saved with SingleFile 
+ url: https://blog.csdn.net/ITbigger/article/details/106552694 
+ saved date: Thu Sep 26 2024 16:33:39 GMT+0800 (中国标准时间)
+--><meta charset=utf-8>
+<meta http-equiv=X-UA-Compatible content="IE=Edge">
+<meta name=viewport content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name=apple-mobile-web-app-status-bar-style content=black>
+<meta name=report content='{"pid": "blog", "spm":"1001.2101"}'>
+<meta name=applicable-device content=mobile>
+<meta http-equiv=Cache-Control content=no-transform>
+<meta http-equiv=Cache-Control content=no-siteapp>
+<meta content=yes name=apple-mobile-web-app-capable>
+<meta content=black name=apple-mobile-web-app-status-bar-style>
+<meta content="telephone=no" name=format-detection>
+<meta content="email=no" name=format-detection>
+<meta name=csdn-baidu-search content='{"autorun":true,"install":true,"keyword":"qfil qcn文件"}'>
+<title>Android QCN文件及备份和烧写_qfil qcn文件-CSDN博客</title>
+<meta name=description content="文章浏览阅读4.4k次。QCN文件是啥？QCN文件存储的都是NV项目，一般主要是RF NV项，不能配置在代码中，要写进Flash的特定分区表里面。Qcn文件用RF NV MANAGER打开可以调整修改相对应的NV项来该表射频参数。简单点说就是手机系统文件里面储存着一些系统参数。备份和烧写工具：1、QPST;2，QFIL:..._qfil qcn文件">
+<link rel=canonical href=https://blog.csdn.net/ITbigger/article/details/106552694>
+<link rel=apple-touch-icon sizes=57x57 href=data:, data-sf-original-href=https://csdnimg.cn/release/blogv2/dist/mobile/img/touch-icon-iphone-57.png>
+<link rel=apple-touch-icon sizes=114x114 href=data:, data-sf-original-href=https://csdnimg.cn/release/blogv2/dist/mobile/img/touch-icon-iphone-114.png>
+<link rel=apple-touch-icon sizes=72x72 href=data:, data-sf-original-href=https://csdnimg.cn/release/blogv2/dist/mobile/img/touch-icon-iphone-72.png>
+<link rel=apple-touch-icon sizes=144x144 href=data:, data-sf-original-href=https://csdnimg.cn/release/blogv2/dist/mobile/img/touch-icon-iphone-144.png>
+<link rel=apple-touch-icon sizes=120x120 href=data:, data-sf-original-href=https://csdnimg.cn/release/blogv2/dist/mobile/img/touch-icon-iphone-120.png>
+<script type=application/ld+json>{"@context":"https://ziyuan.baidu.com/contexts/cambrian.jsonld","@id":"https://blog.csdn.net/ITbigger/article/details/106552694","appid":"1638831770136827","pubDate":"2020-06-04T18:07:47","title":"Android QCN文件及备份和烧写_qfil qcn文件-CSDN博客","upDate":"2020-06-04T18:07:47"}</script>
+<meta name=referrer content=no-referrer><link href=data:, rel="shortcut icon" type=image/x-icon data-sf-original-href=https://g.csdnimg.cn/static/logo/favicon32.ico><meta http-equiv=content-security-policy content="default-src 'none'; font-src 'self' data:; img-src 'self' data:; style-src 'unsafe-inline'; media-src 'self' data:; script-src 'unsafe-inline' data:; object-src 'self' data:; frame-src 'self' data:;"><style>img[src="data:,"],source[src="data:,"]{display:none!important}</style></head>
+<body>
+ 
+<div id=main>
+<div class=aside-header-fixed>
+ <div class=aside-left>
+ <img class=iconfont src=data:, alt data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/iconLeftArrow.png>
+ <img class=portrait src=data:, alt data-sf-original-src=https://profile-avatar.csdnimg.cn/28c8d0bee2ac4145916ade00b8a4ad04_itbigger.jpg!1>
+ <span>搬砖买股票</span>
+ </div>
+ <div class=aside-right>
+ <a class=follow id=detailFollowNew data-id=106552694>关注</a>
+ </div>
+</div>
+ <div class=a_d_1></div>
+ <div id=article class=margin_sides>
+ <h1 class=article_title id=articleContentId>
+ <span class=tit>Android QCN文件及备份和烧写</span>
+ <span class="article-type type-1 float-none">原创</span>
+ </h1>
+ <div class=creat-time-box>
+ <div class=creat-time-box-up-time>最新推荐文章于&nbsp;2023-07-28 16:51:27&nbsp;发布</div>
+ <span class="creat-time blog-postTime" data-time="2020-06-04 18:07:47"><img class=creat-time-img src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/renewal.png> <span>最新推荐文章于&nbsp;2023-07-28 16:51:27&nbsp;发布</span></span>
+ <div class=reading-collections-box>
+ <p class=blog-wap-reading>
+ <img class=have-heart-img src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/wap-articleReadEyes2.png> 
+ 阅读量<span class=text>4.4k</span>
+ </p>
+ </div>
+ <div class=subject-talk-box>
+ <a class=subject-talk href="https://app-blog.csdn.net/m/wapAiRelated?utm_source=711815865&amp;isHiddenNavigation=true" data-report-view='{"spm":"1001.2101.3001.10123"}' data-report-click='{"spm":"1001.2101.3001.10123"}'>
+ <img class=have-heart-img src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/subject-talk-img.png> 
+ <span>AI必读</span>
+ </a>
+ </div>
+ </div>
+ <div class="article_info clearfix">
+ <div class="top_user_mod clearfix">
+ <div class="top_user_info floatL clearfix">
+ <dl>
+ <dt class=floatL>
+ <a href=https://blog.csdn.net/ITbigger target=_blank rel=noopener class="clearfix top_user_info_a">
+ <img class=avatar src=data:, alt data-sf-original-src=https://profile-avatar.csdnimg.cn/28c8d0bee2ac4145916ade00b8a4ad04_itbigger.jpg!1>
+ </a>
+ </dt>
+ <dd class=floatL>
+ <p class=line-nick-name> 
+ <span class="nick_name odd-overhidden">搬砖买股票</span>
+ 
+ <img class=identity-icon src=data:, data-sf-original-src=https://csdnimg.cn/identity/blog3.png>
+ 
+ 
+ </p>
+ <p class=line-detaile>
+ <span class=code_years>码龄8年</span>
+ </p>
+ </dd> 
+ <a class=follow id=detailFollow data-id=5657713 data-report-view='{"spm":"1001.2101.3001.8391"}'>关注</a>
+ </dl>
+ </div>
+ </div>
+ </div> 
+ <div class=baidu_pl id=csdn-previewimg-box>
+ <div class=article_content>
+ <div id=content_views class="markdown_views clearfix prism-atom-one-dark">
+ 
+ 
+ 
+ <p><strong>QCN文件是啥？</strong><br> QCN文件存储的都是NV项目，一般主要是RF NV项，不能配置在代码中，要写进Flash的特定分区表里面。</p> 
+<p>Qcn文件用RF NV MANAGER打开可以调整修改相对应的NV项来该表射频参数。</p> 
+<p>简单点说就是手机系统文件里面储存着一些系统参数。</p> 
+<p><strong>备份和烧写工具：</strong><br> 1、QPST;<br> <img src=data:, alt=在这里插入图片描述 data-sf-original-src=https://i-blog.csdnimg.cn/blog_migrate/bba9a12d33c5943c057838ae045c5a29.png></p> 
+<p>2，QFIL:<br> <img src=data:, alt=在这里插入图片描述 data-sf-original-src=https://i-blog.csdnimg.cn/blog_migrate/da9de010d937d24d394232a4095e72bb.png></p>
+ </div>
+ <div id=treeSkill></div>
+ 
+ 
+ </div>
+ </div>
+ <div class=readall_box data-report-view='{"mod":"popu_376","dest":"https://blog.csdn.net/ITbigger/article/details/106552694"}' data-report-click='{"mod":"popu_376","dest":"https://blog.csdn.net/ITbigger/article/details/106552694"}'>
+ <div class=read_more_mask></div>
+ <div class=btn_mod>
+ 
+ <div class="btn_open_app_prompt_box btn_open_app_prompt_box_testAb active abstyle appletFullText">
+ <a class=weixin_abtest_btn_open data-report-click='{"spm":"1000.2115.3001.9756"}'>小程序看全文</a>
+ <p class=read_more_btn><img class=btn-img-arrow src=data:, alt data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/doubleArrow.png></p>
+ </div>
+ <div class="btn_open_app_prompt_box btn_open_app_prompt_box_testAb active abstyle appFullText">
+ <a class="open_app_channelCode app_abtest_btn_open" data-report-click='{"spm":"1000.2115.3001.9757"}' data-channelabid=293_exp1 data-href="csdnapp://web?url=https://blog.csdn.net/ITbigger/article/details/106552694">APP 看全文</a>
+ <p class=read_more_btn><img class=btn-img-arrow src=data:, alt data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/doubleArrow.png></p>
+ </div> 
+ </div> 
+ </div> 
+ 
+ 
+ </div>
+ <div class=btn_open_app_prompt_div>
+ <p id=btn_open_app_prompt_item class="btn_open_app_prompt_item open_app_channelCode" data-report-view='{"spm":"1001.2101.3001.8336"}' data-report-click='{"spm":"1001.2101.3001.8336"}' data-channelcode=blog_202012141828 data-href="csdnapp://web?url=https://blog.csdn.net/ITbigger/article/details/106552694">打开CSDN，阅读体验更佳</p>
+ </div>
+ 
+ 
+ 
+ 
+ <div class=spec_space></div>
+ 
+ 
+ <div id=comment>
+ </div>
+ <div class="spec_space spec_space_hide"></div>
+ 
+ <div id=recommend>
+ <div class=recommend_list>
+ <dl></dl>
+ <dl class="container-fluid container-fluid-flex container-download" data-url=https://download.csdn.net/download/u011283906/85577230 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.1","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~BlogCommendFromBaidu~Paid-1-85577230-blog-106552694.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339591284_72625\"}","dist_request_id":"1727339591284_72625","ab_strategy":"increase_t0_download","index":"1","strategy":"2~default~BlogCommendFromBaidu~Paid","dest":"https://download.csdn.net/download/u011283906/85577230"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=download>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a href=https://download.csdn.net/download/u011283906/85577230 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.1","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~BlogCommendFromBaidu~Paid-1-85577230-blog-106552694.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339591284_72625\"}","dist_request_id":"1727339591284_72625","ab_strategy":"increase_t0_download","index":"1","strategy":"2~default~BlogCommendFromBaidu~Paid","dest":"https://download.csdn.net/download/u011283906/85577230"}' data-report-query="spm=1001.2101.3001.6650.1&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EBlogCommendFromBaidu%7EPaid-1-85577230-blog-106552694.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EBlogCommendFromBaidu%7EPaid-1-85577230-blog-106552694.237%5Ev3%5Ewap_relevant_t0_download">
+ <div class=left>
+ 红米8A基带<em>qcn</em><em>文件</em>
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class=text href=https://download.csdn.net/download/u011283906/85577230 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.1","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~BlogCommendFromBaidu~Paid-1-85577230-blog-106552694.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339591284_72625\"}","dist_request_id":"1727339591284_72625","ab_strategy":"increase_t0_download","index":"1","strategy":"2~default~BlogCommendFromBaidu~Paid","dest":"https://download.csdn.net/download/u011283906/85577230"}' data-report-query="spm=1001.2101.3001.6650.1&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EBlogCommendFromBaidu%7EPaid-1-85577230-blog-106552694.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EBlogCommendFromBaidu%7EPaid-1-85577230-blog-106552694.237%5Ev3%5Ewap_relevant_t0_download">
+ 1----资源是特殊基带<em>qcn</em>。可用于常规与非常规掉基带机型、
+2----米系列机型专用资源，请对照机型使用
+3----请开端口后使用.[root 开或者刷工厂固件开端口】
+4----误格机或者全清除分区后专用修复必备
+5----需要一定的刷机常识和基本操作
+6----请小白或者不清楚此资源功能的用户勿下载
+7----资源区别于完好机<em>备份</em><em>qcn</em>。请区别对待
+8----nv数据损坏问题故障有软硬两方面原因。自行排查
+参考资源
+https://blog.csdn.net/u011283906/article/details/124720894?spm=1001.2014.3001.5502
+ </a>
+ </div>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-blog" data-url=https://blog.csdn.net/qq_44731523/article/details/124213815 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.2","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~CTRLIST~Rate-2-124213815-blog-106552694.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339591284_72625\"}","dist_request_id":"1727339591284_72625","ab_strategy":"increase_t0_download","index":"2","strategy":"2~default~CTRLIST~Rate","dest":"https://blog.csdn.net/qq_44731523/article/details/124213815"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=blog>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a>
+ <div class=left>
+ 【高通】【QPST】<em>QCN</em>导入
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class="text active">
+ 手机<em>QCN</em>参数导入
+ </a>
+ <a class=flag data-type=blog data-href=https://blog.csdn.net/qq_44731523/article/details/124213815 href=https://blog.csdn.net/qq_44731523/article/details/124213815 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.2","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~CTRLIST~Rate-2-124213815-blog-106552694.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339591284_72625\"}","dist_request_id":"1727339591284_72625","ab_strategy":"increase_t0_download","index":"2","strategy":"2~default~CTRLIST~Rate","dest":"https://blog.csdn.net/qq_44731523/article/details/124213815"}' data-report-query="spm=1001.2101.3001.6650.2&amp;utm_medium=distribute.wap_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-2-124213815-blog-106552694.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-2-124213815-blog-106552694.237%5Ev3%5Ewap_relevant_t0_download">继续访问</a>
+ </div>
+ </div>
+ <div class=right-img-box>
+ <a class=recommend-img>
+ <img src=data:, alt data-sf-original-src="https://img-blog.csdnimg.cn/6f70e95fa9074daea9bc4c5fa54e70de.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5pG457Si5Lit55qE56Gs5Lu25bel56iL5biI,size_7,color_FFFFFF,t_70,g_se,x_16">
+ </a>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-blog" data-url=https://blog.csdn.net/weixin_46202629/article/details/122786755 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.3","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-3-122786755-blog-106552694.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339591284_72625\"}","dist_request_id":"1727339591284_72625","ab_strategy":"increase_t0_download","index":"3","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://blog.csdn.net/weixin_46202629/article/details/122786755"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=blog>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a>
+ <div class=left>
+ 刷<em>qcn</em>工具|大部分机型<em>qcn</em><em>文件</em>集合|亲测有效
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class="text active">
+ 刷<em>qcn</em>工具|大部分机型<em>qcn</em><em>文件</em>集合|亲测有效 - GoodBoyboy的博客｜惬意小屋-点滴记忆
+ </a>
+ <a class=flag data-type=blog data-href=https://blog.csdn.net/weixin_46202629/article/details/122786755 href=https://blog.csdn.net/weixin_46202629/article/details/122786755 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.3","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-3-122786755-blog-106552694.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339591284_72625\"}","dist_request_id":"1727339591284_72625","ab_strategy":"increase_t0_download","index":"3","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://blog.csdn.net/weixin_46202629/article/details/122786755"}' data-report-query="spm=1001.2101.3001.6650.3&amp;utm_medium=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-3-122786755-blog-106552694.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-3-122786755-blog-106552694.237%5Ev3%5Ewap_relevant_t0_download">继续访问</a>
+ </div>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-blog" data-url=https://blog.csdn.net/llq520/article/details/116945919 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.4","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-4-116945919-blog-106552694.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339591284_72625\"}","dist_request_id":"1727339591284_72625","ab_strategy":"increase_t0_download","index":"4","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://blog.csdn.net/llq520/article/details/116945919"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=blog>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a>
+ <div class=left>
+ 笔记-高通处理器的<em>备份</em>还原<em>QCN</em>的一点个人分享
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class="text active">
+ 理论上海思的使用IDT工具也可以
+进入主题。
+1、手机已经获取root权限，打开开发者选项ADB调试
+提示：如果无法获取root权限，只要找到工厂单板固件，拆开手机短接9008端口（海思的是COM1.0）端口也可以刷机得到自带ROOT权限的工程系统。详细方法不在这里叙述。
+2、电脑ADB环境
+3、电脑安装GPST，版本我使用的2.7
+4、输adb shell回车
+5、输入su回车
+6、输入setpropsys.usb.configdiag 回车
+此时pc的设备管理器端口处出...
+ </a>
+ <a class=flag data-type=blog data-href=https://blog.csdn.net/llq520/article/details/116945919 href=https://blog.csdn.net/llq520/article/details/116945919 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.4","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-4-116945919-blog-106552694.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339591284_72625\"}","dist_request_id":"1727339591284_72625","ab_strategy":"increase_t0_download","index":"4","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://blog.csdn.net/llq520/article/details/116945919"}' data-report-query="spm=1001.2101.3001.6650.4&amp;utm_medium=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-4-116945919-blog-106552694.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-4-116945919-blog-106552694.237%5Ev3%5Ewap_relevant_t0_download">继续访问</a>
+ </div>
+ </div>
+ <div class=right-img-box>
+ <a class=recommend-img>
+ <img src=data:, alt data-sf-original-src="https://img-blog.csdnimg.cn/20210517194910250.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xscTUyMA==,size_16,color_FFFFFF,t_70">
+ </a>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-download" data-url=https://download.csdn.net/download/amwtt/86511612 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.5","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~BlogCommendFromBaidu~Rate-5-86511612-blog-106552694.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339591284_72625\"}","dist_request_id":"1727339591284_72625","ab_strategy":"increase_t0_download","index":"5","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://download.csdn.net/download/amwtt/86511612"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=download>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a href=https://download.csdn.net/download/amwtt/86511612 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.5","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~BlogCommendFromBaidu~Rate-5-86511612-blog-106552694.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339591284_72625\"}","dist_request_id":"1727339591284_72625","ab_strategy":"increase_t0_download","index":"5","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://download.csdn.net/download/amwtt/86511612"}' data-report-query="spm=1001.2101.3001.6650.5&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EBlogCommendFromBaidu%7ERate-5-86511612-blog-106552694.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EBlogCommendFromBaidu%7ERate-5-86511612-blog-106552694.237%5Ev3%5Ewap_relevant_t0_download">
+ <div class=left>
+ 高通手机<em>qcn</em><em>文件</em>IMEI修复
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class=text href=https://download.csdn.net/download/amwtt/86511612 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.5","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~BlogCommendFromBaidu~Rate-5-86511612-blog-106552694.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339591284_72625\"}","dist_request_id":"1727339591284_72625","ab_strategy":"increase_t0_download","index":"5","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://download.csdn.net/download/amwtt/86511612"}' data-report-query="spm=1001.2101.3001.6650.5&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EBlogCommendFromBaidu%7ERate-5-86511612-blog-106552694.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EBlogCommendFromBaidu%7ERate-5-86511612-blog-106552694.237%5Ev3%5Ewap_relevant_t0_download">
+ QualcommIMEIRebuilder
+ </a>
+ </div>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-blog" data-url=https://blog.csdn.net/youbang321/article/details/100881981 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.6","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-6-100881981-blog-106552694.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339591284_72625\"}","dist_request_id":"1727339591284_72625","ab_strategy":"increase_t0_download","index":"6","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://blog.csdn.net/youbang321/article/details/100881981"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=blog>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a>
+ <div class=left>
+ [Qualcomm][RF]制作<em>QCN</em>的xml<em>文件</em>以及校准Tree<em>文件</em>的源码路径
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class="text active">
+ Qualcomm的原始代码中，会存放于参考设计的RFC；并且会存放与参考RFC相对应的制作<em>QCN</em>的XML<em>文件</em>以及校准使用的xtt<em>文件</em>。每个平台代码所对应的路径不一样，但是大同小异。下面分别介绍MDM9x07和MDM9x40平台SDK上，制作<em>QCN</em>的XML和校准Tree<em>文件</em>的源码路径。
+ </a>
+ <a class=flag data-type=blog data-href=https://blog.csdn.net/youbang321/article/details/100881981 href=https://blog.csdn.net/youbang321/article/details/100881981 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.6","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-6-100881981-blog-106552694.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339591284_72625\"}","dist_request_id":"1727339591284_72625","ab_strategy":"increase_t0_download","index":"6","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://blog.csdn.net/youbang321/article/details/100881981"}' data-report-query="spm=1001.2101.3001.6650.6&amp;utm_medium=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-6-100881981-blog-106552694.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-6-100881981-blog-106552694.237%5Ev3%5Ewap_relevant_t0_download">继续访问</a>
+ </div>
+ </div>
+ <div class=right-img-box>
+ <a class=recommend-img>
+ <img src=data:, alt data-sf-original-src=https://img-blog.csdnimg.cn/img_convert/104a7f0d6f21440fa33aecf386a3b388.png>
+ </a>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-download" data-url=https://download.csdn.net/download/u011283906/88506961 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.7","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-7-88506961-blog-106552694.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339591284_72625\"}","dist_request_id":"1727339591284_72625","ab_strategy":"increase_t0_download","index":"7","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/u011283906/88506961"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=download>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a href=https://download.csdn.net/download/u011283906/88506961 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.7","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-7-88506961-blog-106552694.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339591284_72625\"}","dist_request_id":"1727339591284_72625","ab_strategy":"increase_t0_download","index":"7","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/u011283906/88506961"}' data-report-query="spm=1001.2101.3001.6650.7&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-7-88506961-blog-106552694.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-7-88506961-blog-106552694.237%5Ev3%5Ewap_relevant_t0_download">
+ <div class=left>
+ 魅蓝note6 完好机<em>备份</em>基带<em>qcn</em><em>文件</em>
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class=text href=https://download.csdn.net/download/u011283906/88506961 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.7","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-7-88506961-blog-106552694.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339591284_72625\"}","dist_request_id":"1727339591284_72625","ab_strategy":"increase_t0_download","index":"7","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/u011283906/88506961"}' data-report-query="spm=1001.2101.3001.6650.7&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-7-88506961-blog-106552694.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-7-88506961-blog-106552694.237%5Ev3%5Ewap_relevant_t0_download">
+ 魅蓝note6的基带<em>qcn</em><em>文件</em>是一种特定格式的<em>备份</em><em>文件</em>，用于存储手机的基带信息。这个<em>文件</em>包含了设备的IMEI（国际移动设备身份码）和ESN（电子序列号）等关键信息。当手机出现基带问题，如丢失IMEI或ESN时，<em>备份</em>的<em>qcn</em>...
+ </a>
+ </div>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-download" data-url=https://download.csdn.net/download/u011283906/85501364 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.8","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-8-85501364-blog-106552694.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339591284_72625\"}","dist_request_id":"1727339591284_72625","ab_strategy":"increase_t0_download","index":"8","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/u011283906/85501364"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=download>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a href=https://download.csdn.net/download/u011283906/85501364 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.8","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-8-85501364-blog-106552694.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339591284_72625\"}","dist_request_id":"1727339591284_72625","ab_strategy":"increase_t0_download","index":"8","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/u011283906/85501364"}' data-report-query="spm=1001.2101.3001.6650.8&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-8-85501364-blog-106552694.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-8-85501364-blog-106552694.237%5Ev3%5Ewap_relevant_t0_download">
+ <div class=left>
+ 魅蓝note6 基带<em>qcn</em><em>文件</em>
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class=text href=https://download.csdn.net/download/u011283906/85501364 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.8","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-8-85501364-blog-106552694.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339591284_72625\"}","dist_request_id":"1727339591284_72625","ab_strategy":"increase_t0_download","index":"8","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/u011283906/85501364"}' data-report-query="spm=1001.2101.3001.6650.8&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-8-85501364-blog-106552694.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-8-85501364-blog-106552694.237%5Ev3%5Ewap_relevant_t0_download">
+ “有需要的友友下载使用”表明这个<em>qcn</em><em>文件</em>是可供用户下载并使用的，但前提是用户具备一定的技术知识和操作经验，以防止因操作不当导致设备出现问题。同时，描述中强调了“都是完美测试过的资源，百分百好使”，这...
+ </a>
+ </div>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-download" data-url=https://download.csdn.net/download/u013178179/10683883 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.9","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-9-10683883-blog-106552694.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339591284_72625\"}","dist_request_id":"1727339591284_72625","ab_strategy":"increase_t0_download","index":"9","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/u013178179/10683883"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=download>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a href=https://download.csdn.net/download/u013178179/10683883 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.9","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-9-10683883-blog-106552694.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339591284_72625\"}","dist_request_id":"1727339591284_72625","ab_strategy":"increase_t0_download","index":"9","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/u013178179/10683883"}' data-report-query="spm=1001.2101.3001.6650.9&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-9-10683883-blog-106552694.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-9-10683883-blog-106552694.237%5Ev3%5Ewap_relevant_t0_download">
+ <div class=left>
+ 小米5X <em>QCN</em><em>文件</em><em>备份</em>
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class=text href=https://download.csdn.net/download/u013178179/10683883 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.9","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-9-10683883-blog-106552694.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339591284_72625\"}","dist_request_id":"1727339591284_72625","ab_strategy":"increase_t0_download","index":"9","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/u013178179/10683883"}' data-report-query="spm=1001.2101.3001.6650.9&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-9-10683883-blog-106552694.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-9-10683883-blog-106552694.237%5Ev3%5Ewap_relevant_t0_download">
+ 总的来说，小米5X <em>QCN</em><em>文件</em><em>备份</em>是一个解决IMEI丢失问题的解决方案，通过专业的工具和<em>备份</em><em>文件</em>，用户可以有效地保护和恢复自己的手机身份信息。然而，进行此类操作需要一定的技术知识，不当操作可能会导致更严重的问题...
+ </a>
+ </div>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-download" data-url=https://download.csdn.net/download/u011283906/88643641 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.10","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-10-88643641-blog-106552694.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339591284_72625\"}","dist_request_id":"1727339591284_72625","ab_strategy":"increase_t0_download","index":"10","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/u011283906/88643641"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=download>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a href=https://download.csdn.net/download/u011283906/88643641 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.10","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-10-88643641-blog-106552694.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339591284_72625\"}","dist_request_id":"1727339591284_72625","ab_strategy":"increase_t0_download","index":"10","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/u011283906/88643641"}' data-report-query="spm=1001.2101.3001.6650.10&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-10-88643641-blog-106552694.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-10-88643641-blog-106552694.237%5Ev3%5Ewap_relevant_t0_download">
+ <div class=left>
+ <span class=tag>最新发布</span>
+ 努比亚Z11-NX531J完好机<em>备份</em>基带<em>qcn</em><em>文件</em>
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class=text href=https://download.csdn.net/download/u011283906/88643641 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.10","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-10-88643641-blog-106552694.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339591284_72625\"}","dist_request_id":"1727339591284_72625","ab_strategy":"increase_t0_download","index":"10","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/u011283906/88643641"}' data-report-query="spm=1001.2101.3001.6650.10&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-10-88643641-blog-106552694.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-10-88643641-blog-106552694.237%5Ev3%5Ewap_relevant_t0_download">
+ 努比亚Z11-NX531J完好机<em>备份</em>基带<em>qcn</em><em>文件</em> 资源说明; 基带<em>qcn</em><em>文件</em> 可以修复刷机 降级 等掉基带 无串码等故障 需要开端口<em>写</em>入 有需要的会操作的友友下载使用 <em>写</em>入前建议修改原串码 会<em>写</em>入 会开端口 明白基带<em>qcn</em>原理的...
+ </a>
+ </div>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-download" data-url=https://download.csdn.net/download/daijunhao45/10857223 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.11","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-11-10857223-blog-106552694.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339591284_72625\"}","dist_request_id":"1727339591284_72625","ab_strategy":"increase_t0_download","index":"11","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/daijunhao45/10857223"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=download>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a href=https://download.csdn.net/download/daijunhao45/10857223 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.11","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-11-10857223-blog-106552694.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339591284_72625\"}","dist_request_id":"1727339591284_72625","ab_strategy":"increase_t0_download","index":"11","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/daijunhao45/10857223"}' data-report-query="spm=1001.2101.3001.6650.11&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-11-10857223-blog-106552694.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-11-10857223-blog-106552694.237%5Ev3%5Ewap_relevant_t0_download">
+ <div class=left>
+ 手机<em>QCN</em><em>文件</em> 懂行的自己用
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class=text href=https://download.csdn.net/download/daijunhao45/10857223 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.11","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-11-10857223-blog-106552694.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339591284_72625\"}","dist_request_id":"1727339591284_72625","ab_strategy":"increase_t0_download","index":"11","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/daijunhao45/10857223"}' data-report-query="spm=1001.2101.3001.6650.11&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-11-10857223-blog-106552694.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-11-10857223-blog-106552694.237%5Ev3%5Ewap_relevant_t0_download">
+ <em>QCN</em><em>文件</em>的重要性在于它能帮助设备优化网络性能，提高数据传输速度和稳定性。例如，当手机在不同网络环境之间切换，如4G、3G或Wi-Fi，<em>QCN</em><em>文件</em>可以确保这些转换平滑进行，提供最佳的网络体验。此外，对于运营商来说，...
+ </a>
+ </div>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-blog" data-url=https://blog.csdn.net/u011283906/article/details/125101561 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.12","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-12-125101561-blog-106552694.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339591284_72625\"}","dist_request_id":"1727339591284_72625","ab_strategy":"increase_t0_download","index":"12","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://blog.csdn.net/u011283906/article/details/125101561"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=blog>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a>
+ <div class=left>
+ <span class=tag>热门推荐</span>
+ 高通联机修改IMEI等参数的相关解析
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class="text active">
+ 目前来说。手机芯片被高通与mtk占领大多市场。系统版本越高对底层安全参数限制就越高。区别与早期高通芯片。直接就可以联机修改imei等相关数据。今天只对高通芯片imei等参数的修改做个简单的解析说明
+更改高通芯片imei等参数一般有以下几种方法
+1----联机软件修改串码
+2---修改基带<em>qcn</em><em>写</em>入方法来修改对应参数
+3---直接在系统相关分区修改
+4----空字库固件修改对应参数
+5----机型各模式里专用软件修改
+6----未知方法
+今天在这里只对联机修改做个简单操作解析
+关于串码修改知识相关的帖子。论
+ </a>
+ <a class=flag data-type=blog data-href=https://blog.csdn.net/u011283906/article/details/125101561 href=https://blog.csdn.net/u011283906/article/details/125101561 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.12","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-12-125101561-blog-106552694.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339591284_72625\"}","dist_request_id":"1727339591284_72625","ab_strategy":"increase_t0_download","index":"12","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://blog.csdn.net/u011283906/article/details/125101561"}' data-report-query="spm=1001.2101.3001.6650.12&amp;utm_medium=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-12-125101561-blog-106552694.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-12-125101561-blog-106552694.237%5Ev3%5Ewap_relevant_t0_download">继续访问</a>
+ </div>
+ </div>
+ <div class=right-img-box>
+ <a class=recommend-img>
+ <img src=data:, alt data-sf-original-src="https://img-blog.csdnimg.cn/9f0ab543e16f4be5bbdd9d534728feff.jpeg?x-oss-process=image/resize,m_fixed,h_150">
+ </a>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-blog" data-url=https://blog.csdn.net/Smiling_fox666/article/details/131983859 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.13","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-13-131983859-blog-106552694.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339591284_72625\"}","dist_request_id":"1727339591284_72625","ab_strategy":"increase_t0_download","index":"13","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://blog.csdn.net/Smiling_fox666/article/details/131983859"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=blog>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a>
+ <div class=left>
+ 刷<em>qcn</em>工具大部分机型<em>qcn</em><em>文件</em>集合亲测有效
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class="text active">
+ 版权声明: 本博客所有文章除特别声明外，均采用 CC BY-NC-SA 4.0 许可协议。有个国外网站，里面有部分机型的 <em>qcn</em>（不全但亲测有效，本人手机就是用这个网站的 <em>qcn</em> 救回的，可能需要科学上网）文章链接: https://blog.goodboyboy.top/95.html。文章链接: https://blog.goodboyboy.top/95.html。链接: https://blog.goodboyboy.top/95.html。刷机帮串号修复神器账户版 (1)
+ </a>
+ <a class=flag data-type=blog data-href=https://blog.csdn.net/Smiling_fox666/article/details/131983859 href=https://blog.csdn.net/Smiling_fox666/article/details/131983859 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.13","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-13-131983859-blog-106552694.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339591284_72625\"}","dist_request_id":"1727339591284_72625","ab_strategy":"increase_t0_download","index":"13","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://blog.csdn.net/Smiling_fox666/article/details/131983859"}' data-report-query="spm=1001.2101.3001.6650.13&amp;utm_medium=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-13-131983859-blog-106552694.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-13-131983859-blog-106552694.237%5Ev3%5Ewap_relevant_t0_download">继续访问</a>
+ </div>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-download" data-url=https://download.csdn.net/download/u011283906/85626585 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.14","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~BlogCommendFromBaidu~Rate-14-85626585-blog-106552694.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339591284_72625\"}","dist_request_id":"1727339591284_72625","ab_strategy":"increase_t0_download","index":"14","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://download.csdn.net/download/u011283906/85626585"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=download>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a href=https://download.csdn.net/download/u011283906/85626585 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.14","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~BlogCommendFromBaidu~Rate-14-85626585-blog-106552694.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339591284_72625\"}","dist_request_id":"1727339591284_72625","ab_strategy":"increase_t0_download","index":"14","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://download.csdn.net/download/u011283906/85626585"}' data-report-query="spm=1001.2101.3001.6650.14&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EBlogCommendFromBaidu%7ERate-14-85626585-blog-106552694.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EBlogCommendFromBaidu%7ERate-14-85626585-blog-106552694.237%5Ev3%5Ewap_relevant_t0_download">
+ <div class=left>
+ 高通芯片<em>备份</em>恢复基带<em>qcn</em>工具
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class=text href=https://download.csdn.net/download/u011283906/85626585 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.14","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~BlogCommendFromBaidu~Rate-14-85626585-blog-106552694.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339591284_72625\"}","dist_request_id":"1727339591284_72625","ab_strategy":"increase_t0_download","index":"14","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://download.csdn.net/download/u011283906/85626585"}' data-report-query="spm=1001.2101.3001.6650.14&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EBlogCommendFromBaidu%7ERate-14-85626585-blog-106552694.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EBlogCommendFromBaidu%7ERate-14-85626585-blog-106552694.237%5Ev3%5Ewap_relevant_t0_download">
+ 高通芯片<em>备份</em>恢复基带<em>qcn</em>工具
+具体功能为
+可以<em>备份</em>高通芯片机型的基带<em>qcn</em>
+可以恢复基带<em>qcn</em>
+不管什么高通的<em>qcn</em>软件都需要开启机型的端口才可以读取
+可以官方指令开启
+可以root后命令开启
+自带说明图示
+需要的友友下载使用
+希望我的资源可以帮到你 谢谢
+ </a>
+ </div>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-blog" data-url=https://blog.csdn.net/shaowwei/article/details/125283433 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.15","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-15-125283433-blog-106552694.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339591284_72625\"}","dist_request_id":"1727339591284_72625","ab_strategy":"increase_t0_download","index":"15","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://blog.csdn.net/shaowwei/article/details/125283433"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=blog>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a>
+ <div class=left>
+ qpst导出<em>qcn</em><em>文件</em>
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class="text active">
+ qpst导出<em>qcn</em><em>文件</em>
+ </a>
+ <a class=flag data-type=blog data-href=https://blog.csdn.net/shaowwei/article/details/125283433 href=https://blog.csdn.net/shaowwei/article/details/125283433 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.15","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-15-125283433-blog-106552694.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339591284_72625\"}","dist_request_id":"1727339591284_72625","ab_strategy":"increase_t0_download","index":"15","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://blog.csdn.net/shaowwei/article/details/125283433"}' data-report-query="spm=1001.2101.3001.6650.15&amp;utm_medium=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-15-125283433-blog-106552694.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-15-125283433-blog-106552694.237%5Ev3%5Ewap_relevant_t0_download">继续访问</a>
+ </div>
+ </div>
+ <div class=right-img-box>
+ <a class=recommend-img>
+ <img src=data:, alt data-sf-original-src=https://img-blog.csdnimg.cn/5f056df4a8454c3b8f7b50dca9753d49.png>
+ </a>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-blog" data-url=https://blog.csdn.net/llq520/article/details/116931751 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.16","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-16-116931751-blog-106552694.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339591284_72625\"}","dist_request_id":"1727339591284_72625","ab_strategy":"increase_t0_download","index":"16","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://blog.csdn.net/llq520/article/details/116931751"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=blog>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a>
+ <div class=left>
+ 【转】小米9打开高通Diagnostics端口提取的基带<em>qcn</em><em>文件</em>改串号
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class="text active">
+ 正常机提取基带<em>qcn</em><em>文件</em>
+使用与刷<em>写</em>第三方或者升降级系统导致丢失基带或者丢失串码等故障
+<em>写</em>入方法通用与其他高通芯片<em>写</em>入
+高通芯片机型提取<em>写</em>入基带方法基本都通用的，不通用的地方在于各机型开端口的方法不同，但命令开端口基本都一样的
+丢基带掉串码问题这种情况一般都是系统跨版本更新或者降级或者刷<em>写</em>第三方rom导致的。
+或者个别机型操作系统故障黑砖救砖后也会有几率出现无基带掉串码故障
+刷机之前一定要<em>备份</em><em>qcn</em>，基带一掉手机就跟砖头没区别了
+那么<em>备份</em><em>qcn</em>需要什么呢？
+没错，就是开高通diag端口，
+...
+ </a>
+ <a class=flag data-type=blog data-href=https://blog.csdn.net/llq520/article/details/116931751 href=https://blog.csdn.net/llq520/article/details/116931751 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.16","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-16-116931751-blog-106552694.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339591284_72625\"}","dist_request_id":"1727339591284_72625","ab_strategy":"increase_t0_download","index":"16","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://blog.csdn.net/llq520/article/details/116931751"}' data-report-query="spm=1001.2101.3001.6650.16&amp;utm_medium=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-16-116931751-blog-106552694.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-16-116931751-blog-106552694.237%5Ev3%5Ewap_relevant_t0_download">继续访问</a>
+ </div>
+ </div>
+ <div class=right-img-box>
+ <a class=recommend-img>
+ <img src=data:, alt data-sf-original-src="https://img-blog.csdnimg.cn/img_convert/4f4ed056b1a16a2ec96ba02dc03704a5.png?x-oss-process=image/resize,m_fixed,h_150">
+ </a>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-download" data-url=https://download.csdn.net/download/u011283906/85501333 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.17","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-17-85501333-blog-106552694.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339591284_72625\"}","dist_request_id":"1727339591284_72625","ab_strategy":"increase_t0_download","index":"17","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/u011283906/85501333"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=download>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a href=https://download.csdn.net/download/u011283906/85501333 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.17","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-17-85501333-blog-106552694.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339591284_72625\"}","dist_request_id":"1727339591284_72625","ab_strategy":"increase_t0_download","index":"17","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/u011283906/85501333"}' data-report-query="spm=1001.2101.3001.6650.17&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-17-85501333-blog-106552694.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-17-85501333-blog-106552694.237%5Ev3%5Ewap_relevant_t0_download">
+ <div class=left>
+ vivo x9s基带<em>qcn</em><em>文件</em>
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class=text href=https://download.csdn.net/download/u011283906/85501333 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.17","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-17-85501333-blog-106552694.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339591284_72625\"}","dist_request_id":"1727339591284_72625","ab_strategy":"increase_t0_download","index":"17","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/u011283906/85501333"}' data-report-query="spm=1001.2101.3001.6650.17&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-17-85501333-blog-106552694.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-17-85501333-blog-106552694.237%5Ev3%5Ewap_relevant_t0_download">
+ 刷机和降级过程中，手机的基带信息可能会被重置或丢失，这时就需要使用<em>备份</em>的<em>QCN</em><em>文件</em>进行恢复。在使用之前，必须确认<em>QCN</em><em>文件</em>与手机型号完全匹配，否则可能导致更严重的问题，如无法开机、网络不稳定等。这里提醒，...
+ </a>
+ </div>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-download" data-url=https://download.csdn.net/download/u011283906/85501387 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.18","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-18-85501387-blog-106552694.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339591284_72625\"}","dist_request_id":"1727339591284_72625","ab_strategy":"increase_t0_download","index":"18","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/u011283906/85501387"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=download>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a href=https://download.csdn.net/download/u011283906/85501387 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.18","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-18-85501387-blog-106552694.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339591284_72625\"}","dist_request_id":"1727339591284_72625","ab_strategy":"increase_t0_download","index":"18","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/u011283906/85501387"}' data-report-query="spm=1001.2101.3001.6650.18&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-18-85501387-blog-106552694.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-18-85501387-blog-106552694.237%5Ev3%5Ewap_relevant_t0_download">
+ <div class=left>
+ 一加5T基带<em>qcn</em><em>文件</em>
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class=text href=https://download.csdn.net/download/u011283906/85501387 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.18","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-18-85501387-blog-106552694.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339591284_72625\"}","dist_request_id":"1727339591284_72625","ab_strategy":"increase_t0_download","index":"18","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/u011283906/85501387"}' data-report-query="spm=1001.2101.3001.6650.18&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-18-85501387-blog-106552694.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-18-85501387-blog-106552694.237%5Ev3%5Ewap_relevant_t0_download">
+ <em>qcn</em><em>文件</em>，全称可能是Qualcomm Configuration File（高通配置<em>文件</em>），是高通芯片组用于存储基带设置和参数的<em>文件</em>。在一加5T这款使用高通骁龙处理器的手机上，<em>qcn</em><em>文件</em>可能包含网络频段、IMEI（国际移动设备识别码）、...
+ </a>
+ </div>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-download" data-url=https://download.csdn.net/download/u011283906/85501340 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.19","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-19-85501340-blog-106552694.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339591284_72625\"}","dist_request_id":"1727339591284_72625","ab_strategy":"increase_t0_download","index":"19","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/u011283906/85501340"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=download>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a href=https://download.csdn.net/download/u011283906/85501340 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.19","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-19-85501340-blog-106552694.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339591284_72625\"}","dist_request_id":"1727339591284_72625","ab_strategy":"increase_t0_download","index":"19","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/u011283906/85501340"}' data-report-query="spm=1001.2101.3001.6650.19&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-19-85501340-blog-106552694.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-19-85501340-blog-106552694.237%5Ev3%5Ewap_relevant_t0_download">
+ <div class=left>
+ vivo X20A基带<em>qcn</em><em>文件</em>
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class=text href=https://download.csdn.net/download/u011283906/85501340 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.19","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-19-85501340-blog-106552694.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339591284_72625\"}","dist_request_id":"1727339591284_72625","ab_strategy":"increase_t0_download","index":"19","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/u011283906/85501340"}' data-report-query="spm=1001.2101.3001.6650.19&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-19-85501340-blog-106552694.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-19-85501340-blog-106552694.237%5Ev3%5Ewap_relevant_t0_download">
+ 总结来说，vivo X20A基带<em>qcn</em><em>文件</em>是解决该机型通信问题的关键，它包含了手机的重要识别信息和网络配置。在处理刷机、降级等问题时，通过开启端口<em>写</em>入此<em>文件</em>，可以有效恢复和修复基带，保证手机的正常通信功能。然而，...
+ </a>
+ </div>
+ </div>
+ </div>
+ </dl>
+ </div>
+ </div>
+ 
+ <div id=operate class=clearfix>
+ <div class="clearfix content-box">
+ <div class="operate_write operate_common floatL">
+ <span class=comment-bt-write>
+ <span class=enter_text><img class=operate_img src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/writeIcon@2x.png>写评论</span>
+ <img class=comment-sofa-flag src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/pc/img/commentFlag@2x.png>
+ </span>
+ <span class=operate_write_box>
+ <img class=operate_img src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/comment@2x.png>
+ <span class=count>
+ 评论
+ </span>
+ </span>
+ </div>
+ <div class="collect-btn operate_add operate_common floatL">
+ <span class=operate_collect_box>
+ <span class=uncollect>
+ <img class=operate_img src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/uncollect@2x.png>
+ </span>
+ <span class=collect>
+ <img class=operate_img src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/collect@2x.png>
+ </span>
+ <span class=count>
+ 11
+ </span>
+ </span>
+ </div>
+ <div class="like-btn operate_heart operate_common floatL" data-dest=https://blog.csdn.net/ITbigger/article/details/106552694>
+ <span class=operate_heart_box>
+ <span class=unheart>
+ <img class=operate_img src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/unheart@2x.png>
+ </span>
+ <span class=heart>
+ <img class=operate_img src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/heart@2x.png>
+ </span>
+ <span class=count>
+ 1
+ </span>
+ </span>
+ </div>
+ <div class="unlike-btn operate_steplike operate_common floatL">
+ <span class=operate_heart_box>
+ <span class=stepunlike>
+ <img class=operate_img src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/stepUnLike.png>
+ </span>
+ <span class=steplike>
+ <img class=operate_img src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/stepLike.png>
+ </span>
+ <span class=count>
+ 踩
+ </span>
+ </span>
+ </div>
+ <div class="share-btn operate_share operate_common floatL">
+ <a>
+ <span class=operate_share_box>
+ <img class=operate_img src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/unshare@2x.png>
+ <span class=count>分享</span>
+ </span>
+ </a>
+ </div>
+ </div>
+ </div>
+</div>
+ <div id=prompt>
+ 
+ <span>文章收藏成功</span>
+ </div>
+ <div class="app-shadowbox wap-shadowbox" data-type=view>
+ <div class=app-box>
+ <div class=pos-box>
+ <div class=tip-massege>前往CSDN APP阅读全文</div>
+ <div class=tip-text>CSDN APP记录你的成长</div>
+ <a class="app-bt-cance read_more_btn close-icon" data-report-click='{"spm":"1001.2101.3001.9529"}'>
+ <img src=data:, alt data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/closeBt.png>
+ </a>
+ <div class="button-box button-box-new w-100p">
+ <a class="app-bt-sure open_app_channelCode" id=wap_open_app_btn data-channelcode=blog_1592384106 data-channelabid=293_exp1 data-report-click='{"spm":"1001.2101.3001.9530"}' data-name=a data-href="csdnapp://web?url=https://blog.csdn.net/ITbigger/article/details/106552694">前往APP</a>
+ </div>
+ </div>
+ </div>
+ </div>
+ <div class="wap-shadowbox qr-weixin-box">
+ <div class=app-box>
+ <div class=tip-massege>微信小程序收藏浏览更方便</div>
+ <div class=routine-box-img> <img src=data:, alt data-sf-original-src></div>
+ <div class=routine-box-text>
+ <span>截图/长按 </span>保存本地，用微信扫码打开
+ </div>
+ <img class=close src=data:, alt data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/closeBt.png>
+ </div>
+ </div>
+ <div class="small-shadowbox wap-shadowbox">
+ <div class=app-box>
+ <div class=tip-massege>进入小程序随时浏览/收藏技术文章</div>
+ <div class="button-box button-box-new">
+ <a class=app-ab-cance data-report-click='{"spm":"1001.2101.3001.9400"}'>取消</a>
+ <a class=app-bt-sure data-report-click='{"spm":"1001.2101.3001.9401"}'>立即前往</a>
+ </div>
+ <img class=close src=data:, alt data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/closeBt.png>
+ </div>
+ </div>
+ <div class="wap-shadowbox ab-app-shadowbox">
+ <div class="app-box active">
+ <a class="app-bt-cance read_more_btn close-icon" id=ab-app-shadowbox-close data-report-view='{"spm":"1001.2101.3001.9672"}' data-report-click='{"spm":"1001.2101.3001.9672"}'>
+ <img src=data:, alt data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/closeBt.png>
+ </a>
+ <div class=tip-massege>需要前往CSDN APP登录即可继续互动</div>
+ <div class="button-box button-box-new w-100p">
+ <a class="app-bt-sure open_app_channelCode app-bt-sure-btn-new" id=wap_open_app_btn data-channelcode=1663655995 data-report-view='{"spm":"1001.2101.3001.8335"}' data-report-click='{"spm":"1001.2101.3001.8335"}' data-name=a data-href="csdnapp://web?url=https://blog.csdn.net/ITbigger/article/details/106552694">前往APP</a>
+ </div>
+ </div>
+ </div>
+ <div class="comment-shadowbox wap-shadowbox">
+ <div class=comment-write-box>
+ <div class=write-comment-container>
+ <textarea name class=write-comment-content id=writeComment placeholder="请发表有价值的评论， 博客评论不欢迎灌水，良好的社区氛围需大家一起维护。"></textarea>
+ <div id=formRewardBox class=comment-reward-box>
+ <a class=btn-remove-reward></a>
+ <div class=form-reward-box>
+ <div class=info>
+ 成就一亿技术人!
+ </div>
+ <div class=price-info>
+ 拼手气红包<span class=price>6.0元</span>
+ </div>
+ </div>
+ </div>
+ </div>
+ <div class=comment-write-bt>
+ <a class=write-redEnvolope>
+ <img class=comment-operate-img data-url=https://csdnimg.cn/release/blogv2/dist/pc/img/ src=data:, alt=红包 data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/pc/img/commentReward.png>
+ </a>
+ <a class=write-bt-sure data-report-click='{"spm":"1001.2101.3001.7867","mod":"1589175530_002"}' data-report-view='{"spm":"1001.2101.3001.7867","mod":"1589175530_002"}'>发送</a>
+ </div>
+ <div class=comment-rewarddialog-box>
+ <div class=form-box>
+ <div class=title-box>
+ 发红包
+ <a class=btn-form-close></a>
+ </div>
+ <form id=commentRewardForm>
+ <div class=ipt-box>
+ <label for=txtName>祝福语</label>
+ <div class=ipt-btn-box>
+ <input type=text name=name id=txtName autocomplete=off maxlength=50>
+ <a class="btn-ipt btn-random"></a>
+ </div>
+ <p class=notice>请填写红包祝福语或标题</p>
+ </div>
+ <div class=ipt-box>
+ <label for=txtSendAmount>红包数量</label>
+ <div class=ipt-txt-box>
+ <input type=text name=sendAmount maxlength=4 id=txtSendAmount placeholder=请填写红包数量(最小10个) autocomplete=off>
+ <span class=after-txt>个</span>
+ </div>
+ <p class=notice>红包个数最小为10个</p>
+ </div>
+ <div class=ipt-box>
+ <label for=txtMoney>
+ <div class=balance-info-box>
+ <div class=balance-info>
+ 您的钱包余额 <span class=red><span class=balance></span>元</span>
+ <a href=https://i.csdn.net/#/wallet/balance/recharge class=link-charge target=_blank>前往充值<img class=origin-plan-icon src=data:, alt data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/arrowRight.png></a>
+ </div>
+ </div>
+ </label>
+ <div class="ipt-txt-box error">
+ <input type=text name=money maxlength=5 id=txtMoney placeholder=请填写总金额(最低5元) autocomplete=off>
+ <span class=after-txt>元</span>
+ </div>
+ <p class=notice>红包金额最低5元</p>
+ </div>
+ <div class=opt-box>
+ <div class=pay-info>
+ ¥<span class=price></span>
+ </div>
+ <button type=button class="ml8 btn-submit" disabled>发红包</button>
+ <p class=remark>未领取的红包，将于96小时后发起退款</p>
+ </div>
+ </form>
+ </div>
+ </div>
+ </div>
+ </div>
+ <div class=redEnvolope id=redEnvolope>
+ <div class=env-box>
+ <div class=env-container>
+ <div class=pre-open id=preOpen>
+ <div class=top>
+ <header>
+ <img class=clearTpaErr :src=redpacketAuthor.avatar alt>
+ <div class=author>成就一亿技术人!</div>
+ </header>
+ <div class=bot-icon></div>
+ </div>
+ <footer>
+ <div class="red-openbtn open-start"></div>
+ <div class=tip>
+ 领取后你会自动成为博主和红包主的粉丝
+ <a class=rule target=_blank>规则</a>
+ </div>
+ </footer>
+ </div>
+ <div class=opened id=opened>
+ <div class=bot-icon>
+ <header>
+ <a class=creatorUrl href=https://blog.csdn.net/ITbigger/article/details/106552694 target=_blank>
+ <img class=clearTpaErr src=data:, alt data-sf-original-src=https://profile-avatar.csdnimg.cn/default.jpg!2>
+ </a>
+ <div class=author>
+ <div class=tt>hope_wisdom</div> 发出的红包
+ </div>
+ </header>
+ </div>
+ <div class=receive-box>
+ <header></header>
+ <div class=receive-list>
+ </div>
+ </div>
+ </div>
+ </div>
+ <div class=close-btn></div>
+ </div>
+ </div>
+ <div class="weixin-shadowbox wap-shadowbox">
+ <div class="guide-box guide-box-new">
+ <div class=topic>前往CSDN APP阅读全文</div>
+ <div class=tip>阅读体验更佳</div>
+ <div class="csdn-box item-box">
+ <div class=item><img class=app-img src=data:, alt data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/csdnIcon@2x.png></div>
+ <div class=item>
+ <div class=item-content>
+ <p class=title>CSDN</p>
+ <p class=text>成就一亿技术人</p>
+ </div>
+ </div>
+ <div class=item><a class="open-app open-app-csdn open_app_channelCode" data-channelcode=1661743049 data-url=https://blog.csdn.net/ITbigger/article/details/106552694 data-href="csdnapp://web?url=https://blog.csdn.net/ITbigger/article/details/106552694" data-report-view='{"spm":"1001.2101.3001.8331"}' data-report-click='{"spm":"1001.2101.3001.8331"}'>前往</a></div>
+ </div>
+ <div class="weixin-box item-box">
+ <div class="item item-display-none item-chrome"><img class=app-img src=data:, alt data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/chromeIcon@2x.png></div>
+ <div class=item>
+ <div class=item-content>浏览器</div>
+ </div>
+ <div class=item><a class="open-app open-app-weixin" data-report-view='{"spm":"1001.2101.3001.8332"}' data-report-click='{"spm":"1001.2101.3001.8332"}'>继续</a></div>
+ </div>
+ </div>
+ </div>
+ <div class="share-shadowbox wap-shadowbox">
+ <div class=share-box>
+ <div class=tit>分享</div>
+ <div class=text></div>
+ <a class=share-bt-tip data-report-click='{"spm":"1001.2101.3001.7872"}'>复制分享链接</a>
+ <img class=close src=data:, alt data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/closeBt.png>
+ </div>
+ </div>
+ 
+ <div class=ios-shadowbox>
+ <div class=ios-box>
+ <div class=tip-massege>请升级应用版本</div>
+ <div class=button-box>
+ <a id=cancelBt class=bt-cancel>取消</a>
+ <a id=upBt class=bt-cancel href="itms-apps://itunes.apple.com/cn/app/id1437086352?mt=8">立即升级</a>
+ </div>
+ </div>
+ </div>
+ <div class=feed-Sign-weixin>
+ <p class=open_app_channelCode id=feed-open-app-btn data-channelabid=252_exp1 data-href="csdnapp://web?url=https://blog.csdn.net/ITbigger/article/details/106552694" data-report-view='{"spm":"1001.2101.3001.9397"}' data-report-click='{"spm":"1001.2101.3001.9397"}'>打开 <img src=data:, alt data-sf-original-src=https://img-home.csdnimg.cn/images/20221101034807.png> APP</p>
+ <a id=feed-Sign-weixin-btn data-report-click='{"spm":"1001.2101.3001.9398"}'>小程序看全文</a>
+ </div>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+<script data-template-shadow-root>(()=>{document.currentScript.remove();processNode(document);function processNode(node){node.querySelectorAll("template[shadowrootmode]").forEach(element=>{let shadowRoot = element.parentElement.shadowRoot;if (!shadowRoot) {try {shadowRoot=element.parentElement.attachShadow({mode:element.getAttribute("shadowrootmode"),delegatesFocus:element.getAttribute("shadowrootdelegatesfocus")!=null,clonable:element.getAttribute("shadowrootclonable")!=null,serializable:element.getAttribute("shadowrootserializable")!=null});shadowRoot.innerHTML=element.innerHTML;element.remove()} catch (error) {} if (shadowRoot) {processNode(shadowRoot)}}})}})()</script>
