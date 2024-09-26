@@ -1,0 +1,262 @@
+<!DOCTYPE html> <html lang=zh-cn><!--
+ Page saved with SingleFile 
+ url: https://www.cnblogs.com/xuan52rock/p/11609327.html 
+ saved date: Fri Sep 27 2024 07:17:31 GMT+0800 (中国标准时间)
+--><meta charset=utf-8>
+<meta name=viewport content="width=device-width, initial-scale=1.0">
+<meta name=keywords content=android>
+<meta name=description content=from：https://cn.ui.vmall.com/thread-18825922-1-1.html>
+<meta property=og:description content=from：https://cn.ui.vmall.com/thread-18825922-1-1.html>
+<meta http-equiv=Cache-Control content=no-transform>
+<meta http-equiv=Cache-Control content=no-siteapp>
+<meta http-equiv=X-UA-Compatible content="IE=edge">
+<title>【转】干货篇：手机绕过BL锁9008模式强刷 - 神奇的旋风 - 博客园</title>
+<link rel=canonical href=https://www.cnblogs.com/xuan52rock/p/11609327.html>
+<link type=application/rss+xml rel=alternate href=https://www.cnblogs.com/xuan52rock/rss>
+<link type=application/rsd+xml rel=EditURI href=https://www.cnblogs.com/xuan52rock/rsd.xml>
+<link type=application/wlwmanifest+xml rel=wlwmanifest href=https://www.cnblogs.com/xuan52rock/wlwmanifest.xml>
+<meta name=vs_showGrid content=False><meta name=referrer content=no-referrer><link rel="shortcut icon" id=favicon href=data:, type=image/svg+xml data-sf-original-href="https://assets.cnblogs.com/favicon.svg?v=2"><meta http-equiv=content-security-policy content="default-src 'none'; font-src 'self' data:; img-src 'self' data:; style-src 'unsafe-inline'; media-src 'self' data:; script-src 'unsafe-inline' data:; object-src 'self' data:; frame-src 'self' data:;"><style>img[src="data:,"],source[src="data:,"]{display:none!important}</style></head>
+<body class="skin-anothereon001 has-navbar">
+ <a name=top></a>
+ <div id=imagebar class="imagebar-mobile imagebar-text-mobile formobile">
+ <a href=https://www.cnblogs.com/cmt/p/18302049 rel=nofollow>
+ <img src=data:, alt data-sf-original-src=https://img2024.cnblogs.com/blog/35695/202409/35695-20240914121709121-516873353.jpg>
+ <span id=m2_impression></span>
+ </a>
+ </div>
+ <div id=top_nav class="navbar forpc">
+ <nav id=nav_main class=navbar-main>
+ <ul id=nav_left class="navbar-list navbar-left">
+ <li class=navbar-branding>
+ <a href=https://www.cnblogs.com/ title=开发者的网上家园 role=banner>
+ <img src=data:, alt=博客园Logo data-sf-original-src=//assets.cnblogs.com/logo.svg>
+ </a>
+ </li>
+ <li><a href=https://cnblogs.vip/>会员</a></li>
+ <li><a href=https://cnblogs.vip/store>周边</a></li>
+ <li><a href=https://cnblogs.vip/donate>捐助</a></li>
+ <li>
+ <a href=https://news.cnblogs.com/>新闻</a>
+ </li>
+ <li>
+ <a href=https://q.cnblogs.com/>博问</a>
+ </li>
+ <li>
+ <a href=https://ing.cnblogs.com/>闪存</a>
+ </li>
+ <li><a href=https://www.cnblogs.com/cmt/p/18341478>赞助商</a></li>
+ </ul>
+ <ul id=nav_right class="navbar-list navbar-right">
+ <li>
+ <form id=zzk_search class="navbar-search dropdown" action=https://zzk.cnblogs.com/s role=search>
+ <input name=w id=zzk_search_input placeholder=代码改变世界 type=search tabindex=3 autocomplete=off>
+ <button id=zzk_search_button>
+ <img id=search_icon class=focus-hidden src=data:, alt=搜索 data-sf-original-src=//assets.cnblogs.com/icons/search.svg>
+ <img class="hidden focus-visible" src=data:, alt=搜索 data-sf-original-src=//assets.cnblogs.com/icons/enter.svg>
+ </button>
+ <ul id=navbar_search_options class="dropdown-menu quick-search-menu">
+ <li tabindex=0 class=active>
+ <div class=keyword-wrapper>
+ <img src=data:, alt=搜索 data-sf-original-src=//assets.cnblogs.com/icons/search.svg>
+ <div class=keyword></div>
+ </div>
+ <span class=search-area>所有博客</span>
+ </li>
+ <li tabindex=1>
+ <div class=keyword-wrapper>
+ <img src=data:, alt=搜索 data-sf-original-src=//assets.cnblogs.com/icons/search.svg>
+ <div class=keyword></div>
+ </div>
+ <span class=search-area>当前博客</span>
+ </li>
+ </ul>
+ </form>
+ </li>
+ <li id=navbar_login_status class=navbar-list>
+ <a class="navbar-user-info navbar-blog" href="https://i.cnblogs.com/EditPosts.aspx?opt=1" alt=写随笔 title=写随笔>
+ <img id=new_post_icon class=navbar-icon src=data:, alt=写随笔 data-sf-original-src=//assets.cnblogs.com/icons/newpost.svg>
+ </a>
+ <a id=navblog-myblog-icon class="navbar-user-info navbar-blog" href=https://passport.cnblogs.com/GetBlogApplyStatus.aspx alt=我的博客 title=我的博客>
+ <img id=myblog_icon class=navbar-icon src=data:, alt=我的博客 data-sf-original-src=//assets.cnblogs.com/icons/myblog.svg>
+ </a>
+ <a class="navbar-user-info navbar-message navbar-icon-wrapper" href=https://msg.cnblogs.com/ alt=短消息 title=短消息>
+ <img id=msg_icon class=navbar-icon src=data:, alt=短消息 data-sf-original-src=//assets.cnblogs.com/icons/message.svg>
+ <span id=msg_count></span>
+ </a>
+ <a id=navbar_lite_mode_indicator data-current-page=blog href=javascript:void(0) alt=简洁模式 title=简洁模式启用，您在访问他人博客时会使用简洁款皮肤展示>
+ <img class=navbar-icon src=data:, alt=简洁模式 data-sf-original-src=//assets.cnblogs.com/icons/lite-mode-on.svg>
+ </a>
+ <div id=user_info class="navbar-user-info dropdown">
+ <a class=dropdown-button href=https://home.cnblogs.com/>
+ <img id=user_icon class=navbar-avatar src=data:, alt=用户头像 data-sf-original-src=//assets.cnblogs.com/icons/avatar-default.svg>
+ </a>
+ <div class=dropdown-menu>
+ <a id=navblog-myblog-text href=https://passport.cnblogs.com/GetBlogApplyStatus.aspx>我的博客</a>
+ <a href=https://home.cnblogs.com/>我的园子</a>
+ <a href=https://account.cnblogs.com/settings/account>账号设置</a>
+ <a href=javascript:void(0) id=navbar_lite_mode_toggle title=简洁模式会使用简洁款皮肤显示所有博客>
+ 简洁模式 <img id=navbar_lite_mode_on src=data:, class=hide data-sf-original-src=/images/lite-mode-check.svg><span id=navbar_lite_mode_spinner class=hide>...</span>
+</a>
+ <a href=javascript:void(0)>退出登录</a>
+ </div>
+ </div>
+ <a class=navbar-anonymous href=https://account.cnblogs.com/signup>注册</a>
+ <a class=navbar-anonymous href=javascript:void(0)>登录</a>
+ </li>
+ </ul>
+ </nav>
+ </div>
+ 
+ <div id=wrapper>
+ <div id=header>
+ 
+<div id=top>
+<h1><a id=Header1_HeaderTitle class="headermaintitle HeaderMainTitle" href=https://www.cnblogs.com/xuan52rock>神奇的旋风</a>
+</h1>
+<div id=subtitle></div>
+</div>
+<div id=sub><div id=blog_stats_place_holder></div></div>
+ </div>
+ <div id=main_container>
+ <div id=main_content>
+ <div id=content>
+ <div id=post_detail>
+ <div class=post>
+ <h2>
+ <a id=cb_post_title_url class="postTitle2 vertical-middle" href=https://www.cnblogs.com/xuan52rock/p/11609327.html title="发布于 2019-09-29 18:17">
+ <span role=heading aria-level=2>【转】干货篇：手机绕过BL锁9008模式强刷</span>
+ 
+</a>
+ </h2>
+ <div class=postbody>
+ <div id=cnblogs_post_body class="blogpost-body blogpost-body-html">
+<p></p>
+<table cellspacing=0 cellpadding=0>
+<tbody>
+<tr>
+<td id=postmessage_398265570 class=t_f>&lt;ignore_js_op&gt;<img id=aimg_17712558 class=zoom src=data:, alt width=500 height=500 data-sf-original-src=https://clubimg.club.vmall.com/data/attachment/forum/201902/04/214323vywldlqe3mfeq1tx.jpg>&nbsp;高通QPST线刷其实就是利用高通芯片自带的9008端口，将手机系统内的所有分区的镜像文件，直接刷写手机。这个刷机方式比REC卡刷和fastboot线刷，更底层、高效、强大。这种方式，不需要进入手机的任何分区，就可以直接刷写手机固件。<br><br>REC卡刷必须要手机能进入recovery模式，并且要是第三方rec才能随意刷zip卡刷包。<br><br>Fastboot线刷要求手机能够进入fastboot模式，而且没有锁定bootloader，否则也无法刷入各种刷机包和分区镜像文件。<br><br>而高通线刷可以刷写包括fastboot所在的bootloader分区、boot启动分区、recovery恢复分区在内的所有分区。甚至可以改写手机分区表。就算手机开不了机了，一样可以刷入，只要9008端口能连接就可以刷。这就是高通线刷既可以刷入系统又可以救砖的原理。<br><br>9008刷起来开怼：<br><br>不废话两种方式：一、物理短接方法 二、adb工具<br><br>一、物理短接9008刷机详解：<br><br>镊子短接两个点位，然后按开机键，屏幕此时无反应，按开机键2秒后就可以联机，在设备管理器就会识别到一个Qualcomm HS-USB QDLoader设备，装上高通9008驱动后会在后面显示COM端口和9008字样就可以刷机了</td>
+</tr>
+</tbody>
+</table>
+<p>from：https://cn.ui.vmall.com/thread-18825922-1-1.html</p>
+</div>
+<div id=MySignature role=contentinfo>
+ 文章乃参考、转载其他博客所得，仅供自己学习作笔记使用！！！
+</div>
+<div class=clear></div>
+<div id=blog_post_info_block role=contentinfo>
+ <div id=blog_post_info></div>
+ <div class=clear></div>
+ <div id=post_next_prev></div>
+</div>
+ </div>
+ <p class=postfoot>
+ posted on 
+<span id=post-date data-last-update-days=1824.5420411854236 data-date-created=BlogServer.Application.Dto.BlogPost.BlogPostDto data-date-updated="2019-09-29 18:17">2019-09-29 18:17</span>&nbsp;
+<a href=https://www.cnblogs.com/xuan52rock>神奇的旋风</a>&nbsp;
+阅读(<span id=post_view_count>25990</span>)&nbsp;
+评论(<span id=post_comment_count>0</span>)&nbsp;
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=11609327" rel=nofollow>编辑</a>&nbsp;
+<a href=javascript:void(0)>收藏</a>&nbsp;
+<a href=javascript:void(0)>举报</a>
+ </p>
+ </div>
+</div>
+<a id=!comments></a>
+<div id=blog-comments-placeholder></div>
+<div id=comment_form class=commentform>
+ <a name=commentform></a>
+ <div id=divCommentShow></div>
+ <div id=comment_nav>
+ <a class="comment-nav-left forpc" href=https://cnblogs.vip/ target=_blank>会员力量，点亮园子希望</a>
+ <div class=comment-nav-right>
+ <span id=span_refresh_tips></span><a href=#>刷新页面</a><a href=#top>返回顶部</a>
+ </div>
+ </div>
+ <div id=comment_form_container></div>
+ <div class=ad_text_commentbox id=ad_text_under_commentbox></div>
+ <div id=cnblogs_ch></div>
+ <div id=opt_under_post></div>
+ <div id=blog_c1 class=under-post-card>
+ <a href=https://www.cnblogs.com/cmt/p/18302049 rel=nofollow target=_blank>
+ <img src=data:, alt data-sf-original-src=https://img2024.cnblogs.com/blog/35695/202409/35695-20240914114555421-1162088530.jpg>
+ <span id=c1_impression></span>
+ </a>
+ </div>
+ <div id=under_post_card1></div>
+ <div id=under_post_card2></div>
+ <div id=HistoryToday class=under-post-card></div>
+ 
+</div>
+ </div>
+ </div>
+ <div id=leftmenu>
+ 
+<h3>导航</h3>
+<ul>
+ <li>
+ <a id=blog_nav_sitehome class=menu href=https://www.cnblogs.com/>
+博客园</a>
+ </li>
+ <li>
+ 
+<a id=blog_nav_myhome class=menu href=https://www.cnblogs.com/xuan52rock/>
+首页</a>
+ </li>
+ <li>
+ 
+<a id=blog_nav_newpost class=menu href="https://i.cnblogs.com/EditPosts.aspx?opt=1">
+新随笔</a>
+ </li>
+ <li>
+ 
+<a id=blog_nav_contact class=menu href=https://msg.cnblogs.com/send/%E7%A5%9E%E5%A5%87%E7%9A%84%E6%97%8B%E9%A3%8E>
+联系</a>
+ </li>
+ <li>
+ 
+<a id=blog_nav_rss class=menu href=javascript:void(0) data-rss=https://www.cnblogs.com/xuan52rock/rss/>
+订阅</a>
+ 
+<a id=blog_nav_rss_image href=https://www.cnblogs.com/xuan52rock/rss/>
+ <img src=data:, alt=订阅 data-sf-original-src=/skins/anothereon001/images/xml.gif>
+</a>
+ </li>
+ <li>
+ 
+<a id=blog_nav_admin class=menu href=https://i.cnblogs.com/>
+管理</a>
+ </li>
+</ul>
+ <div id=blog-calendar></div>
+ <div id=sidebar_news class=newsItem>
+ 
+<h3>公告</h3>
+<div id=blog-news> 
+ <div id=sidebar_news_content>
+ </div>
+</div>
+ 
+</div>
+<div id=sidebar_c3></div>
+ <div id=blog-sidecolumn></div>
+ 
+ </div>
+ </div>
+ <div class=clear></div>
+ <div id=footer>
+ <p id=footer>
+ Powered by: 
+ <br>
+ 
+ <a href=https://www.cnblogs.com/ id=footer_site_link>博客园</a>
+ <br>
+ Copyright © 2024 神奇的旋风
+<br><span id=poweredby>Powered by .NET 8.0 on Kubernetes</span>
+</p>
+ </div>
+</div>
+ 
+ <input type=hidden id=antiforgery_token value=CfDJ8AOXHS93SCdEnLt5HW8VuxR5xuRcmzgEnq0fh92LQ1SNxjhBBoTIHdmoBsR6Q5aNms5WyjM8N4qluNbtT4bgLmXgsKwpDU5vC1cPO4EXJuGnZ5OTOKFKJ5sYmk8agnB5aB95B1xZf5h46qwpmsE4l4g>
+ 
+<script data-template-shadow-root>(()=>{document.currentScript.remove();processNode(document);function processNode(node){node.querySelectorAll("template[shadowrootmode]").forEach(element=>{let shadowRoot = element.parentElement.shadowRoot;if (!shadowRoot) {try {shadowRoot=element.parentElement.attachShadow({mode:element.getAttribute("shadowrootmode"),delegatesFocus:element.getAttribute("shadowrootdelegatesfocus")!=null,clonable:element.getAttribute("shadowrootclonable")!=null,serializable:element.getAttribute("shadowrootserializable")!=null});shadowRoot.innerHTML=element.innerHTML;element.remove()} catch (error) {} if (shadowRoot) {processNode(shadowRoot)}}})}})()</script>
