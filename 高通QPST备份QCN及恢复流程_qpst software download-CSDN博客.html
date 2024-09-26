@@ -1,0 +1,863 @@
+<!DOCTYPE html> <html><!--
+ Page saved with SingleFile 
+ url: https://blog.csdn.net/qq_28852011/article/details/103803973 
+ saved date: Thu Sep 26 2024 16:32:57 GMT+0800 (中国标准时间)
+--><meta charset=utf-8>
+<meta http-equiv=X-UA-Compatible content="IE=Edge">
+<meta name=viewport content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name=apple-mobile-web-app-status-bar-style content=black>
+<meta name=report content='{"pid": "blog", "spm":"1001.2101"}'>
+<meta name=applicable-device content=mobile>
+<meta http-equiv=Cache-Control content=no-transform>
+<meta http-equiv=Cache-Control content=no-siteapp>
+<meta content=yes name=apple-mobile-web-app-capable>
+<meta content=black name=apple-mobile-web-app-status-bar-style>
+<meta content="telephone=no" name=format-detection>
+<meta content="email=no" name=format-detection>
+<meta name=csdn-baidu-search content='{"autorun":true,"install":true,"keyword":"qpst software download"}'>
+<title>高通QPST备份QCN及恢复流程_qpst software download-CSDN博客</title>
+<meta name=description content="文章浏览阅读1.9w次，点赞6次，收藏35次。一：首先打开qpst software download 界面，选择backup选项连接手机进行备份，进度条走完后点击Exit完成备份二：qcn还原流程，选择restore 连接手机进行还原，待进度条走完后点击Exit后手机会自动重启，此为完整流程。..._qpst software download">
+<link rel=canonical href=https://blog.csdn.net/qq_28852011/article/details/103803973>
+<link rel=apple-touch-icon sizes=57x57 href=data:, data-sf-original-href=https://csdnimg.cn/release/blogv2/dist/mobile/img/touch-icon-iphone-57.png>
+<link rel=apple-touch-icon sizes=114x114 href=data:, data-sf-original-href=https://csdnimg.cn/release/blogv2/dist/mobile/img/touch-icon-iphone-114.png>
+<link rel=apple-touch-icon sizes=72x72 href=data:, data-sf-original-href=https://csdnimg.cn/release/blogv2/dist/mobile/img/touch-icon-iphone-72.png>
+<link rel=apple-touch-icon sizes=144x144 href=data:, data-sf-original-href=https://csdnimg.cn/release/blogv2/dist/mobile/img/touch-icon-iphone-144.png>
+<link rel=apple-touch-icon sizes=120x120 href=data:, data-sf-original-href=https://csdnimg.cn/release/blogv2/dist/mobile/img/touch-icon-iphone-120.png>
+<script type=application/ld+json>{"@context":"https://ziyuan.baidu.com/contexts/cambrian.jsonld","@id":"https://blog.csdn.net/qq_28852011/article/details/103803973","appid":"1638831770136827","pubDate":"2020-01-02T14:37:00","title":"高通QPST备份QCN及恢复流程_qpst software download-CSDN博客","upDate":"2020-01-02T14:37:00"}</script>
+<meta name=referrer content=no-referrer><link href=data:, rel="shortcut icon" type=image/x-icon data-sf-original-href=https://g.csdnimg.cn/static/logo/favicon32.ico><meta http-equiv=content-security-policy content="default-src 'none'; font-src 'self' data:; img-src 'self' data:; style-src 'unsafe-inline'; media-src 'self' data:; script-src 'unsafe-inline' data:; object-src 'self' data:; frame-src 'self' data:;"><style>img[src="data:,"],source[src="data:,"]{display:none!important}</style></head>
+<body>
+ 
+<div id=main>
+<div class=aside-header-fixed>
+ <div class=aside-left>
+ <img class=iconfont src=data:, alt data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/iconLeftArrow.png>
+ <img class=portrait src=data:, alt data-sf-original-src=https://profile-avatar.csdnimg.cn/00875fc3de294c5ca92985bce1d43f30_qq_28852011.jpg!1>
+ <span>快導碗里来</span>
+ </div>
+ <div class=aside-right>
+ <a class=follow id=detailFollowNew data-id=103803973>关注</a>
+ </div>
+</div>
+ <div class=a_d_1></div>
+ 
+ 
+ 
+ 
+ <div id=article class=margin_sides>
+ <h1 class=article_title id=articleContentId>
+ <span class=tit>高通QPST备份QCN及恢复流程</span>
+ <span class="article-type type-1 float-none">原创</span>
+ </h1>
+ <div class=creat-time-box>
+ <div class=creat-time-box-up-time>最新推荐文章于&nbsp;2023-06-16 09:45:59&nbsp;发布</div>
+ <span class="creat-time blog-postTime" data-time="2020-01-02 14:37:00"><img class=creat-time-img src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/renewal.png> <span>最新推荐文章于&nbsp;2023-06-16 09:45:59&nbsp;发布</span></span>
+ <div class=reading-collections-box>
+ <p class=blog-wap-reading>
+ <img class=have-heart-img src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/wap-articleReadEyes2.png> 
+ 阅读量<span class=text>1.9w</span>
+ </p>
+ </div>
+ <div class=subject-talk-box>
+ <a class=subject-talk href="https://app-blog.csdn.net/m/wapAiRelated?utm_source=711815865&amp;isHiddenNavigation=true" data-report-view='{"spm":"1001.2101.3001.10123"}' data-report-click='{"spm":"1001.2101.3001.10123"}'>
+ <img class=have-heart-img src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/subject-talk-img.png> 
+ <span>AI必读</span>
+ </a>
+ </div>
+ </div>
+ <div class="article_info clearfix">
+ <div class="top_user_mod clearfix">
+ <div class="top_user_info floatL clearfix">
+ <dl>
+ <dt class=floatL>
+ <a href=https://blog.csdn.net/qq_28852011 target=_blank rel=noopener class="clearfix top_user_info_a">
+ <img class=avatar src=data:, alt data-sf-original-src=https://profile-avatar.csdnimg.cn/00875fc3de294c5ca92985bce1d43f30_qq_28852011.jpg!1>
+ </a>
+ </dt>
+ <dd class=floatL>
+ <p class=line-nick-name> 
+ <span class="nick_name odd-overhidden">快導碗里来</span>
+ 
+ <img class=identity-icon src=data:, data-sf-original-src=https://csdnimg.cn/identity/blog4.png>
+ 
+ 
+ </p>
+ <p class=line-detaile>
+ <span class=code_years>码龄9年</span>
+ </p>
+ </dd> 
+ <a class=follow id=detailFollow data-id=5813590 data-report-view='{"spm":"1001.2101.3001.8391"}'>关注</a>
+ </dl>
+ </div>
+ </div>
+ </div> 
+ <div class=baidu_pl id=csdn-previewimg-box>
+ <div class=article_content>
+ <div id=content_views class="htmledit_views clearfix">
+ 
+ <p>一：首先打开qpst software download 界面，选择backup选项连接手机进行备份，进度条走完后点击Exit完成备份</p> 
+<p><img alt class=has height=532 src=data:, width=555 data-sf-original-src=https://i-blog.csdnimg.cn/blog_migrate/39b8aead92b4fec9522259b8489fbe79.png></p> 
+<p>二：qcn还原流程，选择restore 连接手机进行还原，待进度条走完后点击Exit后手机会自动重启，此为完整流程。</p> 
+<p><img alt class=has height=532 src=data:, width=555 data-sf-original-src=https://i-blog.csdnimg.cn/blog_migrate/2a27c4838d98def95a5e54c33606d40a.png></p>
+ </div>
+ <div id=treeSkill></div>
+ 
+ 
+ </div>
+ </div>
+ <div class=readall_box data-report-view='{"mod":"popu_376","dest":"https://blog.csdn.net/qq_28852011/article/details/103803973"}' data-report-click='{"mod":"popu_376","dest":"https://blog.csdn.net/qq_28852011/article/details/103803973"}'>
+ <div class=read_more_mask></div>
+ <div class=btn_mod>
+ 
+ <div class="btn_open_app_prompt_box btn_open_app_prompt_box_testAb active abstyle appletFullText">
+ <a class=weixin_abtest_btn_open data-report-click='{"spm":"1000.2115.3001.9756"}'>小程序看全文</a>
+ <p class=read_more_btn><img class=btn-img-arrow src=data:, alt data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/doubleArrow.png></p>
+ </div>
+ <div class="btn_open_app_prompt_box btn_open_app_prompt_box_testAb active abstyle appFullText">
+ <a class="open_app_channelCode app_abtest_btn_open" data-report-click='{"spm":"1000.2115.3001.9757"}' data-channelabid=293_exp1 data-href="csdnapp://web?url=https://blog.csdn.net/qq_28852011/article/details/103803973">APP 看全文</a>
+ <p class=read_more_btn><img class=btn-img-arrow src=data:, alt data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/doubleArrow.png></p>
+ </div> 
+ </div> 
+ </div> 
+ 
+ 
+ </div>
+ <div class=btn_open_app_prompt_div>
+ <p id=btn_open_app_prompt_item class="btn_open_app_prompt_item open_app_channelCode" data-report-view='{"spm":"1001.2101.3001.8336"}' data-report-click='{"spm":"1001.2101.3001.8336"}' data-channelcode=blog_202012141828 data-href="csdnapp://web?url=https://blog.csdn.net/qq_28852011/article/details/103803973">打开CSDN，阅读体验更佳</p>
+ </div>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ <div class=spec_space></div>
+ 
+ 
+ <div id=comment>
+ </div>
+ <div class="spec_space spec_space_hide"></div>
+ 
+ <div id=recommend>
+ <div class=recommend_list>
+ <dl></dl>
+ <dl class="container-fluid container-fluid-flex container-download" data-url=https://download.csdn.net/download/u013804748/6969277 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.1","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~CTRLIST~Paid-1-6969277-blog-103803973.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339564574_86551\"}","dist_request_id":"1727339564574_86551","ab_strategy":"increase_t0_download","index":"1","strategy":"2~default~CTRLIST~Paid","dest":"https://download.csdn.net/download/u013804748/6969277"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=download>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a href=https://download.csdn.net/download/u013804748/6969277 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.1","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~CTRLIST~Paid-1-6969277-blog-103803973.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339564574_86551\"}","dist_request_id":"1727339564574_86551","ab_strategy":"increase_t0_download","index":"1","strategy":"2~default~CTRLIST~Paid","dest":"https://download.csdn.net/download/u013804748/6969277"}' data-report-query="spm=1001.2101.3001.6650.1&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7ECTRLIST%7EPaid-1-6969277-blog-103803973.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7ECTRLIST%7EPaid-1-6969277-blog-103803973.237%5Ev3%5Ewap_relevant_t0_download">
+ <div class=left>
+ 利用<em>QPST</em><em>备份</em>和还原手机底层
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class=text href=https://download.csdn.net/download/u013804748/6969277 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.1","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~CTRLIST~Paid-1-6969277-blog-103803973.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339564574_86551\"}","dist_request_id":"1727339564574_86551","ab_strategy":"increase_t0_download","index":"1","strategy":"2~default~CTRLIST~Paid","dest":"https://download.csdn.net/download/u013804748/6969277"}' data-report-query="spm=1001.2101.3001.6650.1&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7ECTRLIST%7EPaid-1-6969277-blog-103803973.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7ECTRLIST%7EPaid-1-6969277-blog-103803973.237%5Ev3%5Ewap_relevant_t0_download">
+ touch pro2刷电信包，之前手机做过系统之后，原来的电信卡不能用了，底层还原之后电信卡复活！
+ </a>
+ </div>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-blog" data-url=https://blog.csdn.net/qq_44731523/article/details/124213815 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.2","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~CTRLIST~Rate-2-124213815-blog-103803973.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339564574_86551\"}","dist_request_id":"1727339564574_86551","ab_strategy":"increase_t0_download","index":"2","strategy":"2~default~CTRLIST~Rate","dest":"https://blog.csdn.net/qq_44731523/article/details/124213815"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=blog>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a>
+ <div class=left>
+ 【<em>高通</em>】【<em>QPST</em>】<em>QCN</em>导入
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class="text active">
+ 手机<em>QCN</em>参数导入
+ </a>
+ <a class=flag data-type=blog data-href=https://blog.csdn.net/qq_44731523/article/details/124213815 href=https://blog.csdn.net/qq_44731523/article/details/124213815 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.2","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~CTRLIST~Rate-2-124213815-blog-103803973.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339564574_86551\"}","dist_request_id":"1727339564574_86551","ab_strategy":"increase_t0_download","index":"2","strategy":"2~default~CTRLIST~Rate","dest":"https://blog.csdn.net/qq_44731523/article/details/124213815"}' data-report-query="spm=1001.2101.3001.6650.2&amp;utm_medium=distribute.wap_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-2-124213815-blog-103803973.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-2-124213815-blog-103803973.237%5Ev3%5Ewap_relevant_t0_download">继续访问</a>
+ </div>
+ </div>
+ <div class=right-img-box>
+ <a class=recommend-img>
+ <img src=data:, alt data-sf-original-src="https://img-blog.csdnimg.cn/6f70e95fa9074daea9bc4c5fa54e70de.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5pG457Si5Lit55qE56Gs5Lu25bel56iL5biI,size_7,color_FFFFFF,t_70,g_se,x_16">
+ </a>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-download" data-url=https://download.csdn.net/download/u011283906/85562109 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.3","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~BlogCommendFromBaidu~Rate-3-85562109-blog-103803973.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339564574_86551\"}","dist_request_id":"1727339564574_86551","ab_strategy":"increase_t0_download","index":"3","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://download.csdn.net/download/u011283906/85562109"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=download>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a href=https://download.csdn.net/download/u011283906/85562109 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.3","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~BlogCommendFromBaidu~Rate-3-85562109-blog-103803973.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339564574_86551\"}","dist_request_id":"1727339564574_86551","ab_strategy":"increase_t0_download","index":"3","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://download.csdn.net/download/u011283906/85562109"}' data-report-query="spm=1001.2101.3001.6650.3&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EBlogCommendFromBaidu%7ERate-3-85562109-blog-103803973.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EBlogCommendFromBaidu%7ERate-3-85562109-blog-103803973.237%5Ev3%5Ewap_relevant_t0_download">
+ <div class=left>
+ vivo X60【PD2046】基带<em>备份</em><em>qcn</em>
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class=text href=https://download.csdn.net/download/u011283906/85562109 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.3","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~BlogCommendFromBaidu~Rate-3-85562109-blog-103803973.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339564574_86551\"}","dist_request_id":"1727339564574_86551","ab_strategy":"increase_t0_download","index":"3","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://download.csdn.net/download/u011283906/85562109"}' data-report-query="spm=1001.2101.3001.6650.3&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EBlogCommendFromBaidu%7ERate-3-85562109-blog-103803973.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EBlogCommendFromBaidu%7ERate-3-85562109-blog-103803973.237%5Ev3%5Ewap_relevant_t0_download">
+ vivo X60【PD2046】基带<em>备份</em><em>qcn</em>
+基带<em>qcn</em>文件
+可以修复刷机 降级 等掉基带 无串码等故障
+需要开端口写入
+有需要的友友下载使用
+ </a>
+ </div>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-blog" data-url=https://devpress.csdn.net/v1/article/detail/124720894 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.4","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~activity-4-124720894-blog-103803973.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339564574_86551\"}","dist_request_id":"1727339564574_86551","ab_strategy":"increase_t0_download","index":"4","strategy":"2~default~BlogCommendFromBaidu~activity","dest":"https://devpress.csdn.net/v1/article/detail/124720894"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=blog>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a>
+ <div class=left>
+ 基带<em>qcn</em>的<em>备份</em>与写入相关 格机 nv报错
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class="text active">
+ 今天码一个基带<em>qcn</em>相关的教程贴。首先关于基带<em>qcn</em>类的基础这边不在细作阐述。有兴趣的可以查看另外我发的教程贴查询。想到哪里写到那里、任何的教程不一定适用与你的机型。只能给你引导和转换思维的一个方式。============<em>备份</em>============1----如何<em>备份</em>自己机型的基带<em>qcn</em>首先要开端口。那么如何开端口呢基本有两种方法a---自己机型的拨号指令开启端口b---root后adb指令开启端口先说下a类。小米早期机型---*#*#717717#*#*oppo机型---*#800#魅族mtk---*#
+ </a>
+ <a class=flag data-type=blog data-href=https://devpress.csdn.net/v1/article/detail/124720894 href=https://devpress.csdn.net/v1/article/detail/124720894 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.4","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~activity-4-124720894-blog-103803973.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339564574_86551\"}","dist_request_id":"1727339564574_86551","ab_strategy":"increase_t0_download","index":"4","strategy":"2~default~BlogCommendFromBaidu~activity","dest":"https://devpress.csdn.net/v1/article/detail/124720894"}' data-report-query="spm=1001.2101.3001.6650.4&amp;utm_medium=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7Eactivity-4-124720894-blog-103803973.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7Eactivity-4-124720894-blog-103803973.237%5Ev3%5Ewap_relevant_t0_download">继续访问</a>
+ </div>
+ </div>
+ <div class=right-img-box>
+ <a class=recommend-img>
+ <img src=data:, alt data-sf-original-src="https://img-blog.csdnimg.cn/img_convert/49675b1c22dec3c1d5dc249e4ecc5cbf.png?x-oss-process=image/resize,m_fixed,h_150">
+ </a>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-blog" data-url=https://blog.csdn.net/wlwl0071986/article/details/8302836 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.5","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-5-8302836-blog-103803973.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339564574_86551\"}","dist_request_id":"1727339564574_86551","ab_strategy":"increase_t0_download","index":"5","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://blog.csdn.net/wlwl0071986/article/details/8302836"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=blog>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a>
+ <div class=left>
+ <span class=tag>热门推荐</span>
+ <em>高通</em><em>QPST</em> <em>Download</em>使用方法
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class="text active">
+ <em>QPST</em> <em>Download</em>
+用<em>QPST</em>第一次对主板进行下载
+1通过USB线连接主板到PC。
+2使用电源对主板供电，并监视电流，如果在上电的时候电流过大（超过200mA），请及时断电。
+3在ubuntu上进行如下操作，Devices-&gt;USB Devicec-&gt;QHSUSB_DLOAD
+3打开<em>QPST</em> Configuration软件进行如下操作
+&nbsp;
+点击Add New Port，出
+ </a>
+ <a class=flag data-type=blog data-href=https://blog.csdn.net/wlwl0071986/article/details/8302836 href=https://blog.csdn.net/wlwl0071986/article/details/8302836 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.5","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-5-8302836-blog-103803973.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339564574_86551\"}","dist_request_id":"1727339564574_86551","ab_strategy":"increase_t0_download","index":"5","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://blog.csdn.net/wlwl0071986/article/details/8302836"}' data-report-query="spm=1001.2101.3001.6650.5&amp;utm_medium=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-5-8302836-blog-103803973.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-5-8302836-blog-103803973.237%5Ev3%5Ewap_relevant_t0_download">继续访问</a>
+ </div>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-blog" data-url=https://blog.csdn.net/TopicDev/article/details/23773059 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.6","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-6-23773059-blog-103803973.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339564574_86551\"}","dist_request_id":"1727339564574_86551","ab_strategy":"increase_t0_download","index":"6","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://blog.csdn.net/TopicDev/article/details/23773059"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=blog>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a>
+ <div class=left>
+ <em>QPST</em>下载
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class="text active">
+ 空白EMCP和完全擦除EMCP以及手机处于紧急donwload的下载步骤：（适用于<em>QPST</em>2.7 Build407版本）
+1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+运行emmc <em>software</em> <em>download</em> tools
+2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+在要下载的images所在的目录中定位sahara.xml
+3.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+确认勾选program boot loaders和program MMC d
+ </a>
+ <a class=flag data-type=blog data-href=https://blog.csdn.net/TopicDev/article/details/23773059 href=https://blog.csdn.net/TopicDev/article/details/23773059 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.6","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-6-23773059-blog-103803973.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339564574_86551\"}","dist_request_id":"1727339564574_86551","ab_strategy":"increase_t0_download","index":"6","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://blog.csdn.net/TopicDev/article/details/23773059"}' data-report-query="spm=1001.2101.3001.6650.6&amp;utm_medium=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-6-23773059-blog-103803973.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-6-23773059-blog-103803973.237%5Ev3%5Ewap_relevant_t0_download">继续访问</a>
+ </div>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-download" data-url=https://download.csdn.net/download/u011283906/85449603 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.7","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-7-85449603-blog-103803973.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339564574_86551\"}","dist_request_id":"1727339564574_86551","ab_strategy":"increase_t0_download","index":"7","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/u011283906/85449603"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=download>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a href=https://download.csdn.net/download/u011283906/85449603 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.7","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-7-85449603-blog-103803973.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339564574_86551\"}","dist_request_id":"1727339564574_86551","ab_strategy":"increase_t0_download","index":"7","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/u011283906/85449603"}' data-report-query="spm=1001.2101.3001.6650.7&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-7-85449603-blog-103803973.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-7-85449603-blog-103803973.237%5Ev3%5Ewap_relevant_t0_download">
+ <div class=left>
+ <em>高通</em>机型<em>备份</em> <em>恢复</em>基带<em>qcn</em>的工具BackupRestore+IMEI带图文
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class=text href=https://download.csdn.net/download/u011283906/85449603 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.7","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-7-85449603-blog-103803973.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339564574_86551\"}","dist_request_id":"1727339564574_86551","ab_strategy":"increase_t0_download","index":"7","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/u011283906/85449603"}' data-report-query="spm=1001.2101.3001.6650.7&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-7-85449603-blog-103803973.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-7-85449603-blog-103803973.237%5Ev3%5Ewap_relevant_t0_download">
+ 1. 下载并安装工具：获取到"<em>高通</em>机型<em>备份</em> <em>恢复</em>基带<em>qcn</em>的工具BackupRestore+IMEI带图文"的压缩包文件，解压后运行程序。 2. 连接手机：确保手机已开启USB调试模式，并通过数据线连接至电脑。 3. <em>备份</em>基带：在工具界面...
+ </a>
+ </div>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-download" data-url=https://download.csdn.net/download/dncser/8584031 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.8","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-8-8584031-blog-103803973.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339564574_86551\"}","dist_request_id":"1727339564574_86551","ab_strategy":"increase_t0_download","index":"8","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/dncser/8584031"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=download>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a href=https://download.csdn.net/download/dncser/8584031 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.8","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-8-8584031-blog-103803973.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339564574_86551\"}","dist_request_id":"1727339564574_86551","ab_strategy":"increase_t0_download","index":"8","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/dncser/8584031"}' data-report-query="spm=1001.2101.3001.6650.8&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-8-8584031-blog-103803973.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-8-8584031-blog-103803973.237%5Ev3%5Ewap_relevant_t0_download">
+ <div class=left>
+ <em>高通</em>工具导入<em>QCN</em>方法
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class=text href=https://download.csdn.net/download/dncser/8584031 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.8","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-8-8584031-blog-103803973.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339564574_86551\"}","dist_request_id":"1727339564574_86551","ab_strategy":"increase_t0_download","index":"8","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/dncser/8584031"}' data-report-query="spm=1001.2101.3001.6650.8&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-8-8584031-blog-103803973.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-8-8584031-blog-103803973.237%5Ev3%5Ewap_relevant_t0_download">
+ 在对搭载<em>高通</em>芯片的设备进行网络调试或<em>恢复</em>出厂设置时，可能需要导入或导出<em>QCN</em>文件。以下是详细的操作步骤： 1. **清空机器中的<em>QCN</em>** 在导入新的<em>QCN</em>文件之前，通常需要先清空设备现有的网络配置。这可以通过进入...
+ </a>
+ </div>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-download" data-url=https://download.csdn.net/download/luohe369/3671142 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.9","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-9-3671142-blog-103803973.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339564574_86551\"}","dist_request_id":"1727339564574_86551","ab_strategy":"increase_t0_download","index":"9","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/luohe369/3671142"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=download>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a href=https://download.csdn.net/download/luohe369/3671142 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.9","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-9-3671142-blog-103803973.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339564574_86551\"}","dist_request_id":"1727339564574_86551","ab_strategy":"increase_t0_download","index":"9","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/luohe369/3671142"}' data-report-query="spm=1001.2101.3001.6650.9&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-9-3671142-blog-103803973.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-9-3671142-blog-103803973.237%5Ev3%5Ewap_relevant_t0_download">
+ <div class=left>
+ 8830插卡<em>qpst</em><em>备份</em>
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class=text href=https://download.csdn.net/download/luohe369/3671142 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.9","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-9-3671142-blog-103803973.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339564574_86551\"}","dist_request_id":"1727339564574_86551","ab_strategy":"increase_t0_download","index":"9","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/luohe369/3671142"}' data-report-query="spm=1001.2101.3001.6650.9&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-9-3671142-blog-103803973.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-9-3671142-blog-103803973.237%5Ev3%5Ewap_relevant_t0_download">
+ 【8830插卡<em>qpst</em><em>备份</em>】是一个针对特定型号手机——8830的CDMA网络设备进行数据<em>备份</em>和<em>恢复</em>的过程。这个过程利用了<em>QPST</em>（Qualcomm Product Support Tools）软件，它是由<em>高通</em>公司提供的一个强大的调试和配置工具，主要...
+ </a>
+ </div>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-download" data-url=https://download.csdn.net/download/zhangchenghai/9545344 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.10","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-10-9545344-blog-103803973.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339564574_86551\"}","dist_request_id":"1727339564574_86551","ab_strategy":"increase_t0_download","index":"10","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/zhangchenghai/9545344"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=download>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a href=https://download.csdn.net/download/zhangchenghai/9545344 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.10","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-10-9545344-blog-103803973.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339564574_86551\"}","dist_request_id":"1727339564574_86551","ab_strategy":"increase_t0_download","index":"10","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/zhangchenghai/9545344"}' data-report-query="spm=1001.2101.3001.6650.10&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-10-9545344-blog-103803973.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-10-9545344-blog-103803973.237%5Ev3%5Ewap_relevant_t0_download">
+ <div class=left>
+ <em>高通</em>的<em>QPST</em>工具
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class=text href=https://download.csdn.net/download/zhangchenghai/9545344 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.10","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-10-9545344-blog-103803973.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339564574_86551\"}","dist_request_id":"1727339564574_86551","ab_strategy":"increase_t0_download","index":"10","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/zhangchenghai/9545344"}' data-report-query="spm=1001.2101.3001.6650.10&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-10-9545344-blog-103803973.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-10-9545344-blog-103803973.237%5Ev3%5Ewap_relevant_t0_download">
+ - **<em>备份</em>与<em>恢复</em>**：<em>备份</em>设备的系统分区，如EFS、<em>QCN</em>等，以便在出现问题时<em>恢复</em>原始状态。 - **故障排查**：通过读取设备日志，帮助定位和解决问题。 ### 3. <em>QPST</em>工具的安装与使用 在使用<em>QPST</em>前，确保你的设备已解锁...
+ </a>
+ </div>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-download" data-url=https://download.csdn.net/download/weixin_35785090/86342693 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.11","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-11-86342693-blog-103803973.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339564574_86551\"}","dist_request_id":"1727339564574_86551","ab_strategy":"increase_t0_download","index":"11","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/weixin_35785090/86342693"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=download>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a href=https://download.csdn.net/download/weixin_35785090/86342693 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.11","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-11-86342693-blog-103803973.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339564574_86551\"}","dist_request_id":"1727339564574_86551","ab_strategy":"increase_t0_download","index":"11","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/weixin_35785090/86342693"}' data-report-query="spm=1001.2101.3001.6650.11&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-11-86342693-blog-103803973.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-11-86342693-blog-103803973.237%5Ev3%5Ewap_relevant_t0_download">
+ <div class=left>
+ Qualcomm_使用<em>QPST</em>制作EFS文件1
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class=text href=https://download.csdn.net/download/weixin_35785090/86342693 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.11","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-11-86342693-blog-103803973.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339564574_86551\"}","dist_request_id":"1727339564574_86551","ab_strategy":"increase_t0_download","index":"11","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/weixin_35785090/86342693"}' data-report-query="spm=1001.2101.3001.6650.11&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-11-86342693-blog-103803973.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-11-86342693-blog-103803973.237%5Ev3%5Ewap_relevant_t0_download">
+ 此外，<em>QPST</em>工具可能需要特定的驱动程序支持，安装前需确认设备驱动是否正确安装。 总之，Qualcomm <em>QPST</em>工具提供了一种有效的方法来管理和定制基于Qualcomm芯片的设备的EFS文件系统，这对于开发者、维修人员或者高级...
+ </a>
+ </div>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-blog" data-url=https://blog.csdn.net/llq520/article/details/116945919 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.12","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-12-116945919-blog-103803973.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339564574_86551\"}","dist_request_id":"1727339564574_86551","ab_strategy":"increase_t0_download","index":"12","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://blog.csdn.net/llq520/article/details/116945919"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=blog>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a>
+ <div class=left>
+ 笔记-<em>高通</em>处理器的<em>备份</em>还原<em>QCN</em>的一点个人分享
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class="text active">
+ 理论上海思的使用IDT工具也可以
+进入主题。
+1、手机已经获取root权限，打开开发者选项ADB调试
+提示：如果无法获取root权限，只要找到工厂单板固件，拆开手机短接9008端口（海思的是COM1.0）端口也可以刷机得到自带ROOT权限的工程系统。详细方法不在这里叙述。
+2、电脑ADB环境
+3、电脑安装GPST，版本我使用的2.7
+4、输adb shell回车
+5、输入su回车
+6、输入setpropsys.usb.configdiag 回车
+此时pc的设备管理器端口处出...
+ </a>
+ <a class=flag data-type=blog data-href=https://blog.csdn.net/llq520/article/details/116945919 href=https://blog.csdn.net/llq520/article/details/116945919 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.12","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-12-116945919-blog-103803973.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339564574_86551\"}","dist_request_id":"1727339564574_86551","ab_strategy":"increase_t0_download","index":"12","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://blog.csdn.net/llq520/article/details/116945919"}' data-report-query="spm=1001.2101.3001.6650.12&amp;utm_medium=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-12-116945919-blog-103803973.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-12-116945919-blog-103803973.237%5Ev3%5Ewap_relevant_t0_download">继续访问</a>
+ </div>
+ </div>
+ <div class=right-img-box>
+ <a class=recommend-img>
+ <img src=data:, alt data-sf-original-src="https://img-blog.csdnimg.cn/20210517194910250.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xscTUyMA==,size_16,color_FFFFFF,t_70">
+ </a>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-blog" data-url=https://blog.csdn.net/kv110/article/details/104527000 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.13","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-13-104527000-blog-103803973.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339564574_86551\"}","dist_request_id":"1727339564574_86551","ab_strategy":"increase_t0_download","index":"13","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://blog.csdn.net/kv110/article/details/104527000"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=blog>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a>
+ <div class=left>
+ <em>高通</em>手机烧软件方式
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class="text active">
+ 1. 从<em>高通</em>网站下载qdart工具套件，这里面含<em>QPST</em>/QFIL. 安装
+2. 手机（开机状态）连上PC
+3. Select Port, 如果没有90DB（或类似),可以看看device manager，不正常的话重新装USB驱动
+4. Select Build Type: Flat build
+5. Browse.. 选择elf (or mbn)文件
+6. Load...
+ </a>
+ <a class=flag data-type=blog data-href=https://blog.csdn.net/kv110/article/details/104527000 href=https://blog.csdn.net/kv110/article/details/104527000 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.13","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-13-104527000-blog-103803973.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339564574_86551\"}","dist_request_id":"1727339564574_86551","ab_strategy":"increase_t0_download","index":"13","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://blog.csdn.net/kv110/article/details/104527000"}' data-report-query="spm=1001.2101.3001.6650.13&amp;utm_medium=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-13-104527000-blog-103803973.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-13-104527000-blog-103803973.237%5Ev3%5Ewap_relevant_t0_download">继续访问</a>
+ </div>
+ </div>
+ <div class=right-img-box>
+ <a class=recommend-img>
+ <img src=data:, alt data-sf-original-src="https://img-blog.csdnimg.cn/20200226224049290.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2t2MTEw,size_16,color_FFFFFF,t_70,image/resize,m_fixed,h_150">
+ </a>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-blog" data-url=https://yilin.blog.csdn.net/article/details/131233965 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.14","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-14-131233965-blog-103803973.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339564574_86551\"}","dist_request_id":"1727339564574_86551","ab_strategy":"increase_t0_download","index":"14","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://yilin.blog.csdn.net/article/details/131233965"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=blog>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a>
+ <div class=left>
+ <span class=tag>最新发布</span>
+ 如何使用<em>QPST</em>工具
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class="text active">
+ 对于NAND闪存，单映像下载可以将NAND引导加载程序或手机映像发送到手机。你只能将引导加载程序下载到使用NAND闪存的手机。简单的说就是用<em>高通</em>处理芯片的手机理论上都可以有<em>QPST</em>传输文件，可以修改机器内部参数的软件。使用<em>QPST</em>工具刷新任何固件将从你的<em>高通</em>设备中删除你的个人数据。因此，建议你在使用<em>QPST</em>工具之前<em>备份</em>数据。⑥单击手机映像浏览按钮，然后在计算机上找到要在<em>高通</em>设备上刷新的固件(.hex)你刚刚学会了使用<em>QPST</em>工具在<em>高通</em>设备上刷新或安装库存固件。<em>高通</em>设备与计算机的连接，然后程序启动它。
+ </a>
+ <a class=flag data-type=blog data-href=https://yilin.blog.csdn.net/article/details/131233965 href=https://yilin.blog.csdn.net/article/details/131233965 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.14","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-14-131233965-blog-103803973.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339564574_86551\"}","dist_request_id":"1727339564574_86551","ab_strategy":"increase_t0_download","index":"14","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://yilin.blog.csdn.net/article/details/131233965"}' data-report-query="spm=1001.2101.3001.6650.14&amp;utm_medium=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-14-131233965-blog-103803973.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-14-131233965-blog-103803973.237%5Ev3%5Ewap_relevant_t0_download">继续访问</a>
+ </div>
+ </div>
+ <div class=right-img-box>
+ <a class=recommend-img>
+ <img src=data:, alt data-sf-original-src=https://img-blog.csdnimg.cn/17c5f78f63334d01accf59f09613ed06.png>
+ </a>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-blog" data-url=https://blog.csdn.net/u011283906/article/details/124936347 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.15","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-15-124936347-blog-103803973.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339564574_86551\"}","dist_request_id":"1727339564574_86551","ab_strategy":"increase_t0_download","index":"15","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://blog.csdn.net/u011283906/article/details/124936347"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=blog>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a>
+ <div class=left>
+ 关于<em>高通</em><em>QPST</em>平台功能和选项的一些简单说明
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class="text active">
+ <em>QPST</em>这个平台相信很多人都不陌生。目前最新版是496
+今天简单说下此软件安装后的一些功能选项。本人文章一般采用通俗易懂的语言来表达。目的是让更多初学者接触并且理会。大神类的请飘过
+首先安装<em>qpst</em>后会自动附带很多工具。其中
+1--EFS EXPLORER
+可以联机读取当前机型的efs分区。修改其中选项。例如运营商等等
+2---emmc <em>software</em> <em>download</em>
+可以加载引导和相关脚本刷写等等
+3---<em>qcn</em> view
+这个插件可以读取基带<em>qcn</em>里面的相关信息
+.
+ </a>
+ <a class=flag data-type=blog data-href=https://blog.csdn.net/u011283906/article/details/124936347 href=https://blog.csdn.net/u011283906/article/details/124936347 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.15","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-15-124936347-blog-103803973.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339564574_86551\"}","dist_request_id":"1727339564574_86551","ab_strategy":"increase_t0_download","index":"15","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://blog.csdn.net/u011283906/article/details/124936347"}' data-report-query="spm=1001.2101.3001.6650.15&amp;utm_medium=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-15-124936347-blog-103803973.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-15-124936347-blog-103803973.237%5Ev3%5Ewap_relevant_t0_download">继续访问</a>
+ </div>
+ </div>
+ <div class=right-img-box>
+ <a class=recommend-img>
+ <img src=data:, alt data-sf-original-src="https://img-blog.csdnimg.cn/4b57dfec54ee429596b0781521773342.png?x-oss-process=image/resize,m_fixed,h_150">
+ </a>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-blog" data-url=https://blog.csdn.net/tfs080640234/article/details/53283767 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.16","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-16-53283767-blog-103803973.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339564574_86551\"}","dist_request_id":"1727339564574_86551","ab_strategy":"increase_t0_download","index":"16","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://blog.csdn.net/tfs080640234/article/details/53283767"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=blog>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a>
+ <div class=left>
+ android <em>QCN</em><em>备份</em>还原方法
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class="text active">
+ android <em>高通</em>平台<em>QCN</em><em>备份</em>还原方法。首先要在电脑端安装<em>QPST</em>工具，（<em>高通</em>工具）
+如下图：
+然后打开<em>Software</em> <em>Download</em>界面如下图：
+将手机或者板子或者模块连到电脑上，并查看端口，
+选择backup,开始<em>备份</em> 
+注意<em>备份</em>的名字和类型；
+这些都设置好后，点击start按钮，开始<em>备份</em>；
+<em>备份</em>完成后，接下来就是还原的方法：
+还是打开这个软件，
+ </a>
+ <a class=flag data-type=blog data-href=https://blog.csdn.net/tfs080640234/article/details/53283767 href=https://blog.csdn.net/tfs080640234/article/details/53283767 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.16","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-16-53283767-blog-103803973.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339564574_86551\"}","dist_request_id":"1727339564574_86551","ab_strategy":"increase_t0_download","index":"16","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://blog.csdn.net/tfs080640234/article/details/53283767"}' data-report-query="spm=1001.2101.3001.6650.16&amp;utm_medium=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-16-53283767-blog-103803973.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-16-53283767-blog-103803973.237%5Ev3%5Ewap_relevant_t0_download">继续访问</a>
+ </div>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-download" data-url=https://download.csdn.net/download/gsd0929/10653530 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.17","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-17-10653530-blog-103803973.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339564574_86551\"}","dist_request_id":"1727339564574_86551","ab_strategy":"increase_t0_download","index":"17","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/gsd0929/10653530"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=download>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a href=https://download.csdn.net/download/gsd0929/10653530 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.17","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-17-10653530-blog-103803973.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339564574_86551\"}","dist_request_id":"1727339564574_86551","ab_strategy":"increase_t0_download","index":"17","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/gsd0929/10653530"}' data-report-query="spm=1001.2101.3001.6650.17&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-17-10653530-blog-103803973.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-17-10653530-blog-103803973.237%5Ev3%5Ewap_relevant_t0_download">
+ <div class=left>
+ <em>高通</em>终极救砖
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class=text href=https://download.csdn.net/download/gsd0929/10653530 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.17","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-17-10653530-blog-103803973.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339564574_86551\"}","dist_request_id":"1727339564574_86551","ab_strategy":"increase_t0_download","index":"17","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/gsd0929/10653530"}' data-report-query="spm=1001.2101.3001.6650.17&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-17-10653530-blog-103803973.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-17-10653530-blog-103803973.237%5Ev3%5Ewap_relevant_t0_download">
+ 在进行线刷之前，必须<em>备份</em><em>QCN</em>文件，以避免IMEI串号丢失等问题。IMEI串号丢失会导致手机无法识别SIM卡，失去信号。 1. **<em>备份</em><em>QCN</em>文件的方法** - 手机正常开机状态下，通过USB连接至电脑，选择“作为驱动光盘”模式...
+ </a>
+ </div>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-download" data-url=https://download.csdn.net/download/u011162729/5629105 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.18","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-18-5629105-blog-103803973.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339564574_86551\"}","dist_request_id":"1727339564574_86551","ab_strategy":"increase_t0_download","index":"18","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/u011162729/5629105"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=download>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a href=https://download.csdn.net/download/u011162729/5629105 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.18","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-18-5629105-blog-103803973.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339564574_86551\"}","dist_request_id":"1727339564574_86551","ab_strategy":"increase_t0_download","index":"18","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/u011162729/5629105"}' data-report-query="spm=1001.2101.3001.6650.18&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-18-5629105-blog-103803973.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-18-5629105-blog-103803973.237%5Ev3%5Ewap_relevant_t0_download">
+ <div class=left>
+ coolPad 5890 Nv 及<em>备份</em><em>恢复</em>工具（包含驱动）
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class=text href=https://download.csdn.net/download/u011162729/5629105 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.18","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-18-5629105-blog-103803973.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339564574_86551\"}","dist_request_id":"1727339564574_86551","ab_strategy":"increase_t0_download","index":"18","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/u011162729/5629105"}' data-report-query="spm=1001.2101.3001.6650.18&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-18-5629105-blog-103803973.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-18-5629105-blog-103803973.237%5Ev3%5Ewap_relevant_t0_download">
+ 其次，"Coolpad5890_Drivers.exe"是酷派5890的官方驱动程序，它允许电脑识别并连接手机，这对于通过USB进行数据传输、刷机或者<em>备份</em><em>恢复</em>等操作至关重要。在进行任何涉及手机连接电脑的操作之前，确保正确安装了手机...
+ </a>
+ </div>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-download" data-url=https://download.csdn.net/download/u011283906/87559803 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.19","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-19-87559803-blog-103803973.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339564574_86551\"}","dist_request_id":"1727339564574_86551","ab_strategy":"increase_t0_download","index":"19","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/u011283906/87559803"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=download>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a href=https://download.csdn.net/download/u011283906/87559803 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.19","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-19-87559803-blog-103803973.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339564574_86551\"}","dist_request_id":"1727339564574_86551","ab_strategy":"increase_t0_download","index":"19","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/u011283906/87559803"}' data-report-query="spm=1001.2101.3001.6650.19&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-19-87559803-blog-103803973.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-19-87559803-blog-103803973.237%5Ev3%5Ewap_relevant_t0_download">
+ <div class=left>
+ <em>高通</em>机型基带工具-EFS-Professional-2.1.80-BETA
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class=text href=https://download.csdn.net/download/u011283906/87559803 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.19","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-19-87559803-blog-103803973.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339564574_86551\"}","dist_request_id":"1727339564574_86551","ab_strategy":"increase_t0_download","index":"19","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/u011283906/87559803"}' data-report-query="spm=1001.2101.3001.6650.19&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-19-87559803-blog-103803973.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-19-87559803-blog-103803973.237%5Ev3%5Ewap_relevant_t0_download">
+ 工具说明; 启动时自动检测和终止三星...直读式记录ESN / MEID / IMEI来往于<em>高通</em>设备和<em>QPST</em>“<em>QCN</em><em>备份</em>”文件。 <em>高通</em>设备上的读/写锁定代码。 在<em>高通</em>设备上读/写/发送SPC ：自己打开测试开端口可以读取参数，其他需要自测
+ </a>
+ </div>
+ </div>
+ </div>
+ </dl>
+ </div>
+ </div>
+ 
+ <div id=operate class=clearfix>
+ <div class="clearfix content-box">
+ <div class="operate_write operate_common floatL">
+ <span class=comment-bt-write>
+ <span class=enter_text><img class=operate_img src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/writeIcon@2x.png>写评论</span>
+ <img class=comment-sofa-flag src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/pc/img/commentFlag@2x.png>
+ </span>
+ <span class=operate_write_box>
+ <img class=operate_img src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/comment@2x.png>
+ <span class=count>
+ 1
+ </span>
+ </span>
+ </div>
+ <div class="collect-btn operate_add operate_common floatL">
+ <span class=operate_collect_box>
+ <span class=uncollect>
+ <img class=operate_img src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/uncollect@2x.png>
+ </span>
+ <span class=collect>
+ <img class=operate_img src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/collect@2x.png>
+ </span>
+ <span class=count>
+ 35
+ </span>
+ </span>
+ </div>
+ <div class="like-btn operate_heart operate_common floatL" data-dest=https://blog.csdn.net/qq_28852011/article/details/103803973>
+ <span class=operate_heart_box>
+ <span class=unheart>
+ <img class=operate_img src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/unheart@2x.png>
+ </span>
+ <span class=heart>
+ <img class=operate_img src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/heart@2x.png>
+ </span>
+ <span class=count>
+ 6
+ </span>
+ </span>
+ </div>
+ <div class="unlike-btn operate_steplike operate_common floatL">
+ <span class=operate_heart_box>
+ <span class=stepunlike>
+ <img class=operate_img src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/stepUnLike.png>
+ </span>
+ <span class=steplike>
+ <img class=operate_img src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/stepLike.png>
+ </span>
+ <span class=count>
+ 踩
+ </span>
+ </span>
+ </div>
+ <div class="share-btn operate_share operate_common floatL">
+ <a>
+ <span class=operate_share_box>
+ <img class=operate_img src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/unshare@2x.png>
+ <span class=count>分享</span>
+ </span>
+ </a>
+ </div>
+ </div>
+ </div>
+</div>
+ <div id=prompt>
+ 
+ <span>文章收藏成功</span>
+ </div>
+ <div class="app-shadowbox wap-shadowbox" data-type=view>
+ <div class=app-box>
+ <div class=pos-box>
+ <div class=tip-massege>前往CSDN APP阅读全文</div>
+ <div class=tip-text>CSDN APP记录你的成长</div>
+ <a class="app-bt-cance read_more_btn close-icon" data-report-click='{"spm":"1001.2101.3001.9529"}'>
+ <img src=data:, alt data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/closeBt.png>
+ </a>
+ <div class="button-box button-box-new w-100p">
+ <a class="app-bt-sure open_app_channelCode" id=wap_open_app_btn data-channelcode=blog_1592384106 data-channelabid=293_exp1 data-report-click='{"spm":"1001.2101.3001.9530"}' data-name=a data-href="csdnapp://web?url=https://blog.csdn.net/qq_28852011/article/details/103803973">前往APP</a>
+ </div>
+ </div>
+ </div>
+ </div>
+ <div class="wap-shadowbox qr-weixin-box">
+ <div class=app-box>
+ <div class=tip-massege>微信小程序收藏浏览更方便</div>
+ <div class=routine-box-img> <img src=data:, alt data-sf-original-src></div>
+ <div class=routine-box-text>
+ <span>截图/长按 </span>保存本地，用微信扫码打开
+ </div>
+ <img class=close src=data:, alt data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/closeBt.png>
+ </div>
+ </div>
+ <div class="small-shadowbox wap-shadowbox">
+ <div class=app-box>
+ <div class=tip-massege>进入小程序随时浏览/收藏技术文章</div>
+ <div class="button-box button-box-new">
+ <a class=app-ab-cance data-report-click='{"spm":"1001.2101.3001.9400"}'>取消</a>
+ <a class=app-bt-sure data-report-click='{"spm":"1001.2101.3001.9401"}'>立即前往</a>
+ </div>
+ <img class=close src=data:, alt data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/closeBt.png>
+ </div>
+ </div>
+ <div class="wap-shadowbox ab-app-shadowbox">
+ <div class="app-box active">
+ <a class="app-bt-cance read_more_btn close-icon" id=ab-app-shadowbox-close data-report-view='{"spm":"1001.2101.3001.9672"}' data-report-click='{"spm":"1001.2101.3001.9672"}'>
+ <img src=data:, alt data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/closeBt.png>
+ </a>
+ <div class=tip-massege>需要前往CSDN APP登录即可继续互动</div>
+ <div class="button-box button-box-new w-100p">
+ <a class="app-bt-sure open_app_channelCode app-bt-sure-btn-new" id=wap_open_app_btn data-channelcode=1663655995 data-report-view='{"spm":"1001.2101.3001.8335"}' data-report-click='{"spm":"1001.2101.3001.8335"}' data-name=a data-href="csdnapp://web?url=https://blog.csdn.net/qq_28852011/article/details/103803973">前往APP</a>
+ </div>
+ </div>
+ </div>
+ <div class="comment-shadowbox wap-shadowbox">
+ <div class=comment-write-box>
+ <div class=write-comment-container>
+ <textarea name class=write-comment-content id=writeComment placeholder="请发表有价值的评论， 博客评论不欢迎灌水，良好的社区氛围需大家一起维护。"></textarea>
+ <div id=formRewardBox class=comment-reward-box>
+ <a class=btn-remove-reward></a>
+ <div class=form-reward-box>
+ <div class=info>
+ 成就一亿技术人!
+ </div>
+ <div class=price-info>
+ 拼手气红包<span class=price>6.0元</span>
+ </div>
+ </div>
+ </div>
+ </div>
+ <div class=comment-write-bt>
+ <a class=write-redEnvolope>
+ <img class=comment-operate-img data-url=https://csdnimg.cn/release/blogv2/dist/pc/img/ src=data:, alt=红包 data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/pc/img/commentReward.png>
+ </a>
+ <a class=write-bt-sure data-report-click='{"spm":"1001.2101.3001.7867","mod":"1589175530_002"}' data-report-view='{"spm":"1001.2101.3001.7867","mod":"1589175530_002"}'>发送</a>
+ </div>
+ <div class=comment-rewarddialog-box>
+ <div class=form-box>
+ <div class=title-box>
+ 发红包
+ <a class=btn-form-close></a>
+ </div>
+ <form id=commentRewardForm>
+ <div class=ipt-box>
+ <label for=txtName>祝福语</label>
+ <div class=ipt-btn-box>
+ <input type=text name=name id=txtName autocomplete=off maxlength=50>
+ <a class="btn-ipt btn-random"></a>
+ </div>
+ <p class=notice>请填写红包祝福语或标题</p>
+ </div>
+ <div class=ipt-box>
+ <label for=txtSendAmount>红包数量</label>
+ <div class=ipt-txt-box>
+ <input type=text name=sendAmount maxlength=4 id=txtSendAmount placeholder=请填写红包数量(最小10个) autocomplete=off>
+ <span class=after-txt>个</span>
+ </div>
+ <p class=notice>红包个数最小为10个</p>
+ </div>
+ <div class=ipt-box>
+ <label for=txtMoney>
+ <div class=balance-info-box>
+ <div class=balance-info>
+ 您的钱包余额 <span class=red><span class=balance></span>元</span>
+ <a href=https://i.csdn.net/#/wallet/balance/recharge class=link-charge target=_blank>前往充值<img class=origin-plan-icon src=data:, alt data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/arrowRight.png></a>
+ </div>
+ </div>
+ </label>
+ <div class="ipt-txt-box error">
+ <input type=text name=money maxlength=5 id=txtMoney placeholder=请填写总金额(最低5元) autocomplete=off>
+ <span class=after-txt>元</span>
+ </div>
+ <p class=notice>红包金额最低5元</p>
+ </div>
+ <div class=opt-box>
+ <div class=pay-info>
+ ¥<span class=price></span>
+ </div>
+ <button type=button class="ml8 btn-submit" disabled>发红包</button>
+ <p class=remark>未领取的红包，将于96小时后发起退款</p>
+ </div>
+ </form>
+ </div>
+ </div>
+ </div>
+ </div>
+ <div class=redEnvolope id=redEnvolope>
+ <div class=env-box>
+ <div class=env-container>
+ <div class=pre-open id=preOpen>
+ <div class=top>
+ <header>
+ <img class=clearTpaErr :src=redpacketAuthor.avatar alt>
+ <div class=author>成就一亿技术人!</div>
+ </header>
+ <div class=bot-icon></div>
+ </div>
+ <footer>
+ <div class="red-openbtn open-start"></div>
+ <div class=tip>
+ 领取后你会自动成为博主和红包主的粉丝
+ <a class=rule target=_blank>规则</a>
+ </div>
+ </footer>
+ </div>
+ <div class=opened id=opened>
+ <div class=bot-icon>
+ <header>
+ <a class=creatorUrl href=https://blog.csdn.net/qq_28852011/article/details/103803973 target=_blank>
+ <img class=clearTpaErr src=data:, alt data-sf-original-src=https://profile-avatar.csdnimg.cn/default.jpg!2>
+ </a>
+ <div class=author>
+ <div class=tt>hope_wisdom</div> 发出的红包
+ </div>
+ </header>
+ </div>
+ <div class=receive-box>
+ <header></header>
+ <div class=receive-list>
+ </div>
+ </div>
+ </div>
+ </div>
+ <div class=close-btn></div>
+ </div>
+ </div>
+ <div class="weixin-shadowbox wap-shadowbox">
+ <div class="guide-box guide-box-new">
+ <div class=topic>前往CSDN APP阅读全文</div>
+ <div class=tip>阅读体验更佳</div>
+ <div class="csdn-box item-box">
+ <div class=item><img class=app-img src=data:, alt data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/csdnIcon@2x.png></div>
+ <div class=item>
+ <div class=item-content>
+ <p class=title>CSDN</p>
+ <p class=text>成就一亿技术人</p>
+ </div>
+ </div>
+ <div class=item><a class="open-app open-app-csdn open_app_channelCode" data-channelcode=1661743049 data-url=https://blog.csdn.net/qq_28852011/article/details/103803973 data-href="csdnapp://web?url=https://blog.csdn.net/qq_28852011/article/details/103803973" data-report-view='{"spm":"1001.2101.3001.8331"}' data-report-click='{"spm":"1001.2101.3001.8331"}'>前往</a></div>
+ </div>
+ <div class="weixin-box item-box">
+ <div class="item item-display-none item-chrome"><img class=app-img src=data:, alt data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/chromeIcon@2x.png></div>
+ <div class=item>
+ <div class=item-content>浏览器</div>
+ </div>
+ <div class=item><a class="open-app open-app-weixin" data-report-view='{"spm":"1001.2101.3001.8332"}' data-report-click='{"spm":"1001.2101.3001.8332"}'>继续</a></div>
+ </div>
+ </div>
+ </div>
+ <div class="share-shadowbox wap-shadowbox">
+ <div class=share-box>
+ <div class=tit>分享</div>
+ <div class=text></div>
+ <a class=share-bt-tip data-report-click='{"spm":"1001.2101.3001.7872"}'>复制分享链接</a>
+ <img class=close src=data:, alt data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/closeBt.png>
+ </div>
+ </div>
+ 
+ <div class=ios-shadowbox>
+ <div class=ios-box>
+ <div class=tip-massege>请升级应用版本</div>
+ <div class=button-box>
+ <a id=cancelBt class=bt-cancel>取消</a>
+ <a id=upBt class=bt-cancel href="itms-apps://itunes.apple.com/cn/app/id1437086352?mt=8">立即升级</a>
+ </div>
+ </div>
+ </div>
+ <div class=feed-Sign-weixin>
+ <p class=open_app_channelCode id=feed-open-app-btn data-channelabid=252_exp1 data-href="csdnapp://web?url=https://blog.csdn.net/qq_28852011/article/details/103803973" data-report-view='{"spm":"1001.2101.3001.9397"}' data-report-click='{"spm":"1001.2101.3001.9397"}'>打开 <img src=data:, alt data-sf-original-src=https://img-home.csdnimg.cn/images/20221101034807.png> APP</p>
+ <a id=feed-Sign-weixin-btn data-report-click='{"spm":"1001.2101.3001.9398"}'>小程序看全文</a>
+ </div>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+<script data-template-shadow-root>(()=>{document.currentScript.remove();processNode(document);function processNode(node){node.querySelectorAll("template[shadowrootmode]").forEach(element=>{let shadowRoot = element.parentElement.shadowRoot;if (!shadowRoot) {try {shadowRoot=element.parentElement.attachShadow({mode:element.getAttribute("shadowrootmode"),delegatesFocus:element.getAttribute("shadowrootdelegatesfocus")!=null,clonable:element.getAttribute("shadowrootclonable")!=null,serializable:element.getAttribute("shadowrootserializable")!=null});shadowRoot.innerHTML=element.innerHTML;element.remove()} catch (error) {} if (shadowRoot) {processNode(shadowRoot)}}})}})()</script>
