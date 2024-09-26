@@ -1,0 +1,1161 @@
+<!DOCTYPE html> <html><!--
+ Page saved with SingleFile 
+ url: https://blog.csdn.net/dongyi1988/article/details/103995266?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_baidulandingword~default-0-103995266-blog-114960199.235^v43^pc_blog_bottom_relevance_base2&spm=1001.2101.3001.4242.1&utm_relevant_index=3 
+ saved date: Thu Sep 26 2024 16:34:20 GMT+0800 (中国标准时间)
+--><meta charset=utf-8>
+<meta http-equiv=X-UA-Compatible content="IE=Edge">
+<meta name=viewport content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name=apple-mobile-web-app-status-bar-style content=black>
+<meta name=report content='{"pid": "blog", "spm":"1001.2101"}'>
+<meta name=applicable-device content=mobile>
+<meta http-equiv=Cache-Control content=no-transform>
+<meta http-equiv=Cache-Control content=no-siteapp>
+<meta content=yes name=apple-mobile-web-app-capable>
+<meta content=black name=apple-mobile-web-app-status-bar-style>
+<meta content="telephone=no" name=format-detection>
+<meta content="email=no" name=format-detection>
+<meta name=csdn-baidu-search content='{"autorun":true,"install":true,"keyword":"edl模式"}'>
+<title>android的刷机方式_edl模式-CSDN博客</title>
+<meta name=description content="文章浏览阅读8.7k次，点赞2次，收藏29次。刷机攻略，回归一下。 主要刷机方式，EDL(紧急下载，USB端口9008)，fastboot工具线刷，OTA升级（全包/差分升级，nonAB系统与AB系统升级）。这个玩android系统的基本都知道，还是列个表：												环境									进入方式									工具								EDL模式						..._edl模式">
+<link rel=canonical href=https://blog.csdn.net/dongyi1988/article/details/103995266>
+<link rel=apple-touch-icon sizes=57x57 href=data:, data-sf-original-href=https://csdnimg.cn/release/blogv2/dist/mobile/img/touch-icon-iphone-57.png>
+<link rel=apple-touch-icon sizes=114x114 href=data:, data-sf-original-href=https://csdnimg.cn/release/blogv2/dist/mobile/img/touch-icon-iphone-114.png>
+<link rel=apple-touch-icon sizes=72x72 href=data:, data-sf-original-href=https://csdnimg.cn/release/blogv2/dist/mobile/img/touch-icon-iphone-72.png>
+<link rel=apple-touch-icon sizes=144x144 href=data:, data-sf-original-href=https://csdnimg.cn/release/blogv2/dist/mobile/img/touch-icon-iphone-144.png>
+<link rel=apple-touch-icon sizes=120x120 href=data:, data-sf-original-href=https://csdnimg.cn/release/blogv2/dist/mobile/img/touch-icon-iphone-120.png>
+<script type=application/ld+json>{"@context":"https://ziyuan.baidu.com/contexts/cambrian.jsonld","@id":"https://blog.csdn.net/dongyi1988/article/details/103995266","appid":"1638831770136827","pubDate":"2020-01-15T20:33:52","title":"android的刷机方式_edl模式-CSDN博客","upDate":"2020-01-15T20:33:52"}</script>
+<meta name=referrer content=no-referrer><link href=data:, rel="shortcut icon" type=image/x-icon data-sf-original-href=https://g.csdnimg.cn/static/logo/favicon32.ico><meta http-equiv=content-security-policy content="default-src 'none'; font-src 'self' data:; img-src 'self' data:; style-src 'unsafe-inline'; media-src 'self' data:; script-src 'unsafe-inline' data:; object-src 'self' data:; frame-src 'self' data:;"><style>img[src="data:,"],source[src="data:,"]{display:none!important}</style></head>
+<body>
+ 
+<div id=main>
+<div class=aside-header-fixed>
+ <div class=aside-left>
+ <img class=iconfont src=data:, alt data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/iconLeftArrow.png>
+ <img class=portrait src=data:, alt data-sf-original-src=https://profile-avatar.csdnimg.cn/default.jpg!1>
+ <span>Kael.dong</span>
+ </div>
+ <div class=aside-right>
+ <a class=follow id=detailFollowNew data-id=103995266>关注</a>
+ </div>
+</div>
+ <div class=a_d_1></div>
+ 
+ 
+ 
+ 
+ <div id=article class=margin_sides>
+ <h1 class=article_title id=articleContentId>
+ <span class=tit>android的刷机方式</span>
+ <span class="article-type type-1 float-none">原创</span>
+ </h1>
+ <div class=creat-time-box>
+ <div class=creat-time-box-up-time><span>已于&nbsp;2023-02-17 10:14:52&nbsp;修改</span></div>
+ <span class=creat-time><img class=creat-time-img src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/renewal.png> <span>2020-01-15 20:33:52</span></span>
+ <div class=reading-collections-box>
+ <p class=blog-wap-reading>
+ <img class=have-heart-img src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/wap-articleReadEyes2.png> 
+ 阅读量<span class=text>8.7k</span>
+ </p>
+ </div>
+ <div class=subject-talk-box>
+ <a class=subject-talk href="https://app-blog.csdn.net/m/wapAiRelated?utm_source=711815865&amp;isHiddenNavigation=true" data-report-view='{"spm":"1001.2101.3001.10123"}' data-report-click='{"spm":"1001.2101.3001.10123"}'>
+ <img class=have-heart-img src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/subject-talk-img.png> 
+ <span>AI必读</span>
+ </a>
+ </div>
+ </div>
+ <div class="article_info clearfix">
+ <div class="top_user_mod clearfix">
+ <div class="top_user_info floatL clearfix">
+ <dl>
+ <dt class=floatL>
+ <a href=https://blog.csdn.net/dongyi1988 target=_blank rel=noopener class="clearfix top_user_info_a">
+ <img class=avatar src=data:, alt data-sf-original-src=https://profile-avatar.csdnimg.cn/default.jpg!1>
+ </a>
+ </dt>
+ <dd class=floatL>
+ <p class=line-nick-name> 
+ <span class="nick_name odd-overhidden">Kael.dong</span>
+ 
+ <img class=identity-icon src=data:, data-sf-original-src=https://csdnimg.cn/identity/blog4.png>
+ 
+ 
+ </p>
+ <p class=line-detaile>
+ <span class=code_years>码龄8年</span>
+ </p>
+ </dd> 
+ <a class=follow id=detailFollow data-id=5857469 data-report-view='{"spm":"1001.2101.3001.8391"}'>关注</a>
+ </dl>
+ </div>
+ </div>
+ </div> 
+ <div class=baidu_pl id=csdn-previewimg-box>
+ <div class=article_content>
+ <div id=content_views class="htmledit_views clearfix">
+ 
+ <p><a name=_Hlk29831741>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </a>刷机攻略，回归一下。</p> 
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 主要刷机方式，EDL(紧急下载，USB端口9008)，fastboot工具线刷，OTA升级（全包/差分升级，nonAB系统与AB系统升级）。这个玩android系统的基本都知道，还是列个表：</p> 
+<table border=1 cellspacing=0><tbody><tr><td> <p></p> <td> <p>环境</p> <td> <p>进入方式</p> <td> <p>工具</p> <tr><td> <p>EDL模式</p> <td> <p>*</p> <td> <p>音量上+音量下</p> <td> <p>厂商工具(QFIL)</p> <tr><td> <p>fastboot模式</p> <td> <p>Bootloader</p> <td> <p>音量下</p> <td> <p>Fastboot</p> <tr><td> <p>recovery模式</p> <td> <p>Kernel+RecoveryFS(nonAB)</p> <td> <p>音量上</p> <td> <p>Adb</p> <tr><td> <p>update_engine</p> <td> <p>Android system(AB)</p> <td> <p></p> <td> <p>update_engine</p> </table> 
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 表中进入方式不要认为是电源键+音量上/下，模式选择在开机时判断，长按电源键是为了重启。<br> 下面分节，并带GPT修改和NV保留问题去看这几个刷机方式。</p> 
+<p id=main-toc><strong>目录</strong></p> 
+<p id=1%E3%80%81EDL%E6%A8%A1%E5%BC%8F-toc><a href=#1%E3%80%81EDL%E6%A8%A1%E5%BC%8F rel=nofollow>1、EDL模式</a></p> 
+<p id=2%E3%80%81fastboot%E6%A8%A1%E5%BC%8F-toc><a href=#2%E3%80%81fastboot%E6%A8%A1%E5%BC%8F rel=nofollow>2、fastboot模式</a></p> 
+<p id=3%E3%80%81OTA%E5%8D%87%E7%BA%A7-toc><a href=#3%E3%80%81OTA%E5%8D%87%E7%BA%A7 rel=nofollow>3、OTA升级</a></p> 
+<p id=3.1%E3%80%81nonAB%E7%B3%BB%E7%BB%9F%E5%8D%87%E7%BA%A7-toc><a href=#3.1%E3%80%81nonAB%E7%B3%BB%E7%BB%9F%E5%8D%87%E7%BA%A7 rel=nofollow>3.1、nonAB系统升级</a></p> 
+<p id=3.2%E3%80%81AB%E7%B3%BB%E7%BB%9F%E7%9A%84OTA%E5%8D%87%E7%BA%A7-toc><a href=#3.2%E3%80%81AB%E7%B3%BB%E7%BB%9F%E7%9A%84OTA%E5%8D%87%E7%BA%A7 rel=nofollow>3.2、AB系统的OTA升级</a></p> 
+<p id=4%E3%80%81userdebug%E7%89%88%E6%9C%ACadb%20push%20%E5%88%B0%2Fdev%2Fblock%2Fby-name%2F%E5%AF%B9%E5%BA%94%E7%9A%84%E5%9D%97%E8%AE%BE%E5%A4%87%E8%8A%82%E7%82%B9-toc><a href=#4%E3%80%81userdebug%E7%89%88%E6%9C%ACadb%20push%20%E5%88%B0%2Fdev%2Fblock%2Fby-name%2F%E5%AF%B9%E5%BA%94%E7%9A%84%E5%9D%97%E8%AE%BE%E5%A4%87%E8%8A%82%E7%82%B9 rel=nofollow>4、userdebug版本adb push 到/dev/block/by-name/对应的块设备节点</a></p> 
+<hr id=hr-toc> 
+<h3 id=1%E3%80%81EDL%E6%A8%A1%E5%BC%8F><strong>1、EDL模式</strong></h3> 
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 详细见下面blog</p> 
+<p><a href=https://blog.csdn.net/Fybon/article/details/37565227 title="高通 MSM8K bootloader 之二： SBL1_Fybon的博客-CSDN博客">高通 MSM8K bootloader 之二： SBL1_Fybon的博客-CSDN博客</a></p> 
+<p><strong>1.1、分析xml文件</strong></p> 
+<pre class=has><code>&lt;?xml version="1.0" ?&gt;
+
+&lt;data&gt;
+
+&lt;program SECTOR_SIZE_IN_BYTES="512" file_sector_offset="0" filename="boot.img" label="boot_a" num_partition_sectors="131072" physical_partition_number="0" size_in_KB="65536.0" sparse="false" start_byte_hex="0x1d220000" start_sector="954624" /&gt;
+
+&lt;/data&gt;
+
+Program 可以改为read 来dump设备，
+
+SECTOR_SIZE_IN_BYTES 扇区大小
+
+file_sector_offset 偏移
+
+filename 文件名
+
+label 分区名
+
+num_partition_sectors 分区扇区数
+
+sparse 是否是sparse镜像格式，非sparse格式就是直接写。
+
+start_byte_hex 起始位置
+
+start_sector 起始扇区号</code></pre> 
+<p><strong><span>1.2、&nbsp;MODEL</span><span>参数</span><span>(NV</span><span>分区</span><span>)</span><span>保留</span></strong></p> 
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span>方法</span><span>1</span><span>，有</span><span>tool-&gt;QCN backup</span><span>按键。</span></p> 
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span>方法2</span><span>，有</span><span>partition Manager-&gt;read.</span></p> 
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span>方法</span><span>3</span><span>，</span><span>configuration</span>-&gt;FireHose configuration-&gt;Auto backup Restore QCN （读取后重写入）/Auto preserve（不动这几个分区）</p> 
+<p><strong><span>1.3、</span><span>分区下载</span></strong></p> 
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span>使用</span><span>partition manage读出的分区文件都是bin格式，load</span><span>进去也必须是</span><span>bin</span><span>格式。</span></p> 
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span>把其它设备的</span><span>userdata</span><span>数据刷入到其它同样设备，数据完全保留，可用。（userdebug调试user的数据，手机还是需要设置开机密码的）</span></p> 
+<p></p> 
+<h3 id=2%E3%80%81fastboot%E6%A8%A1%E5%BC%8F><strong><span>2</span><span>、</span><span>fastboot</span><span>模式</span></strong></h3> 
+<p><a href=https://blog.csdn.net/s13383754499/article/details/82755012 title=使用fastboot命令刷机流程详解_Android小码农的博客-CSDN博客_fastboot>使用fastboot命令刷机流程详解_Android小码农的博客-CSDN博客_fastboot</a></p> 
+<p><strong><span>2.1、</span><span>文件分析</span></strong></p> 
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href=https://blog.csdn.net/dongyi1988/article/details/103994321 title=&nbsp;android镜像分析>&nbsp;android镜像分析</a><span>已经提到。</span></p> 
+<p><span><strong>2.2、fastboot命令</strong></span></p> 
+<p><span>fastboot&nbsp;flash比较常用，刷指定分区命令类似于fastboot flash boot boot.img，下面几个命令可以了解下：</span></p> 
+<ol><li><span>fastboot -w <em>（</em></span><em><span>恢复出厂</span><span>，</span><span>调试时发现不能同时刷</span><span>modem</span><span>，现在还未解</span><span>)</span></em><li><span>fastboot flashing unlock/lock <em>（</em></span><em><span>设备解锁/锁定，</span><span>verify boot</span><span>相关）</span></em><li><span>fastboot --disable-verity --disable-verification flash vbmeta.img <em>（</em></span><em><span>关闭</span><span>DM-verity）</span></em><li><span>fastboot getvar all <em>（</em></span><em><span>读取设备相关信息）</span></em><li><span>fastboot -aa/-ab <em>（</em></span><em><span>切换当前系统slot）</span></em><li><span>fastboot erase&nbsp; ***<em>（</em></span><em><span>擦除分区）</span></em><li><span>fastboot update otapackage.zip <em>（</em></span><em><span>没用过，应该是包先放入cache，重启后再recovery升级；OTA包线刷用</span><span>adb sideload）</span></em><li><span>fastboot boot boot.img <em>（</em></span><em><span><a href=https://blog.csdn.net/dongyi1988/article/details/103994321 title=镜像分析>镜像分析</a></span><span>boot.img</span><span>有提到过，可直接调试boot.img）</span></em></ol> 
+<p>cmdline 有点长</p> 
+<pre class=has><code>core_ctl_disable_cpumask=0-7 kpti=0 console=ttyMSM0,115200,n8 androidboot.console=ttyMSM0 androidboot.hardware=qcom msm_rtb.filter=0x237 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 androidboot.bootdevice=7824900.sdhci earlycon=msm_serial_dm,0x78af000 firmware_class.path=/vendor/firmware_mnt/image androidboot.usbconfigfs=true loop.max_part=7 buildvariant=userdebug androidboot.emmc=true androidboot.verifiedbootstate=orange androidboot.keymaster=1 dm="1 vroot none ro 1,0 4918112 verity 1 PARTUUID=1301d1c2-456f-1c8f-e1c1-1b435756052c PARTUUID=1301d1c2-456f-1c8f-e1c1-1b435756052c 4096 4096 614764 614764 sha1 2d97a9989b5bf9c8ae5263f2d88c40e34254210d 7e61282c660bf96ef462600a73a88471b5edab47 10 restart_on_corruption ignore_zero_blocks use_fec_from_device PARTUUID=1301d1c2-456f-1c8f-e1c1-1b435756052c fec_roots 2 fec_blocks 619606 fec_start 619606" root=/dev/dm-0 androidboot.vbmeta.device=PARTUUID=88b216e2-034a-fcbc-d3a5-6e06f26402da androidboot.vbmeta.avb_version=1.0 androidboot.vbmeta.device_state=unlocked androidboot.vbmeta.hash_alg=sha256 androidboot.vbmeta.size=4992 androidboot.vbmeta.digest=d434fe934f80dc3434a804980a8c13139b3a381a953778e7dd69c3190c7fcfa6 androidboot.veritymode=enforcing androidboot.serialno=0000000000 androidboot.baseband=msm mdss_mdp.panel=1:dsi:0:qcom,mdss_dsi_st7701s_tn_400p_video:1:none:cfg:single_dsi androidboot.slot_suffix=_a skip_initramfs root wait ro init=/init androidboot.dtbo_idx=0</code></pre> 
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span>这里再说几点：</span></p> 
+<p><span>fastboot oem *** </span><span>可以</span><span>aboot</span><span>中自定义命令而不用修改</span><span>fastboot</span><span>工具。</span></p> 
+<p><span>fastboot -w </span><span>是fastboot getvar获取容量后，生成</span><span>userdata.img</span><span>镜像，再</span><span>write</span><span>，这就与</span><span>flash userdata其实差不多了</span><span>。</span></p> 
+<p><span>fastboot -w</span><span>有文件系统，</span><span>fastboot erase userdata</span><span>清空分区，后面这种进入system后识别userdata被擦，自动重启到recovery格式化userdata。</span></p> 
+<p><span>fastboot</span><span>不支持读。</span></p> 
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span>如果设备直接连到你的编译服务器，可以设置刷机路径，使用fastboot flashall</span><span>命令（我们都是</span><span>windows</span><span>批处理来刷机）。</span></p> 
+<p></p> 
+<h3 id=3%E3%80%81OTA%E5%8D%87%E7%BA%A7><strong><span>3</span><span>、</span><span>OTA</span><span>升级</span></strong></h3> 
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span>OTA升级制作主要两种包，全包和差分包(现在翻译为增量包)。android 6开始OTA按块升级，差分包也是按块对比。</span></p> 
+<p><span>通过target-file包制作OTA全包命令：</span></p> 
+<pre class=has><code>./build/tools/releasetools/ota_from_target_files ${source_zip} ${output_zip}</code></pre> 
+<p><span>通过target-file包制作OTA差分包命令：</span></p> 
+<pre class=has><code>./build/tools/releasetools/ota_from_target_files -i ${source_zip} ${target_zip} ${output_zip}</code></pre> 
+<p><span>&nbsp;ota_from_target_files更多参数可查看帮助。</span></p> 
+<p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 如果target-file包含所有fastboot</span><span>升级包的所有内容还可以制作</span><span>fastboot</span><span>升级包</span></p> 
+<pre class=has><code>unzip -q -o ${target_files_zip_name} IMAGES/vendor.img -d ${fastboot_out_tmp}/AP
+
+***
+
+***
+
+***
+
+unzip -q -o ${target_files_zip_name} IMAGES/system.img -d ${fastboot_out_tmp}/AP
+
+unzip -q -o ${target_files_zip_name} IMAGES/modem.img -d ${fastboot_out_tmp}/MP</code></pre> 
+<p><span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span>现在区分nonAB和AB的android系统，虽然制作命令相同，但它们OTA包里面文件的格式，升级流程有很大差异。</p> 
+<h4 id=3.1%E3%80%81nonAB%E7%B3%BB%E7%BB%9F%E5%8D%87%E7%BA%A7><span>3.1、nonAB系统升级</span></h4> 
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; nonAB升级流程是recovery调用OTA包中的update-binary二进制执行程序，解析updater-script脚本，按该脚本流程升级。</p> 
+<p>官网<a href=https://source.android.com/devices/tech/ota/nonab rel=nofollow title=https://source.android.com/devices/tech/ota/nonab>https://source.android.com/devices/tech/ota/nonab</a>详细了解nonAB的OTA升级流程的看下面这系列的blog比较好</p> 
+<p><a href=https://blog.csdn.net/huangyabin001/article/details/43731545 title="Android OTA升级包制作脚本详解（一，参数解析）_高桐@BILL的博客-CSDN博客">Android OTA升级包制作脚本详解（一，参数解析）_高桐@BILL的博客-CSDN博客</a></p> 
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span>system模式和</span><span>recovery</span><span>模式的文件系统不同，non</span><span>AB</span><span>系统的</span><span>recovery</span><span>文件系统在</span><span>recovery.img</span><span>中，</span><span>AB</span><span>系统的</span><span>recovery</span><span>文件系统在</span><span>boot.img</span><span>中。执行程序在</span><span>文件系统的</span><span>sbin/recovery</span><span>。</span></p> 
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span>提示，如果是userdebug</span><span>版本的</span><span>recovery，</span><span>可以挂载</span><span>system</span><span>使用</span><span>adb</span><span>。</span></p> 
+<p><span>3.1.1 nonAB系统的OTA文件分析</span></p> 
+<p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Android 4.4</span><span>还是以文件方式升级，所以</span><span>OTA</span><span>包直接解压可以看到所有的文件。</span></p> 
+<p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Android 6.0</span><span>以块方式升级，要刷的</span><span>system</span><span>内容在</span><span>system.new.dat</span><span>中，这里</span><a href=https://github.com/xpirt/sdat2img title=sdat2img.py>sdat2img.py</a><span>先转换下，然后挂载即可。OTA</span><span>包解压，如下</span></p> 
+<p><span>File </span><span>*</span></p> 
+<pre class=has><code>boot.img:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Android bootimg, kernel, ramdisk, page size: 2048, cmdline (console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidbo)
+
+file_contexts.bin:&nbsp;&nbsp;&nbsp; data
+
+firmware-update:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; directory
+
+META-INF:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; directory
+
+system.new.dat.br:&nbsp;&nbsp;&nbsp; data
+
+system.patch.dat:&nbsp;&nbsp;&nbsp;&nbsp; empty
+
+system.transfer.list: ASCII text
+
+vendor.new.dat.br:&nbsp;&nbsp;&nbsp; data
+
+vendor.patch.dat:&nbsp;&nbsp;&nbsp;&nbsp; empty
+
+vendor.transfer.list: ASCII text</code></pre> 
+<p><span>sdat2img.py system.transfer.list system.new.dat system.img</span></p> 
+<pre class=has><code>sdat2img binary - version: 1.0
+
+
+
+Android Nougat 7.x / Oreo 8.x detected!
+
+
+
+Skipping command erase...
+
+Copying 1024 blocks into position 0...
+
+Copying 1024 blocks into position 1024...
+
+Copying 1024 blocks into position 2048...
+
+Copying 1024 blocks into position 3072...
+
+***
+
+***
+
+***
+
+Copying 1 blocks into position 345084...
+
+Copying 1 blocks into position 345086...
+
+Skipping command zero...
+
+***
+
+Skipping command zero...
+
+Done! Output image: /***/system.img</code></pre> 
+<p><span>sudo mount system.img systemtest挂载查看</span></p> 
+<p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 其中system.patch.dat</span><span>这个是补丁文件，差分包才会使用。OTA包里面升级脚本执行程序在</span><span>/META-INF/com/google/android/update-binary</span><span>，升级脚本在</span><span>/META-INF/com/google/android/updater-script。</span><a href=https://blog.csdn.net/u012686462/article/details/79457923 title="Android OTA升级原理和流程分析（一） --update.zip包的制作_发飙的IT宅男的博客-CSDN博客">Android OTA升级原理和流程分析（一） --update.zip包的制作_发飙的IT宅男的博客-CSDN博客</a></p> 
+<p><strong><span>3.1.2 recovery</span><span>模式</span><span>OTA</span><span>包升级操作</span></strong></p> 
+<p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 方法1、</span><span>adb sideload updater.zip</span><span>通过</span><span>USB</span><span>线升级。</span></p> 
+<p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 方法2、</span><span>OTA</span><span>包放入</span><span>SD</span><span>卡中升级</span></p> 
+<p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; recovery是无法读取</span><span>userdata</span><span>里面数据去升级的，当然你可以把一个分区当作</span><span>sdcardfs</span><span>文件类型来使用，达到使用内部数据升级的目的</span><span>(sdcardfs</span><span>文件类型区别于</span><span>system</span><span>，</span><span>media</span><span>等类型，</span><a href=https://www.anquanke.com/vul/id/1344320 rel=nofollow title=https://www.anquanke.com/vul/id/1344320>https://www.anquanke.com/vul/id/1344320</a><span>有描述</span><span>sdcardfs</span><span>的权限提升漏洞</span><span>)</span><span>。</span></p> 
+<p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 方法3、使用</span><span>MISC</span><span>分区传送指令升级</span></p> 
+<p><span>通过</span><span>misc</span><span>传送指令可以实现</span><span>system</span><span>上层的升级</span></p> 
+<p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 下面是misc</span><span>内数据分析</span></p> 
+<pre class=has><code>擦除数据 &nbsp;&nbsp;&nbsp;&nbsp; recovery\n--wipe_data
+
+升级 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; recovery\n --update_package=/cache/some-filename.zip
+
+工厂测试 &nbsp;&nbsp;&nbsp;&nbsp; FFBM-00(01/02)</code></pre> 
+<p><strong><span>3.1.3 升级工具update-binary分析</span></strong></p> 
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span>该工具</span><span>update-binary</span><span>由</span><span>updater</span><span>复制而来。</span><span>updater</span><span>源码在</span><span>bootable\recovery\updater，</span><span>编译出</span><span>obj\EXECUTABLES\updater_intermediates\LINKED\updater</span><span>后，再去掉一些信息转换成</span><span>updater</span><span>（</span><span>LINKED</span><span>下的</span><span>updater</span><span>可以通过nm -n&nbsp;获取</span><span>main</span><span>函数起始位置，而最后得到的</span><span>updater</span><span>无法获取，</span><span>android</span><span>的可执行程序基本都如此）。下面是通过读取</span><span>section(.text)</span><span>去猜测</span><span>main</span><span>函数起始位置。（如果能直接得到，请赐教）下面开始反汇编：</span></p> 
+<p><span>file update-binary</span></p> 
+<pre class=has><code>update-binary: ELF 64-bit LSB executable, ARM aarch64, version 1 (SYSV), statically linked, BuildID[md5/uuid]=55f330750d82ac7c1d716cd1ce1968e5, stripped</code></pre> 
+<p><span>aarch64-linux-androidkernel-readelf -a update-binary</span></p> 
+<pre class=has><code>Section Headers:
+
+&nbsp; [Nr] Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Address&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Offset
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Size&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; EntSize&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Flags&nbsp; Link&nbsp; Info&nbsp; Align
+
+&nbsp; [ 0]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NULL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0000000000000000&nbsp; 00000000
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0000000000000000&nbsp; 0000000000000000&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp; 0
+
+&nbsp; [ 1] .note.android.ide NOTE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0000000000400158&nbsp; 00000158
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0000000000000018&nbsp; 0000000000000000&nbsp;&nbsp; A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp; 4
+
+&nbsp; [ 2] .note.gnu.build-i NOTE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0000000000400170&nbsp; 00000170
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0000000000000020&nbsp; 0000000000000000&nbsp;&nbsp; A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp; 4
+
+&nbsp; [ 3] .text&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; PROGBITS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 00000000004001c0&nbsp; 000001c0
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 00000000001332bc&nbsp; 0000000000000000&nbsp; AX&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp; 64
+
+&nbsp; [ 4] .rodata&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; PROGBITS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0000000000533480&nbsp; 00133480
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 000000000004b200&nbsp; 0000000000000000&nbsp;&nbsp; A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp; 64
+
+&nbsp; [ 5] .gcc_except_table PROGBITS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 000000000057e680&nbsp; 0017e680
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 000000000000d404&nbsp; 0000000000000000&nbsp;&nbsp; A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp; 4</code></pre> 
+<p><span>aarch64-linux-androidkernel-objdump -d update-binary –start-address=（</span><span>.text</span><span>）起始地址</span></p> 
+<pre class=has><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 00000000004001c0 &lt;.text&gt;:
+
+&nbsp; 4001c0:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; f81e0ff3 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; str&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; x19, [sp,#-32]!
+
+&nbsp; 4001c4:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a9017bfd &nbsp;&nbsp;&nbsp;&nbsp; stp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; x29, x30, [sp,#16]
+
+&nbsp; 4001c8:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 910043fd &nbsp;&nbsp;&nbsp;&nbsp; add&nbsp;&nbsp;&nbsp;&nbsp; x29, sp, #0x10
+
+&nbsp; 4001cc: 2a0003f3 &nbsp;&nbsp;&nbsp;&nbsp; mov&nbsp;&nbsp;&nbsp; w19, w0
+
+&nbsp; 4001d0:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 9404023c &nbsp;&nbsp;&nbsp;&nbsp; bl&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x500ac0
+
+&nbsp; 4001d4:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; aa1f03e0 &nbsp;&nbsp;&nbsp;&nbsp; mov&nbsp;&nbsp;&nbsp; x0, xzr
+
+&nbsp; 4001d8:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 94040165 &nbsp;&nbsp;&nbsp; bl&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x50076c
+
+***
+
+***
+
+***
+
+&nbsp; 400894:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; d65f03c0 &nbsp;&nbsp;&nbsp;&nbsp; ret
+
+&nbsp;&nbsp;400898:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; d10743ff &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; sub&nbsp;&nbsp;&nbsp;&nbsp; sp, sp, #0x1d0
+
+&nbsp; 40089c:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a9176ffc &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; stp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; x28, x27, [sp,#368]
+
+&nbsp; 4008a0:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a91867fa &nbsp;&nbsp;&nbsp;&nbsp; stp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; x26, x25, [sp,#384]
+
+&nbsp; 4008a4:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a9195ff8 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; stp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; x24, x23, [sp,#400]
+
+&nbsp; 4008a8:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a91a57f6 &nbsp;&nbsp;&nbsp;&nbsp; stp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; x22, x21, [sp,#416]
+
+&nbsp; 4008ac: a91b4ff4 &nbsp;&nbsp;&nbsp;&nbsp; stp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; x20, x19, [sp,#432]</code></pre> 
+<h4 id=3.2%E3%80%81AB%E7%B3%BB%E7%BB%9F%E7%9A%84OTA%E5%8D%87%E7%BA%A7><strong><span>3.2、AB系统的OTA升级</span></strong></h4> 
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span>update_engine是</span><span>AB</span><span>系统升级工具。源码位置</span><span><a href="http://ch7du0001.honeywell.com:8080/gitweb?p=platform%2Fsdm450%2Fsystem%2Fupdate_engine.git;a=tree;hb=c08d54d857ee6a8cc4d3f55da70ae063f10c0bcf" rel=nofollow title=system/update_engine>system/update_engine</a></span><span>，其中&nbsp;<a href="http://ch7du0001.honeywell.com:8080/gitweb?p=platform%2Fsdm450%2Fsystem%2Fupdate_engine.git;hb=c08d54d857ee6a8cc4d3f55da70ae063f10c0bcf;f=payload_consumer" rel=nofollow title=payload_consumer>payload_consumer</a>/delta_performer.cc</span><span>中有限制升级的规则，包括检查时间戳，版本补丁等级等信息。</span></p> 
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span>目前AB系统做法是不再使用recovery</span><span>的</span><span>UI</span><span>界面，在恢复出厂时还是用到该模式。由于该模式系统不挂载</span><span>system</span><span>，</span><span>vendor</span><span>，</span><span>userdata</span><span>分区，可以进行格式化操作。（当然你可以再开</span><span>recovery</span><span>的</span><span>UI</span><span>，也可以</span><span>update_engine_sideload</span><span>中添加</span><span>boot_ctrl</span><span>的静态库来支持</span><span>recovery</span><span>的</span><span>OTA</span><span>升级）</span></p> 
+<p><strong><span>3.2.1、AB系统的OTA文件分析</span></strong></p> 
+<p><span>&nbsp;file *</span></p> 
+<pre class=has><code>care_map.txt:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ASCII text
+
+compatibility.zip:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Zip archive data, at least v2.0 to extract
+
+META-INF:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; directory
+
+payload.bin:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; data
+
+payload_properties.txt: ASCII text</code></pre> 
+<p><a href=https://github.com/vm03/payload_dumper title=payload_dumper>payload_dumper</a><span>和</span><a href=https://github.com/cyxx/extract_android_ota_payload title=extract_android_ota_payload>extract_android_ota_payload</a>&nbsp;可以解包其中的payload<span>.bin</span><span>文件</span></p> 
+<p><span>python3 payload_dumper.py payload.bin</span></p> 
+<p><span>file *</span></p> 
+<pre class=has><code>aboot.img:&nbsp;&nbsp;&nbsp;&nbsp; ELF 32-bit LSB executable, ARM, EABI5 version 1 (SYSV), statically linked, stripped
+
+boot.img:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Android bootimg, kernel, ramdisk, page size: 2048, cmdline (console=ttyMSM0,115200,n8 androidboot.console=ttyMSM0 androidbo)
+
+cmnlib64.img:&nbsp; ELF 64-bit LSB shared object, ARM aarch64, version 1 (SYSV), statically linked, stripped
+
+cmnlib.img:&nbsp;&nbsp;&nbsp; ELF 32-bit LSB shared object, ARM, EABI5 version 1 (SYSV), statically linked, stripped
+
+devcfg.img:&nbsp;&nbsp;&nbsp; ELF 64-bit LSB executable, ARM aarch64, version 1 (SYSV), statically linked, stripped
+
+dsp.img:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Linux rev 1.0 ext4 filesystem data, UUID=af32c008-2a39-7e5b-a5dc-201456d93103, volume name "dsp" (extents) (large files)
+
+dtbo.img:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; data
+
+keymaster.img: ELF 64-bit LSB shared object, ARM aarch64, version 1 (SYSV), statically linked, stripped
+
+lksecapp.img:&nbsp; ELF 32-bit LSB shared object, ARM, EABI5 version 1 (SYSV), statically linked, stripped
+
+mdtp.img:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; data
+
+modem.img:&nbsp;&nbsp;&nbsp;&nbsp; DOS/MBR boot sector, code offset 0x3c+2, OEM-ID "MSDOS5.0", sectors/cluster 32, root entries 512, Media descriptor 0xf8, sectors/FAT 22, sectors/track 63, heads 255, sectors 180224 (volumes &gt; 32 MB) , serial number 0xbc614e, unlabeled, FAT (16 bit)
+
+rpm.img:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ELF 32-bit LSB executable, ARM, EABI5 version 1 (SYSV), statically linked, stripped
+
+sbl1.img:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ELF 32-bit LSB executable, ARM, EABI5 version 1 (SYSV), statically linked, stripped
+
+system.img:&nbsp;&nbsp;&nbsp; Linux rev 1.0 ext2 filesystem data, UUID=4788ae58-ad4a-5bea-ae45-5b2f9b4368be (extents) (large files) (huge files)
+
+tz.img:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ELF 64-bit LSB executable, ARM aarch64, version 1 (SYSV), statically linked, stripped
+
+vbmeta.img:&nbsp;&nbsp;&nbsp; data
+
+vendor.img:&nbsp;&nbsp;&nbsp; Linux rev 1.0 ext2 filesystem data, UUID=5204afa9-c67d-5902-83ce-5a06b5cc26f1, volume name "vendor" (extents) (large files) (huge files)
+
+xbl.img:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ELF 64-bit LSB executable, ARM aarch64, version 1 (SYSV), statically linked, corrupted section header size</code></pre> 
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span>变成镜像后可以根据前面<a href=https://blog.csdn.net/dongyi1988/article/details/103994321 title=镜像分析>镜像分析</a>去解析，这里几个sparse格式镜像都变成文件系统格式(Linux rev 1.0 ext2 filesystem data)，因为制作的OTA包是按块刷写，不能使用sparse压缩格式，制作差分包也不能用sparse格式。</span></p> 
+<p><strong><span>3.2.2</span><span>、</span><span>update_engine</span><span>的使用</span></strong></p> 
+<p>&nbsp;&nbsp;&nbsp; <a href=https://blog.csdn.net/u012169524/article/details/87715142 title=Android9.0系统OTA升级update_engine_-Ryan的博客-CSDN博客_applypayload请求升级>Android9.0系统OTA升级update_engine_-Ryan的博客-CSDN博客_applypayload请求升级</a></p> 
+<p></p> 
+<h3 id=4%E3%80%81userdebug%E7%89%88%E6%9C%ACadb%20push%20%E5%88%B0%2Fdev%2Fblock%2Fby-name%2F%E5%AF%B9%E5%BA%94%E7%9A%84%E5%9D%97%E8%AE%BE%E5%A4%87%E8%8A%82%E7%82%B9><strong><span>4</span><span>、</span><span>userdebug</span><span>版本</span><span>adb push </span><span>到</span></strong>/dev/block/by-name/<strong><span>对应的块设备节点</span></strong></h3> 
+<p><br><strong><span>这种也相当于刷机，所有分区不要push压缩格式（system/vendor/userdata/persist分区不要push sparse格式）</span></strong></p> 
+<p></p> 
+<p></p> 
+<p></p> 
+<hr> 
+<p><span>&nbsp;</span></p> 
+<h2 id=articleContentId></h2>
+ </div>
+ <div id=treeSkill></div>
+ 
+ 
+ </div>
+ </div>
+ <div class=readall_box data-report-view='{"mod":"popu_376","dest":"https://blog.csdn.net/dongyi1988/article/details/103995266"}' data-report-click='{"mod":"popu_376","dest":"https://blog.csdn.net/dongyi1988/article/details/103995266"}'>
+ <div class=read_more_mask></div>
+ <div class=btn_mod>
+ 
+ <div class="btn_open_app_prompt_box btn_open_app_prompt_box_testAb active abstyle appletFullText">
+ <a class=weixin_abtest_btn_open data-report-click='{"spm":"1000.2115.3001.9756"}'>小程序看全文</a>
+ <p class=read_more_btn><img class=btn-img-arrow src=data:, alt data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/doubleArrow.png></p>
+ </div>
+ <div class="btn_open_app_prompt_box btn_open_app_prompt_box_testAb active abstyle appFullText">
+ <a class="open_app_channelCode app_abtest_btn_open" data-report-click='{"spm":"1000.2115.3001.9757"}' data-channelabid=293_exp1 data-href="csdnapp://web?url=https://blog.csdn.net/dongyi1988/article/details/103995266">APP 看全文</a>
+ <p class=read_more_btn><img class=btn-img-arrow src=data:, alt data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/doubleArrow.png></p>
+ </div> 
+ </div> 
+ </div> 
+ 
+ 
+ </div>
+ <div class=btn_open_app_prompt_div>
+ <p id=btn_open_app_prompt_item class="btn_open_app_prompt_item open_app_channelCode" data-report-view='{"spm":"1001.2101.3001.8336"}' data-report-click='{"spm":"1001.2101.3001.8336"}' data-channelcode=blog_202012141828 data-href="csdnapp://web?url=https://blog.csdn.net/dongyi1988/article/details/103995266">打开CSDN，阅读体验更佳</p>
+ </div>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ <div class=spec_space></div>
+ 
+ 
+ <div id=comment>
+ </div>
+ <div class="spec_space spec_space_hide"></div>
+ 
+ <div id=recommend>
+ <div class=recommend_list>
+ <dl></dl>
+ <dl class="container-fluid container-fluid-flex container-download" data-url=https://download.csdn.net/download/lovebuzhidao/11160105 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.1","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~BlogCommendFromBaidu~Paid-1-11160105-blog-103995266.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339633988_75495\"}","dist_request_id":"1727339633988_75495","ab_strategy":"increase_t0_download","index":"1","strategy":"2~default~BlogCommendFromBaidu~Paid","dest":"https://download.csdn.net/download/lovebuzhidao/11160105"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=download>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a href=https://download.csdn.net/download/lovebuzhidao/11160105 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.1","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~BlogCommendFromBaidu~Paid-1-11160105-blog-103995266.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339633988_75495\"}","dist_request_id":"1727339633988_75495","ab_strategy":"increase_t0_download","index":"1","strategy":"2~default~BlogCommendFromBaidu~Paid","dest":"https://download.csdn.net/download/lovebuzhidao/11160105"}' data-report-query="spm=1001.2101.3001.6650.1&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EBlogCommendFromBaidu%7EPaid-1-11160105-blog-103995266.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EBlogCommendFromBaidu%7EPaid-1-11160105-blog-103995266.237%5Ev3%5Ewap_relevant_t0_download">
+ <div class=left>
+ 正版payload_dumper
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class=text href=https://download.csdn.net/download/lovebuzhidao/11160105 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.1","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~BlogCommendFromBaidu~Paid-1-11160105-blog-103995266.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339633988_75495\"}","dist_request_id":"1727339633988_75495","ab_strategy":"increase_t0_download","index":"1","strategy":"2~default~BlogCommendFromBaidu~Paid","dest":"https://download.csdn.net/download/lovebuzhidao/11160105"}' data-report-query="spm=1001.2101.3001.6650.1&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EBlogCommendFromBaidu%7EPaid-1-11160105-blog-103995266.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EBlogCommendFromBaidu%7EPaid-1-11160105-blog-103995266.237%5Ev3%5Ewap_relevant_t0_download">
+ 用法：将payload_dumper与payload.bin在一个文件夹下，然后执行设置可执行权限，然后执行./payload_dumper就能将payload.bin解压到当前目录中
+ </a>
+ </div>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-blog" data-url=https://blog.csdn.net/zz00008888/article/details/112555691 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.2","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~CTRLIST~Rate-2-112555691-blog-103995266.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339633988_75495\"}","dist_request_id":"1727339633988_75495","ab_strategy":"increase_t0_download","index":"2","strategy":"2~default~CTRLIST~Rate","dest":"https://blog.csdn.net/zz00008888/article/details/112555691"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=blog>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a>
+ <div class=left>
+ <span class=tag>热门推荐</span>
+ 安卓(<em>Android</em>) <em>刷机</em>教程（任何机型、小米、华为等等）
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class="text active">
+ 这个教程针对所有安装机型，思路是一样的，只是固件跟按键不一样而已。
+安卓系统<em>刷机</em>大众化的分为两种：线刷包 卡刷包。
+线刷包：在计算机上使用<em>刷机</em>软件进行<em>刷机</em>，需要通过数据线连接电脑和手机，需要打开 开发者<em>模式</em>，打开 USB链接电脑，并 支持USB数据传递，各个品牌打开开发者<em>模式</em><em>方式</em>不一样，可自行百度即可，下图是包内部文件。
+卡刷包：把固件或者<em>升级</em>包拷贝到手机SD卡中进行<em>刷机</em><em>升级</em><em>刷机</em>操作，下图是包内部文件。
+风险程度：线刷包 比 卡刷包 风险要大，而且很多 线刷包 软件并不支持或者不能完美的支持某些..
+ </a>
+ <a class=flag data-type=blog data-href=https://blog.csdn.net/zz00008888/article/details/112555691 href=https://blog.csdn.net/zz00008888/article/details/112555691 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.2","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~CTRLIST~Rate-2-112555691-blog-103995266.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339633988_75495\"}","dist_request_id":"1727339633988_75495","ab_strategy":"increase_t0_download","index":"2","strategy":"2~default~CTRLIST~Rate","dest":"https://blog.csdn.net/zz00008888/article/details/112555691"}' data-report-query="spm=1001.2101.3001.6650.2&amp;utm_medium=distribute.wap_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-2-112555691-blog-103995266.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-2-112555691-blog-103995266.237%5Ev3%5Ewap_relevant_t0_download">继续访问</a>
+ </div>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-blog" data-url=https://blog.csdn.net/gitblog_00919/article/details/141014545 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.3","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~YuanLiJiHua~Position-3-141014545-blog-103995266.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339633988_75495\"}","dist_request_id":"1727339633988_75495","ab_strategy":"increase_t0_download","index":"3","strategy":"2~default~YuanLiJiHua~Position","dest":"https://blog.csdn.net/gitblog_00919/article/details/141014545"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=blog>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a>
+ <div class=left>
+ <span class=tag>最新发布</span>
+ payload-dumper-go 使用教程
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class="text active">
+ payload-dumper-go 使用教程
+ payload-dumper-goan <em>android</em> <em>OTA</em> payload dumper written in Go项目地址:https://gitcode.com/gh_mirrors/pa/payload-dumper-go 项目介绍
+payload-dumper-go 是一个用 Go 语言编写的 <em>Android</em> <em>OTA</em> 有效负载转储工具。它...
+ </a>
+ <a class=flag data-type=blog data-href=https://blog.csdn.net/gitblog_00919/article/details/141014545 href=https://blog.csdn.net/gitblog_00919/article/details/141014545 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.3","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~YuanLiJiHua~Position-3-141014545-blog-103995266.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339633988_75495\"}","dist_request_id":"1727339633988_75495","ab_strategy":"increase_t0_download","index":"3","strategy":"2~default~YuanLiJiHua~Position","dest":"https://blog.csdn.net/gitblog_00919/article/details/141014545"}' data-report-query="spm=1001.2101.3001.6650.3&amp;utm_medium=distribute.wap_relevant.none-task-blog-2%7Edefault%7EYuanLiJiHua%7EPosition-3-141014545-blog-103995266.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-blog-2%7Edefault%7EYuanLiJiHua%7EPosition-3-141014545-blog-103995266.237%5Ev3%5Ewap_relevant_t0_download">继续访问</a>
+ </div>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-blog" data-url=https://blog.csdn.net/weixin_44630447/article/details/124054352 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.4","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-4-124054352-blog-103995266.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339633988_75495\"}","dist_request_id":"1727339633988_75495","ab_strategy":"increase_t0_download","index":"4","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://blog.csdn.net/weixin_44630447/article/details/124054352"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=blog>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a>
+ <div class=left>
+ miui13刷magisk面具root
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class="text active">
+ miui13刷面具root，官方root没法隐藏权限，一堆软件用不了。之前摸索了一下就写了一下教程
+ </a>
+ <a class=flag data-type=blog data-href=https://blog.csdn.net/weixin_44630447/article/details/124054352 href=https://blog.csdn.net/weixin_44630447/article/details/124054352 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.4","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-4-124054352-blog-103995266.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339633988_75495\"}","dist_request_id":"1727339633988_75495","ab_strategy":"increase_t0_download","index":"4","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://blog.csdn.net/weixin_44630447/article/details/124054352"}' data-report-query="spm=1001.2101.3001.6650.4&amp;utm_medium=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-4-124054352-blog-103995266.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-4-124054352-blog-103995266.237%5Ev3%5Ewap_relevant_t0_download">继续访问</a>
+ </div>
+ </div>
+ <div class=right-img-box>
+ <a class=recommend-img>
+ <img src=data:, alt data-sf-original-src=https://img-blog.csdnimg.cn/740d4f413ce14ed1bc07b280e54b503f.png>
+ </a>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-blog" data-url=https://devpress.csdn.net/v1/article/detail/114960199 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.5","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~activity-5-114960199-blog-103995266.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339633988_75495\"}","dist_request_id":"1727339633988_75495","ab_strategy":"increase_t0_download","index":"5","strategy":"2~default~BlogCommendFromBaidu~activity","dest":"https://devpress.csdn.net/v1/article/detail/114960199"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=blog>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a>
+ <div class=left>
+ 高通处理器的安卓手机在<em>EDL</em>(9006,9008，9025)紧急<em>刷机</em><em>模式</em>下手动单独刷新任意分区
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class="text active">
+ 1.1 <em>EDL</em>(9006,9008，9025)紧急<em>刷机</em><em>模式</em>介绍
+此<em>模式</em>为高通处理器独有。联发科的叫AP<em>模式</em>，海思的叫COM1.0<em>模式</em>。
+1.2 <em>EDL</em><em>模式</em>可以做什么？
+进入此<em>模式</em>后可以无视BL锁刷新任意分区。或者解BL锁，ROOT等等高级骚操作。老司机秒懂。
+1.3 进入方法
+各个机型进入方法不一样。有的可能是组合按键长按，有的是拆机短接TP点，有的是软件命令控制。这里不展开描述。
+ </a>
+ <a class=flag data-type=blog data-href=https://devpress.csdn.net/v1/article/detail/114960199 href=https://devpress.csdn.net/v1/article/detail/114960199 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.5","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~activity-5-114960199-blog-103995266.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339633988_75495\"}","dist_request_id":"1727339633988_75495","ab_strategy":"increase_t0_download","index":"5","strategy":"2~default~BlogCommendFromBaidu~activity","dest":"https://devpress.csdn.net/v1/article/detail/114960199"}' data-report-query="spm=1001.2101.3001.6650.5&amp;utm_medium=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7Eactivity-5-114960199-blog-103995266.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7Eactivity-5-114960199-blog-103995266.237%5Ev3%5Ewap_relevant_t0_download">继续访问</a>
+ </div>
+ </div>
+ <div class=right-img-box>
+ <a class=recommend-img>
+ <img src=data:, alt data-sf-original-src="https://img-blog.csdnimg.cn/20210318074707303.png?x-oss-process=image/resize,m_fixed,h_150">
+ </a>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-blog" data-url=https://blog.csdn.net/qq_49638696/article/details/136662931 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.6","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-6-136662931-blog-103995266.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339633988_75495\"}","dist_request_id":"1727339633988_75495","ab_strategy":"increase_t0_download","index":"6","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://blog.csdn.net/qq_49638696/article/details/136662931"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=blog>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a>
+ <div class=left>
+ 使用PayloadDumper-Go提取ROM卡刷包中的分区镜像文件
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class="text active">
+ 从ROM卡刷包中提取出各分区镜像文件
+ </a>
+ <a class=flag data-type=blog data-href=https://blog.csdn.net/qq_49638696/article/details/136662931 href=https://blog.csdn.net/qq_49638696/article/details/136662931 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.6","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-6-136662931-blog-103995266.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339633988_75495\"}","dist_request_id":"1727339633988_75495","ab_strategy":"increase_t0_download","index":"6","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://blog.csdn.net/qq_49638696/article/details/136662931"}' data-report-query="spm=1001.2101.3001.6650.6&amp;utm_medium=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-6-136662931-blog-103995266.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-6-136662931-blog-103995266.237%5Ev3%5Ewap_relevant_t0_download">继续访问</a>
+ </div>
+ </div>
+ <div class=right-img-box>
+ <a class=recommend-img>
+ <img src=data:, alt data-sf-original-src=https://img-blog.csdnimg.cn/direct/09fffbd339c94fd78d0eb64d09d0f4b0.png>
+ </a>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-blog" data-url=https://devpress.csdn.net/v1/article/detail/130748453 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.7","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~activity-7-130748453-blog-103995266.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339633988_75495\"}","dist_request_id":"1727339633988_75495","ab_strategy":"increase_t0_download","index":"7","strategy":"2~default~BlogCommendFromBaidu~activity","dest":"https://devpress.csdn.net/v1/article/detail/130748453"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=blog>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a>
+ <div class=left>
+ <em>Android</em>--<em>刷机</em>与adb
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class="text active">
+ 了解<em>刷机</em>流程和adb命令
+ </a>
+ <a class=flag data-type=blog data-href=https://devpress.csdn.net/v1/article/detail/130748453 href=https://devpress.csdn.net/v1/article/detail/130748453 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.7","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~activity-7-130748453-blog-103995266.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339633988_75495\"}","dist_request_id":"1727339633988_75495","ab_strategy":"increase_t0_download","index":"7","strategy":"2~default~BlogCommendFromBaidu~activity","dest":"https://devpress.csdn.net/v1/article/detail/130748453"}' data-report-query="spm=1001.2101.3001.6650.7&amp;utm_medium=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7Eactivity-7-130748453-blog-103995266.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7Eactivity-7-130748453-blog-103995266.237%5Ev3%5Ewap_relevant_t0_download">继续访问</a>
+ </div>
+ </div>
+ <div class=right-img-box>
+ <a class=recommend-img>
+ <img src=data:, alt data-sf-original-src=https://img-blog.csdnimg.cn/9ec3ed2f54c24307828754e00838dd76.jpeg>
+ </a>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-download" data-url=https://download.csdn.net/download/weixin_35773019/86283726 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.8","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-8-86283726-blog-103995266.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339633988_75495\"}","dist_request_id":"1727339633988_75495","ab_strategy":"increase_t0_download","index":"8","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/weixin_35773019/86283726"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=download>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a href=https://download.csdn.net/download/weixin_35773019/86283726 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.8","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-8-86283726-blog-103995266.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339633988_75495\"}","dist_request_id":"1727339633988_75495","ab_strategy":"increase_t0_download","index":"8","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/weixin_35773019/86283726"}' data-report-query="spm=1001.2101.3001.6650.8&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-8-86283726-blog-103995266.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-8-86283726-blog-103995266.237%5Ev3%5Ewap_relevant_t0_download">
+ <div class=left>
+ <em>Android</em><em>刷机</em>1
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class=text href=https://download.csdn.net/download/weixin_35773019/86283726 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.8","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-8-86283726-blog-103995266.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339633988_75495\"}","dist_request_id":"1727339633988_75495","ab_strategy":"increase_t0_download","index":"8","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/weixin_35773019/86283726"}' data-report-query="spm=1001.2101.3001.6650.8&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-8-86283726-blog-103995266.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-8-86283726-blog-103995266.237%5Ev3%5Ewap_relevant_t0_download">
+ <em>Android</em><em>刷机</em>1 <em>Android</em><em>刷机</em>是一种使用自定义固件或ROM来替换 <em>Android</em> 操作系统的默认固件的过程。<em>刷机</em>可以让用户获得更多的控制权和自定义选项，例如ROOT权限、修改内核参数、安装第三方应用程序等。 在 <em>Android</em> ...
+ </a>
+ </div>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-download" data-url=https://download.csdn.net/download/qq_23921815/88059586 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.9","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-9-88059586-blog-103995266.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339633988_75495\"}","dist_request_id":"1727339633988_75495","ab_strategy":"increase_t0_download","index":"9","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/qq_23921815/88059586"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=download>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a href=https://download.csdn.net/download/qq_23921815/88059586 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.9","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-9-88059586-blog-103995266.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339633988_75495\"}","dist_request_id":"1727339633988_75495","ab_strategy":"increase_t0_download","index":"9","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/qq_23921815/88059586"}' data-report-query="spm=1001.2101.3001.6650.9&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-9-88059586-blog-103995266.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-9-88059586-blog-103995266.237%5Ev3%5Ewap_relevant_t0_download">
+ <div class=left>
+ <em>android</em> <em>刷机</em>工具
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class=text href=https://download.csdn.net/download/qq_23921815/88059586 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.9","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-9-88059586-blog-103995266.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339633988_75495\"}","dist_request_id":"1727339633988_75495","ab_strategy":"increase_t0_download","index":"9","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/qq_23921815/88059586"}' data-report-query="spm=1001.2101.3001.6650.9&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-9-88059586-blog-103995266.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-9-88059586-blog-103995266.237%5Ev3%5Ewap_relevant_t0_download">
+ <em>android</em> <em>刷机</em>工具，开发工具为开发人员提供了固件烧录|镜像烧录|设备擦除|设备切换|固件解包等功能，支持很多芯片。
+ </a>
+ </div>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-download" data-url=https://download.csdn.net/download/zvast/9297183 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.10","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-10-9297183-blog-103995266.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339633988_75495\"}","dist_request_id":"1727339633988_75495","ab_strategy":"increase_t0_download","index":"10","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/zvast/9297183"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=download>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a href=https://download.csdn.net/download/zvast/9297183 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.10","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-10-9297183-blog-103995266.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339633988_75495\"}","dist_request_id":"1727339633988_75495","ab_strategy":"increase_t0_download","index":"10","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/zvast/9297183"}' data-report-query="spm=1001.2101.3001.6650.10&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-10-9297183-blog-103995266.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-10-9297183-blog-103995266.237%5Ev3%5Ewap_relevant_t0_download">
+ <div class=left>
+ <em>Android</em><em>刷机</em>驱动
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class=text href=https://download.csdn.net/download/zvast/9297183 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.10","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-10-9297183-blog-103995266.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339633988_75495\"}","dist_request_id":"1727339633988_75495","ab_strategy":"increase_t0_download","index":"10","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/zvast/9297183"}' data-report-query="spm=1001.2101.3001.6650.10&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-10-9297183-blog-103995266.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-10-9297183-blog-103995266.237%5Ev3%5Ewap_relevant_t0_download">
+ 本主题主要围绕“<em>Android</em><em>刷机</em>驱动”，探讨其重要性、安装过程以及相关工具的使用。 首先，理解<em>Android</em><em>刷机</em>驱动的必要性。<em>Android</em>设备通常采用不同的硬件平台，其中MTK（MediaTek）是一个常见的处理器制造商。MTK ...
+ </a>
+ </div>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-download" data-url=https://download.csdn.net/download/misly_vinky/7694913 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.11","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-11-7694913-blog-103995266.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339633988_75495\"}","dist_request_id":"1727339633988_75495","ab_strategy":"increase_t0_download","index":"11","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/misly_vinky/7694913"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=download>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a href=https://download.csdn.net/download/misly_vinky/7694913 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.11","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-11-7694913-blog-103995266.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339633988_75495\"}","dist_request_id":"1727339633988_75495","ab_strategy":"increase_t0_download","index":"11","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/misly_vinky/7694913"}' data-report-query="spm=1001.2101.3001.6650.11&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-11-7694913-blog-103995266.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-11-7694913-blog-103995266.237%5Ev3%5Ewap_relevant_t0_download">
+ <div class=left>
+ <em>android</em>系统<em>刷机</em>工具
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class=text href=https://download.csdn.net/download/misly_vinky/7694913 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.11","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-11-7694913-blog-103995266.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339633988_75495\"}","dist_request_id":"1727339633988_75495","ab_strategy":"increase_t0_download","index":"11","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/misly_vinky/7694913"}' data-report-query="spm=1001.2101.3001.6650.11&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-11-7694913-blog-103995266.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-11-7694913-blog-103995266.237%5Ev3%5Ewap_relevant_t0_download">
+ MTK <em>Android</em><em>刷机</em>工具的主要功能包括： 1. **线刷<em>升级</em>**：通过USB连接设备，用户可以将新的固件镜像直接写入手机的内存中，完成系统<em>升级</em>。 2. **备份与恢复**：用户可以使用该工具备份当前的系统状态，以便在出现...
+ </a>
+ </div>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-download" data-url=https://download.csdn.net/download/weixin_38614417/12792891 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.12","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-12-12792891-blog-103995266.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339633988_75495\"}","dist_request_id":"1727339633988_75495","ab_strategy":"increase_t0_download","index":"12","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/weixin_38614417/12792891"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=download>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a href=https://download.csdn.net/download/weixin_38614417/12792891 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.12","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-12-12792891-blog-103995266.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339633988_75495\"}","dist_request_id":"1727339633988_75495","ab_strategy":"increase_t0_download","index":"12","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/weixin_38614417/12792891"}' data-report-query="spm=1001.2101.3001.6650.12&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-12-12792891-blog-103995266.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-12-12792891-blog-103995266.237%5Ev3%5Ewap_relevant_t0_download">
+ <div class=left>
+ <em>Android</em>在linux下<em>刷机</em>教程
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class=text href=https://download.csdn.net/download/weixin_38614417/12792891 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.12","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-12-12792891-blog-103995266.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339633988_75495\"}","dist_request_id":"1727339633988_75495","ab_strategy":"increase_t0_download","index":"12","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/weixin_38614417/12792891"}' data-report-query="spm=1001.2101.3001.6650.12&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-12-12792891-blog-103995266.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-12-12792891-blog-103995266.237%5Ev3%5Ewap_relevant_t0_download">
+ 在Linux环境下为<em>Android</em>设备<em>刷机</em>是一项技术性较强的操作，但通过简单的步骤，即使是新手也能顺利完成。下面我们将详细探讨这个过程。 首先，你需要准备一个适用于你的<em>Android</em>设备的ZIP<em>刷机</em>包，通常这些包被称为ROM...
+ </a>
+ </div>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-blog" data-url=https://blog.csdn.net/weixin_44791631/article/details/130604156 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.13","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-13-130604156-blog-103995266.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339633988_75495\"}","dist_request_id":"1727339633988_75495","ab_strategy":"increase_t0_download","index":"13","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://blog.csdn.net/weixin_44791631/article/details/130604156"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=blog>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a>
+ <div class=left>
+ <em>Android</em> <em>刷机</em>
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class="text active">
+ 刷到<em>Android</em>8.1后连接WIFI可能会提示网络已连接，但无法访问互联网，这里我还为大家提供了解决办法，执行以下命令即可！注意： 此时手机上会出现授权shell，点击接受该指纹的电脑连接。此时手机上会出现Magisk的超级用户请求，点击允许。这里使用的手机是： Google Nexus 6P手机 系统版本是6.0.1，目标：<em>升级</em>了8.0版本。关闭设备电源，按住 电源开关 + 音量+，直到屏幕上出现“ FASTBOOT”字样，然后松开。操作流程： 按红色图框依次进行， 英文版的相同的位置操作。
+ </a>
+ <a class=flag data-type=blog data-href=https://blog.csdn.net/weixin_44791631/article/details/130604156 href=https://blog.csdn.net/weixin_44791631/article/details/130604156 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.13","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-13-130604156-blog-103995266.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339633988_75495\"}","dist_request_id":"1727339633988_75495","ab_strategy":"increase_t0_download","index":"13","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://blog.csdn.net/weixin_44791631/article/details/130604156"}' data-report-query="spm=1001.2101.3001.6650.13&amp;utm_medium=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-13-130604156-blog-103995266.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-13-130604156-blog-103995266.237%5Ev3%5Ewap_relevant_t0_download">继续访问</a>
+ </div>
+ </div>
+ <div class=right-img-box>
+ <a class=recommend-img>
+ <img src=data:, alt data-sf-original-src=https://img-blog.csdnimg.cn/e4108c4bc5b447d5a443ac9809a99076.jpeg>
+ </a>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-blog" data-url=https://devpress.csdn.net/v1/article/detail/120518247 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.14","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~activity-14-120518247-blog-103995266.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339633988_75495\"}","dist_request_id":"1727339633988_75495","ab_strategy":"increase_t0_download","index":"14","strategy":"2~default~BlogCommendFromBaidu~activity","dest":"https://devpress.csdn.net/v1/article/detail/120518247"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=blog>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a>
+ <div class=left>
+ 安卓手机<em>刷机</em>教程
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class="text active">
+ 安卓手机<em>刷机</em>可以通过通过recovery和fastboot两种<em>方式</em>，下面介绍这两种<em>方式</em>的<em>刷机</em>方法
+1. 通过recovery刷入
+首先需要第三方recovery，如果没有第三方recovery需要刷入，参考这里
+下载手机卡刷包放到手机里，Google Pixel手机<em>OTA</em><em>升级</em>包地址：Full <em>OTA</em> Images for Nexus and Pixel Devices
+手机按音量上+开机进入recovery
+点击install，选择下载的<em>升级</em>包安装
+2. fastboot刷入
+线刷需要adb工具包，ad.
+ </a>
+ <a class=flag data-type=blog data-href=https://devpress.csdn.net/v1/article/detail/120518247 href=https://devpress.csdn.net/v1/article/detail/120518247 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.14","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~activity-14-120518247-blog-103995266.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339633988_75495\"}","dist_request_id":"1727339633988_75495","ab_strategy":"increase_t0_download","index":"14","strategy":"2~default~BlogCommendFromBaidu~activity","dest":"https://devpress.csdn.net/v1/article/detail/120518247"}' data-report-query="spm=1001.2101.3001.6650.14&amp;utm_medium=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7Eactivity-14-120518247-blog-103995266.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7Eactivity-14-120518247-blog-103995266.237%5Ev3%5Ewap_relevant_t0_download">继续访问</a>
+ </div>
+ </div>
+ <div class=right-img-box>
+ <a class=recommend-img>
+ <img src=data:, alt data-sf-original-src=https://img-blog.csdnimg.cn/007ccec8a2df40f69b58420ec6272c88.png>
+ </a>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-blog" data-url=https://blog.csdn.net/HDhaisenbao/article/details/139835403 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.15","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-15-139835403-blog-103995266.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339633988_75495\"}","dist_request_id":"1727339633988_75495","ab_strategy":"increase_t0_download","index":"15","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://blog.csdn.net/HDhaisenbao/article/details/139835403"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=blog>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a>
+ <div class=left>
+ 安卓手机<em>刷机</em>（小米系统）保姆级教程
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class="text active">
+ 本文讲解了安卓手机<em>刷机</em>小米系统的<em>方式</em>，欢迎留言。
+ </a>
+ <a class=flag data-type=blog data-href=https://blog.csdn.net/HDhaisenbao/article/details/139835403 href=https://blog.csdn.net/HDhaisenbao/article/details/139835403 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.15","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-15-139835403-blog-103995266.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339633988_75495\"}","dist_request_id":"1727339633988_75495","ab_strategy":"increase_t0_download","index":"15","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://blog.csdn.net/HDhaisenbao/article/details/139835403"}' data-report-query="spm=1001.2101.3001.6650.15&amp;utm_medium=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-15-139835403-blog-103995266.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-15-139835403-blog-103995266.237%5Ev3%5Ewap_relevant_t0_download">继续访问</a>
+ </div>
+ </div>
+ <div class=right-img-box>
+ <a class=recommend-img>
+ <img src=data:, alt data-sf-original-src=https://img-blog.csdnimg.cn/direct/a43bb3a5abf946578eb22c17d234a641.png>
+ </a>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-blog" data-url=https://blog.csdn.net/weixin_39928686/article/details/117866705 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.16","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-16-117866705-blog-103995266.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339633988_75495\"}","dist_request_id":"1727339633988_75495","ab_strategy":"increase_t0_download","index":"16","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://blog.csdn.net/weixin_39928686/article/details/117866705"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=blog>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a>
+ <div class=left>
+ <em>android</em> <em>edl</em><em>模式</em>,重磅干货！高通9008<em>模式</em>与数据提取
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class="text active">
+ 原标题：重磅干货！高通9008<em>模式</em>与数据提取上一期的镜像基础知识更完后，本期我们上高级镜像干货！大家还记得<em>Android</em>手工镜像的方法吗？我们有读者读完之后提出了新的问题，刚好和Wendy最近计划的本文吻合~ 谢谢这位热心读者，本期我们就来解决这个问题！正文本文讲述的就是针对高通平台智能手机的镜像方法，不需要root，且免解BL锁。采用高通芯片的智能手机，一旦变砖了，通常可以在9008<em>模式</em>进行救砖...
+ </a>
+ <a class=flag data-type=blog data-href=https://blog.csdn.net/weixin_39928686/article/details/117866705 href=https://blog.csdn.net/weixin_39928686/article/details/117866705 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.16","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-16-117866705-blog-103995266.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339633988_75495\"}","dist_request_id":"1727339633988_75495","ab_strategy":"increase_t0_download","index":"16","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://blog.csdn.net/weixin_39928686/article/details/117866705"}' data-report-query="spm=1001.2101.3001.6650.16&amp;utm_medium=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-16-117866705-blog-103995266.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-16-117866705-blog-103995266.237%5Ev3%5Ewap_relevant_t0_download">继续访问</a>
+ </div>
+ </div>
+ <div class=right-img-box>
+ <a class=recommend-img>
+ <img src=data:, alt data-sf-original-src="https://img-blog.csdnimg.cn/img_convert/99a9abfdca96a99c4f9436236d7721a9.png?x-oss-process=image/resize,m_fixed,h_150">
+ </a>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-blog" data-url=https://blog.csdn.net/gitblog_00027/article/details/137036301 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.17","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-17-137036301-blog-103995266.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339633988_75495\"}","dist_request_id":"1727339633988_75495","ab_strategy":"increase_t0_download","index":"17","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://blog.csdn.net/gitblog_00027/article/details/137036301"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=blog>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a>
+ <div class=left>
+ 探秘Payload Dumper：揭秘<em>Android</em>应用数据的利器
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class="text active">
+ 探秘Payload Dumper：揭秘<em>Android</em>应用数据的利器
+项目地址:https://gitcode.com/vm03/payload_dumper
+在<em>Android</em>应用开发和安全研究领域，理解应用程序的行为并深入探索其内部工作原理是至关重要的。而【Payload Dumper】（https://gitcode.com/vm03/payload_dumper）正是这样一款工具，它可以帮助我...
+ </a>
+ <a class=flag data-type=blog data-href=https://blog.csdn.net/gitblog_00027/article/details/137036301 href=https://blog.csdn.net/gitblog_00027/article/details/137036301 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.17","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-17-137036301-blog-103995266.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339633988_75495\"}","dist_request_id":"1727339633988_75495","ab_strategy":"increase_t0_download","index":"17","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://blog.csdn.net/gitblog_00027/article/details/137036301"}' data-report-query="spm=1001.2101.3001.6650.17&amp;utm_medium=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-17-137036301-blog-103995266.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-17-137036301-blog-103995266.237%5Ev3%5Ewap_relevant_t0_download">继续访问</a>
+ </div>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-download" data-url=https://download.csdn.net/download/bloodhacker/6412759 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.18","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-18-6412759-blog-103995266.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339633988_75495\"}","dist_request_id":"1727339633988_75495","ab_strategy":"increase_t0_download","index":"18","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/bloodhacker/6412759"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=download>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a href=https://download.csdn.net/download/bloodhacker/6412759 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.18","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-18-6412759-blog-103995266.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339633988_75495\"}","dist_request_id":"1727339633988_75495","ab_strategy":"increase_t0_download","index":"18","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/bloodhacker/6412759"}' data-report-query="spm=1001.2101.3001.6650.18&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-18-6412759-blog-103995266.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-18-6412759-blog-103995266.237%5Ev3%5Ewap_relevant_t0_download">
+ <div class=left>
+ <em>Android</em><em>刷机</em>脚本
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class=text href=https://download.csdn.net/download/bloodhacker/6412759 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.18","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-18-6412759-blog-103995266.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339633988_75495\"}","dist_request_id":"1727339633988_75495","ab_strategy":"increase_t0_download","index":"18","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/bloodhacker/6412759"}' data-report-query="spm=1001.2101.3001.6650.18&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-18-6412759-blog-103995266.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-18-6412759-blog-103995266.237%5Ev3%5Ewap_relevant_t0_download">
+ <em>Android</em><em>刷机</em>脚本是<em>Android</em>操作系统定制和优化过程中不可或缺的一部分，主要用于自动化执行一系列系统修改和配置任务。通过使用这些脚本，用户可以个性化自己的设备，提升性能，或者安装特定功能。以下将详细介绍...
+ </a>
+ </div>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-download" data-url=https://download.csdn.net/download/CHNE_TAO_EMSM/87995288 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.19","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-19-87995288-blog-103995266.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339633988_75495\"}","dist_request_id":"1727339633988_75495","ab_strategy":"increase_t0_download","index":"19","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/CHNE_TAO_EMSM/87995288"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=download>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a href=https://download.csdn.net/download/CHNE_TAO_EMSM/87995288 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.19","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-19-87995288-blog-103995266.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339633988_75495\"}","dist_request_id":"1727339633988_75495","ab_strategy":"increase_t0_download","index":"19","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/CHNE_TAO_EMSM/87995288"}' data-report-query="spm=1001.2101.3001.6650.19&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-19-87995288-blog-103995266.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-19-87995288-blog-103995266.237%5Ev3%5Ewap_relevant_t0_download">
+ <div class=left>
+ <em>Android</em> <em>刷机</em>工具包
+<em>刷机</em>驱动
+<em>刷机</em>软件
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class=text href=https://download.csdn.net/download/CHNE_TAO_EMSM/87995288 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.19","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-19-87995288-blog-103995266.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339633988_75495\"}","dist_request_id":"1727339633988_75495","ab_strategy":"increase_t0_download","index":"19","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/CHNE_TAO_EMSM/87995288"}' data-report-query="spm=1001.2101.3001.6650.19&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-19-87995288-blog-103995266.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-19-87995288-blog-103995266.237%5Ev3%5Ewap_relevant_t0_download">
+ <em>Android</em> <em>刷机</em>是<em>Android</em>系统用户为了提升设备性能、安装自定义ROM或修复系统问题而进行的一项操作。这个压缩包文件包含了一些必要的工具和资源，帮助用户进行<em>刷机</em>过程。以下是这些内容的详细解释： 1. **<em>Android</em> ...
+ </a>
+ </div>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-download" data-url=https://download.csdn.net/download/gong_wejoy/53628480 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.20","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-20-53628480-blog-103995266.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339633988_75495\"}","dist_request_id":"1727339633988_75495","ab_strategy":"increase_t0_download","index":"20","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/gong_wejoy/53628480"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=download>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a href=https://download.csdn.net/download/gong_wejoy/53628480 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.20","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-20-53628480-blog-103995266.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339633988_75495\"}","dist_request_id":"1727339633988_75495","ab_strategy":"increase_t0_download","index":"20","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/gong_wejoy/53628480"}' data-report-query="spm=1001.2101.3001.6650.20&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-20-53628480-blog-103995266.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-20-53628480-blog-103995266.237%5Ev3%5Ewap_relevant_t0_download">
+ <div class=left>
+ 三星Galaxy Note 10.1<em>刷机</em><em>Android</em> 9版本ROM
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class=text href=https://download.csdn.net/download/gong_wejoy/53628480 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.20","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-20-53628480-blog-103995266.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339633988_75495\"}","dist_request_id":"1727339633988_75495","ab_strategy":"increase_t0_download","index":"20","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/gong_wejoy/53628480"}' data-report-query="spm=1001.2101.3001.6650.20&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-20-53628480-blog-103995266.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-20-53628480-blog-103995266.237%5Ev3%5Ewap_relevant_t0_download">
+ ROM下载地址：https://<em>android</em>filehost.com，<em>刷机</em>教程博客：https://blog.csdn.net/xiamiaogogogo/article/details/115563677
+ </a>
+ </div>
+ </div>
+ </div>
+ </dl>
+ </div>
+ </div>
+ 
+ <div id=operate class=clearfix>
+ <div class="clearfix content-box">
+ <div class="operate_write operate_common floatL">
+ <span class=comment-bt-write>
+ <span class=enter_text><img class=operate_img src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/writeIcon@2x.png>写评论</span>
+ <img class=comment-sofa-flag src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/pc/img/commentFlag@2x.png>
+ </span>
+ <span class=operate_write_box>
+ <img class=operate_img src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/comment@2x.png>
+ <span class=count>
+ 2
+ </span>
+ </span>
+ </div>
+ <div class="collect-btn operate_add operate_common floatL">
+ <span class=operate_collect_box>
+ <span class=uncollect>
+ <img class=operate_img src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/uncollect@2x.png>
+ </span>
+ <span class=collect>
+ <img class=operate_img src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/collect@2x.png>
+ </span>
+ <span class=count>
+ 29
+ </span>
+ </span>
+ </div>
+ <div class="like-btn operate_heart operate_common floatL" data-dest=https://blog.csdn.net/dongyi1988/article/details/103995266>
+ <span class=operate_heart_box>
+ <span class=unheart>
+ <img class=operate_img src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/unheart@2x.png>
+ </span>
+ <span class=heart>
+ <img class=operate_img src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/heart@2x.png>
+ </span>
+ <span class=count>
+ 2
+ </span>
+ </span>
+ </div>
+ <div class="unlike-btn operate_steplike operate_common floatL">
+ <span class=operate_heart_box>
+ <span class=stepunlike>
+ <img class=operate_img src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/stepUnLike.png>
+ </span>
+ <span class=steplike>
+ <img class=operate_img src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/stepLike.png>
+ </span>
+ <span class=count>
+ 踩
+ </span>
+ </span>
+ </div>
+ <div class="share-btn operate_share operate_common floatL">
+ <a>
+ <span class=operate_share_box>
+ <img class=operate_img src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/unshare@2x.png>
+ <span class=count>分享</span>
+ </span>
+ </a>
+ </div>
+ </div>
+ </div>
+</div>
+ <div id=prompt>
+ 
+ <span>文章收藏成功</span>
+ </div>
+ <div class="app-shadowbox wap-shadowbox" data-type=view>
+ <div class=app-box>
+ <div class=pos-box>
+ <div class=tip-massege>前往CSDN APP阅读全文</div>
+ <div class=tip-text>CSDN APP记录你的成长</div>
+ <a class="app-bt-cance read_more_btn close-icon" data-report-click='{"spm":"1001.2101.3001.9529"}'>
+ <img src=data:, alt data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/closeBt.png>
+ </a>
+ <div class="button-box button-box-new w-100p">
+ <a class="app-bt-sure open_app_channelCode" id=wap_open_app_btn data-channelcode=blog_1592384106 data-channelabid=293_exp1 data-report-click='{"spm":"1001.2101.3001.9530"}' data-name=a data-href="csdnapp://web?url=https://blog.csdn.net/dongyi1988/article/details/103995266">前往APP</a>
+ </div>
+ </div>
+ </div>
+ </div>
+ <div class="wap-shadowbox qr-weixin-box">
+ <div class=app-box>
+ <div class=tip-massege>微信小程序收藏浏览更方便</div>
+ <div class=routine-box-img> <img src=data:, alt data-sf-original-src></div>
+ <div class=routine-box-text>
+ <span>截图/长按 </span>保存本地，用微信扫码打开
+ </div>
+ <img class=close src=data:, alt data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/closeBt.png>
+ </div>
+ </div>
+ <div class="small-shadowbox wap-shadowbox">
+ <div class=app-box>
+ <div class=tip-massege>进入小程序随时浏览/收藏技术文章</div>
+ <div class="button-box button-box-new">
+ <a class=app-ab-cance data-report-click='{"spm":"1001.2101.3001.9400"}'>取消</a>
+ <a class=app-bt-sure data-report-click='{"spm":"1001.2101.3001.9401"}'>立即前往</a>
+ </div>
+ <img class=close src=data:, alt data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/closeBt.png>
+ </div>
+ </div>
+ <div class="wap-shadowbox ab-app-shadowbox">
+ <div class="app-box active">
+ <a class="app-bt-cance read_more_btn close-icon" id=ab-app-shadowbox-close data-report-view='{"spm":"1001.2101.3001.9672"}' data-report-click='{"spm":"1001.2101.3001.9672"}'>
+ <img src=data:, alt data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/closeBt.png>
+ </a>
+ <div class=tip-massege>需要前往CSDN APP登录即可继续互动</div>
+ <div class="button-box button-box-new w-100p">
+ <a class="app-bt-sure open_app_channelCode app-bt-sure-btn-new" id=wap_open_app_btn data-channelcode=1663655995 data-report-view='{"spm":"1001.2101.3001.8335"}' data-report-click='{"spm":"1001.2101.3001.8335"}' data-name=a data-href="csdnapp://web?url=https://blog.csdn.net/dongyi1988/article/details/103995266">前往APP</a>
+ </div>
+ </div>
+ </div>
+ <div class="comment-shadowbox wap-shadowbox">
+ <div class=comment-write-box>
+ <div class=write-comment-container>
+ <textarea name class=write-comment-content id=writeComment placeholder="请发表有价值的评论， 博客评论不欢迎灌水，良好的社区氛围需大家一起维护。"></textarea>
+ <div id=formRewardBox class=comment-reward-box>
+ <a class=btn-remove-reward></a>
+ <div class=form-reward-box>
+ <div class=info>
+ 成就一亿技术人!
+ </div>
+ <div class=price-info>
+ 拼手气红包<span class=price>6.0元</span>
+ </div>
+ </div>
+ </div>
+ </div>
+ <div class=comment-write-bt>
+ <a class=write-redEnvolope>
+ <img class=comment-operate-img data-url=https://csdnimg.cn/release/blogv2/dist/pc/img/ src=data:, alt=红包 data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/pc/img/commentReward.png>
+ </a>
+ <a class=write-bt-sure data-report-click='{"spm":"1001.2101.3001.7867","mod":"1589175530_002"}' data-report-view='{"spm":"1001.2101.3001.7867","mod":"1589175530_002"}'>发送</a>
+ </div>
+ <div class=comment-rewarddialog-box>
+ <div class=form-box>
+ <div class=title-box>
+ 发红包
+ <a class=btn-form-close></a>
+ </div>
+ <form id=commentRewardForm>
+ <div class=ipt-box>
+ <label for=txtName>祝福语</label>
+ <div class=ipt-btn-box>
+ <input type=text name=name id=txtName autocomplete=off maxlength=50>
+ <a class="btn-ipt btn-random"></a>
+ </div>
+ <p class=notice>请填写红包祝福语或标题</p>
+ </div>
+ <div class=ipt-box>
+ <label for=txtSendAmount>红包数量</label>
+ <div class=ipt-txt-box>
+ <input type=text name=sendAmount maxlength=4 id=txtSendAmount placeholder=请填写红包数量(最小10个) autocomplete=off>
+ <span class=after-txt>个</span>
+ </div>
+ <p class=notice>红包个数最小为10个</p>
+ </div>
+ <div class=ipt-box>
+ <label for=txtMoney>
+ <div class=balance-info-box>
+ <div class=balance-info>
+ 您的钱包余额 <span class=red><span class=balance></span>元</span>
+ <a href=https://i.csdn.net/#/wallet/balance/recharge class=link-charge target=_blank>前往充值<img class=origin-plan-icon src=data:, alt data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/arrowRight.png></a>
+ </div>
+ </div>
+ </label>
+ <div class="ipt-txt-box error">
+ <input type=text name=money maxlength=5 id=txtMoney placeholder=请填写总金额(最低5元) autocomplete=off>
+ <span class=after-txt>元</span>
+ </div>
+ <p class=notice>红包金额最低5元</p>
+ </div>
+ <div class=opt-box>
+ <div class=pay-info>
+ ¥<span class=price></span>
+ </div>
+ <button type=button class="ml8 btn-submit" disabled>发红包</button>
+ <p class=remark>未领取的红包，将于96小时后发起退款</p>
+ </div>
+ </form>
+ </div>
+ </div>
+ </div>
+ </div>
+ <div class=redEnvolope id=redEnvolope>
+ <div class=env-box>
+ <div class=env-container>
+ <div class=pre-open id=preOpen>
+ <div class=top>
+ <header>
+ <img class=clearTpaErr :src=redpacketAuthor.avatar alt>
+ <div class=author>成就一亿技术人!</div>
+ </header>
+ <div class=bot-icon></div>
+ </div>
+ <footer>
+ <div class="red-openbtn open-start"></div>
+ <div class=tip>
+ 领取后你会自动成为博主和红包主的粉丝
+ <a class=rule target=_blank>规则</a>
+ </div>
+ </footer>
+ </div>
+ <div class=opened id=opened>
+ <div class=bot-icon>
+ <header>
+ <a class=creatorUrl href="https://blog.csdn.net/dongyi1988/article/details/103995266?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_baidulandingword~default-0-103995266-blog-114960199.235^v43^pc_blog_bottom_relevance_base2&amp;spm=1001.2101.3001.4242.1&amp;utm_relevant_index=3" target=_blank>
+ <img class=clearTpaErr src=data:, alt data-sf-original-src=https://profile-avatar.csdnimg.cn/default.jpg!2>
+ </a>
+ <div class=author>
+ <div class=tt>hope_wisdom</div> 发出的红包
+ </div>
+ </header>
+ </div>
+ <div class=receive-box>
+ <header></header>
+ <div class=receive-list>
+ </div>
+ </div>
+ </div>
+ </div>
+ <div class=close-btn></div>
+ </div>
+ </div>
+ <div class="weixin-shadowbox wap-shadowbox">
+ <div class="guide-box guide-box-new">
+ <div class=topic>前往CSDN APP阅读全文</div>
+ <div class=tip>阅读体验更佳</div>
+ <div class="csdn-box item-box">
+ <div class=item><img class=app-img src=data:, alt data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/csdnIcon@2x.png></div>
+ <div class=item>
+ <div class=item-content>
+ <p class=title>CSDN</p>
+ <p class=text>成就一亿技术人</p>
+ </div>
+ </div>
+ <div class=item><a class="open-app open-app-csdn open_app_channelCode" data-channelcode=1661743049 data-url=https://blog.csdn.net/dongyi1988/article/details/103995266 data-href="csdnapp://web?url=https://blog.csdn.net/dongyi1988/article/details/103995266" data-report-view='{"spm":"1001.2101.3001.8331"}' data-report-click='{"spm":"1001.2101.3001.8331"}'>前往</a></div>
+ </div>
+ <div class="weixin-box item-box">
+ <div class="item item-display-none item-chrome"><img class=app-img src=data:, alt data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/chromeIcon@2x.png></div>
+ <div class=item>
+ <div class=item-content>浏览器</div>
+ </div>
+ <div class=item><a class="open-app open-app-weixin" data-report-view='{"spm":"1001.2101.3001.8332"}' data-report-click='{"spm":"1001.2101.3001.8332"}'>继续</a></div>
+ </div>
+ </div>
+ </div>
+ <div class="share-shadowbox wap-shadowbox">
+ <div class=share-box>
+ <div class=tit>分享</div>
+ <div class=text></div>
+ <a class=share-bt-tip data-report-click='{"spm":"1001.2101.3001.7872"}'>复制分享链接</a>
+ <img class=close src=data:, alt data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/closeBt.png>
+ </div>
+ </div>
+ 
+ <div class=ios-shadowbox>
+ <div class=ios-box>
+ <div class=tip-massege>请升级应用版本</div>
+ <div class=button-box>
+ <a id=cancelBt class=bt-cancel>取消</a>
+ <a id=upBt class=bt-cancel href="itms-apps://itunes.apple.com/cn/app/id1437086352?mt=8">立即升级</a>
+ </div>
+ </div>
+ </div>
+ <div class=feed-Sign-weixin>
+ <p class=open_app_channelCode id=feed-open-app-btn data-channelabid=252_exp1 data-href="csdnapp://web?url=https://blog.csdn.net/dongyi1988/article/details/103995266" data-report-view='{"spm":"1001.2101.3001.9397"}' data-report-click='{"spm":"1001.2101.3001.9397"}'>打开 <img src=data:, alt data-sf-original-src=https://img-home.csdnimg.cn/images/20221101034807.png> APP</p>
+ <a id=feed-Sign-weixin-btn data-report-click='{"spm":"1001.2101.3001.9398"}'>小程序看全文</a>
+ </div>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+<script data-template-shadow-root>(()=>{document.currentScript.remove();processNode(document);function processNode(node){node.querySelectorAll("template[shadowrootmode]").forEach(element=>{let shadowRoot = element.parentElement.shadowRoot;if (!shadowRoot) {try {shadowRoot=element.parentElement.attachShadow({mode:element.getAttribute("shadowrootmode"),delegatesFocus:element.getAttribute("shadowrootdelegatesfocus")!=null,clonable:element.getAttribute("shadowrootclonable")!=null,serializable:element.getAttribute("shadowrootserializable")!=null});shadowRoot.innerHTML=element.innerHTML;element.remove()} catch (error) {} if (shadowRoot) {processNode(shadowRoot)}}})}})()</script>
