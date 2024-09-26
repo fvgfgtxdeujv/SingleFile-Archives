@@ -1,0 +1,912 @@
+<!DOCTYPE html> <html><!--
+ Page saved with SingleFile 
+ url: https://blog.csdn.net/u011283906/article/details/125299597 
+ saved date: Fri Sep 27 2024 07:17:10 GMT+0800 (中国标准时间)
+--><meta charset=utf-8>
+<meta http-equiv=X-UA-Compatible content="IE=Edge">
+<meta name=viewport content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name=apple-mobile-web-app-status-bar-style content=black>
+<meta name=report content='{"pid": "blog", "spm":"1001.2101"}'>
+<meta name=applicable-device content=mobile>
+<meta http-equiv=Cache-Control content=no-transform>
+<meta http-equiv=Cache-Control content=no-siteapp>
+<meta content=yes name=apple-mobile-web-app-capable>
+<meta content=black name=apple-mobile-web-app-status-bar-style>
+<meta content="telephone=no" name=format-detection>
+<meta content="email=no" name=format-detection>
+<meta name=csdn-baidu-search content='{"autorun":true,"install":true,"keyword":"qcn"}'>
+<title>关于安卓机型写串码 改串码 端口开启和基带qcn等一些经验-CSDN博客</title>
+<meta name=description content="文章浏览阅读2w次，点赞4次，收藏49次。第一种需求情况。主要是刷机 更新 降级导致的基带丢失 没有串码情况。这种需要写入基带和串码来解决故障，有的机型有可能重新线刷一次官方固件基带和串码就回复正常了。有的机型不行。具体实测为主。那么不管是写串码或者改串码或者写基带qcn都先要明白前提是什么？那么今天说的一个问题就是端口开启这边说的端口就是指写串码 改串码 写qcn的端口。没有开启端口。你无法读取原机基带谢谢，也就没办法读写。关于基础的教程。大家可以参考下我这个教程​​​​​​基带qcn的备份与写入相关 格机 nv报错_安卓机器的博客-CSDN博客_qcn">
+<link rel=canonical href=https://blog.csdn.net/u011283906/article/details/125299597>
+<link rel=apple-touch-icon sizes=57x57 href=data:, data-sf-original-href=https://csdnimg.cn/release/blogv2/dist/mobile/img/touch-icon-iphone-57.png>
+<link rel=apple-touch-icon sizes=114x114 href=data:, data-sf-original-href=https://csdnimg.cn/release/blogv2/dist/mobile/img/touch-icon-iphone-114.png>
+<link rel=apple-touch-icon sizes=72x72 href=data:, data-sf-original-href=https://csdnimg.cn/release/blogv2/dist/mobile/img/touch-icon-iphone-72.png>
+<link rel=apple-touch-icon sizes=144x144 href=data:, data-sf-original-href=https://csdnimg.cn/release/blogv2/dist/mobile/img/touch-icon-iphone-144.png>
+<link rel=apple-touch-icon sizes=120x120 href=data:, data-sf-original-href=https://csdnimg.cn/release/blogv2/dist/mobile/img/touch-icon-iphone-120.png>
+<script type=application/ld+json>{"@context":"https://ziyuan.baidu.com/contexts/cambrian.jsonld","@id":"https://blog.csdn.net/u011283906/article/details/125299597","appid":"1638831770136827","pubDate":"2022-06-15T16:25:45","title":"关于安卓机型写串码 改串码 端口开启和基带qcn等一些经验-CSDN博客","upDate":"2022-06-15T16:54:10"}</script>
+<meta name=referrer content=no-referrer><link href=data:, rel="shortcut icon" type=image/x-icon data-sf-original-href=https://g.csdnimg.cn/static/logo/favicon32.ico><meta http-equiv=content-security-policy content="default-src 'none'; font-src 'self' data:; img-src 'self' data:; style-src 'unsafe-inline'; media-src 'self' data:; script-src 'unsafe-inline' data:; object-src 'self' data:; frame-src 'self' data:;"><style>img[src="data:,"],source[src="data:,"]{display:none!important}</style></head>
+<body>
+ 
+<div id=main>
+<div class=aside-header-fixed>
+ <div class=aside-left>
+ <img class=iconfont src=data:, alt data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/iconLeftArrow.png>
+ <img class=portrait src=data:, alt data-sf-original-src=https://profile-avatar.csdnimg.cn/4cd05d41967b42d295a8f82f1dbb0244_u011283906.jpg!1>
+ <span>安卓机器</span>
+ </div>
+ <div class=aside-right>
+ <a class=unfollow id=detailFollowNew data-id=125299597>已关注</a>
+ </div>
+</div>
+ <div class=a_d_1></div>
+ 
+ 
+ 
+ 
+ <div id=article class=margin_sides>
+ <h1 class=article_title id=articleContentId>
+ <span class=tit>关于安卓机型写串码 改串码 端口开启和基带qcn等一些经验</span>
+ <span class="article-type type-1 float-none">原创</span>
+ </h1>
+ <div class=creat-time-box>
+ <div class=creat-time-box-up-time><span>已于&nbsp;2023-04-26 15:13:10&nbsp;修改</span></div>
+ <span class=creat-time><img class=creat-time-img src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/renewal.png> <span>2022-06-15 16:54:10</span></span>
+ <div class=reading-collections-box>
+ <p class=blog-wap-reading>
+ <img class=have-heart-img src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/wap-articleReadEyes2.png> 
+ 阅读量<span class=text>2w</span>
+ </p>
+ </div>
+ <div class=subject-talk-box>
+ <a class=subject-talk href="https://app-blog.csdn.net/m/wapAiRelated?utm_source=711815865&amp;isHiddenNavigation=true" data-report-view='{"spm":"1001.2101.3001.10123"}' data-report-click='{"spm":"1001.2101.3001.10123"}'>
+ <img class=have-heart-img src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/subject-talk-img.png> 
+ <span>AI必读</span>
+ </a>
+ </div>
+ </div>
+ <div class="article_info clearfix">
+ <div class="top_user_mod clearfix">
+ <div class="top_user_info floatL clearfix">
+ <dl>
+ <dt class=floatL>
+ <a href=https://blog.csdn.net/u011283906 target=_blank rel=noopener class="clearfix top_user_info_a">
+ <img class=avatar src=data:, alt data-sf-original-src=https://profile-avatar.csdnimg.cn/4cd05d41967b42d295a8f82f1dbb0244_u011283906.jpg!1>
+ </a>
+ </dt>
+ <dd class=floatL>
+ <p class=line-nick-name> 
+ <span class="nick_name odd-overhidden">安卓机器</span>
+ 
+ <img class=identity-icon src=data:, data-sf-original-src=https://csdnimg.cn/identity/blog7.png>
+ 
+ 
+ </p>
+ <p class=line-detaile>
+ <span class=code_years>码龄11年</span>
+ </p>
+ </dd> 
+ <a class=unfollow id=detailFollow data-id=7982622 data-report-view='{"spm":"1001.2101.3001.8391"}'>已关注</a>
+ </dl>
+ </div>
+ </div>
+ </div> 
+ <div class=baidu_pl id=csdn-previewimg-box>
+ <div class=article_content>
+ <div id=content_views class="htmledit_views clearfix">
+ 
+ <p>第一种需求情况。主要是刷机 更新 降级导致的基带丢失 没有串码情况。这种需要写入基带和串码来解决故障，有的机型有可能重新线刷一次官方固件基带和串码就回复正常了。有的机型不行。具体实测为主。那么不管是写串码或者改串码或者写基带qcn都先要明白前提是什么？</p> 
+<p>那么今天说的一个问题就是端口开启</p> 
+<p>这边说的端口就是指写串码 改串码 写qcn的端口。没有开启端口。你无法读取原机基带谢谢，也就没办法读写。</p> 
+<p>关于基础的教程。大家可以参考下我这个教程</p> 
+<p><a href="https://blog.csdn.net/u011283906/article/details/124720894?spm=1001.2014.3001.5502" title="​​​​​​基带qcn的备份与写入相关 格机 nv报错_安卓机器的博客-CSDN博客_基带备份">​​​​​​基带qcn的备份与写入相关 格机 nv报错_安卓机器的博客-CSDN博客_基带备份</a></p> 
+<p>简单说下开端口有两种方法;</p> 
+<p>1----就是root后使用命令开启</p> 
+<p><strong>需要手机root。然后开机联机开启usb调试 root授权后</strong><br><strong>adb shell</strong><br><strong>su</strong><br><strong>setprop sys.usb.config diag,adb</strong></p> 
+<p><strong>2---指令开启端口</strong></p> 
+<p><strong>就像上面的那个教程所说的指令开启</strong></p> 
+<p><strong>类似小米早期机型---*#*#717717#*#*<br> oppo机型---*#800#<br> 魅族mtk---*#*#3646633#*#*<br> 乐视mtk---*#*#76937#*#*<br> 中国移动---*#1973461#<br> 酷派---*20121220#*<br> 中兴---*#*#7678#<br> 联想---*#*#33284#*#*<br> 等等.............</strong><br> 当然。机型不同端口的指令也不同。有的同一个机型版本不同。也有可能指令不同。也有可能官方就没有指令。具体也得自行查找开</p> 
+<p>综上所述。据我所知的一般就以上两种开启方法。</p> 
+<p>当你开启了端口后，驱动装好后就可以去取自己机型的各项参数了</p> 
+<p>我分享过很多资源。类似</p> 
+<p><a href=https://download.csdn.net/download/u011283906/85628793 title=高通芯片改写串码MEIDwifi蓝牙SN等参数工具+使用教程-Android文档类资源-CSDN下载>高通芯片改写串码MEIDwifi蓝牙SN等参数工具+使用教程-Android文档类资源-CSDN下载</a><br><a href=https://download.csdn.net/download/u011283906/85627042 title=​​​​​​高通机型多功能改写串码meid码工具-Android文档类资源-CSDN下载>​​​​​​高通机型多功能改写串码meid码工具-Android文档类资源-CSDN下载</a><br> &nbsp;</p> 
+<p><a href=https://download.csdn.net/download/u011283906/85626696 title=高通机型更改MEID和ESN的工具-Android文档类资源-CSDN下载>高通机型更改MEID和ESN的工具-Android文档类资源-CSDN下载</a></p> 
+<p><img alt src=data:, data-sf-original-src=https://i-blog.csdnimg.cn/blog_migrate/4bd8c8868bc52aa191e676f89f6a3a60.png></p> 
+<p>上图资源;<a class=link-info href="https://download.csdn.net/download/u011283906/87729076?spm=1001.2014.3001.5503" title=改串工具>改串工具</a></p> 
+<p></p> 
+<p><img alt src=data:, data-sf-original-src=https://i-blog.csdnimg.cn/blog_migrate/e10b5e9a348295ec75619f35a155614d.png></p> 
+<p><img alt src=data:, data-sf-original-src=https://i-blog.csdnimg.cn/blog_migrate/e00262db8bd7c91d353c76db22bfe821.png></p> 
+<p></p> 
+<p>等等很多资源。只要端口和驱动正常都可以使用各软件来读取原机的各项参数。至于说这么多改写参数的资源。那个好。我只能说各有优势。</p> 
+<p>二 ------- 端口开启后怎么改串码。怎么写基带qcn</p> 
+<p>怎么写qcn还是那句话 多参考下我上面那个教程贴</p> 
+<p>这边说下写串码和改串码和改其他参数</p> 
+<p>首先机型不同。不一定方法都通用。具体你的使用自己的机型实测。老高通芯片都可以使用软件来直接改写串码等相关参数。新机型还是那句话的自测。新机型对安全性使用较高。所有一般改写的难度较大、但方法还是有滴</p> 
+<p>有的机型有读参数的权限。但没有改参数的权限。那么怎么有改的权限。那么我个人给你的思路有两种</p> 
+<p>1---有的机型有工厂固件。刷完这个固件后他的端口就是开启的 也有读写的权限。例如小米系列</p> 
+<p>2---备份自己机型的基带相关分区和基带qcn。然后檫除自己机型的基带分区。然后把备份的qcn里面的串码修改位新的。然后写入手机达到改写的效果。</p> 
+<p>csdn有很多帖子。介绍基带等等 但大都说的非常模糊。可以可以参考我这个贴，没有专业术语，针对普通友友们。</p> 
+<p>最好再说下。任何的修改操作都有风险。要谨慎操作</p> 
+<p>类似话题可以参考</p> 
+<p><a href="https://blog.csdn.net/u011283906/article/details/125101561?spm=1001.2014.3001.5502" title=高通联机修改IMEI等参数的相关解析_安卓机器的博客-CSDN博客_高通改串号>高通联机修改IMEI等参数的相关解析_安卓机器的博客-CSDN博客_高通改串号</a></p> 
+<p></p> 
+<p><a href="https://blog.csdn.net/u011283906/article/details/124936347?spm=1001.2014.3001.5502" title=关于高通QPST平台功能和选项的一些简单说明_安卓机器的博客-CSDN博客_qpst>关于高通QPST平台功能和选项的一些简单说明_安卓机器的博客-CSDN博客_qpst</a></p> 
+<p></p> 
+<p></p> 
+<p><a href="https://blog.csdn.net/u011283906/article/details/124720894?spm=1001.2014.3001.5502" title="基带qcn的备份与写入相关 格机 nv报错_安卓机器的博客-CSDN博客_qcn备份">基带qcn的备份与写入相关 格机 nv报错_安卓机器的博客-CSDN博客_qcn备份</a></p> 
+<p></p> 
+<p><a href="https://blog.csdn.net/u011283906/article/details/127933683?spm=1001.2014.3001.5502" title="玩机搞机---关于安卓机型工厂固件 刷机 端口解密 解bl锁 写串 nv损坏 等相关常识_安卓机器的博客-CSDN博客">玩机搞机---关于安卓机型工厂固件 刷机 端口解密 解bl锁 写串 nv损坏 等相关常识_安卓机器的博客-CSDN博客</a></p> 
+<p></p> 
+<p></p> 
+<p></p> 
+<p></p> 
+<p></p> 
+<p></p>
+ </div>
+ <div>
+ <div id=treeSkill></div>
+ </div>
+ <div id=blogExtensionBox class=blog-extension-box></div>
+ 
+ 
+ </div>
+ </div>
+ <div class=readall_box data-report-view='{"mod":"popu_376","dest":"https://blog.csdn.net/u011283906/article/details/125299597"}' data-report-click='{"mod":"popu_376","dest":"https://blog.csdn.net/u011283906/article/details/125299597"}'>
+ <div class=read_more_mask></div>
+ <div class="btn_mod active">
+ 
+ <a class="btn_open_app_prompt_box active" id=read_focus_open data-report-view='{"spm":"1001.2101.3001.10317"}' data-report-click='{"spm":"1001.2101.3001.10317"}'>
+ <span>展开阅读全文</span>
+ <img class=readmore-img src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/readMoreArrowDown.png>
+ </a>
+ </div> 
+ </div> 
+ 
+ 
+ </div>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ <div class=spec_space></div>
+ 
+ 
+ <div id=comment>
+ </div>
+ <div class="spec_space spec_space_hide"></div>
+ 
+ <div id=recommend>
+ <div class=recommend_list>
+ <dl></dl>
+ <dl class="container-fluid container-fluid-flex container-blog" data-url=https://blog.csdn.net/u011283906/article/details/128521182 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.1","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~CTRLIST~PayColumn-1-128521182-blog-125299597.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392615104_80593\"}","dist_request_id":"1727392615104_80593","ab_strategy":"increase_t0_download","index":"1","strategy":"2~default~CTRLIST~PayColumn","dest":"https://blog.csdn.net/u011283906/article/details/128521182"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=blog>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a>
+ <div class=left>
+ <em>安卓</em>玩机搞机技巧综合资源-----修复<em>基带</em> <em>改串码</em> <em>基带</em><em>qcn</em> 改相关<em>参数</em> 终结贴【二十】
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class="text active">
+ 6-----同样的<em>机型</em>，同样的<em>开启</em><em>端口</em>。没有<em>基带</em><em>写</em>不进去备份的<em>基带</em><em>qcn</em>或者<em>参数</em>。4----<em>端口</em><em>开启</em>后可以读到<em>参数</em> 可以备份<em>基带</em><em>qcn</em>，但<em>写</em>不进去新<em>参数</em>？3----<em>基带</em><em>端口</em><em>开启</em>后的<em>端口</em>名字为什么不同？7---什么情况会导致<em>基带</em> <em>串码</em>这些损坏？5----<em>改写</em>的<em>参数</em>有没有规律。1---<em>改写</em><em>参数</em>的前提是什么？2----<em>基带</em><em>端口</em>怎么<em>开启</em>？
+ </a>
+ <a class=flag data-type=blog data-href=https://blog.csdn.net/u011283906/article/details/128521182 href=https://blog.csdn.net/u011283906/article/details/128521182 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.1","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~CTRLIST~PayColumn-1-128521182-blog-125299597.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392615104_80593\"}","dist_request_id":"1727392615104_80593","ab_strategy":"increase_t0_download","index":"1","strategy":"2~default~CTRLIST~PayColumn","dest":"https://blog.csdn.net/u011283906/article/details/128521182"}' data-report-query="spm=1001.2101.3001.6650.1&amp;utm_medium=distribute.wap_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7EPayColumn-1-128521182-blog-125299597.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7EPayColumn-1-128521182-blog-125299597.237%5Ev3%5Ewap_relevant_t0_download">继续访问</a>
+ </div>
+ </div>
+ <div class=right-img-box>
+ <a class=recommend-img>
+ <img src=data:, alt data-sf-original-src=https://img-blog.csdnimg.cn/f32c5ca96c8c4e46a1786cfec61aa100.png>
+ </a>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-download" data-url=https://download.csdn.net/download/qq_42774492/15768087 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.2","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~CTRLIST~Paid-2-15768087-blog-125299597.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392615104_80593\"}","dist_request_id":"1727392615104_80593","ab_strategy":"increase_t0_download","index":"2","strategy":"2~default~CTRLIST~Paid","dest":"https://download.csdn.net/download/qq_42774492/15768087"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=download>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a href=https://download.csdn.net/download/qq_42774492/15768087 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.2","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~CTRLIST~Paid-2-15768087-blog-125299597.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392615104_80593\"}","dist_request_id":"1727392615104_80593","ab_strategy":"increase_t0_download","index":"2","strategy":"2~default~CTRLIST~Paid","dest":"https://download.csdn.net/download/qq_42774492/15768087"}' data-report-query="spm=1001.2101.3001.6650.2&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7ECTRLIST%7EPaid-2-15768087-blog-125299597.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7ECTRLIST%7EPaid-2-15768087-blog-125299597.237%5Ev3%5Ewap_relevant_t0_download">
+ <div class=left>
+ <em>安卓</em>手机硬改神器.zip
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class=text href=https://download.csdn.net/download/qq_42774492/15768087 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.2","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~CTRLIST~Paid-2-15768087-blog-125299597.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392615104_80593\"}","dist_request_id":"1727392615104_80593","ab_strategy":"increase_t0_download","index":"2","strategy":"2~default~CTRLIST~Paid","dest":"https://download.csdn.net/download/qq_42774492/15768087"}' data-report-query="spm=1001.2101.3001.6650.2&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7ECTRLIST%7EPaid-2-15768087-blog-125299597.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7ECTRLIST%7EPaid-2-15768087-blog-125299597.237%5Ev3%5Ewap_relevant_t0_download">
+ 本软件为手机硬改工具 串号 蓝牙 MEID SN PCB WIFI
+支持手<em>机型</em>号为：小米 酷派 OPPO VIVO 中兴 乐视 联想 魅族等....
+手机解锁改串必备神器，无需手机ROOT 开<em>端口</em>即可修改
+下载好请务必解压到D盘主目录，不要再子目录否则无法正常运行
+下载好请安装MTK高通通用驱动和高通备用驱动安装好请重启电脑
+此软件为硬改工具，修改过后手机可以在设置里面查看修改属性信息或者手机拨号输入*#06#查看
+硬改的是底层数据，随便刷机恢复出厂改过得数据是什么就是什么，不会改变除非重新修改
+改机过程需要手机打开USB调试模式，请下载奇兔识别手<em>机型</em>号最重要的是要用奇兔刷机安装识别手机的ADB驱动
+奇兔识别到以后请打开软件连接手机，手机上出现弹窗要选择一律允许本计算机调试打钩确认即可连接
+解压完成请打开文件夹中的（手机硬改工具.exe）运行文
+ </a>
+ </div>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-blog" data-url=https://blog.csdn.net/qq_31314583/article/details/127982787 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.3","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-4-127982787-blog-125299597.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392615104_80593\"}","dist_request_id":"1727392615104_80593","ab_strategy":"increase_t0_download","index":"4","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://blog.csdn.net/qq_31314583/article/details/127982787"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=blog>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a>
+ <div class=left>
+ 801a <em>qcn</em>文件IMEI修改
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class="text active">
+ 修改imie
+ </a>
+ <a class=flag data-type=blog data-href=https://blog.csdn.net/qq_31314583/article/details/127982787 href=https://blog.csdn.net/qq_31314583/article/details/127982787 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.3","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-4-127982787-blog-125299597.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392615104_80593\"}","dist_request_id":"1727392615104_80593","ab_strategy":"increase_t0_download","index":"4","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://blog.csdn.net/qq_31314583/article/details/127982787"}' data-report-query="spm=1001.2101.3001.6650.3&amp;utm_medium=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-4-127982787-blog-125299597.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-4-127982787-blog-125299597.237%5Ev3%5Ewap_relevant_t0_download">继续访问</a>
+ </div>
+ </div>
+ <div class=right-img-box>
+ <a class=recommend-img>
+ <img src=data:, alt data-sf-original-src="https://img-blog.csdnimg.cn/4a49c89262bb48f295cb6cea6f6d7a5e.png?x-oss-process=image/resize,m_fixed,h_150">
+ </a>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-blog" data-url=https://blog.csdn.net/u011283906/article/details/125101561 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.4","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-5-125101561-blog-125299597.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392615104_80593\"}","dist_request_id":"1727392615104_80593","ab_strategy":"increase_t0_download","index":"5","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://blog.csdn.net/u011283906/article/details/125101561"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=blog>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a>
+ <div class=left>
+ 高通联机修改IMEI等<em>参数</em>的相关解析
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class="text active">
+ 目前来说。手机芯片被高通与mtk占领大多市场。系统版本越高对底层安全<em>参数</em>限制就越高。区别与早期高通芯片。直接就可以联机修改imei等相关数据。今天只对高通芯片imei等<em>参数</em>的修改做个简单的解析说明
+更改高通芯片imei等<em>参数</em>一般有以下几种方法
+1----联机软件修<em>改串码</em>
+2---修改<em>基带</em><em>qcn</em><em>写</em>入方法来修改对应<em>参数</em>
+3---直接在系统相关分区修改
+4----空字库固件修改对应<em>参数</em>
+5----<em>机型</em>各模式里专用软件修改
+6----未知方法
+今天在这里只对联机修改做个简单操作解析
+关于<em>串码</em>修改知识相关的帖子。论
+ </a>
+ <a class=flag data-type=blog data-href=https://blog.csdn.net/u011283906/article/details/125101561 href=https://blog.csdn.net/u011283906/article/details/125101561 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.4","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-5-125101561-blog-125299597.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392615104_80593\"}","dist_request_id":"1727392615104_80593","ab_strategy":"increase_t0_download","index":"5","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://blog.csdn.net/u011283906/article/details/125101561"}' data-report-query="spm=1001.2101.3001.6650.4&amp;utm_medium=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-5-125101561-blog-125299597.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-5-125101561-blog-125299597.237%5Ev3%5Ewap_relevant_t0_download">继续访问</a>
+ </div>
+ </div>
+ <div class=right-img-box>
+ <a class=recommend-img>
+ <img src=data:, alt data-sf-original-src="https://img-blog.csdnimg.cn/9f0ab543e16f4be5bbdd9d534728feff.jpeg?x-oss-process=image/resize,m_fixed,h_150">
+ </a>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-blog" data-url=https://blog.csdn.net/uiop_uiop_uiop/article/details/127744856 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.5","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-6-127744856-blog-125299597.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392615104_80593\"}","dist_request_id":"1727392615104_80593","ab_strategy":"increase_t0_download","index":"6","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://blog.csdn.net/uiop_uiop_uiop/article/details/127744856"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=blog>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a>
+ <div class=left>
+ 小米5X手机IMEI成0
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class="text active">
+ 二手贩子那收了一个小米5x，他那边自己刷了一个pixel系统做海外业务，这个系统里对webview的实现好像有问题，我的软件没法上。所以直接看也没看，刷回了miui 开发版。结果刷完之后，系统直接弹框提示，IMEI为0，不合法，插上sim卡发现也没有反应。
+ </a>
+ <a class=flag data-type=blog data-href=https://blog.csdn.net/uiop_uiop_uiop/article/details/127744856 href=https://blog.csdn.net/uiop_uiop_uiop/article/details/127744856 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.5","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-6-127744856-blog-125299597.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392615104_80593\"}","dist_request_id":"1727392615104_80593","ab_strategy":"increase_t0_download","index":"6","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://blog.csdn.net/uiop_uiop_uiop/article/details/127744856"}' data-report-query="spm=1001.2101.3001.6650.5&amp;utm_medium=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-6-127744856-blog-125299597.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-6-127744856-blog-125299597.237%5Ev3%5Ewap_relevant_t0_download">继续访问</a>
+ </div>
+ </div>
+ <div class=right-img-box>
+ <a class=recommend-img>
+ <img src=data:, alt data-sf-original-src="https://img-blog.csdnimg.cn/dbc27996d7114e16b050de826cb4aa9a.png?x-oss-process=image/resize,m_fixed,h_150">
+ </a>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-blog" data-url=https://devpress.csdn.net/v1/article/detail/124720894 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.6","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~activity-7-124720894-blog-125299597.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392615104_80593\"}","dist_request_id":"1727392615104_80593","ab_strategy":"increase_t0_download","index":"7","strategy":"2~default~BlogCommendFromBaidu~activity","dest":"https://devpress.csdn.net/v1/article/detail/124720894"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=blog>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a>
+ <div class=left>
+ <em>基带</em><em>qcn</em>的备份与<em>写</em>入相关 格机 nv报错
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class="text active">
+ 今天码一个<em>基带</em><em>qcn</em>相关的教程贴。首先关于<em>基带</em><em>qcn</em>类的基础这边不在细作阐述。有兴趣的可以查看另外我发的教程贴查询。想到哪里<em>写</em>到那里、任何的教程不一定适用与你的<em>机型</em>。只能给你引导和转换思维的一个方式。============备份============1----如何备份自己<em>机型</em>的<em>基带</em><em>qcn</em>首先要开<em>端口</em>。那么如何开<em>端口</em>呢基本有两种方法a---自己<em>机型</em>的拨号指令<em>开启</em><em>端口</em>b---root后adb指令<em>开启</em><em>端口</em>先说下a类。小米早期<em>机型</em>---*#*#717717#*#*oppo<em>机型</em>---*#800#魅族mtk---*#
+ </a>
+ <a class=flag data-type=blog data-href=https://devpress.csdn.net/v1/article/detail/124720894 href=https://devpress.csdn.net/v1/article/detail/124720894 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.6","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~activity-7-124720894-blog-125299597.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392615104_80593\"}","dist_request_id":"1727392615104_80593","ab_strategy":"increase_t0_download","index":"7","strategy":"2~default~BlogCommendFromBaidu~activity","dest":"https://devpress.csdn.net/v1/article/detail/124720894"}' data-report-query="spm=1001.2101.3001.6650.6&amp;utm_medium=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7Eactivity-7-124720894-blog-125299597.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7Eactivity-7-124720894-blog-125299597.237%5Ev3%5Ewap_relevant_t0_download">继续访问</a>
+ </div>
+ </div>
+ <div class=right-img-box>
+ <a class=recommend-img>
+ <img src=data:, alt data-sf-original-src="https://img-blog.csdnimg.cn/img_convert/49675b1c22dec3c1d5dc249e4ecc5cbf.png?x-oss-process=image/resize,m_fixed,h_150">
+ </a>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-blog" data-url=https://blog.csdn.net/qq_44731523/article/details/124213815 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.7","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-8-124213815-blog-125299597.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392615104_80593\"}","dist_request_id":"1727392615104_80593","ab_strategy":"increase_t0_download","index":"8","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://blog.csdn.net/qq_44731523/article/details/124213815"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=blog>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a>
+ <div class=left>
+ 【高通】【QPST】<em>QCN</em>导入
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class="text active">
+ 手机<em>QCN</em><em>参数</em>导入
+ </a>
+ <a class=flag data-type=blog data-href=https://blog.csdn.net/qq_44731523/article/details/124213815 href=https://blog.csdn.net/qq_44731523/article/details/124213815 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.7","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-8-124213815-blog-125299597.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392615104_80593\"}","dist_request_id":"1727392615104_80593","ab_strategy":"increase_t0_download","index":"8","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://blog.csdn.net/qq_44731523/article/details/124213815"}' data-report-query="spm=1001.2101.3001.6650.7&amp;utm_medium=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-8-124213815-blog-125299597.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-8-124213815-blog-125299597.237%5Ev3%5Ewap_relevant_t0_download">继续访问</a>
+ </div>
+ </div>
+ <div class=right-img-box>
+ <a class=recommend-img>
+ <img src=data:, alt data-sf-original-src="https://img-blog.csdnimg.cn/6f70e95fa9074daea9bc4c5fa54e70de.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5pG457Si5Lit55qE56Gs5Lu25bel56iL5biI,size_7,color_FFFFFF,t_70,g_se,x_16">
+ </a>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-download" data-url=https://download.csdn.net/download/u011283906/85449603 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.8","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-9-85449603-blog-125299597.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392615104_80593\"}","dist_request_id":"1727392615104_80593","ab_strategy":"increase_t0_download","index":"9","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/u011283906/85449603"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=download>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a href=https://download.csdn.net/download/u011283906/85449603 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.8","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-9-85449603-blog-125299597.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392615104_80593\"}","dist_request_id":"1727392615104_80593","ab_strategy":"increase_t0_download","index":"9","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/u011283906/85449603"}' data-report-query="spm=1001.2101.3001.6650.8&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-9-85449603-blog-125299597.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-9-85449603-blog-125299597.237%5Ev3%5Ewap_relevant_t0_download">
+ <div class=left>
+ 高通<em>机型</em>备份 恢复<em>基带</em><em>qcn</em>的工具BackupRestore+IMEI带图文
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class=text href=https://download.csdn.net/download/u011283906/85449603 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.8","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-9-85449603-blog-125299597.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392615104_80593\"}","dist_request_id":"1727392615104_80593","ab_strategy":"increase_t0_download","index":"9","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/u011283906/85449603"}' data-report-query="spm=1001.2101.3001.6650.8&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-9-85449603-blog-125299597.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-9-85449603-blog-125299597.237%5Ev3%5Ewap_relevant_t0_download">
+ 本文将详细介绍如何使用特定工具——BackupRestore+IMEI，针对高通<em>机型</em>进行<em>基带</em><em>QCN</em>的备份、恢复以及IMEI号的修改。 首先，<em>基带</em>是手机通信模块的核心部分，负责处理与移动网络的通信任务。<em>QCN</em>（Quality ...
+ </a>
+ </div>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-download" data-url=https://download.csdn.net/download/u011283906/88829195 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.9","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-10-88829195-blog-125299597.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392615104_80593\"}","dist_request_id":"1727392615104_80593","ab_strategy":"increase_t0_download","index":"10","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/u011283906/88829195"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=download>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a href=https://download.csdn.net/download/u011283906/88829195 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.9","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-10-88829195-blog-125299597.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392615104_80593\"}","dist_request_id":"1727392615104_80593","ab_strategy":"increase_t0_download","index":"10","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/u011283906/88829195"}' data-report-query="spm=1001.2101.3001.6650.9&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-10-88829195-blog-125299597.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-10-88829195-blog-125299597.237%5Ev3%5Ewap_relevant_t0_download">
+ <div class=left>
+ 小米12pro-zeus<em>基带</em><em>QCN</em>文件 双<em>串码</em>
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class=text href=https://download.csdn.net/download/u011283906/88829195 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.9","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-10-88829195-blog-125299597.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392615104_80593\"}","dist_request_id":"1727392615104_80593","ab_strategy":"increase_t0_download","index":"10","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/u011283906/88829195"}' data-report-query="spm=1001.2101.3001.6650.9&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-10-88829195-blog-125299597.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-10-88829195-blog-125299597.237%5Ev3%5Ewap_relevant_t0_download">
+ 可以修复刷机 降级 等掉<em>基带</em> 无<em>串码</em>等故障 需要开<em>端口</em><em>写</em>入 有需要的会操作的友友下载使用 <em>写</em>入前建议修改原<em>串码</em> 小米<em>机型</em>已经报错nv损坏的请去除nv验证在<em>写</em>入 会<em>写</em>入 会开<em>端口</em> 明白<em>基带</em><em>qcn</em>原理的友友下载使用。请...
+ </a>
+ </div>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-download" data-url=https://download.csdn.net/download/u011283906/88878352 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.10","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-11-88878352-blog-125299597.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392615104_80593\"}","dist_request_id":"1727392615104_80593","ab_strategy":"increase_t0_download","index":"11","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/u011283906/88878352"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=download>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a href=https://download.csdn.net/download/u011283906/88878352 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.10","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-11-88878352-blog-125299597.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392615104_80593\"}","dist_request_id":"1727392615104_80593","ab_strategy":"increase_t0_download","index":"11","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/u011283906/88878352"}' data-report-query="spm=1001.2101.3001.6650.10&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-11-88878352-blog-125299597.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-11-88878352-blog-125299597.237%5Ev3%5Ewap_relevant_t0_download">
+ <div class=left>
+ <span class=tag>最新发布</span>
+ <em>串码</em>IMEI相互转换HEX进制 按规律生成<em>串码</em>小工具 改机必用
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class=text href=https://download.csdn.net/download/u011283906/88878352 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.10","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-11-88878352-blog-125299597.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392615104_80593\"}","dist_request_id":"1727392615104_80593","ab_strategy":"increase_t0_download","index":"11","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/u011283906/88878352"}' data-report-query="spm=1001.2101.3001.6650.10&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-11-88878352-blog-125299597.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-11-88878352-blog-125299597.237%5Ev3%5Ewap_relevant_t0_download">
+ 例如备份的<em>基带</em><em>qcn</em>里面原<em>串码</em>为862490031125057那么应该查询转换是8A26940013210575 MEID转换例子.同理，想要修改成的MEID是：A1000045351234 那么存储在NV里的形式是：34 12 35 45 00 00 A1。这个工具可以： 1----...
+ </a>
+ </div>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-download" data-url=https://download.csdn.net/download/u011283906/85628793 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.11","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-12-85628793-blog-125299597.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392615104_80593\"}","dist_request_id":"1727392615104_80593","ab_strategy":"increase_t0_download","index":"12","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/u011283906/85628793"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=download>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a href=https://download.csdn.net/download/u011283906/85628793 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.11","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-12-85628793-blog-125299597.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392615104_80593\"}","dist_request_id":"1727392615104_80593","ab_strategy":"increase_t0_download","index":"12","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/u011283906/85628793"}' data-report-query="spm=1001.2101.3001.6650.11&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-12-85628793-blog-125299597.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-12-85628793-blog-125299597.237%5Ev3%5Ewap_relevant_t0_download">
+ <div class=left>
+ 高通芯片<em>改写</em><em>串码</em> MEID wifi 蓝牙 SN等<em>参数</em>工具+使用教程
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class=text href=https://download.csdn.net/download/u011283906/85628793 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.11","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-12-85628793-blog-125299597.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392615104_80593\"}","dist_request_id":"1727392615104_80593","ab_strategy":"increase_t0_download","index":"12","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/u011283906/85628793"}' data-report-query="spm=1001.2101.3001.6650.11&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-12-85628793-blog-125299597.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-12-85628793-blog-125299597.237%5Ev3%5Ewap_relevant_t0_download">
+ 高通芯片<em>改写</em><em>串码</em> MEID wifi 蓝牙 SN等<em>参数</em>工具+使用教程 此工具自己一致在使用 功能较全 操作简单 可以设置中文与其他语言 可以更改meid 可以更改imei 可以更改sn 可以更改蓝牙 可以更改wifi 等其他<em>参数</em> 联机后...
+ </a>
+ </div>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-download" data-url=https://download.csdn.net/download/u011283906/88445159 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.12","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-13-88445159-blog-125299597.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392615104_80593\"}","dist_request_id":"1727392615104_80593","ab_strategy":"increase_t0_download","index":"13","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/u011283906/88445159"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=download>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a href=https://download.csdn.net/download/u011283906/88445159 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.12","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-13-88445159-blog-125299597.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392615104_80593\"}","dist_request_id":"1727392615104_80593","ab_strategy":"increase_t0_download","index":"13","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/u011283906/88445159"}' data-report-query="spm=1001.2101.3001.6650.12&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-13-88445159-blog-125299597.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-13-88445159-blog-125299597.237%5Ev3%5Ewap_relevant_t0_download">
+ <div class=left>
+ 华硕ROG5-stock<em>基带</em><em>qcn</em>文件
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class=text href=https://download.csdn.net/download/u011283906/88445159 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.12","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-13-88445159-blog-125299597.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392615104_80593\"}","dist_request_id":"1727392615104_80593","ab_strategy":"increase_t0_download","index":"13","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/u011283906/88445159"}' data-report-query="spm=1001.2101.3001.6650.12&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-13-88445159-blog-125299597.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-13-88445159-blog-125299597.237%5Ev3%5Ewap_relevant_t0_download">
+ 可以修复刷机 降级 等掉<em>基带</em> 无<em>串码</em>等故障 需要开<em>端口</em><em>写</em>入 有需要的会操作的友友下载使用 <em>写</em>入前建议修改原<em>串码</em> 参考 https://blog.csdn.net/u011283906/article/details/124720894?spm=1001.2014.3001.5501
+ </a>
+ </div>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-blog" data-url=https://devpress.csdn.net/v1/article/detail/127864822 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.13","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~activity-14-127864822-blog-125299597.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392615104_80593\"}","dist_request_id":"1727392615104_80593","ab_strategy":"increase_t0_download","index":"14","strategy":"2~default~BlogCommendFromBaidu~activity","dest":"https://devpress.csdn.net/v1/article/detail/127864822"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=blog>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a>
+ <div class=left>
+ <span class=tag>热门推荐</span>
+ <em>安卓</em> 手机硬改 工具下载 一键新机 改串 抹机 root隐藏 改串号MEID imei SN信息 工具教程分享
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class="text active">
+ 软改的软件很多 ，早期软改架构基本依赖于 xposed ，这类架构 ，需要Root手机才可以使用 ，目前这类型的 改机软件 ，除非有针对性开发团队，不然使用起来相当麻烦 ，不合适普通用户使用。基本所有的app，都对是否root非常敏感 ，发现插入xposed 模块，直接停止运行，需要做相关的防xp 检测 ，防root 检测，稍微app更新又得重新修改。如果要基于xposed ，想过app 检测，目前来说，难度非常大 ，支持目前最流行的<em>机型</em>，<em>安卓</em>全<em>机型</em>兼容，我们坚持领先一步。
+ </a>
+ <a class=flag data-type=blog data-href=https://devpress.csdn.net/v1/article/detail/127864822 href=https://devpress.csdn.net/v1/article/detail/127864822 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.13","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~activity-14-127864822-blog-125299597.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392615104_80593\"}","dist_request_id":"1727392615104_80593","ab_strategy":"increase_t0_download","index":"14","strategy":"2~default~BlogCommendFromBaidu~activity","dest":"https://devpress.csdn.net/v1/article/detail/127864822"}' data-report-query="spm=1001.2101.3001.6650.13&amp;utm_medium=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7Eactivity-14-127864822-blog-125299597.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7Eactivity-14-127864822-blog-125299597.237%5Ev3%5Ewap_relevant_t0_download">继续访问</a>
+ </div>
+ </div>
+ <div class=right-img-box>
+ <a class=recommend-img>
+ <img src=data:, alt data-sf-original-src=https://img-blog.csdnimg.cn/b62fd00e3ecc400ba64709eb4e998b92.jpeg>
+ </a>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-blog" data-url=https://blog.csdn.net/Smiling_fox666/article/details/131983859 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.14","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-15-131983859-blog-125299597.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392615104_80593\"}","dist_request_id":"1727392615104_80593","ab_strategy":"increase_t0_download","index":"15","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://blog.csdn.net/Smiling_fox666/article/details/131983859"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=blog>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a>
+ <div class=left>
+ 刷<em>qcn</em>工具大部分<em>机型</em><em>qcn</em>文件集合亲测有效
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class="text active">
+ 版权声明: 本博客所有文章除特别声明外，均采用 CC BY-NC-SA 4.0 许可协议。有个国外网站，里面有部分<em>机型</em>的 <em>qcn</em>（不全但亲测有效，本人手机就是用这个网站的 <em>qcn</em> 救回的，可能需要科学上网）文章链接: https://blog.goodboyboy.top/95.html。文章链接: https://blog.goodboyboy.top/95.html。链接: https://blog.goodboyboy.top/95.html。刷机帮串号修复神器账户版 (1)
+ </a>
+ <a class=flag data-type=blog data-href=https://blog.csdn.net/Smiling_fox666/article/details/131983859 href=https://blog.csdn.net/Smiling_fox666/article/details/131983859 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.14","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-15-131983859-blog-125299597.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392615104_80593\"}","dist_request_id":"1727392615104_80593","ab_strategy":"increase_t0_download","index":"15","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://blog.csdn.net/Smiling_fox666/article/details/131983859"}' data-report-query="spm=1001.2101.3001.6650.14&amp;utm_medium=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-15-131983859-blog-125299597.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-15-131983859-blog-125299597.237%5Ev3%5Ewap_relevant_t0_download">继续访问</a>
+ </div>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-blog" data-url=https://blog.csdn.net/llq520/article/details/116931751 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.15","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-16-116931751-blog-125299597.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392615104_80593\"}","dist_request_id":"1727392615104_80593","ab_strategy":"increase_t0_download","index":"16","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://blog.csdn.net/llq520/article/details/116931751"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=blog>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a>
+ <div class=left>
+ 【转】小米9打开高通Diagnostics<em>端口</em>提取的<em>基带</em><em>qcn</em>文件改串号
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class="text active">
+ 正常机提取<em>基带</em><em>qcn</em>文件
+使用与刷<em>写</em>第三方或者升降级系统导致丢失<em>基带</em>或者丢失<em>串码</em>等故障
+<em>写</em>入方法通用与其他高通芯片<em>写</em>入
+高通芯片<em>机型</em>提取<em>写</em>入<em>基带</em>方法基本都通用的，不通用的地方在于各<em>机型</em>开<em>端口</em>的方法不同，但命令开<em>端口</em>基本都一样的
+丢<em>基带</em>掉<em>串码</em>问题这种情况一般都是系统跨版本更新或者降级或者刷<em>写</em>第三方rom导致的。
+或者个别<em>机型</em>操作系统故障黑砖救砖后也会有几率出现无<em>基带</em>掉<em>串码</em>故障
+刷机之前一定要备份<em>qcn</em>，<em>基带</em>一掉手机就跟砖头没区别了
+那么备份<em>qcn</em>需要什么呢？
+没错，就是开高通diag<em>端口</em>，
+...
+ </a>
+ <a class=flag data-type=blog data-href=https://blog.csdn.net/llq520/article/details/116931751 href=https://blog.csdn.net/llq520/article/details/116931751 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.15","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-16-116931751-blog-125299597.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392615104_80593\"}","dist_request_id":"1727392615104_80593","ab_strategy":"increase_t0_download","index":"16","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://blog.csdn.net/llq520/article/details/116931751"}' data-report-query="spm=1001.2101.3001.6650.15&amp;utm_medium=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-16-116931751-blog-125299597.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-16-116931751-blog-125299597.237%5Ev3%5Ewap_relevant_t0_download">继续访问</a>
+ </div>
+ </div>
+ <div class=right-img-box>
+ <a class=recommend-img>
+ <img src=data:, alt data-sf-original-src="https://img-blog.csdnimg.cn/img_convert/4f4ed056b1a16a2ec96ba02dc03704a5.png?x-oss-process=image/resize,m_fixed,h_150">
+ </a>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-blog" data-url=https://blog.csdn.net/u011283906/article/details/125777753 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.16","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-17-125777753-blog-125299597.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392615104_80593\"}","dist_request_id":"1727392615104_80593","ab_strategy":"increase_t0_download","index":"17","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://blog.csdn.net/u011283906/article/details/125777753"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=blog>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a>
+ <div class=left>
+ 高通芯片联机读取修<em>改串码</em> meid ESN wifi 蓝牙 sn等<em>参数</em>的操作解析｛二｝
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class="text active">
+ 上次我发了几个相关联机读<em>写</em><em>参数</em>的帖子。很多友友询问有没有其他相关软件来解读<em>参数</em>的教程。今天就来个续集来解析<em>参数</em>读<em>写</em>关于<em>安卓</em><em>机型</em><em>写</em><em>串码</em> <em>改串码</em> <em>端口</em><em>开启</em>和<em>基带</em><em>qcn</em>等一些<em>经验</em>高通联机修改IMEI等<em>参数</em>的相关解析高通芯片<em>基带</em>相关的软件 QPST QXDM DFS等等，今天的教程贴就以DFS做个步骤说明。在这里还是要提醒各位友友。这类相关软件都是外文。而且由于是联机操作。谨慎读<em>写</em>哦DFS软件的版本较多。今天只以一个低版本和高版本做个简单说明。本人教程贴只给初学友友的一些思路与简单操作步骤。这类软件其实一通百通。明
+ </a>
+ <a class=flag data-type=blog data-href=https://blog.csdn.net/u011283906/article/details/125777753 href=https://blog.csdn.net/u011283906/article/details/125777753 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.16","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-17-125777753-blog-125299597.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392615104_80593\"}","dist_request_id":"1727392615104_80593","ab_strategy":"increase_t0_download","index":"17","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://blog.csdn.net/u011283906/article/details/125777753"}' data-report-query="spm=1001.2101.3001.6650.16&amp;utm_medium=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-17-125777753-blog-125299597.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-17-125777753-blog-125299597.237%5Ev3%5Ewap_relevant_t0_download">继续访问</a>
+ </div>
+ </div>
+ <div class=right-img-box>
+ <a class=recommend-img>
+ <img src=data:, alt data-sf-original-src=https://img-blog.csdnimg.cn/2bf58c5bc7324961be423f6274af6b11.png>
+ </a>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-blog" data-url=https://blog.csdn.net/icloudelectron/article/details/113787028 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.17","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-18-113787028-blog-125299597.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392615104_80593\"}","dist_request_id":"1727392615104_80593","ab_strategy":"increase_t0_download","index":"18","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://blog.csdn.net/icloudelectron/article/details/113787028"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=blog>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a>
+ <div class=left>
+ 小米新款打开高通Diagnostics<em>端口</em>提取的<em>基带</em><em>qcn</em>文件改串号
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class="text active">
+ 小米新款打开高通Diagnostics<em>端口</em>提取的<em>基带</em><em>qcn</em>文件改串号
+正常机提取<em>基带</em><em>qcn</em>文件
+使用与刷<em>写</em>第三方或者升降级系统导致丢失<em>基带</em>或者丢失<em>串码</em>等故障
+<em>写</em>入方法通用与其他高通芯片<em>写</em>入
+高通芯片<em>机型</em>提取<em>写</em>入<em>基带</em>方法基本都通用的，不通用的地方在于各<em>机型</em>开<em>端口</em>的方法不同，但命令开<em>端口</em>基本都一样的
+丢<em>基带</em> 掉<em>串码</em>问题这种情况一般都是系统跨版本更新或者降级或者刷<em>写</em>第三方rom导致的。
+或者个别<em>机型</em>操作系统故障黑砖救砖后也会有几率出现无<em>基带</em>掉<em>串码</em>故障
+刷机之前一定要备份<em>qcn</em>，<em>基带</em>一掉手机就跟砖头没区别了
+那么备
+ </a>
+ <a class=flag data-type=blog data-href=https://blog.csdn.net/icloudelectron/article/details/113787028 href=https://blog.csdn.net/icloudelectron/article/details/113787028 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.17","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-18-113787028-blog-125299597.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392615104_80593\"}","dist_request_id":"1727392615104_80593","ab_strategy":"increase_t0_download","index":"18","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://blog.csdn.net/icloudelectron/article/details/113787028"}' data-report-query="spm=1001.2101.3001.6650.17&amp;utm_medium=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-18-113787028-blog-125299597.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-18-113787028-blog-125299597.237%5Ev3%5Ewap_relevant_t0_download">继续访问</a>
+ </div>
+ </div>
+ <div class=right-img-box>
+ <a class=recommend-img>
+ <img src=data:, alt data-sf-original-src="https://img-blog.csdnimg.cn/20210210232823984.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ljbG91ZGVsZWN0cm9u,size_16,color_FFFFFF,t_70,image/resize,m_fixed,h_150">
+ </a>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-download" data-url=https://download.csdn.net/download/u011283906/87760913 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.18","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-19-87760913-blog-125299597.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392615104_80593\"}","dist_request_id":"1727392615104_80593","ab_strategy":"increase_t0_download","index":"19","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/u011283906/87760913"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=download>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a href=https://download.csdn.net/download/u011283906/87760913 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.18","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-19-87760913-blog-125299597.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392615104_80593\"}","dist_request_id":"1727392615104_80593","ab_strategy":"increase_t0_download","index":"19","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/u011283906/87760913"}' data-report-query="spm=1001.2101.3001.6650.18&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-19-87760913-blog-125299597.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-19-87760913-blog-125299597.237%5Ev3%5Ewap_relevant_t0_download">
+ <div class=left>
+ 高通芯片<em>机型</em><em>改写</em><em>参数</em>工具
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class=text href=https://download.csdn.net/download/u011283906/87760913 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.18","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-19-87760913-blog-125299597.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392615104_80593\"}","dist_request_id":"1727392615104_80593","ab_strategy":"increase_t0_download","index":"19","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/u011283906/87760913"}' data-report-query="spm=1001.2101.3001.6650.18&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-19-87760913-blog-125299597.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-19-87760913-blog-125299597.237%5Ev3%5Ewap_relevant_t0_download">
+ 1---开<em>端口</em>后可以读取当前<em>机型</em><em>参数</em>信息 2--<em>基带</em>分区没有加密的<em>机型</em>直接可以读<em>写</em> 3---只支持高通芯片的<em>机型</em> 4--需要动手能力较强的友友操作 参考：...
+ </a>
+ </div>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-download" data-url=https://download.csdn.net/download/u011283906/85586989 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.19","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-20-85586989-blog-125299597.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392615104_80593\"}","dist_request_id":"1727392615104_80593","ab_strategy":"increase_t0_download","index":"20","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/u011283906/85586989"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=download>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a href=https://download.csdn.net/download/u011283906/85586989 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.19","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-20-85586989-blog-125299597.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392615104_80593\"}","dist_request_id":"1727392615104_80593","ab_strategy":"increase_t0_download","index":"20","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/u011283906/85586989"}' data-report-query="spm=1001.2101.3001.6650.19&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-20-85586989-blog-125299597.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-20-85586989-blog-125299597.237%5Ev3%5Ewap_relevant_t0_download">
+ <div class=left>
+ 小米mix3-修复nv损坏专用<em>基带</em><em>qcn</em>
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class=text href=https://download.csdn.net/download/u011283906/85586989 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.19","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-20-85586989-blog-125299597.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392615104_80593\"}","dist_request_id":"1727392615104_80593","ab_strategy":"increase_t0_download","index":"20","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/u011283906/85586989"}' data-report-query="spm=1001.2101.3001.6650.19&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-20-85586989-blog-125299597.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-20-85586989-blog-125299597.237%5Ev3%5Ewap_relevant_t0_download">
+ 小米mix3-修复nv损坏专用<em>基带</em><em>qcn</em> 1----资源是特殊<em>基带</em><em>qcn</em>。可用于常规与非常规掉<em>基带</em><em>机型</em>、 2----米系列<em>机型</em>专用资源，请对照<em>机型</em>使用 3----请开<em>端口</em>后使用.[root 开或者刷工厂固件开<em>端口</em>】 4----误格机或者全清除...
+ </a>
+ </div>
+ </div>
+ </div>
+ </dl>
+ </div>
+ </div>
+ 
+ <div id=operate class=clearfix>
+ <div class="clearfix content-box">
+ <div class="operate_write operate_common floatL">
+ <span class=comment-bt-write>
+ <span class=enter_text><img class=operate_img src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/writeIcon@2x.png>写评论</span>
+ <img class=comment-sofa-flag src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/pc/img/commentFlag@2x.png>
+ </span>
+ <span class=operate_write_box>
+ <img class=operate_img src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/comment@2x.png>
+ <span class=count>
+ 评论
+ </span>
+ </span>
+ </div>
+ <div class="collect-btn operate_add operate_common floatL">
+ <span class=operate_collect_box>
+ <span class=uncollect>
+ <img class=operate_img src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/uncollect@2x.png>
+ </span>
+ <span class=collect>
+ <img class=operate_img src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/collect@2x.png>
+ </span>
+ <span class=count>
+ 49
+ </span>
+ </span>
+ </div>
+ <div class="like-btn operate_heart operate_common floatL" data-dest=https://blog.csdn.net/u011283906/article/details/125299597>
+ <span class=operate_heart_box>
+ <span class=unheart>
+ <img class=operate_img src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/unheart@2x.png>
+ </span>
+ <span class=heart>
+ <img class=operate_img src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/heart@2x.png>
+ </span>
+ <span class=count>
+ 4
+ </span>
+ </span>
+ </div>
+ <div class="unlike-btn operate_steplike operate_common floatL">
+ <span class=operate_heart_box>
+ <span class=stepunlike>
+ <img class=operate_img src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/stepUnLike.png>
+ </span>
+ <span class=steplike>
+ <img class=operate_img src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/stepLike.png>
+ </span>
+ <span class=count>
+ 踩
+ </span>
+ </span>
+ </div>
+ <div class="share-btn operate_share operate_common floatL">
+ <a>
+ <span class=operate_share_box>
+ <img class=operate_img src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/unshare@2x.png>
+ <span class=count>分享</span>
+ </span>
+ </a>
+ </div>
+ </div>
+ </div>
+</div>
+ <div id=prompt>
+ 
+ <span>文章收藏成功</span>
+ </div>
+ <div class="app-shadowbox wap-shadowbox" data-type=view>
+ <div class=app-box>
+ <div class=pos-box>
+ <div class=tip-massege>前往CSDN APP阅读全文</div>
+ <div class=tip-text>CSDN APP记录你的成长</div>
+ <a class="app-bt-cance read_more_btn close-icon" data-report-click='{"spm":"1001.2101.3001.9529"}'>
+ <img src=data:, alt data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/closeBt.png>
+ </a>
+ <div class="button-box button-box-new w-100p">
+ <a class="app-bt-sure open_app_channelCode" id=wap_open_app_btn data-channelcode=blog_1592384106 data-channelabid=293_exp1 data-report-click='{"spm":"1001.2101.3001.9530"}' data-name=a data-href="csdnapp://web?url=https://blog.csdn.net/u011283906/article/details/125299597">前往APP</a>
+ </div>
+ </div>
+ </div>
+ </div>
+ <div class="wap-shadowbox qr-weixin-box">
+ <div class=app-box>
+ <div class=tip-massege>微信小程序收藏浏览更方便</div>
+ <div class=routine-box-img> <img src=data:, alt data-sf-original-src></div>
+ <div class=routine-box-text>
+ <span>截图/长按 </span>保存本地，用微信扫码打开
+ </div>
+ <img class=close src=data:, alt data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/closeBt.png>
+ </div>
+ </div>
+ <div class="small-shadowbox wap-shadowbox">
+ <div class=app-box>
+ <div class=tip-massege>进入小程序随时浏览/收藏技术文章</div>
+ <div class="button-box button-box-new">
+ <a class=app-ab-cance data-report-click='{"spm":"1001.2101.3001.9400"}'>取消</a>
+ <a class=app-bt-sure data-report-click='{"spm":"1001.2101.3001.9401"}'>立即前往</a>
+ </div>
+ <img class=close src=data:, alt data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/closeBt.png>
+ </div>
+ </div>
+ <div class="wap-shadowbox ab-app-shadowbox">
+ <div class="app-box active">
+ <a class="app-bt-cance read_more_btn close-icon" id=ab-app-shadowbox-close data-report-view='{"spm":"1001.2101.3001.9672"}' data-report-click='{"spm":"1001.2101.3001.9672"}'>
+ <img src=data:, alt data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/closeBt.png>
+ </a>
+ <div class=tip-massege>需要前往CSDN APP登录即可继续互动</div>
+ <div class="button-box button-box-new w-100p">
+ <a class="app-bt-sure open_app_channelCode app-bt-sure-btn-new" id=wap_open_app_btn data-channelcode=1663655995 data-report-view='{"spm":"1001.2101.3001.8335"}' data-report-click='{"spm":"1001.2101.3001.8335"}' data-name=a data-href="csdnapp://web?url=https://blog.csdn.net/u011283906/article/details/125299597">前往APP</a>
+ </div>
+ </div>
+ </div>
+ <div class="comment-shadowbox wap-shadowbox">
+ <div class=comment-write-box>
+ <div class=write-comment-container>
+ <textarea name class=write-comment-content id=writeComment placeholder="请发表有价值的评论， 博客评论不欢迎灌水，良好的社区氛围需大家一起维护。"></textarea>
+ <div id=formRewardBox class=comment-reward-box>
+ <a class=btn-remove-reward></a>
+ <div class=form-reward-box>
+ <div class=info>
+ 成就一亿技术人!
+ </div>
+ <div class=price-info>
+ 拼手气红包<span class=price>6.0元</span>
+ </div>
+ </div>
+ </div>
+ </div>
+ <div class=comment-write-bt>
+ <a class=write-redEnvolope>
+ <img class=comment-operate-img data-url=https://csdnimg.cn/release/blogv2/dist/pc/img/ src=data:, alt=红包 data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/pc/img/commentReward.png>
+ </a>
+ <a class=write-bt-sure data-report-click='{"spm":"1001.2101.3001.7867","mod":"1589175530_002"}' data-report-view='{"spm":"1001.2101.3001.7867","mod":"1589175530_002"}'>发送</a>
+ </div>
+ <div class=comment-rewarddialog-box>
+ <div class=form-box>
+ <div class=title-box>
+ 发红包
+ <a class=btn-form-close></a>
+ </div>
+ <form id=commentRewardForm>
+ <div class=ipt-box>
+ <label for=txtName>祝福语</label>
+ <div class=ipt-btn-box>
+ <input type=text name=name id=txtName autocomplete=off maxlength=50>
+ <a class="btn-ipt btn-random"></a>
+ </div>
+ <p class=notice>请填写红包祝福语或标题</p>
+ </div>
+ <div class=ipt-box>
+ <label for=txtSendAmount>红包数量</label>
+ <div class=ipt-txt-box>
+ <input type=text name=sendAmount maxlength=4 id=txtSendAmount placeholder=请填写红包数量(最小10个) autocomplete=off>
+ <span class=after-txt>个</span>
+ </div>
+ <p class=notice>红包个数最小为10个</p>
+ </div>
+ <div class=ipt-box>
+ <label for=txtMoney>
+ <div class=balance-info-box>
+ <div class=balance-info>
+ 您的钱包余额 <span class=red><span class=balance></span>元</span>
+ <a href=https://i.csdn.net/#/wallet/balance/recharge class=link-charge target=_blank>前往充值<img class=origin-plan-icon src=data:, alt data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/arrowRight.png></a>
+ </div>
+ </div>
+ </label>
+ <div class="ipt-txt-box error">
+ <input type=text name=money maxlength=5 id=txtMoney placeholder=请填写总金额(最低5元) autocomplete=off>
+ <span class=after-txt>元</span>
+ </div>
+ <p class=notice>红包金额最低5元</p>
+ </div>
+ <div class=opt-box>
+ <div class=pay-info>
+ ¥<span class=price></span>
+ </div>
+ <button type=button class="ml8 btn-submit" disabled>发红包</button>
+ <p class=remark>未领取的红包，将于96小时后发起退款</p>
+ </div>
+ </form>
+ </div>
+ </div>
+ </div>
+ </div>
+ <div class=redEnvolope id=redEnvolope>
+ <div class=env-box>
+ <div class=env-container>
+ <div class=pre-open id=preOpen>
+ <div class=top>
+ <header>
+ <img class=clearTpaErr :src=redpacketAuthor.avatar alt>
+ <div class=author>成就一亿技术人!</div>
+ </header>
+ <div class=bot-icon></div>
+ </div>
+ <footer>
+ <div class="red-openbtn open-start"></div>
+ <div class=tip>
+ 领取后你会自动成为博主和红包主的粉丝
+ <a class=rule target=_blank>规则</a>
+ </div>
+ </footer>
+ </div>
+ <div class=opened id=opened>
+ <div class=bot-icon>
+ <header>
+ <a class=creatorUrl href=https://blog.csdn.net/u011283906/article/details/125299597 target=_blank>
+ <img class=clearTpaErr src=data:, alt data-sf-original-src=https://profile-avatar.csdnimg.cn/default.jpg!2>
+ </a>
+ <div class=author>
+ <div class=tt>hope_wisdom</div> 发出的红包
+ </div>
+ </header>
+ </div>
+ <div class=receive-box>
+ <header></header>
+ <div class=receive-list>
+ </div>
+ </div>
+ </div>
+ </div>
+ <div class=close-btn></div>
+ </div>
+ </div>
+ <div class="weixin-shadowbox wap-shadowbox">
+ <div class="guide-box guide-box-new">
+ <div class=topic>前往CSDN APP阅读全文</div>
+ <div class=tip>阅读体验更佳</div>
+ <div class="csdn-box item-box">
+ <div class=item><img class=app-img src=data:, alt data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/csdnIcon@2x.png></div>
+ <div class=item>
+ <div class=item-content>
+ <p class=title>CSDN</p>
+ <p class=text>成就一亿技术人</p>
+ </div>
+ </div>
+ <div class=item><a class="open-app open-app-csdn open_app_channelCode" data-channelcode=1661743049 data-url=https://blog.csdn.net/u011283906/article/details/125299597 data-href="csdnapp://web?url=https://blog.csdn.net/u011283906/article/details/125299597" data-report-view='{"spm":"1001.2101.3001.8331"}' data-report-click='{"spm":"1001.2101.3001.8331"}'>前往</a></div>
+ </div>
+ <div class="weixin-box item-box">
+ <div class="item item-display-none item-chrome"><img class=app-img src=data:, alt data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/chromeIcon@2x.png></div>
+ <div class=item>
+ <div class=item-content>浏览器</div>
+ </div>
+ <div class=item><a class="open-app open-app-weixin" data-report-view='{"spm":"1001.2101.3001.8332"}' data-report-click='{"spm":"1001.2101.3001.8332"}'>继续</a></div>
+ </div>
+ </div>
+ </div>
+ <div class="share-shadowbox wap-shadowbox">
+ <div class=share-box>
+ <div class=tit>分享</div>
+ <div class=text></div>
+ <a class=share-bt-tip data-report-click='{"spm":"1001.2101.3001.7872"}'>复制分享链接</a>
+ <img class=close src=data:, alt data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/closeBt.png>
+ </div>
+ </div>
+ 
+ <div class=ios-shadowbox>
+ <div class=ios-box>
+ <div class=tip-massege>请升级应用版本</div>
+ <div class=button-box>
+ <a id=cancelBt class=bt-cancel>取消</a>
+ <a id=upBt class=bt-cancel href="itms-apps://itunes.apple.com/cn/app/id1437086352?mt=8">立即升级</a>
+ </div>
+ </div>
+ </div>
+ <div class=feed-Sign-weixin>
+ <p class=open_app_channelCode id=feed-open-app-btn data-channelabid=252_exp1 data-href="csdnapp://web?url=https://blog.csdn.net/u011283906/article/details/125299597" data-report-view='{"spm":"1001.2101.3001.9397"}' data-report-click='{"spm":"1001.2101.3001.9397"}'>APP 内打开 </p>
+ </div>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+<script data-template-shadow-root>(()=>{document.currentScript.remove();processNode(document);function processNode(node){node.querySelectorAll("template[shadowrootmode]").forEach(element=>{let shadowRoot = element.parentElement.shadowRoot;if (!shadowRoot) {try {shadowRoot=element.parentElement.attachShadow({mode:element.getAttribute("shadowrootmode"),delegatesFocus:element.getAttribute("shadowrootdelegatesfocus")!=null,clonable:element.getAttribute("shadowrootclonable")!=null,serializable:element.getAttribute("shadowrootserializable")!=null});shadowRoot.innerHTML=element.innerHTML;element.remove()} catch (error) {} if (shadowRoot) {processNode(shadowRoot)}}})}})()</script>
