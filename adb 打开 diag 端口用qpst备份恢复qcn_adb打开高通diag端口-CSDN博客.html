@@ -1,0 +1,858 @@
+<!DOCTYPE html> <html><!--
+ Page saved with SingleFile 
+ url: https://blog.csdn.net/wangyevon/article/details/112501186 
+ saved date: Thu Sep 26 2024 16:32:31 GMT+0800 (中国标准时间)
+--><meta charset=utf-8>
+<meta http-equiv=X-UA-Compatible content="IE=Edge">
+<meta name=viewport content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name=apple-mobile-web-app-status-bar-style content=black>
+<meta name=report content='{"pid": "blog", "spm":"1001.2101"}'>
+<meta name=applicable-device content=mobile>
+<meta http-equiv=Cache-Control content=no-transform>
+<meta http-equiv=Cache-Control content=no-siteapp>
+<meta content=yes name=apple-mobile-web-app-capable>
+<meta content=black name=apple-mobile-web-app-status-bar-style>
+<meta content="telephone=no" name=format-detection>
+<meta content="email=no" name=format-detection>
+<meta name=csdn-baidu-search content='{"autorun":true,"install":true,"keyword":"adb打开高通diag端口"}'>
+<title>adb 打开 diag 端口用qpst备份恢复qcn_adb打开高通diag端口-CSDN博客</title>
+<meta name=description content="文章浏览阅读1w次，点赞4次，收藏16次。方法：adb 打开 diag 端口用qpst备份恢复qcn         工具：qpst 2.7     已root手机     adb 环境一、进入adb环境，依次输入： adb shell su 输入后在手机上授权 setprop sys.usb.config diag,adb //注意“，”，看成句点就郁闷了D:\yuwen\desktop\TWRP-3.2.3-0225-LENOVO_K5PRO-CN-w..._adb打开高通diag端口">
+<link rel=canonical href=https://blog.csdn.net/wangyevon/article/details/112501186>
+<link rel=apple-touch-icon sizes=57x57 href=data:, data-sf-original-href=https://csdnimg.cn/release/blogv2/dist/mobile/img/touch-icon-iphone-57.png>
+<link rel=apple-touch-icon sizes=114x114 href=data:, data-sf-original-href=https://csdnimg.cn/release/blogv2/dist/mobile/img/touch-icon-iphone-114.png>
+<link rel=apple-touch-icon sizes=72x72 href=data:, data-sf-original-href=https://csdnimg.cn/release/blogv2/dist/mobile/img/touch-icon-iphone-72.png>
+<link rel=apple-touch-icon sizes=144x144 href=data:, data-sf-original-href=https://csdnimg.cn/release/blogv2/dist/mobile/img/touch-icon-iphone-144.png>
+<link rel=apple-touch-icon sizes=120x120 href=data:, data-sf-original-href=https://csdnimg.cn/release/blogv2/dist/mobile/img/touch-icon-iphone-120.png>
+<script type=application/ld+json>{"@context":"https://ziyuan.baidu.com/contexts/cambrian.jsonld","@id":"https://blog.csdn.net/wangyevon/article/details/112501186","appid":"1638831770136827","pubDate":"2021-01-11T23:07:31","title":"adb 打开 diag 端口用qpst备份恢复qcn_adb打开高通diag端口-CSDN博客","upDate":"2021-01-11T23:07:31"}</script>
+<meta name=referrer content=no-referrer><link href=data:, rel="shortcut icon" type=image/x-icon data-sf-original-href=https://g.csdnimg.cn/static/logo/favicon32.ico><meta http-equiv=content-security-policy content="default-src 'none'; font-src 'self' data:; img-src 'self' data:; style-src 'unsafe-inline'; media-src 'self' data:; script-src 'unsafe-inline' data:; object-src 'self' data:; frame-src 'self' data:;"><style>img[src="data:,"],source[src="data:,"]{display:none!important}</style></head>
+<body>
+ 
+<div id=main>
+<div class=aside-header-fixed>
+ <div class=aside-left>
+ <img class=iconfont src=data:, alt data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/iconLeftArrow.png>
+ <img class=portrait src=data:, alt data-sf-original-src=https://profile-avatar.csdnimg.cn/9d50613d4f0943c48a77b5b05963113d_wangyevon.jpg!1>
+ <span>wangyevon</span>
+ </div>
+ <div class=aside-right>
+ <a class=follow id=detailFollowNew data-id=112501186>关注</a>
+ </div>
+</div>
+ <div class=a_d_1></div>
+ 
+ 
+ 
+ 
+ <div id=article class=margin_sides>
+ <h1 class=article_title id=articleContentId>
+ <span class=tit>adb 打开 diag 端口用qpst备份恢复qcn</span>
+ <span class="article-type type-1 float-none">原创</span>
+ </h1>
+ <div class=creat-time-box>
+ <div class=creat-time-box-up-time>最新推荐文章于&nbsp;2024-07-08 20:23:34&nbsp;发布</div>
+ <span class="creat-time blog-postTime" data-time="2021-01-11 23:07:31"><img class=creat-time-img src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/renewal.png> <span>最新推荐文章于&nbsp;2024-07-08 20:23:34&nbsp;发布</span></span>
+ <div class=reading-collections-box>
+ <p class=blog-wap-reading>
+ <img class=have-heart-img src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/wap-articleReadEyes2.png> 
+ 阅读量<span class=text>1w</span>
+ </p>
+ </div>
+ <div class=subject-talk-box>
+ <a class=subject-talk href="https://app-blog.csdn.net/m/wapAiRelated?utm_source=711815865&amp;isHiddenNavigation=true" data-report-view='{"spm":"1001.2101.3001.10123"}' data-report-click='{"spm":"1001.2101.3001.10123"}'>
+ <img class=have-heart-img src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/subject-talk-img.png> 
+ <span>AI必读</span>
+ </a>
+ </div>
+ </div>
+ <div class="article_info clearfix">
+ <div class="top_user_mod clearfix">
+ <div class="top_user_info floatL clearfix">
+ <dl>
+ <dt class=floatL>
+ <a href=https://blog.csdn.net/wangyevon target=_blank rel=noopener class="clearfix top_user_info_a">
+ <img class=avatar src=data:, alt data-sf-original-src=https://profile-avatar.csdnimg.cn/9d50613d4f0943c48a77b5b05963113d_wangyevon.jpg!1>
+ </a>
+ </dt>
+ <dd class=floatL>
+ <p class=line-nick-name> 
+ <span class="nick_name odd-overhidden">wangyevon</span>
+ 
+ <img class=identity-icon src=data:, data-sf-original-src=https://csdnimg.cn/identity/blog2.png>
+ 
+ 
+ </p>
+ <p class=line-detaile>
+ <span class=code_years>码龄15年</span>
+ </p>
+ </dd> 
+ <a class=follow id=detailFollow data-id=856660 data-report-view='{"spm":"1001.2101.3001.8391"}'>关注</a>
+ </dl>
+ </div>
+ </div>
+ </div> 
+ <div class=baidu_pl id=csdn-previewimg-box>
+ <div class=article_content>
+ <div id=content_views class="htmledit_views clearfix">
+ 
+ <p id=main-toc><strong>目录</strong></p> 
+<p id=%E6%96%B9%E6%B3%95%EF%BC%9Aadb%20%E6%89%93%E5%BC%80%20diag%20%E7%AB%AF%E5%8F%A3%E7%94%A8qpst%E5%A4%87%E4%BB%BD%E6%81%A2%E5%A4%8Dqcn%C2%A0%20%C2%A0%20%C2%A0%20%C2%A0%20%C2%A0%20%C2%A0%20%C2%A0%20%C2%A0%20%C2%A0%20%C2%A0%C2%A0-toc><a href=#%E6%96%B9%E6%B3%95%EF%BC%9Aadb%20%E6%89%93%E5%BC%80%20diag%20%E7%AB%AF%E5%8F%A3%E7%94%A8qpst%E5%A4%87%E4%BB%BD%E6%81%A2%E5%A4%8Dqcn%C2%A0%20%C2%A0%20%C2%A0%20%C2%A0%20%C2%A0%20%C2%A0%20%C2%A0%20%C2%A0%20%C2%A0%20%C2%A0%C2%A0 rel=nofollow>方法：adb 打开 diag 端口用qpst备份恢复qcn&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</a></p> 
+<hr id=hr-toc> 
+<h2><strong>方法：adb 打开 diag 端口用qpst备份恢复qcn&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</strong></h2> 
+<p><strong>工具：qpst 2.7</strong></p> 
+<p><strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;已root手机</strong></p> 
+<p><strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;adb 环境</strong></p> 
+<p>一、进入adb环境，依次输入：</p> 
+<p>&nbsp; &nbsp;adb shell</p> 
+<p>&nbsp; su&nbsp; 输入后在手机上授权</p> 
+<p>&nbsp; &nbsp;setprop sys.usb.config diag,adb //注意“，”，看成句点就郁闷了</p> 
+<pre><code>
+D:\yuwen\desktop\TWRP-3.2.3-0225-LENOVO_K5PRO-CN-wzsx150-fastboot&gt;adb shell
+kunlun:/ $ su
+su
+kunlun:/ # setprop sys.usb.config diag,adb
+setprop sys.usb.config diag,adb
+
+D:\yuwen\desktop\TWRP-3.2.3-0225-LENOVO_K5PRO-CN-wzsx150-fastboot&gt;
+
+</code></pre> 
+<p>2、出现未知设备，安装高通驱动1.0版即可，这个驱动在高通qpst 里已经自带。</p> 
+<p>&nbsp; &nbsp; 然后就是qpst的 QFIL备份与恢复。方法很简单，直接百度。</p> 
+<p>&nbsp; &nbsp; 我备份联想k5pro成功，但是恢复报错，查了资料也没弄明白原因，先搁置了。</p> 
+<pre><code>2021-01-11 19:54:04.774    Done uploading the QCN file: C:\Temp\l38041.qcn, Sync EFS
+2021-01-11 19:54:05.282    Done EFS Sync
+2021-01-11 1</code></pre>
+ </div>
+ <div id=treeSkill></div>
+ 
+ 
+ </div>
+ </div>
+ <div class=readall_box data-report-view='{"mod":"popu_376","dest":"https://blog.csdn.net/wangyevon/article/details/112501186"}' data-report-click='{"mod":"popu_376","dest":"https://blog.csdn.net/wangyevon/article/details/112501186"}'>
+ <div class=read_more_mask></div>
+ <div class=btn_mod>
+ 
+ <div class="btn_open_app_prompt_box btn_open_app_prompt_box_testAb active abstyle appletFullText">
+ <a class=weixin_abtest_btn_open data-report-click='{"spm":"1000.2115.3001.9756"}'>小程序看全文</a>
+ <p class=read_more_btn><img class=btn-img-arrow src=data:, alt data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/doubleArrow.png></p>
+ </div>
+ <div class="btn_open_app_prompt_box btn_open_app_prompt_box_testAb active abstyle appFullText">
+ <a class="open_app_channelCode app_abtest_btn_open" data-report-click='{"spm":"1000.2115.3001.9757"}' data-channelabid=293_exp1 data-href="csdnapp://web?url=https://blog.csdn.net/wangyevon/article/details/112501186">APP 看全文</a>
+ <p class=read_more_btn><img class=btn-img-arrow src=data:, alt data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/doubleArrow.png></p>
+ </div> 
+ </div> 
+ </div> 
+ 
+ <p class=mask-lock-box>
+ <a class=btn_article_view_style data-report-view='{"spm":"3001.4249","dest":"https://blog.csdn.net/wangyevon/article/details/112501186","strategy":"wap_vip_readmore"}' data-report-click='{"spm":"3001.4249","dest":"https://blog.csdn.net/wangyevon/article/details/112501186","strategy":"wap_vip_readmore"}' href="https://mall.csdn.net/vip?vipSource=article" data-report-query="utm_source=brv&amp;sale_source=">
+ 
+ 最低0.47元/天 解锁文章</a>
+ </p>
+ </div>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ <div class=spec_space></div>
+ 
+ 
+ <div class="spec_space spec_space_hide"></div>
+ 
+ <div id=recommend>
+ <div class=recommend_list>
+ <dl></dl>
+ <dl class="container-fluid container-fluid-flex container-blog" data-url=https://fulinux.blog.csdn.net/article/details/140277128 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.1","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~YuanLiJiHua~PayColumn-1-140277128-blog-112501186.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339461742_52180\"}","dist_request_id":"1727339461742_52180","ab_strategy":"increase_t0_download","index":"1","strategy":"2~default~YuanLiJiHua~PayColumn","dest":"https://fulinux.blog.csdn.net/article/details/140277128"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=blog>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a>
+ <div class=left>
+ <span class=tag>最新发布</span>
+ <em>高通</em>开发系列 - 使用QFIL工具单刷某个镜像文件
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class="text active">
+ <em>高通</em>开发系列 - 使用QFIL工具单刷某个镜像文件
+ </a>
+ <a class=flag data-type=blog data-href=https://fulinux.blog.csdn.net/article/details/140277128 href=https://fulinux.blog.csdn.net/article/details/140277128 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.1","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~YuanLiJiHua~PayColumn-1-140277128-blog-112501186.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339461742_52180\"}","dist_request_id":"1727339461742_52180","ab_strategy":"increase_t0_download","index":"1","strategy":"2~default~YuanLiJiHua~PayColumn","dest":"https://fulinux.blog.csdn.net/article/details/140277128"}' data-report-query="spm=1001.2101.3001.6650.1&amp;utm_medium=distribute.wap_relevant.none-task-blog-2%7Edefault%7EYuanLiJiHua%7EPayColumn-1-140277128-blog-112501186.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-blog-2%7Edefault%7EYuanLiJiHua%7EPayColumn-1-140277128-blog-112501186.237%5Ev3%5Ewap_relevant_t0_download">继续访问</a>
+ </div>
+ </div>
+ <div class=right-img-box>
+ <a class=recommend-img>
+ <img src=data:, alt data-sf-original-src=https://i-blog.csdnimg.cn/direct/7276561a9c944f2b991d942ae3f72654.png>
+ </a>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-download" data-url=https://download.csdn.net/download/u011283906/87358742 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.2","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~CTRLIST~Paid-2-87358742-blog-112501186.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339461742_52180\"}","dist_request_id":"1727339461742_52180","ab_strategy":"increase_t0_download","index":"2","strategy":"2~default~CTRLIST~Paid","dest":"https://download.csdn.net/download/u011283906/87358742"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=download>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a href=https://download.csdn.net/download/u011283906/87358742 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.2","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~CTRLIST~Paid-2-87358742-blog-112501186.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339461742_52180\"}","dist_request_id":"1727339461742_52180","ab_strategy":"increase_t0_download","index":"2","strategy":"2~default~CTRLIST~Paid","dest":"https://download.csdn.net/download/u011283906/87358742"}' data-report-query="spm=1001.2101.3001.6650.2&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7ECTRLIST%7EPaid-2-87358742-blog-112501186.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7ECTRLIST%7EPaid-2-87358742-blog-112501186.237%5Ev3%5Ewap_relevant_t0_download">
+ <div class=left>
+ <em>高通</em>机型 无需root开启<em>diag</em><em>端口</em> 开启基带<em>端口</em> 写基带<em>qcn</em> 读写参数
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class=text href=https://download.csdn.net/download/u011283906/87358742 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.2","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~CTRLIST~Paid-2-87358742-blog-112501186.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339461742_52180\"}","dist_request_id":"1727339461742_52180","ab_strategy":"increase_t0_download","index":"2","strategy":"2~default~CTRLIST~Paid","dest":"https://download.csdn.net/download/u011283906/87358742"}' data-report-query="spm=1001.2101.3001.6650.2&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7ECTRLIST%7EPaid-2-87358742-blog-112501186.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7ECTRLIST%7EPaid-2-87358742-blog-112501186.237%5Ev3%5Ewap_relevant_t0_download">
+ 用于一些<em>高通</em>机型开启<em>diag</em><em>端口</em>的工具
+在机型中安装资源内的apk。用于激活手机<em>diag</em><em>端口</em>参数。然后链接电脑手机按步骤开启<em>端口</em>即可开启、
+用于<em>高通</em>芯片。
+无法常规<em>打开</em><em>diag</em><em>端口</em>的可以使用。
+资源用于没有root 无法常规指令开启<em>端口</em>的机型。
+动手能力强的友友使用。
+带步骤说明与真机演示图
+资源有可复制性。下载后不支持退。请谨慎操作.
+<em>diag</em><em>端口</em>是<em>高通</em>机型读写基带<em>qcn</em> 读写参数所必须要开启的基带<em>端口</em>
+ </a>
+ </div>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-blog" data-url=https://blog.csdn.net/llq520/article/details/116931751 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.3","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~CTRLIST~Rate-3-116931751-blog-112501186.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339461742_52180\"}","dist_request_id":"1727339461742_52180","ab_strategy":"increase_t0_download","index":"3","strategy":"2~default~CTRLIST~Rate","dest":"https://blog.csdn.net/llq520/article/details/116931751"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=blog>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a>
+ <div class=left>
+ 【转】小米9<em>打开</em><em>高通</em><em>Diag</em>nostics<em>端口</em>提取的基带<em>qcn</em>文件改串号
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class="text active">
+ 正常机提取基带<em>qcn</em>文件
+使用与刷写第三方或者升降级系统导致丢失基带或者丢失串码等故障
+写入方法通用与其他<em>高通</em>芯片写入
+<em>高通</em>芯片机型提取写入基带方法基本都通用的，不通用的地方在于各机型开<em>端口</em>的方法不同，但命令开<em>端口</em>基本都一样的
+丢基带掉串码问题这种情况一般都是系统跨版本更新或者降级或者刷写第三方rom导致的。
+或者个别机型操作系统故障黑砖救砖后也会有几率出现无基带掉串码故障
+刷机之前一定要<em>备份</em><em>qcn</em>，基带一掉手机就跟砖头没区别了
+那么<em>备份</em><em>qcn</em>需要什么呢？
+没错，就是开<em>高通</em><em>diag</em><em>端口</em>，
+...
+ </a>
+ <a class=flag data-type=blog data-href=https://blog.csdn.net/llq520/article/details/116931751 href=https://blog.csdn.net/llq520/article/details/116931751 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.3","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~CTRLIST~Rate-3-116931751-blog-112501186.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339461742_52180\"}","dist_request_id":"1727339461742_52180","ab_strategy":"increase_t0_download","index":"3","strategy":"2~default~CTRLIST~Rate","dest":"https://blog.csdn.net/llq520/article/details/116931751"}' data-report-query="spm=1001.2101.3001.6650.3&amp;utm_medium=distribute.wap_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-3-116931751-blog-112501186.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-3-116931751-blog-112501186.237%5Ev3%5Ewap_relevant_t0_download">继续访问</a>
+ </div>
+ </div>
+ <div class=right-img-box>
+ <a class=recommend-img>
+ <img src=data:, alt data-sf-original-src="https://img-blog.csdnimg.cn/img_convert/4f4ed056b1a16a2ec96ba02dc03704a5.png?x-oss-process=image/resize,m_fixed,h_150">
+ </a>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-blog" data-url=https://blog.csdn.net/GentelmanTsao/article/details/106861044 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.4","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~CTRLIST~Rate-4-106861044-blog-112501186.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339461742_52180\"}","dist_request_id":"1727339461742_52180","ab_strategy":"increase_t0_download","index":"4","strategy":"2~default~CTRLIST~Rate","dest":"https://blog.csdn.net/GentelmanTsao/article/details/106861044"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=blog>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a>
+ <div class=left>
+ Modem2G/3G/4G/5G：解决设备连接<em>高通</em><em>QPST</em>工具（例如QXDM抓log）没有<em>端口</em>（<em>diag</em>口）问题
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class="text active">
+ 文章目录问题描述生效条件解决方法Q&amp;A
+问题描述
+使用QXDM抓log需要用到设备的<em>diag</em>口，但很多版本的<em>diag</em>口并没有开放，这会导致<em>打开</em>QXDM后，看不到设备的<em>端口</em>，无法正常连接。
+没有<em>diag</em>口的可能原因比较多，其中有些是无法开启的，例如版本<em>打开</em>了secure boot并封闭了<em>diag</em>。
+生效条件
+下面的方法的前提是：
+设备是userdebug版本或可以root。
+解决方法
+连接USB cable并键入指令:
+ </a>
+ <a class=flag data-type=blog data-href=https://blog.csdn.net/GentelmanTsao/article/details/106861044 href=https://blog.csdn.net/GentelmanTsao/article/details/106861044 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.4","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~CTRLIST~Rate-4-106861044-blog-112501186.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339461742_52180\"}","dist_request_id":"1727339461742_52180","ab_strategy":"increase_t0_download","index":"4","strategy":"2~default~CTRLIST~Rate","dest":"https://blog.csdn.net/GentelmanTsao/article/details/106861044"}' data-report-query="spm=1001.2101.3001.6650.4&amp;utm_medium=distribute.wap_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-4-106861044-blog-112501186.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-4-106861044-blog-112501186.237%5Ev3%5Ewap_relevant_t0_download">继续访问</a>
+ </div>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-blog" data-url=https://blog.csdn.net/qq_28852011/article/details/103803973 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.5","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~CTRLIST~Rate-5-103803973-blog-112501186.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339461742_52180\"}","dist_request_id":"1727339461742_52180","ab_strategy":"increase_t0_download","index":"5","strategy":"2~default~CTRLIST~Rate","dest":"https://blog.csdn.net/qq_28852011/article/details/103803973"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=blog>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a>
+ <div class=left>
+ <em>高通</em><em>QPST</em><em>备份</em><em>QCN</em>及<em>恢复</em>流程
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class="text active">
+ 一：首先<em>打开</em><em>qpst</em> software download 界面，选择backup选项连接手机进行<em>备份</em>，进度条走完后点击Exit完成<em>备份</em>
+二：<em>qcn</em>还原流程，选择restore 连接手机进行还原，待进度条走完后点击Exit后手机会自动重启，此为完整流程。
+...
+ </a>
+ <a class=flag data-type=blog data-href=https://blog.csdn.net/qq_28852011/article/details/103803973 href=https://blog.csdn.net/qq_28852011/article/details/103803973 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.5","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~CTRLIST~Rate-5-103803973-blog-112501186.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339461742_52180\"}","dist_request_id":"1727339461742_52180","ab_strategy":"increase_t0_download","index":"5","strategy":"2~default~CTRLIST~Rate","dest":"https://blog.csdn.net/qq_28852011/article/details/103803973"}' data-report-query="spm=1001.2101.3001.6650.5&amp;utm_medium=distribute.wap_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-5-103803973-blog-112501186.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-5-103803973-blog-112501186.237%5Ev3%5Ewap_relevant_t0_download">继续访问</a>
+ </div>
+ </div>
+ <div class=right-img-box>
+ <a class=recommend-img>
+ <img src=data:, alt data-sf-original-src="https://img-blog.csdnimg.cn/20200102143324427.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI4ODUyMDEx,size_16,color_FFFFFF,t_70,image/resize,m_fixed,h_150">
+ </a>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-blog" data-url=https://blog.csdn.net/weixin_45934662/article/details/120710127 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.6","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~CTRLIST~Rate-6-120710127-blog-112501186.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339461742_52180\"}","dist_request_id":"1727339461742_52180","ab_strategy":"increase_t0_download","index":"6","strategy":"2~default~CTRLIST~Rate","dest":"https://blog.csdn.net/weixin_45934662/article/details/120710127"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=blog>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a>
+ <div class=left>
+ <em>adb</em> <em>打开</em>系统<em>DIAG</em>口
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class="text active">
+ 最新使用QXDM排查问题时发现<em>DIAG</em>口一直没有识别到，检查设备管理器，检查驱动，都是正常的，最后发现是机器没有开启<em>DIAG</em>口。
+现在<em>分享</em>下开启机器<em>DIAG</em>口的命令：
+<em>adb</em> root
+<em>adb</em> shell
+setprop sys.usb.config <em>diag</em>
+...
+ </a>
+ <a class=flag data-type=blog data-href=https://blog.csdn.net/weixin_45934662/article/details/120710127 href=https://blog.csdn.net/weixin_45934662/article/details/120710127 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.6","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~CTRLIST~Rate-6-120710127-blog-112501186.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339461742_52180\"}","dist_request_id":"1727339461742_52180","ab_strategy":"increase_t0_download","index":"6","strategy":"2~default~CTRLIST~Rate","dest":"https://blog.csdn.net/weixin_45934662/article/details/120710127"}' data-report-query="spm=1001.2101.3001.6650.6&amp;utm_medium=distribute.wap_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-6-120710127-blog-112501186.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-6-120710127-blog-112501186.237%5Ev3%5Ewap_relevant_t0_download">继续访问</a>
+ </div>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-download" data-url=https://download.csdn.net/download/taojin1002/10561272 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.7","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~BlogCommendFromBaidu~Rate-7-10561272-blog-112501186.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339461742_52180\"}","dist_request_id":"1727339461742_52180","ab_strategy":"increase_t0_download","index":"7","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://download.csdn.net/download/taojin1002/10561272"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=download>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a href=https://download.csdn.net/download/taojin1002/10561272 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.7","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~BlogCommendFromBaidu~Rate-7-10561272-blog-112501186.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339461742_52180\"}","dist_request_id":"1727339461742_52180","ab_strategy":"increase_t0_download","index":"7","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://download.csdn.net/download/taojin1002/10561272"}' data-report-query="spm=1001.2101.3001.6650.7&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EBlogCommendFromBaidu%7ERate-7-10561272-blog-112501186.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EBlogCommendFromBaidu%7ERate-7-10561272-blog-112501186.237%5Ev3%5Ewap_relevant_t0_download">
+ <div class=left>
+ <em>adb</em>测试工具<em>端口</em>亲测可用
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class=text href=https://download.csdn.net/download/taojin1002/10561272 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.7","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~BlogCommendFromBaidu~Rate-7-10561272-blog-112501186.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339461742_52180\"}","dist_request_id":"1727339461742_52180","ab_strategy":"increase_t0_download","index":"7","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://download.csdn.net/download/taojin1002/10561272"}' data-report-query="spm=1001.2101.3001.6650.7&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EBlogCommendFromBaidu%7ERate-7-10561272-blog-112501186.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EBlogCommendFromBaidu%7ERate-7-10561272-blog-112501186.237%5Ev3%5Ewap_relevant_t0_download">
+ <em>adb</em>测试工具<em>端口</em>亲测可用，大家可以下载试试看，主要用来调试安卓<em>adb</em>的
+ </a>
+ </div>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-blog" data-url=https://blog.csdn.net/icloudelectron/article/details/113787028 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.8","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-8-113787028-blog-112501186.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339461742_52180\"}","dist_request_id":"1727339461742_52180","ab_strategy":"increase_t0_download","index":"8","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://blog.csdn.net/icloudelectron/article/details/113787028"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=blog>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a>
+ <div class=left>
+ 小米新款<em>打开</em><em>高通</em><em>Diag</em>nostics<em>端口</em>提取的基带<em>qcn</em>文件改串号
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class="text active">
+ 小米新款<em>打开</em><em>高通</em><em>Diag</em>nostics<em>端口</em>提取的基带<em>qcn</em>文件改串号
+正常机提取基带<em>qcn</em>文件
+使用与刷写第三方或者升降级系统导致丢失基带或者丢失串码等故障
+写入方法通用与其他<em>高通</em>芯片写入
+<em>高通</em>芯片机型提取写入基带方法基本都通用的，不通用的地方在于各机型开<em>端口</em>的方法不同，但命令开<em>端口</em>基本都一样的
+丢基带 掉串码问题这种情况一般都是系统跨版本更新或者降级或者刷写第三方rom导致的。
+或者个别机型操作系统故障黑砖救砖后也会有几率出现无基带掉串码故障
+刷机之前一定要<em>备份</em><em>qcn</em>，基带一掉手机就跟砖头没区别了
+那么备
+ </a>
+ <a class=flag data-type=blog data-href=https://blog.csdn.net/icloudelectron/article/details/113787028 href=https://blog.csdn.net/icloudelectron/article/details/113787028 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.8","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-8-113787028-blog-112501186.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339461742_52180\"}","dist_request_id":"1727339461742_52180","ab_strategy":"increase_t0_download","index":"8","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://blog.csdn.net/icloudelectron/article/details/113787028"}' data-report-query="spm=1001.2101.3001.6650.8&amp;utm_medium=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-8-113787028-blog-112501186.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-8-113787028-blog-112501186.237%5Ev3%5Ewap_relevant_t0_download">继续访问</a>
+ </div>
+ </div>
+ <div class=right-img-box>
+ <a class=recommend-img>
+ <img src=data:, alt data-sf-original-src="https://img-blog.csdnimg.cn/20210210232823984.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ljbG91ZGVsZWN0cm9u,size_16,color_FFFFFF,t_70,image/resize,m_fixed,h_150">
+ </a>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-blog" data-url=https://blog.csdn.net/weixin_39700063/article/details/117624776 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.9","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-9-117624776-blog-112501186.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339461742_52180\"}","dist_request_id":"1727339461742_52180","ab_strategy":"increase_t0_download","index":"9","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://blog.csdn.net/weixin_39700063/article/details/117624776"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=blog>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a>
+ <div class=left>
+ <em>android</em> <em>端口</em>开启,<em>高通</em>手机<em>打开</em><em>DIAG</em><em>端口</em> 开启<em>端口</em>指令
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class="text active">
+ 三星 *#0808#*#7284###3424#选择DM+MODEM+<em>ADB</em>退出 选择MTP+<em>ADB</em>华为 *#*#2846579#*#*小米 *#*#717717#*#*LG 3845#*机型#选择Port Settings弹出菜单选Data Settings ,再选择USB Set for Data,弹出Data Settings set to:USB Set...
+ </a>
+ <a class=flag data-type=blog data-href=https://blog.csdn.net/weixin_39700063/article/details/117624776 href=https://blog.csdn.net/weixin_39700063/article/details/117624776 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.9","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-9-117624776-blog-112501186.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339461742_52180\"}","dist_request_id":"1727339461742_52180","ab_strategy":"increase_t0_download","index":"9","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://blog.csdn.net/weixin_39700063/article/details/117624776"}' data-report-query="spm=1001.2101.3001.6650.9&amp;utm_medium=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-9-117624776-blog-112501186.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-9-117624776-blog-112501186.237%5Ev3%5Ewap_relevant_t0_download">继续访问</a>
+ </div>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-blog" data-url=https://blog.csdn.net/Hearbeat/article/details/54730091 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.10","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-10-54730091-blog-112501186.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339461742_52180\"}","dist_request_id":"1727339461742_52180","ab_strategy":"increase_t0_download","index":"10","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://blog.csdn.net/Hearbeat/article/details/54730091"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=blog>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a>
+ <div class=left>
+ <span class=tag>热门推荐</span>
+ 安卓<em>高通</em><em>Diag</em>命令解析
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class="text active">
+ 一、命令发送
+不同公司都有自己的独有的<em>Diag</em>测试命令，所以移植过来的指令可能还需要调整，在调试<em>Diag</em>命令时候如果如果把获取系统属性的命令调通，其他命令也类似。
+使用Qxdm发送<em>Diag</em>命令
+方法：<em>打开</em>Qxdm软件-&gt;选择相关<em>端口</em> -&gt;选择“CommandOut”模式 -&gt;发送栏输入发送命令
+需要注意发送格式“Send_data 0x80 0xFA 0x79 0x00 0x01”其中“0
+ </a>
+ <a class=flag data-type=blog data-href=https://blog.csdn.net/Hearbeat/article/details/54730091 href=https://blog.csdn.net/Hearbeat/article/details/54730091 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.10","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-10-54730091-blog-112501186.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339461742_52180\"}","dist_request_id":"1727339461742_52180","ab_strategy":"increase_t0_download","index":"10","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://blog.csdn.net/Hearbeat/article/details/54730091"}' data-report-query="spm=1001.2101.3001.6650.10&amp;utm_medium=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-10-54730091-blog-112501186.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-10-54730091-blog-112501186.237%5Ev3%5Ewap_relevant_t0_download">继续访问</a>
+ </div>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-blog" data-url=https://devpress.csdn.net/v1/article/detail/129614490 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.11","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~activity-11-129614490-blog-112501186.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339461742_52180\"}","dist_request_id":"1727339461742_52180","ab_strategy":"increase_t0_download","index":"11","strategy":"2~default~BlogCommendFromBaidu~activity","dest":"https://devpress.csdn.net/v1/article/detail/129614490"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=blog>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a>
+ <div class=left>
+ 小米10s格机修复 nv报错案例解析 关于基带分区的一些常识
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class="text active">
+ 前面<em>分享</em>过几期关于基带 <em>diag</em><em>端口</em>与<em>qcn</em>相关的几篇帖子。其中一位粉丝朋友联系我。他的机型因为误格机导致手机进不去系统，反复进入官方rec报错nv损坏。今天结合这个机型的修复补充下基带的几个相关常识。
+ </a>
+ <a class=flag data-type=blog data-href=https://devpress.csdn.net/v1/article/detail/129614490 href=https://devpress.csdn.net/v1/article/detail/129614490 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.11","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~activity-11-129614490-blog-112501186.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339461742_52180\"}","dist_request_id":"1727339461742_52180","ab_strategy":"increase_t0_download","index":"11","strategy":"2~default~BlogCommendFromBaidu~activity","dest":"https://devpress.csdn.net/v1/article/detail/129614490"}' data-report-query="spm=1001.2101.3001.6650.11&amp;utm_medium=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7Eactivity-11-129614490-blog-112501186.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7Eactivity-11-129614490-blog-112501186.237%5Ev3%5Ewap_relevant_t0_download">继续访问</a>
+ </div>
+ </div>
+ <div class=right-img-box>
+ <a class=recommend-img>
+ <img src=data:, alt data-sf-original-src=https://img-blog.csdnimg.cn/b8d79fcbf773416d991fadb6bda1bb9f.png>
+ </a>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-download" data-url=https://download.csdn.net/download/weixin_38683193/12756156 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.12","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-12-12756156-blog-112501186.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339461742_52180\"}","dist_request_id":"1727339461742_52180","ab_strategy":"increase_t0_download","index":"12","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/weixin_38683193/12756156"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=download>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a href=https://download.csdn.net/download/weixin_38683193/12756156 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.12","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-12-12756156-blog-112501186.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339461742_52180\"}","dist_request_id":"1727339461742_52180","ab_strategy":"increase_t0_download","index":"12","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/weixin_38683193/12756156"}' data-report-query="spm=1001.2101.3001.6650.12&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-12-12756156-blog-112501186.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-12-12756156-blog-112501186.237%5Ev3%5Ewap_relevant_t0_download">
+ <div class=left>
+ <em>Android</em> 修改<em>adb</em><em>端口</em>的方法
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class=text href=https://download.csdn.net/download/weixin_38683193/12756156 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.12","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-12-12756156-blog-112501186.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339461742_52180\"}","dist_request_id":"1727339461742_52180","ab_strategy":"increase_t0_download","index":"12","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/weixin_38683193/12756156"}' data-report-query="spm=1001.2101.3001.6650.12&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-12-12756156-blog-112501186.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-12-12756156-blog-112501186.237%5Ev3%5Ewap_relevant_t0_download">
+ 首先，要确认<em>adb</em><em>端口</em>是否被占用，我们可以使用命令行工具来查看当前系统<em>端口</em>的使用情况。在Windows系统中，可以通过"cmd"命令提示符输入以下命令来查看<em>端口</em>占用情况： ``` netstat -ano | findstr "5037" ``` 或者...
+ </a>
+ </div>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-download" data-url=https://download.csdn.net/download/u011283906/88384914 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.13","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-13-88384914-blog-112501186.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339461742_52180\"}","dist_request_id":"1727339461742_52180","ab_strategy":"increase_t0_download","index":"13","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/u011283906/88384914"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=download>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a href=https://download.csdn.net/download/u011283906/88384914 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.13","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-13-88384914-blog-112501186.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339461742_52180\"}","dist_request_id":"1727339461742_52180","ab_strategy":"increase_t0_download","index":"13","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/u011283906/88384914"}' data-report-query="spm=1001.2101.3001.6650.13&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-13-88384914-blog-112501186.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-13-88384914-blog-112501186.237%5Ev3%5Ewap_relevant_t0_download">
+ <div class=left>
+ <em>adb</em>一键清除占用<em>端口</em>
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class=text href=https://download.csdn.net/download/u011283906/88384914 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.13","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-13-88384914-blog-112501186.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339461742_52180\"}","dist_request_id":"1727339461742_52180","ab_strategy":"increase_t0_download","index":"13","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/u011283906/88384914"}' data-report-query="spm=1001.2101.3001.6650.13&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-13-88384914-blog-112501186.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-13-88384914-blog-112501186.237%5Ev3%5Ewap_relevant_t0_download">
+ 在描述中提到，当尝试刷机或使用<em>ADB</em>命令时，即使设备已连接且驱动正常，如果发现无法进行联机操作，通常是因为<em>ADB</em><em>端口</em>被其他进程占用。此时，这个工具可以帮助我们找到并清理掉那些占用<em>端口</em>的软件，<em>恢复</em>正常的工作...
+ </a>
+ </div>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-download" data-url=https://download.csdn.net/download/yangyi91171/18662271 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.14","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-14-18662271-blog-112501186.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339461742_52180\"}","dist_request_id":"1727339461742_52180","ab_strategy":"increase_t0_download","index":"14","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/yangyi91171/18662271"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=download>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a href=https://download.csdn.net/download/yangyi91171/18662271 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.14","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-14-18662271-blog-112501186.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339461742_52180\"}","dist_request_id":"1727339461742_52180","ab_strategy":"increase_t0_download","index":"14","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/yangyi91171/18662271"}' data-report-query="spm=1001.2101.3001.6650.14&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-14-18662271-blog-112501186.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-14-18662271-blog-112501186.237%5Ev3%5Ewap_relevant_t0_download">
+ <div class=left>
+ 一键解决<em>adb</em><em>端口</em>被占用 5037<em>端口</em>错误
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class=text href=https://download.csdn.net/download/yangyi91171/18662271 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.14","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-14-18662271-blog-112501186.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339461742_52180\"}","dist_request_id":"1727339461742_52180","ab_strategy":"increase_t0_download","index":"14","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/yangyi91171/18662271"}' data-report-query="spm=1001.2101.3001.6650.14&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-14-18662271-blog-112501186.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-14-18662271-blog-112501186.237%5Ev3%5Ewap_relevant_t0_download">
+ 一键解决<em>adb</em><em>端口</em>被占用 一键解决"* daemon not running. starting it now on port 5037 * * daemon started successfully * ** daemon still not running error: cannot connect to daemon"问题 一键解决<em>adb</em> devices...
+ </a>
+ </div>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-download" data-url=https://download.csdn.net/download/qq_39523777/9900004 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.15","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-15-9900004-blog-112501186.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339461742_52180\"}","dist_request_id":"1727339461742_52180","ab_strategy":"increase_t0_download","index":"15","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/qq_39523777/9900004"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=download>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a href=https://download.csdn.net/download/qq_39523777/9900004 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.15","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-15-9900004-blog-112501186.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339461742_52180\"}","dist_request_id":"1727339461742_52180","ab_strategy":"increase_t0_download","index":"15","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/qq_39523777/9900004"}' data-report-query="spm=1001.2101.3001.6650.15&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-15-9900004-blog-112501186.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-15-9900004-blog-112501186.237%5Ev3%5Ewap_relevant_t0_download">
+ <div class=left>
+ 智能机顶盒<em>打开</em><em>ADB</em>的方法
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class=text href=https://download.csdn.net/download/qq_39523777/9900004 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.15","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-15-9900004-blog-112501186.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339461742_52180\"}","dist_request_id":"1727339461742_52180","ab_strategy":"increase_t0_download","index":"15","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/qq_39523777/9900004"}' data-report-query="spm=1001.2101.3001.6650.15&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-15-9900004-blog-112501186.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-15-9900004-blog-112501186.237%5Ev3%5Ewap_relevant_t0_download">
+ 智能机顶盒<em>打开</em><em>ADB</em>的方法是针对中兴网络机顶盒等设备进行系统级操作和调试的一种技术手段。<em>ADB</em>（<em>Android</em> Debug Bridge）是<em>Android</em>系统提供的一个命令行工具，它允许开发者在计算机上通过USB或网络与<em>Android</em>设备进行...
+ </a>
+ </div>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-download" data-url=https://download.csdn.net/download/qq_29417813/87264432 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.16","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-16-87264432-blog-112501186.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339461742_52180\"}","dist_request_id":"1727339461742_52180","ab_strategy":"increase_t0_download","index":"16","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/qq_29417813/87264432"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=download>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a href=https://download.csdn.net/download/qq_29417813/87264432 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.16","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-16-87264432-blog-112501186.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339461742_52180\"}","dist_request_id":"1727339461742_52180","ab_strategy":"increase_t0_download","index":"16","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/qq_29417813/87264432"}' data-report-query="spm=1001.2101.3001.6650.16&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-16-87264432-blog-112501186.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-16-87264432-blog-112501186.237%5Ev3%5Ewap_relevant_t0_download">
+ <div class=left>
+ 连接公网<em>ADB</em>需要<em>端口</em>映射
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class=text href=https://download.csdn.net/download/qq_29417813/87264432 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.16","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-16-87264432-blog-112501186.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339461742_52180\"}","dist_request_id":"1727339461742_52180","ab_strategy":"increase_t0_download","index":"16","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/qq_29417813/87264432"}' data-report-query="spm=1001.2101.3001.6650.16&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-16-87264432-blog-112501186.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-16-87264432-blog-112501186.237%5Ev3%5Ewap_relevant_t0_download">
+ - **使用ngrok**：下载并运行ngrok，指定要映射的本地<em>端口</em>（例如5037，<em>ADB</em>默认<em>端口</em>）： ``` ngrok tcp 5037 ``` ngrok会提供一个公开的URL，将这个URL记下来。 - **使用localtunnel**：类似地，运行...
+ </a>
+ </div>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-blog" data-url=https://blog.csdn.net/yongxiang008/article/details/121874079 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.17","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~CTRLIST~Rate-17-121874079-blog-112501186.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339461742_52180\"}","dist_request_id":"1727339461742_52180","ab_strategy":"increase_t0_download","index":"17","strategy":"2~default~CTRLIST~Rate","dest":"https://blog.csdn.net/yongxiang008/article/details/121874079"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=blog>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a>
+ <div class=left>
+ <em>高通</em>手机手动切换<em>diag</em>口
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class="text active">
+ <em>高通</em>手机找不到<em>diag</em>口：
+1、<em>adb</em> root
+2、手动切<em>diag</em>口：
+setprop sys.usb.config <em>diag</em>,<em>adb</em>
+ </a>
+ <a class=flag data-type=blog data-href=https://blog.csdn.net/yongxiang008/article/details/121874079 href=https://blog.csdn.net/yongxiang008/article/details/121874079 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.17","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~CTRLIST~Rate-17-121874079-blog-112501186.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339461742_52180\"}","dist_request_id":"1727339461742_52180","ab_strategy":"increase_t0_download","index":"17","strategy":"2~default~CTRLIST~Rate","dest":"https://blog.csdn.net/yongxiang008/article/details/121874079"}' data-report-query="spm=1001.2101.3001.6650.17&amp;utm_medium=distribute.wap_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-17-121874079-blog-112501186.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-17-121874079-blog-112501186.237%5Ev3%5Ewap_relevant_t0_download">继续访问</a>
+ </div>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-blog" data-url=https://devpress.csdn.net/v1/article/detail/125299597 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.18","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~activity-18-125299597-blog-112501186.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339461742_52180\"}","dist_request_id":"1727339461742_52180","ab_strategy":"increase_t0_download","index":"18","strategy":"2~default~BlogCommendFromBaidu~activity","dest":"https://devpress.csdn.net/v1/article/detail/125299597"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=blog>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a>
+ <div class=left>
+ 关于安卓机型写串码 改串码 <em>端口</em>开启和基带<em>qcn</em>等一些<em>经验</em>
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class="text active">
+ 第一种需求情况。主要是刷机 更新 降级导致的基带丢失 没有串码情况。这种需要写入基带和串码来解决故障，有的机型有可能重新线刷一次官方固件基带和串码就回复正常了。有的机型不行。具体实测为主。那么不管是写串码或者改串码或者写基带<em>qcn</em>都先要明白前提是什么？那么今天说的一个问题就是<em>端口</em>开启这边说的<em>端口</em>就是指写串码 改串码 写<em>qcn</em>的<em>端口</em>。没有开启<em>端口</em>。你无法读取原机基带谢谢，也就没办法读写。关于基础的教程。大家可以参考下我这个教程​​​​​​基带<em>qcn</em>的<em>备份</em>与写入相关 格机 nv报错_安卓机器的博客-CSDN博客
+ </a>
+ <a class=flag data-type=blog data-href=https://devpress.csdn.net/v1/article/detail/125299597 href=https://devpress.csdn.net/v1/article/detail/125299597 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.18","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~activity-18-125299597-blog-112501186.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727339461742_52180\"}","dist_request_id":"1727339461742_52180","ab_strategy":"increase_t0_download","index":"18","strategy":"2~default~BlogCommendFromBaidu~activity","dest":"https://devpress.csdn.net/v1/article/detail/125299597"}' data-report-query="spm=1001.2101.3001.6650.18&amp;utm_medium=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7Eactivity-18-125299597-blog-112501186.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7Eactivity-18-125299597-blog-112501186.237%5Ev3%5Ewap_relevant_t0_download">继续访问</a>
+ </div>
+ </div>
+ <div class=right-img-box>
+ <a class=recommend-img>
+ <img src=data:, alt data-sf-original-src=https://img-blog.csdnimg.cn/aa2c3f16333b46969616249effdbf1cd.png>
+ </a>
+ </div>
+ </div>
+ </dl>
+ </div>
+ </div>
+ 
+ <div id=operate class=clearfix>
+ <div class="clearfix content-box">
+ <div class="operate_write operate_common floatL">
+ <span class=comment-bt-write>
+ <span class=enter_text><img class=operate_img src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/writeIcon@2x.png>写评论</span>
+ <img class=comment-sofa-flag src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/pc/img/commentFlag@2x.png>
+ </span>
+ </div>
+ <div class="collect-btn operate_add operate_common floatL">
+ <span class=operate_collect_box>
+ <span class=uncollect>
+ <img class=operate_img src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/uncollect@2x.png>
+ </span>
+ <span class=collect>
+ <img class=operate_img src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/collect@2x.png>
+ </span>
+ <span class=count>
+ 16
+ </span>
+ </span>
+ </div>
+ <div class="like-btn operate_heart operate_common floatL" data-dest=https://blog.csdn.net/wangyevon/article/details/112501186>
+ <span class=operate_heart_box>
+ <span class=unheart>
+ <img class=operate_img src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/unheart@2x.png>
+ </span>
+ <span class=heart>
+ <img class=operate_img src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/heart@2x.png>
+ </span>
+ <span class=count>
+ 4
+ </span>
+ </span>
+ </div>
+ <div class="unlike-btn operate_steplike operate_common floatL">
+ <span class=operate_heart_box>
+ <span class=stepunlike>
+ <img class=operate_img src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/stepUnLike.png>
+ </span>
+ <span class=steplike>
+ <img class=operate_img src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/stepLike.png>
+ </span>
+ <span class=count>
+ 踩
+ </span>
+ </span>
+ </div>
+ <div class="share-btn operate_share operate_common floatL">
+ <a>
+ <span class=operate_share_box>
+ <img class=operate_img src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/unshare@2x.png>
+ <span class=count>分享</span>
+ </span>
+ </a>
+ </div>
+ </div>
+ </div>
+</div>
+ <div id=prompt>
+ 
+ <span>文章收藏成功</span>
+ </div>
+ <div class="app-shadowbox wap-shadowbox" data-type=view>
+ <div class=app-box>
+ <div class=pos-box>
+ <div class=tip-massege>前往CSDN APP阅读全文</div>
+ <div class=tip-text>CSDN APP记录你的成长</div>
+ <a class="app-bt-cance read_more_btn close-icon" data-report-click='{"spm":"1001.2101.3001.9529"}'>
+ <img src=data:, alt data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/closeBt.png>
+ </a>
+ <div class="button-box button-box-new w-100p">
+ <a class="app-bt-sure open_app_channelCode" id=wap_open_app_btn data-channelcode=blog_1592384106 data-channelabid=293_exp1 data-report-click='{"spm":"1001.2101.3001.9530"}' data-name=a data-href="csdnapp://web?url=https://blog.csdn.net/wangyevon/article/details/112501186">前往APP</a>
+ </div>
+ </div>
+ </div>
+ </div>
+ <div class="wap-shadowbox qr-weixin-box">
+ <div class=app-box>
+ <div class=tip-massege>微信小程序收藏浏览更方便</div>
+ <div class=routine-box-img> <img src=data:, alt data-sf-original-src></div>
+ <div class=routine-box-text>
+ <span>截图/长按 </span>保存本地，用微信扫码打开
+ </div>
+ <img class=close src=data:, alt data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/closeBt.png>
+ </div>
+ </div>
+ <div class="small-shadowbox wap-shadowbox">
+ <div class=app-box>
+ <div class=tip-massege>进入小程序随时浏览/收藏技术文章</div>
+ <div class="button-box button-box-new">
+ <a class=app-ab-cance data-report-click='{"spm":"1001.2101.3001.9400"}'>取消</a>
+ <a class=app-bt-sure data-report-click='{"spm":"1001.2101.3001.9401"}'>立即前往</a>
+ </div>
+ <img class=close src=data:, alt data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/closeBt.png>
+ </div>
+ </div>
+ <div class="wap-shadowbox ab-app-shadowbox">
+ <div class="app-box active">
+ <a class="app-bt-cance read_more_btn close-icon" id=ab-app-shadowbox-close data-report-view='{"spm":"1001.2101.3001.9672"}' data-report-click='{"spm":"1001.2101.3001.9672"}'>
+ <img src=data:, alt data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/closeBt.png>
+ </a>
+ <div class=tip-massege>需要前往CSDN APP登录即可继续互动</div>
+ <div class="button-box button-box-new w-100p">
+ <a class="app-bt-sure open_app_channelCode app-bt-sure-btn-new" id=wap_open_app_btn data-channelcode=1663655995 data-report-view='{"spm":"1001.2101.3001.8335"}' data-report-click='{"spm":"1001.2101.3001.8335"}' data-name=a data-href="csdnapp://web?url=https://blog.csdn.net/wangyevon/article/details/112501186">前往APP</a>
+ </div>
+ </div>
+ </div>
+ <div class="comment-shadowbox wap-shadowbox">
+ <div class=comment-write-box>
+ <div class=write-comment-container>
+ <textarea name class=write-comment-content id=writeComment placeholder="请发表有价值的评论， 博客评论不欢迎灌水，良好的社区氛围需大家一起维护。"></textarea>
+ <div id=formRewardBox class=comment-reward-box>
+ <a class=btn-remove-reward></a>
+ <div class=form-reward-box>
+ <div class=info>
+ 成就一亿技术人!
+ </div>
+ <div class=price-info>
+ 拼手气红包<span class=price>6.0元</span>
+ </div>
+ </div>
+ </div>
+ </div>
+ <div class=comment-write-bt>
+ <a class=write-redEnvolope>
+ <img class=comment-operate-img data-url=https://csdnimg.cn/release/blogv2/dist/pc/img/ src=data:, alt=红包 data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/pc/img/commentReward.png>
+ </a>
+ <a class=write-bt-sure data-report-click='{"spm":"1001.2101.3001.7867","mod":"1589175530_002"}' data-report-view='{"spm":"1001.2101.3001.7867","mod":"1589175530_002"}'>发送</a>
+ </div>
+ <div class=comment-rewarddialog-box>
+ <div class=form-box>
+ <div class=title-box>
+ 发红包
+ <a class=btn-form-close></a>
+ </div>
+ <form id=commentRewardForm>
+ <div class=ipt-box>
+ <label for=txtName>祝福语</label>
+ <div class=ipt-btn-box>
+ <input type=text name=name id=txtName autocomplete=off maxlength=50>
+ <a class="btn-ipt btn-random"></a>
+ </div>
+ <p class=notice>请填写红包祝福语或标题</p>
+ </div>
+ <div class=ipt-box>
+ <label for=txtSendAmount>红包数量</label>
+ <div class=ipt-txt-box>
+ <input type=text name=sendAmount maxlength=4 id=txtSendAmount placeholder=请填写红包数量(最小10个) autocomplete=off>
+ <span class=after-txt>个</span>
+ </div>
+ <p class=notice>红包个数最小为10个</p>
+ </div>
+ <div class=ipt-box>
+ <label for=txtMoney>
+ <div class=balance-info-box>
+ <div class=balance-info>
+ 您的钱包余额 <span class=red><span class=balance></span>元</span>
+ <a href=https://i.csdn.net/#/wallet/balance/recharge class=link-charge target=_blank>前往充值<img class=origin-plan-icon src=data:, alt data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/arrowRight.png></a>
+ </div>
+ </div>
+ </label>
+ <div class="ipt-txt-box error">
+ <input type=text name=money maxlength=5 id=txtMoney placeholder=请填写总金额(最低5元) autocomplete=off>
+ <span class=after-txt>元</span>
+ </div>
+ <p class=notice>红包金额最低5元</p>
+ </div>
+ <div class=opt-box>
+ <div class=pay-info>
+ ¥<span class=price></span>
+ </div>
+ <button type=button class="ml8 btn-submit" disabled>发红包</button>
+ <p class=remark>未领取的红包，将于96小时后发起退款</p>
+ </div>
+ </form>
+ </div>
+ </div>
+ </div>
+ </div>
+ <div class=redEnvolope id=redEnvolope>
+ <div class=env-box>
+ <div class=env-container>
+ <div class=pre-open id=preOpen>
+ <div class=top>
+ <header>
+ <img class=clearTpaErr :src=redpacketAuthor.avatar alt>
+ <div class=author>成就一亿技术人!</div>
+ </header>
+ <div class=bot-icon></div>
+ </div>
+ <footer>
+ <div class="red-openbtn open-start"></div>
+ <div class=tip>
+ 领取后你会自动成为博主和红包主的粉丝
+ <a class=rule target=_blank>规则</a>
+ </div>
+ </footer>
+ </div>
+ <div class=opened id=opened>
+ <div class=bot-icon>
+ <header>
+ <a class=creatorUrl href=https://blog.csdn.net/wangyevon/article/details/112501186 target=_blank>
+ <img class=clearTpaErr src=data:, alt data-sf-original-src=https://profile-avatar.csdnimg.cn/default.jpg!2>
+ </a>
+ <div class=author>
+ <div class=tt>hope_wisdom</div> 发出的红包
+ </div>
+ </header>
+ </div>
+ <div class=receive-box>
+ <header></header>
+ <div class=receive-list>
+ </div>
+ </div>
+ </div>
+ </div>
+ <div class=close-btn></div>
+ </div>
+ </div>
+ <div class="weixin-shadowbox wap-shadowbox">
+ <div class="guide-box guide-box-new">
+ <div class=topic>前往CSDN APP阅读全文</div>
+ <div class=tip>阅读体验更佳</div>
+ <div class="csdn-box item-box">
+ <div class=item><img class=app-img src=data:, alt data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/csdnIcon@2x.png></div>
+ <div class=item>
+ <div class=item-content>
+ <p class=title>CSDN</p>
+ <p class=text>成就一亿技术人</p>
+ </div>
+ </div>
+ <div class=item><a class="open-app open-app-csdn open_app_channelCode" data-channelcode=1661743049 data-url=https://blog.csdn.net/wangyevon/article/details/112501186 data-href="csdnapp://web?url=https://blog.csdn.net/wangyevon/article/details/112501186" data-report-view='{"spm":"1001.2101.3001.8331"}' data-report-click='{"spm":"1001.2101.3001.8331"}'>前往</a></div>
+ </div>
+ <div class="weixin-box item-box">
+ <div class="item item-display-none item-chrome"><img class=app-img src=data:, alt data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/chromeIcon@2x.png></div>
+ <div class=item>
+ <div class=item-content>浏览器</div>
+ </div>
+ <div class=item><a class="open-app open-app-weixin" data-report-view='{"spm":"1001.2101.3001.8332"}' data-report-click='{"spm":"1001.2101.3001.8332"}'>继续</a></div>
+ </div>
+ </div>
+ </div>
+ <div class="share-shadowbox wap-shadowbox">
+ <div class=share-box>
+ <div class=tit>分享</div>
+ <div class=text></div>
+ <a class=share-bt-tip data-report-click='{"spm":"1001.2101.3001.7872"}'>复制分享链接</a>
+ <img class=close src=data:, alt data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/closeBt.png>
+ </div>
+ </div>
+ 
+ <div class=ios-shadowbox>
+ <div class=ios-box>
+ <div class=tip-massege>请升级应用版本</div>
+ <div class=button-box>
+ <a id=cancelBt class=bt-cancel>取消</a>
+ <a id=upBt class=bt-cancel href="itms-apps://itunes.apple.com/cn/app/id1437086352?mt=8">立即升级</a>
+ </div>
+ </div>
+ </div>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+<script data-template-shadow-root>(()=>{document.currentScript.remove();processNode(document);function processNode(node){node.querySelectorAll("template[shadowrootmode]").forEach(element=>{let shadowRoot = element.parentElement.shadowRoot;if (!shadowRoot) {try {shadowRoot=element.parentElement.attachShadow({mode:element.getAttribute("shadowrootmode"),delegatesFocus:element.getAttribute("shadowrootdelegatesfocus")!=null,clonable:element.getAttribute("shadowrootclonable")!=null,serializable:element.getAttribute("shadowrootserializable")!=null});shadowRoot.innerHTML=element.innerHTML;element.remove()} catch (error) {} if (shadowRoot) {processNode(shadowRoot)}}})}})()</script>
