@@ -1,0 +1,945 @@
+<!DOCTYPE html> <html><!--
+ Page saved with SingleFile 
+ url: https://blog.csdn.net/lance666/article/details/106385923 
+ saved date: Fri Sep 27 2024 07:20:21 GMT+0800 (中国标准时间)
+--><meta charset=utf-8>
+<meta http-equiv=X-UA-Compatible content="IE=Edge">
+<meta name=viewport content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name=apple-mobile-web-app-status-bar-style content=black>
+<meta name=report content='{"pid": "blog", "spm":"1001.2101"}'>
+<meta name=applicable-device content=mobile>
+<meta http-equiv=Cache-Control content=no-transform>
+<meta http-equiv=Cache-Control content=no-siteapp>
+<meta content=yes name=apple-mobile-web-app-capable>
+<meta content=black name=apple-mobile-web-app-status-bar-style>
+<meta content="telephone=no" name=format-detection>
+<meta content="email=no" name=format-detection>
+<meta name=csdn-baidu-search content='{"autorun":true,"install":true,"keyword":"9008刷机工具"}'>
+<title>高通9008刷机，刷机参考_9008刷机工具-CSDN博客</title>
+<meta name=description content="文章浏览阅读8.9w次，点赞31次，收藏222次。警告：本教程仅供参考，刷机有风险，责任自负总结：用这个方法要满足两个最基本条件，否则不用尝试了1.能找到QPST专用刷机包2.确认手机能进9008端口运行环境和系统要求：　　Win7 以上系统，32位和64位皆可(本帖演示win7 x64系统)　　内存至少2GB以上，　　安装高通HS-USB驱动，　　安装.net 4.0以上版本，　　安装VC++运行环境  高通QPST救砖教程：（软件安装过程中，如果出现询问驱动不安全，是否安装时，一定要点始终安装，..._9008刷机工具">
+<link rel=canonical href=https://blog.csdn.net/lance666/article/details/106385923>
+<link rel=apple-touch-icon sizes=57x57 href=data:, data-sf-original-href=https://csdnimg.cn/release/blogv2/dist/mobile/img/touch-icon-iphone-57.png>
+<link rel=apple-touch-icon sizes=114x114 href=data:, data-sf-original-href=https://csdnimg.cn/release/blogv2/dist/mobile/img/touch-icon-iphone-114.png>
+<link rel=apple-touch-icon sizes=72x72 href=data:, data-sf-original-href=https://csdnimg.cn/release/blogv2/dist/mobile/img/touch-icon-iphone-72.png>
+<link rel=apple-touch-icon sizes=144x144 href=data:, data-sf-original-href=https://csdnimg.cn/release/blogv2/dist/mobile/img/touch-icon-iphone-144.png>
+<link rel=apple-touch-icon sizes=120x120 href=data:, data-sf-original-href=https://csdnimg.cn/release/blogv2/dist/mobile/img/touch-icon-iphone-120.png>
+<script type=application/ld+json>{"@context":"https://ziyuan.baidu.com/contexts/cambrian.jsonld","@id":"https://blog.csdn.net/lance666/article/details/106385923","appid":"1638831770136827","pubDate":"2020-05-27T17:04:13","title":"高通9008刷机，刷机参考_9008刷机工具-CSDN博客","upDate":"2020-05-27T17:04:13"}</script>
+<meta name=referrer content=no-referrer><link href=data:, rel="shortcut icon" type=image/x-icon data-sf-original-href=https://g.csdnimg.cn/static/logo/favicon32.ico><meta http-equiv=content-security-policy content="default-src 'none'; font-src 'self' data:; img-src 'self' data:; style-src 'unsafe-inline'; media-src 'self' data:; script-src 'unsafe-inline' data:; object-src 'self' data:; frame-src 'self' data:;"><style>img[src="data:,"],source[src="data:,"]{display:none!important}</style></head>
+<body>
+ 
+<div id=main>
+<div class=aside-header-fixed>
+ <div class=aside-left>
+ <img class=iconfont src=data:, alt data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/iconLeftArrow.png>
+ <img class=portrait src=data:, alt data-sf-original-src=https://profile-avatar.csdnimg.cn/default.jpg!1>
+ <span>lance666</span>
+ </div>
+ <div class=aside-right>
+ <a class=follow id=detailFollowNew data-id=106385923>关注</a>
+ </div>
+</div>
+ <div class=a_d_1></div>
+ 
+ 
+ 
+ 
+ <div id=article class=margin_sides>
+ <h1 class=article_title id=articleContentId>
+ <span class=tit>高通9008刷机，刷机参考</span>
+ <span class="article-type type-1 float-none">原创</span>
+ </h1>
+ <div class=creat-time-box>
+ <div class=creat-time-box-up-time><span>已于&nbsp;2023-12-28 17:10:13&nbsp;修改</span></div>
+ <span class=creat-time><img class=creat-time-img src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/renewal.png> <span>2020-05-27 17:04:13</span></span>
+ <div class=reading-collections-box>
+ <p class=blog-wap-reading>
+ <img class=have-heart-img src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/wap-articleReadEyes2.png> 
+ 阅读量<span class=text>8.9w</span>
+ </p>
+ </div>
+ <div class=subject-talk-box>
+ <a class=subject-talk href="https://app-blog.csdn.net/m/wapAiRelated?utm_source=711815865&amp;isHiddenNavigation=true" data-report-view='{"spm":"1001.2101.3001.10123"}' data-report-click='{"spm":"1001.2101.3001.10123"}'>
+ <img class=have-heart-img src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/subject-talk-img.png> 
+ <span>AI必读</span>
+ </a>
+ </div>
+ </div>
+ <div class="article_info clearfix">
+ <div class="top_user_mod clearfix">
+ <div class="top_user_info floatL clearfix">
+ <dl>
+ <dt class=floatL>
+ <a href=https://blog.csdn.net/lance666 target=_blank rel=noopener class="clearfix top_user_info_a">
+ <img class=avatar src=data:, alt data-sf-original-src=https://profile-avatar.csdnimg.cn/default.jpg!1>
+ </a>
+ </dt>
+ <dd class=floatL>
+ <p class=line-nick-name> 
+ <span class="nick_name odd-overhidden">lance666</span>
+ 
+ <img class=identity-icon src=data:, data-sf-original-src=https://csdnimg.cn/identity/blog4.png>
+ 
+ 
+ </p>
+ <p class=line-detaile>
+ <span class=code_years>码龄6年</span>
+ </p>
+ </dd> 
+ <a class=follow id=detailFollow data-id=8597351 data-report-view='{"spm":"1001.2101.3001.8391"}'>关注</a>
+ </dl>
+ </div>
+ </div>
+ </div> 
+ <div class=baidu_pl id=csdn-previewimg-box>
+ <div class=article_content>
+ <div id=content_views class="htmledit_views clearfix">
+ 
+ <h2>警告：本教程仅供参考，刷机有风险，责任自负</h2> 
+<h3>总结：用这个方法要满足两个最基本条件，否则不用尝试了</h3> 
+<h4>1.能找到QPST专用刷机包（网上查不到就是没有，我也没有）</h4> 
+<h4>2.确认手机能进9008端口</h4> 
+<p><strong>工具链接：</strong><a href=https://blog.csdn.net/lance666/article/details/106303422 title=高通9008刷机大法，避坑指南，救砖前提-CSDN博客>高通9008刷机大法，避坑指南，救砖前提-CSDN博客</a></p> 
+<p><span><span>运行环境和系统要求：</span></span></p> 
+<p><span><span>　　Win7 以上系统，32位和64位皆可(本帖演示win7 x64系统)</span></span></p> 
+<p><span><span>　　内存至少2GB以上，</span></span></p> 
+<p><span><span>　　安装高通HS-USB驱动，</span></span></p> 
+<p><span><span>　　安装.net 4.0以上版本，</span></span></p> 
+<p><span><span>　　安装VC++运行环境</span></span><span><span>&nbsp; &nbsp; &nbsp;&nbsp;</span></span></p> 
+<div> 
+ <div> 
+ <span><span><strong><u>高通QPST救砖教程：</u></strong></span></span> 
+ </div> &nbsp; 
+ <div> 
+ <span><span><strong>（软件安装过程中，如果出现询问驱动不安全，是否安装时，一定要点始终安装，每次碰到都点始终安装）</strong></span></span> 
+ </div> 
+ <div></div> 
+ <div> 
+ <div> 
+ <span><span><strong>一、安装驱动软件</strong></span></span> 
+ </div> &nbsp; 
+ <div> 
+ <span><span><strong>&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;手机只有保证能够被线刷软件识别才能进行线刷，这是大家都知道的。</strong></span></span> 
+ </div> 
+ <div> 
+ <span><span><strong>1.安装你的手机对应USB驱动软件</strong></span></span> 
+ </div> 
+ <div> 
+ <span><span><strong>&nbsp; &nbsp;&nbsp; &nbsp;</strong></span></span> 
+ </div> 
+ <div> 
+ <span><strong>2.安装高通驱动。默认安装，遇到安装驱动的，勾选始终信任安装！！</strong></span> 
+ </div> 
+ <div> 
+ <span>&nbsp;&nbsp;</span> 
+ <div></div> 
+ <img alt src=data:, data-sf-original-src=https://i-blog.csdnimg.cn/blog_migrate/3ee5f5264a306352e6742755f1260aa4.png> 
+ </div> 
+ <div> 
+ <span><span>&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;</span></span> 
+ </div> 
+ <div></div> 
+ <div> 
+ <span><strong>二、安装高通QPST工具软件和环境软件</strong></span> 
+ </div> 
+ <div> 
+ <span><span><strong>1.下载高通QPST工具包，解压。点击setup进行安装。</strong></span></span> 
+ </div> 
+ <div> 
+ <span>&nbsp;&nbsp;&nbsp;<img alt id=aimg_839344 src=data:, data-sf-original-src=https://i-blog.csdnimg.cn/blog_migrate/75ec9a55534763447e6d137adc52214a.png></span> 
+ </div> &nbsp; 
+ <div> 
+ <span><span><strong>2.出现安装VC++界面，点install开始安装VC++。</strong></span></span> 
+ </div> 
+ <div> 
+ <div></div> 
+ <span>&nbsp;&nbsp;</span> 
+ </div> &nbsp; 
+ <div> 
+ <span><strong>3.安装过程 ：&nbsp; &nbsp;直接 下一步/ next / I Agree/完成&nbsp; &nbsp;&nbsp; &nbsp;这里一步比较简单&nbsp;&nbsp;就不详细截图说了</strong></span> 
+ </div> 
+ <div> 
+ <span>&nbsp;&nbsp;&nbsp;<img alt id=aimg_839349 src=data:, data-sf-original-src=https://i-blog.csdnimg.cn/blog_migrate/d0cd04c3a88eeeda6687350e0492b91e.png></span> 
+ </div> &nbsp; 
+ <div> 
+ <p><span><span><strong>三、下载高通QPST线刷包<u><em>（这是一种专用刷机包）</em></u></strong></span></span></p> &nbsp; 
+ <p><span><span>　　下载高通QPST线刷包，解压到电脑硬盘，注意解压的文件路径最好不要含有中文字符和空格。（最好就放桌面）</span></span></p> 
+ <p><span><span><img alt id=aimg_839351 src=data:, data-sf-original-src=https://i-blog.csdnimg.cn/blog_migrate/1b10a16f8cf6d37c68b2fdfe8e22897e.png></span></span></p> 
+ <p><span><span>QPST线刷包特点：文件里面会存在.bin .elf .mbn .xml 等格式文件。下面两图为某款ZUK手机的</span></span><span><span>QPST线刷包</span></span><span><span>文件截图</span></span></p> 
+ <p><img alt height=845 src=data:, width=607 data-sf-original-src=https://i-blog.csdnimg.cn/blog_migrate/8d08fd67ee84581e1bda72b04324c4e1.png></p> 
+ <p><img alt height=839 src=data:, width=605 data-sf-original-src=https://i-blog.csdnimg.cn/blog_migrate/76d633411c91251ebeeda1d6fdab311a.png></p> 
+ <p><span><span><strong>四、配置刷机软件</strong></span></span></p> &nbsp; 
+ <p><strong><span><span>1.打开开始菜单，所有程序》》QPST目录》》QFIL。运行线刷程序。初始界面如下：</span></span></strong></p> 
+ <img alt height=742 src=data:, width=438 data-sf-original-src=https://i-blog.csdnimg.cn/blog_migrate/eee7f735ea0fc7cfb2889237bb9debc4.png> 
+ <span><span>&nbsp; &nbsp;</span></span> 
+ <div></div> 
+ <strong>2.初始界面如下图，选择configuration</strong> 
+ <p><span><img alt id=aimg_1867882 src=data:, data-sf-original-src=https://i-blog.csdnimg.cn/blog_migrate/636fb087dc580724df51a1ceb1506f6a.png></span></p> 
+ <strong>在弹出的小窗口中配置如下，若不勾选reset，则刷机完毕时，手机不会自动重启，需要手动重启。Device Type是闪存类型，注意选对，2019年后主流使用的是UFS。</strong> 
+ <p><span><img alt id=aimg_1867883 src=data:, data-sf-original-src=https://i-blog.csdnimg.cn/blog_migrate/43884fb3c275be90f663b26a129ca817.png></span></p> 
+ <p></p> 
+ <strong>3.在界面①选择Flat Bliuld，②选择Browse按钮，找到线刷包解压后的路径，然后③双击 prog_emmc_firehose_8936.mbn 文件 或者“prog_firehose_ddr.elf”“prog_firehose_ddr.mbn”文件(都有ddr字样)，再点击”打开“。</strong> 
+ <p><span><img alt id=aimg_1867884 src=data:, data-sf-original-src=https://i-blog.csdnimg.cn/blog_migrate/a9a03f84c2f838afc1cc821ff265c47e.png></span></p> 
+ <p><span><img alt id=aimg_1867885 src=data:, data-sf-original-src=https://i-blog.csdnimg.cn/blog_migrate/82a743c912d2447e4fb5cef10eb13b5c.png></span></p> 
+ <p></p> 
+ <p><strong>4.④选择 Load XML 按钮，出现对话框⑤双击 rawprogram-XXX.xml 文件，在跳出一个对话框，⑥双击 patch0.xml 文件。</strong></p> 
+ <p><span><img alt id=aimg_1867886 src=data:, data-sf-original-src=https://i-blog.csdnimg.cn/blog_migrate/2c628ee22b87edb9289f3704c0fbb264.png></span></p> 
+ <p><span><img alt id=aimg_1867887 src=data:, data-sf-original-src=https://i-blog.csdnimg.cn/blog_migrate/e44e8748eb99efd65e1d1a2924f9498c.png></span></p> 
+ <p><span><img alt id=aimg_1867888 src=data:, data-sf-original-src=https://i-blog.csdnimg.cn/blog_migrate/fe627325946df76bdddc02b0a9d4c3fc.png></span></p> 
+ <br> 
+ <strong>到此步，主界面还没有端口号出现，Download 按钮也是灰色的，无法点击。</strong> 
+ <p><span><img alt id=aimg_1867889 src=data:, data-sf-original-src=https://i-blog.csdnimg.cn/blog_migrate/93a834f2332bf63deae829e82bdf8827.png></span></p> 
+ <div> 
+ <span><span><strong>五、手机进入9008端口模式和开始刷机</strong></span></span> 
+ </div> 
+ <p></p> 
+ <div> 
+ <span><span>1.手机进入高通9008端口的技巧是这样的，请严格按照说明操作：</span></span> 
+ </div> 
+ <p></p> 
+ <div> 
+ <span><span>（1）拔出usb连接，手机完全关机，然后一直按住音量上键和音量下键不松手&nbsp; &nbsp; 将手机usb连接电脑。（此时如果电脑上以前没有安装usb和高通9008驱动，那么现在电脑会开始安装驱动），看软件界面如果出现9008端口，则说明安装驱动成功，手机也成功进入9008端口状态（此时手机是黑屏状态），设备管理器中也可以看到这个端口。</span></span> 
+ </div> 
+ <div> 
+ <img alt height=61 src=data:, width=448 data-sf-original-src=https://i-blog.csdnimg.cn/blog_migrate/75e261e070ef47c3acb52e5d2181f505.png> 
+ </div> 
+ <div> 
+ <div></div> 
+ </div> 
+ <div> 
+ <span><span>2.软件已经配置好的状态下，当手机一进入9008状态（软件界面显示9008端口）时，立刻马上点击download开始刷机，否则时间太长可能会提示错误，无法正常的进入刷机状态。</span></span> 
+ </div> 
+ <div> 
+ <img alt src=data:, data-sf-original-src=https://i-blog.csdnimg.cn/blog_migrate/33eae67a1d3c64dd6d7532bbc558bb91.png> 
+ </div> &nbsp; 
+ <div> 
+ <div></div> 
+ </div> 
+ <div> 
+ <strong>2.软件已经配置好的状态下，当手机一进入9008状态（软件界面显示9008端口）时，立刻马上点击download开始刷机。</strong> 
+ <p><span><img alt id=aimg_1867893 src=data:, data-sf-original-src=https://i-blog.csdnimg.cn/blog_migrate/108869a8ed1566fb51c9a7fa6acd383a.png></span></p> 
+ <p><span><img alt id=aimg_1867894 src=data:, data-sf-original-src=https://i-blog.csdnimg.cn/blog_migrate/9d0566f473a4dd0dade1ccab73a2f27a.png></span></p> 
+ <strong>3.当进度条走完，出现flash succeed，Finish Download表明手机刷写完毕。手机自动开机，可以拔出usb线。如果手机没有自动开机，那么就长按电源键手动重启手机。</strong> 
+ <p><span><img alt id=aimg_1867895 src=data:, data-sf-original-src=https://i-blog.csdnimg.cn/blog_migrate/d8799a047c0a58180e2ac4cbd77fba62.png></span></p> 
+ <p><span><span><strong>针对出现了9008端口，但是软件无法开始刷写而是报错的情况，请尝试：1.重启电脑，重启手机 ，2.换usb接口，3.管理员身份运行Qfile，4.操作快点，手机一进入9008就立刻操作，5.尝试不同的姿势多试几次。</strong></span></span></p> 
+ </div> 
+ <div> 
+ <span><span><strong>教程完毕，有问题的地方还请机油们指出！</strong></span></span> 
+ </div> 
+ <p></p> 
+ </div> 
+ </div> 
+</div>
+ </div>
+ <div>
+ <div id=treeSkill></div>
+ </div>
+ 
+ 
+ </div>
+ </div>
+ <div class=readall_box data-report-view='{"mod":"popu_376","dest":"https://blog.csdn.net/lance666/article/details/106385923"}' data-report-click='{"mod":"popu_376","dest":"https://blog.csdn.net/lance666/article/details/106385923"}'>
+ <div class=read_more_mask></div>
+ <div class="btn_mod active">
+ 
+ <a class="btn_open_app_prompt_box active" id=read_focus_open data-report-view='{"spm":"1001.2101.3001.10317"}' data-report-click='{"spm":"1001.2101.3001.10317"}'>
+ <span>展开阅读全文</span>
+ <img class=readmore-img src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/readMoreArrowDown.png>
+ </a>
+ </div> 
+ </div> 
+ 
+ 
+ </div>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ <div class=spec_space></div>
+ 
+ 
+ <div id=comment>
+ </div>
+ <div class="spec_space spec_space_hide"></div>
+ 
+ <div id=recommend>
+ <div class=recommend_list>
+ <dl></dl>
+ <dl class="container-fluid container-fluid-flex container-blog" data-url=https://blog.csdn.net/u011283906/article/details/140926275 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.1","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~YuanLiJiHua~PayColumn-1-140926275-blog-106385923.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392809970_12234\"}","dist_request_id":"1727392809970_12234","ab_strategy":"increase_t0_download","index":"1","strategy":"2~default~YuanLiJiHua~PayColumn","dest":"https://blog.csdn.net/u011283906/article/details/140926275"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=blog>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a>
+ <div class=left>
+ <em>刷机</em>维修进阶教程-----<em>高通</em><em>9008</em>线刷固件 救砖不开机 非硬件故障修复解决
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class="text active">
+ 在前面的博文中我们解析过fast模式线刷固件不开机的问题修复方法。一般都是分区表相关。但<em>高通</em>芯片中有时候误檫除全分区或者格机脚本导致的分区檫除，这种情况需要<em>9008</em>线刷固件来解决.但有一些机型<em>9008</em>刷完固件后会不进入系统。开机反复重启进入fast模式或者卡logo或者反复重启进rec等等故障表现.
+通过今天的博文了解
+1-----<em>9008</em>线刷固件后卡logo或者反复重启fast模式或者反复重启进入rec的故障分析
+2------此类故障的解决思路与步骤解析【非硬件问题】
+3------如何修改权限
+ </a>
+ <a class=flag data-type=blog data-href=https://blog.csdn.net/u011283906/article/details/140926275 href=https://blog.csdn.net/u011283906/article/details/140926275 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.1","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~YuanLiJiHua~PayColumn-1-140926275-blog-106385923.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392809970_12234\"}","dist_request_id":"1727392809970_12234","ab_strategy":"increase_t0_download","index":"1","strategy":"2~default~YuanLiJiHua~PayColumn","dest":"https://blog.csdn.net/u011283906/article/details/140926275"}' data-report-query="spm=1001.2101.3001.6650.1&amp;utm_medium=distribute.wap_relevant.none-task-blog-2%7Edefault%7EYuanLiJiHua%7EPayColumn-1-140926275-blog-106385923.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-blog-2%7Edefault%7EYuanLiJiHua%7EPayColumn-1-140926275-blog-106385923.237%5Ev3%5Ewap_relevant_t0_download">继续访问</a>
+ </div>
+ </div>
+ <div class=right-img-box>
+ <a class=recommend-img>
+ <img src=data:, alt data-sf-original-src=https://img-blog.csdnimg.cn/direct/3a9e3920c8674189aac3a187f08f3592.png>
+ </a>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-download" data-url=https://download.csdn.net/download/qq_39648972/13195441 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.2","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~CTRLIST~Paid-2-13195441-blog-106385923.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392809970_12234\"}","dist_request_id":"1727392809970_12234","ab_strategy":"increase_t0_download","index":"2","strategy":"2~default~CTRLIST~Paid","dest":"https://download.csdn.net/download/qq_39648972/13195441"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=download>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a href=https://download.csdn.net/download/qq_39648972/13195441 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.2","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~CTRLIST~Paid-2-13195441-blog-106385923.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392809970_12234\"}","dist_request_id":"1727392809970_12234","ab_strategy":"increase_t0_download","index":"2","strategy":"2~default~CTRLIST~Paid","dest":"https://download.csdn.net/download/qq_39648972/13195441"}' data-report-query="spm=1001.2101.3001.6650.2&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7ECTRLIST%7EPaid-2-13195441-blog-106385923.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7ECTRLIST%7EPaid-2-13195441-blog-106385923.237%5Ev3%5Ewap_relevant_t0_download">
+ <div class=left>
+ <em>9008</em>驱动及线刷<em>工具</em>全都有
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class=text href=https://download.csdn.net/download/qq_39648972/13195441 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.2","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~CTRLIST~Paid-2-13195441-blog-106385923.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392809970_12234\"}","dist_request_id":"1727392809970_12234","ab_strategy":"increase_t0_download","index":"2","strategy":"2~default~CTRLIST~Paid","dest":"https://download.csdn.net/download/qq_39648972/13195441"}' data-report-query="spm=1001.2101.3001.6650.2&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7ECTRLIST%7EPaid-2-13195441-blog-106385923.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7ECTRLIST%7EPaid-2-13195441-blog-106385923.237%5Ev3%5Ewap_relevant_t0_download">
+ <em>9008</em>驱动及线刷<em>工具</em>全都有，只需这一个包就可以完成线刷了。内含详细操作步骤，让<em>刷机</em>变得很简单。<em>9008</em>驱动及线刷<em>工具</em>全都有，只需这一个包就可以完成线刷了。内含详细操作步骤，让<em>刷机</em>变得很简单。
+ </a>
+ </div>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-download" data-url=https://download.csdn.net/download/u010547397/10646595 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.3","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~CTRLIST~Rate-3-10646595-blog-106385923.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392809970_12234\"}","dist_request_id":"1727392809970_12234","ab_strategy":"increase_t0_download","index":"3","strategy":"2~default~CTRLIST~Rate","dest":"https://download.csdn.net/download/u010547397/10646595"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=download>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a href=https://download.csdn.net/download/u010547397/10646595 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.3","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~CTRLIST~Rate-3-10646595-blog-106385923.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392809970_12234\"}","dist_request_id":"1727392809970_12234","ab_strategy":"increase_t0_download","index":"3","strategy":"2~default~CTRLIST~Rate","dest":"https://download.csdn.net/download/u010547397/10646595"}' data-report-query="spm=1001.2101.3001.6650.3&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7ECTRLIST%7ERate-3-10646595-blog-106385923.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7ECTRLIST%7ERate-3-10646595-blog-106385923.237%5Ev3%5Ewap_relevant_t0_download">
+ <div class=left>
+ <em>高通</em>手机<em>刷机</em><em>9008</em><em>工具</em>
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class=text href=https://download.csdn.net/download/u010547397/10646595 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.3","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~CTRLIST~Rate-3-10646595-blog-106385923.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392809970_12234\"}","dist_request_id":"1727392809970_12234","ab_strategy":"increase_t0_download","index":"3","strategy":"2~default~CTRLIST~Rate","dest":"https://download.csdn.net/download/u010547397/10646595"}' data-report-query="spm=1001.2101.3001.6650.3&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7ECTRLIST%7ERate-3-10646595-blog-106385923.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7ECTRLIST%7ERate-3-10646595-blog-106385923.237%5Ev3%5Ewap_relevant_t0_download">
+ 小米手机进<em>9008</em><em>工具</em>，<em>高通</em>的通用，直接打开就行了
+ </a>
+ </div>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-download" data-url=https://download.csdn.net/download/whxxiang/88880943 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.4","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~CTRLIST~Rate-4-88880943-blog-106385923.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392809970_12234\"}","dist_request_id":"1727392809970_12234","ab_strategy":"increase_t0_download","index":"4","strategy":"2~default~CTRLIST~Rate","dest":"https://download.csdn.net/download/whxxiang/88880943"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=download>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a href=https://download.csdn.net/download/whxxiang/88880943 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.4","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~CTRLIST~Rate-4-88880943-blog-106385923.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392809970_12234\"}","dist_request_id":"1727392809970_12234","ab_strategy":"increase_t0_download","index":"4","strategy":"2~default~CTRLIST~Rate","dest":"https://download.csdn.net/download/whxxiang/88880943"}' data-report-query="spm=1001.2101.3001.6650.4&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7ECTRLIST%7ERate-4-88880943-blog-106385923.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7ECTRLIST%7ERate-4-88880943-blog-106385923.237%5Ev3%5Ewap_relevant_t0_download">
+ <div class=left>
+ <em>高通</em><em>9008</em>驱动，需要<em>刷机</em>的可以自取
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class=text href=https://download.csdn.net/download/whxxiang/88880943 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.4","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~CTRLIST~Rate-4-88880943-blog-106385923.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392809970_12234\"}","dist_request_id":"1727392809970_12234","ab_strategy":"increase_t0_download","index":"4","strategy":"2~default~CTRLIST~Rate","dest":"https://download.csdn.net/download/whxxiang/88880943"}' data-report-query="spm=1001.2101.3001.6650.4&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7ECTRLIST%7ERate-4-88880943-blog-106385923.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7ECTRLIST%7ERate-4-88880943-blog-106385923.237%5Ev3%5Ewap_relevant_t0_download">
+ <em>高通</em><em>9008</em>驱动，需要<em>刷机</em>的可以自取
+ </a>
+ </div>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-download" data-url=https://download.csdn.net/download/u011283906/85629501 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.5","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~CTRLIST~Rate-5-85629501-blog-106385923.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392809970_12234\"}","dist_request_id":"1727392809970_12234","ab_strategy":"increase_t0_download","index":"5","strategy":"2~default~CTRLIST~Rate","dest":"https://download.csdn.net/download/u011283906/85629501"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=download>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a href=https://download.csdn.net/download/u011283906/85629501 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.5","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~CTRLIST~Rate-5-85629501-blog-106385923.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392809970_12234\"}","dist_request_id":"1727392809970_12234","ab_strategy":"increase_t0_download","index":"5","strategy":"2~default~CTRLIST~Rate","dest":"https://download.csdn.net/download/u011283906/85629501"}' data-report-query="spm=1001.2101.3001.6650.5&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7ECTRLIST%7ERate-5-85629501-blog-106385923.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7ECTRLIST%7ERate-5-85629501-blog-106385923.237%5Ev3%5Ewap_relevant_t0_download">
+ <div class=left>
+ <em>高通</em>芯片<em>9008</em>+fast模式<em>刷机</em>平台QFL<em>工具</em> 
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class=text href=https://download.csdn.net/download/u011283906/85629501 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.5","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~CTRLIST~Rate-5-85629501-blog-106385923.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392809970_12234\"}","dist_request_id":"1727392809970_12234","ab_strategy":"increase_t0_download","index":"5","strategy":"2~default~CTRLIST~Rate","dest":"https://download.csdn.net/download/u011283906/85629501"}' data-report-query="spm=1001.2101.3001.6650.5&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7ECTRLIST%7ERate-5-85629501-blog-106385923.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7ECTRLIST%7ERate-5-85629501-blog-106385923.237%5Ev3%5Ewap_relevant_t0_download">
+ <em>高通</em>芯片<em>9008</em>+fast模式<em>刷机</em>平台QFL<em>工具</em> 
+fast重启进入edl选项
+打开设备管理器
+检测端口
+<em>9008</em>模式<em>刷机</em>
+fast模式<em>刷机</em>
+分区任意选择刷写
+图形化操作界面。刷到那个分区一目了然、支持<em>9008</em>底层刷写和fast模式刷写
+ </a>
+ </div>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-download" data-url=https://download.csdn.net/download/qq_28910073/11128215 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.6","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~CTRLIST~Rate-6-11128215-blog-106385923.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392809970_12234\"}","dist_request_id":"1727392809970_12234","ab_strategy":"increase_t0_download","index":"6","strategy":"2~default~CTRLIST~Rate","dest":"https://download.csdn.net/download/qq_28910073/11128215"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=download>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a href=https://download.csdn.net/download/qq_28910073/11128215 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.6","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~CTRLIST~Rate-6-11128215-blog-106385923.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392809970_12234\"}","dist_request_id":"1727392809970_12234","ab_strategy":"increase_t0_download","index":"6","strategy":"2~default~CTRLIST~Rate","dest":"https://download.csdn.net/download/qq_28910073/11128215"}' data-report-query="spm=1001.2101.3001.6650.6&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7ECTRLIST%7ERate-6-11128215-blog-106385923.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7ECTRLIST%7ERate-6-11128215-blog-106385923.237%5Ev3%5Ewap_relevant_t0_download">
+ <div class=left>
+ <em>高通</em><em>刷机</em><em>工具</em>
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class=text href=https://download.csdn.net/download/qq_28910073/11128215 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.6","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~CTRLIST~Rate-6-11128215-blog-106385923.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392809970_12234\"}","dist_request_id":"1727392809970_12234","ab_strategy":"increase_t0_download","index":"6","strategy":"2~default~CTRLIST~Rate","dest":"https://download.csdn.net/download/qq_28910073/11128215"}' data-report-query="spm=1001.2101.3001.6650.6&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7ECTRLIST%7ERate-6-11128215-blog-106385923.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7ECTRLIST%7ERate-6-11128215-blog-106385923.237%5Ev3%5Ewap_relevant_t0_download">
+ <em>高通</em><em>刷机</em><em>工具</em>，用于<em>高通</em>（android版）的<em>刷机</em>，下载之后直接点击安装就会生成
+ </a>
+ </div>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-blog" data-url=https://blog.csdn.net/u011283906/article/details/136495415 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.7","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-7-136495415-blog-106385923.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392809970_12234\"}","dist_request_id":"1727392809970_12234","ab_strategy":"increase_t0_download","index":"7","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://blog.csdn.net/u011283906/article/details/136495415"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=blog>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a>
+ <div class=left>
+ 安卓玩机<em>工具</em>推荐----<em>高通</em>芯片<em>9008</em>端口读写分区 备份分区 恢复分区 制作线刷包 <em>工具</em>操作解析
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class="text active">
+ <em>高通</em>芯片对于无固件小品牌机型制作线刷包的前提就是引导文件。有引导制作<em>9008</em>线刷包就很简单
+MTK芯片制作线刷包的前提是*****MT****.txt引导的制作。虽然前面针对mtk也做了相关的一些博文教程。个别粉丝还是不太明了。下期将针对mtk芯片制作线刷包 分区备份等等做个解析。有这方面需求的友友可以做个<em>参考</em>
+ </a>
+ <a class=flag data-type=blog data-href=https://blog.csdn.net/u011283906/article/details/136495415 href=https://blog.csdn.net/u011283906/article/details/136495415 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.7","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-7-136495415-blog-106385923.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392809970_12234\"}","dist_request_id":"1727392809970_12234","ab_strategy":"increase_t0_download","index":"7","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://blog.csdn.net/u011283906/article/details/136495415"}' data-report-query="spm=1001.2101.3001.6650.7&amp;utm_medium=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-7-136495415-blog-106385923.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-7-136495415-blog-106385923.237%5Ev3%5Ewap_relevant_t0_download">继续访问</a>
+ </div>
+ </div>
+ <div class=right-img-box>
+ <a class=recommend-img>
+ <img src=data:, alt data-sf-original-src=https://img-blog.csdnimg.cn/direct/2483d63e1c824b81a180b4e631bd03f2.png>
+ </a>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-blog" data-url=https://devpress.csdn.net/v1/article/detail/131810054 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.8","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~activity-8-131810054-blog-106385923.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392809970_12234\"}","dist_request_id":"1727392809970_12234","ab_strategy":"increase_t0_download","index":"8","strategy":"2~default~BlogCommendFromBaidu~activity","dest":"https://devpress.csdn.net/v1/article/detail/131810054"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=blog>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a>
+ <div class=left>
+ [<em>刷机</em>] <em>9008</em> <em>刷机</em>救砖笔记
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class="text active">
+ <em>9008</em> 模式<em>刷机</em>并不难, 学会之后, 就再也不用害怕手机成砖了
+ </a>
+ <a class=flag data-type=blog data-href=https://devpress.csdn.net/v1/article/detail/131810054 href=https://devpress.csdn.net/v1/article/detail/131810054 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.8","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~activity-8-131810054-blog-106385923.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392809970_12234\"}","dist_request_id":"1727392809970_12234","ab_strategy":"increase_t0_download","index":"8","strategy":"2~default~BlogCommendFromBaidu~activity","dest":"https://devpress.csdn.net/v1/article/detail/131810054"}' data-report-query="spm=1001.2101.3001.6650.8&amp;utm_medium=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7Eactivity-8-131810054-blog-106385923.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7Eactivity-8-131810054-blog-106385923.237%5Ev3%5Ewap_relevant_t0_download">继续访问</a>
+ </div>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-blog" data-url=https://yilin.blog.csdn.net/article/details/131233965 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.9","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-9-131233965-blog-106385923.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392809970_12234\"}","dist_request_id":"1727392809970_12234","ab_strategy":"increase_t0_download","index":"9","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://yilin.blog.csdn.net/article/details/131233965"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=blog>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a>
+ <div class=left>
+ 如何使用QPST<em>工具</em>
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class="text active">
+ 对于NAND闪存，单映像下载可以将NAND引导加载程序或手机映像发送到手机。你只能将引导加载程序下载到使用NAND闪存的手机。简单的说就是用<em>高通</em>处理芯片的手机理论上都可以有QPST传输文件，可以修改机器内部参数的软件。使用QPST<em>工具</em>刷新任何固件将从你的<em>高通</em>设备中删除你的个人数据。因此，建议你在使用QPST<em>工具</em>之前备份数据。⑥单击手机映像浏览按钮，然后在计算机上找到要在<em>高通</em>设备上刷新的固件(.hex)你刚刚学会了使用QPST<em>工具</em>在<em>高通</em>设备上刷新或安装库存固件。<em>高通</em>设备与计算机的连接，然后程序启动它。
+ </a>
+ <a class=flag data-type=blog data-href=https://yilin.blog.csdn.net/article/details/131233965 href=https://yilin.blog.csdn.net/article/details/131233965 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.9","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-9-131233965-blog-106385923.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392809970_12234\"}","dist_request_id":"1727392809970_12234","ab_strategy":"increase_t0_download","index":"9","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://yilin.blog.csdn.net/article/details/131233965"}' data-report-query="spm=1001.2101.3001.6650.9&amp;utm_medium=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-9-131233965-blog-106385923.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-9-131233965-blog-106385923.237%5Ev3%5Ewap_relevant_t0_download">继续访问</a>
+ </div>
+ </div>
+ <div class=right-img-box>
+ <a class=recommend-img>
+ <img src=data:, alt data-sf-original-src=https://img-blog.csdnimg.cn/17c5f78f63334d01accf59f09613ed06.png>
+ </a>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-blog" data-url=https://devpress.csdn.net/v1/article/detail/135170241 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.10","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~activity-10-135170241-blog-106385923.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392809970_12234\"}","dist_request_id":"1727392809970_12234","ab_strategy":"increase_t0_download","index":"10","strategy":"2~default~BlogCommendFromBaidu~activity","dest":"https://devpress.csdn.net/v1/article/detail/135170241"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=blog>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a>
+ <div class=left>
+ 小米8黑砖＆<em>9008</em>线刷救砖记录
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class="text active">
+ MI8<em>刷机</em>后变成黑砖，表现形式为，无法开机，无法进入fastboot和recovery，按所有按键看不出反应，数据线连接电脑无反应，连接充电器呼吸灯无反应（不亮）
+ </a>
+ <a class=flag data-type=blog data-href=https://devpress.csdn.net/v1/article/detail/135170241 href=https://devpress.csdn.net/v1/article/detail/135170241 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.10","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~activity-10-135170241-blog-106385923.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392809970_12234\"}","dist_request_id":"1727392809970_12234","ab_strategy":"increase_t0_download","index":"10","strategy":"2~default~BlogCommendFromBaidu~activity","dest":"https://devpress.csdn.net/v1/article/detail/135170241"}' data-report-query="spm=1001.2101.3001.6650.10&amp;utm_medium=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7Eactivity-10-135170241-blog-106385923.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7Eactivity-10-135170241-blog-106385923.237%5Ev3%5Ewap_relevant_t0_download">继续访问</a>
+ </div>
+ </div>
+ <div class=right-img-box>
+ <a class=recommend-img>
+ <img src=data:, alt data-sf-original-src=https://img-blog.csdnimg.cn/direct/4b9dfd38f6e144f6b62dc11535cc06e1.png>
+ </a>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-blog" data-url=https://blog.csdn.net/hhuan10/article/details/52353563 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.11","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-11-52353563-blog-106385923.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392809970_12234\"}","dist_request_id":"1727392809970_12234","ab_strategy":"increase_t0_download","index":"11","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://blog.csdn.net/hhuan10/article/details/52353563"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=blog>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a>
+ <div class=left>
+ <span class=tag>热门推荐</span>
+ <em>高通</em>烧录软件QPST的介绍和使用方法（简洁实用篇）
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class="text active">
+ 
+QPST是一个针对<em>高通</em>芯片开发的传输软件组（包）。这个软件的功用，大家通过百度都应该知道了，它能复制铃声、更改手机的一些功能参数，从而实现和达到用户想要的效果。不过,它有很多实用的功能,网上都是一笔带过.在现实生活中，用户对它其实是很陌生的。在这里，我将自己使用QPST的一些技巧和方法分享给大家，使大家在使用这个软件时能够比较快的上手。
+既然它是一个传输软件包，那么它包含的小软件有哪
+ </a>
+ <a class=flag data-type=blog data-href=https://blog.csdn.net/hhuan10/article/details/52353563 href=https://blog.csdn.net/hhuan10/article/details/52353563 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.11","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-11-52353563-blog-106385923.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392809970_12234\"}","dist_request_id":"1727392809970_12234","ab_strategy":"increase_t0_download","index":"11","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://blog.csdn.net/hhuan10/article/details/52353563"}' data-report-query="spm=1001.2101.3001.6650.11&amp;utm_medium=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-11-52353563-blog-106385923.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-11-52353563-blog-106385923.237%5Ev3%5Ewap_relevant_t0_download">继续访问</a>
+ </div>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-download" data-url=https://download.csdn.net/download/qq_33693976/86840884 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.12","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-12-86840884-blog-106385923.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392809970_12234\"}","dist_request_id":"1727392809970_12234","ab_strategy":"increase_t0_download","index":"12","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/qq_33693976/86840884"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=download>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a href=https://download.csdn.net/download/qq_33693976/86840884 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.12","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-12-86840884-blog-106385923.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392809970_12234\"}","dist_request_id":"1727392809970_12234","ab_strategy":"increase_t0_download","index":"12","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/qq_33693976/86840884"}' data-report-query="spm=1001.2101.3001.6650.12&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-12-86840884-blog-106385923.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-12-86840884-blog-106385923.237%5Ev3%5Ewap_relevant_t0_download">
+ <div class=left>
+ <em>高通</em><em>9008</em>模式签名驱动，<em>高通</em>救砖<em>刷机</em>模式用驱动
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class=text href=https://download.csdn.net/download/qq_33693976/86840884 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.12","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-12-86840884-blog-106385923.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392809970_12234\"}","dist_request_id":"1727392809970_12234","ab_strategy":"increase_t0_download","index":"12","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/qq_33693976/86840884"}' data-report-query="spm=1001.2101.3001.6650.12&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-12-86840884-blog-106385923.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-12-86840884-blog-106385923.237%5Ev3%5Ewap_relevant_t0_download">
+ 本文将深入探讨<em>高通</em><em>9008</em>模式、签名驱动以及其在救砖<em>刷机</em>过程中的作用。 首先，我们要理解什么是<em>高通</em><em>9008</em>模式。<em>高通</em><em>9008</em>模式，也称为下载模式，是<em>高通</em>处理器设备上的一种低级别访问模式。当手机或其他设备遇到严重...
+ </a>
+ </div>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-download" data-url=https://download.csdn.net/download/u011283906/88384933 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.13","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-13-88384933-blog-106385923.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392809970_12234\"}","dist_request_id":"1727392809970_12234","ab_strategy":"increase_t0_download","index":"13","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/u011283906/88384933"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=download>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a href=https://download.csdn.net/download/u011283906/88384933 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.13","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-13-88384933-blog-106385923.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392809970_12234\"}","dist_request_id":"1727392809970_12234","ab_strategy":"increase_t0_download","index":"13","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/u011283906/88384933"}' data-report-query="spm=1001.2101.3001.6650.13&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-13-88384933-blog-106385923.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-13-88384933-blog-106385923.237%5Ev3%5Ewap_relevant_t0_download">
+ <div class=left>
+ <em>高通</em><em>9008</em><em>刷机</em><em>工具</em>QFIL+ADB单文版
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class=text href=https://download.csdn.net/download/u011283906/88384933 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.13","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-13-88384933-blog-106385923.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392809970_12234\"}","dist_request_id":"1727392809970_12234","ab_strategy":"increase_t0_download","index":"13","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/u011283906/88384933"}' data-report-query="spm=1001.2101.3001.6650.13&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-13-88384933-blog-106385923.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-13-88384933-blog-106385923.237%5Ev3%5Ewap_relevant_t0_download">
+ 【<em>高通</em><em>9008</em><em>刷机</em><em>工具</em>QFIL+ADB单文版】是针对使用<em>高通</em>骁龙处理器的设备进行<em>刷机</em>操作的一款专业<em>工具</em>。这款<em>工具</em>由qpst（Qualcomm Product Support Tool）软件中提取出来，专注于<em>刷机</em>功能，不包含其他额外的组件或资源，...
+ </a>
+ </div>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-download" data-url=https://download.csdn.net/download/hsdbql/67573157 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.14","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-14-67573157-blog-106385923.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392809970_12234\"}","dist_request_id":"1727392809970_12234","ab_strategy":"increase_t0_download","index":"14","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/hsdbql/67573157"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=download>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a href=https://download.csdn.net/download/hsdbql/67573157 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.14","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-14-67573157-blog-106385923.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392809970_12234\"}","dist_request_id":"1727392809970_12234","ab_strategy":"increase_t0_download","index":"14","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/hsdbql/67573157"}' data-report-query="spm=1001.2101.3001.6650.14&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-14-67573157-blog-106385923.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-14-67573157-blog-106385923.237%5Ev3%5Ewap_relevant_t0_download">
+ <div class=left>
+ <em>高通</em><em>9008</em>模式<em>刷机</em>救砖/固件提取备份所需的Firehose文件合集
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class=text href=https://download.csdn.net/download/hsdbql/67573157 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.14","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-14-67573157-blog-106385923.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392809970_12234\"}","dist_request_id":"1727392809970_12234","ab_strategy":"increase_t0_download","index":"14","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/hsdbql/67573157"}' data-report-query="spm=1001.2101.3001.6650.14&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-14-67573157-blog-106385923.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-14-67573157-blog-106385923.237%5Ev3%5Ewap_relevant_t0_download">
+ 总的来说，这个"<em>高通</em><em>9008</em>模式<em>刷机</em>救砖/固件提取备份所需的Firehose文件合集"是一个针对<em>高通</em>设备维修和固件管理的专业资源库，对于手机维修人员和高级用户来说非常有价值。但需要注意的是，这些操作需要一定的技术...
+ </a>
+ </div>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-download" data-url=https://download.csdn.net/download/u011283906/87996712 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.15","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-15-87996712-blog-106385923.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392809970_12234\"}","dist_request_id":"1727392809970_12234","ab_strategy":"increase_t0_download","index":"15","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/u011283906/87996712"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=download>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a href=https://download.csdn.net/download/u011283906/87996712 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.15","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-15-87996712-blog-106385923.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392809970_12234\"}","dist_request_id":"1727392809970_12234","ab_strategy":"increase_t0_download","index":"15","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/u011283906/87996712"}' data-report-query="spm=1001.2101.3001.6650.15&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-15-87996712-blog-106385923.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-15-87996712-blog-106385923.237%5Ev3%5Ewap_relevant_t0_download">
+ <div class=left>
+ 小米8se<em>高通</em><em>9008</em><em>刷机</em><em>工具</em> 免权限 任意刷写+演示图示
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class=text href=https://download.csdn.net/download/u011283906/87996712 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.15","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-15-87996712-blog-106385923.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392809970_12234\"}","dist_request_id":"1727392809970_12234","ab_strategy":"increase_t0_download","index":"15","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/u011283906/87996712"}' data-report-query="spm=1001.2101.3001.6650.15&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-15-87996712-blog-106385923.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-15-87996712-blog-106385923.237%5Ev3%5Ewap_relevant_t0_download">
+ 4----免权限<em>高通</em><em>9008</em><em>刷机</em>.懂得都懂 5----请装好<em>高通</em><em>9008</em>端口驱动。按操作说明和演示动画步骤进行<em>刷机</em> 6----只能解决系统类问题，硬件问题<em>刷机</em>解决不了的 7----资源有可复制性。下载后不支持退，请斟酌下载 资源实测...
+ </a>
+ </div>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-download" data-url=https://download.csdn.net/download/u011283906/87695374 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.16","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-16-87695374-blog-106385923.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392809970_12234\"}","dist_request_id":"1727392809970_12234","ab_strategy":"increase_t0_download","index":"16","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/u011283906/87695374"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=download>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a href=https://download.csdn.net/download/u011283906/87695374 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.16","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-16-87695374-blog-106385923.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392809970_12234\"}","dist_request_id":"1727392809970_12234","ab_strategy":"increase_t0_download","index":"16","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/u011283906/87695374"}' data-report-query="spm=1001.2101.3001.6650.16&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-16-87695374-blog-106385923.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-16-87695374-blog-106385923.237%5Ev3%5Ewap_relevant_t0_download">
+ <div class=left>
+ 小米mix2s<em>高通</em><em>9008</em>端口<em>刷机</em><em>工具</em> 免权限 任意刷写 
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class=text href=https://download.csdn.net/download/u011283906/87695374 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.16","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-16-87695374-blog-106385923.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392809970_12234\"}","dist_request_id":"1727392809970_12234","ab_strategy":"increase_t0_download","index":"16","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/u011283906/87695374"}' data-report-query="spm=1001.2101.3001.6650.16&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-16-87695374-blog-106385923.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-16-87695374-blog-106385923.237%5Ev3%5Ewap_relevant_t0_download">
+ 4----免权限<em>高通</em><em>9008</em><em>刷机</em>.懂得都懂 5----请装好<em>高通</em><em>9008</em>端口驱动。按操作说明和演示动画步骤进行<em>刷机</em> 6----只能解决系统类问题，硬件问题<em>刷机</em>解决不了的 7----资源有可复制性。下载后不支持退，请斟酌下载 资源实测...
+ </a>
+ </div>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-download" data-url=https://download.csdn.net/download/qq_20320201/10326847 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.17","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~CTRLIST~Rate-17-10326847-blog-106385923.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392809970_12234\"}","dist_request_id":"1727392809970_12234","ab_strategy":"increase_t0_download","index":"17","strategy":"2~default~CTRLIST~Rate","dest":"https://download.csdn.net/download/qq_20320201/10326847"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=download>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a href=https://download.csdn.net/download/qq_20320201/10326847 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.17","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~CTRLIST~Rate-17-10326847-blog-106385923.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392809970_12234\"}","dist_request_id":"1727392809970_12234","ab_strategy":"increase_t0_download","index":"17","strategy":"2~default~CTRLIST~Rate","dest":"https://download.csdn.net/download/qq_20320201/10326847"}' data-report-query="spm=1001.2101.3001.6650.17&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7ECTRLIST%7ERate-17-10326847-blog-106385923.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7ECTRLIST%7ERate-17-10326847-blog-106385923.237%5Ev3%5Ewap_relevant_t0_download">
+ <div class=left>
+ <em>高通</em><em>9008</em>线刷<em>工具</em>QFIL单文件版
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class=text href=https://download.csdn.net/download/qq_20320201/10326847 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.17","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~CTRLIST~Rate-17-10326847-blog-106385923.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392809970_12234\"}","dist_request_id":"1727392809970_12234","ab_strategy":"increase_t0_download","index":"17","strategy":"2~default~CTRLIST~Rate","dest":"https://download.csdn.net/download/qq_20320201/10326847"}' data-report-query="spm=1001.2101.3001.6650.17&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7ECTRLIST%7ERate-17-10326847-blog-106385923.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7ECTRLIST%7ERate-17-10326847-blog-106385923.237%5Ev3%5Ewap_relevant_t0_download">
+ <em>高通</em><em>9008</em>线刷<em>工具</em>QFIL单文件版，无需安装，双击可用，随身携带
+ </a>
+ </div>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-blog" data-url=https://blog.csdn.net/gitblog_09719/article/details/141975642 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.18","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~CTRLIST~Rate-18-141975642-blog-106385923.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392809970_12234\"}","dist_request_id":"1727392809970_12234","ab_strategy":"increase_t0_download","index":"18","strategy":"2~default~CTRLIST~Rate","dest":"https://blog.csdn.net/gitblog_09719/article/details/141975642"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=blog>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a>
+ <div class=left>
+ <span class=tag>最新发布</span>
+ <em>高通</em><em>9008</em><em>刷机</em>神器：QPST 2.7.437 <em>工具</em>包推荐
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class="text active">
+ <em>高通</em><em>9008</em><em>刷机</em>神器：QPST 2.7.437 <em>工具</em>包推荐
+ QPST-2.7.437.7z项目地址:https://gitcode.com/open-source-toolkit/5662d 项目介绍
+在智能手机维修和开发领域，<em>高通</em><em>9008</em>模式<em>刷机</em>是一个常见且重要的操作。为了满足广大开发者和维修人员的需求，我们推出了 <em>高通</em><em>9008</em><em>刷机</em><em>工具</em> - QPST 2.7.437 <em>工具</em>包。该<em>工具</em>包包含了所有...
+ </a>
+ <a class=flag data-type=blog data-href=https://blog.csdn.net/gitblog_09719/article/details/141975642 href=https://blog.csdn.net/gitblog_09719/article/details/141975642 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.18","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~CTRLIST~Rate-18-141975642-blog-106385923.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392809970_12234\"}","dist_request_id":"1727392809970_12234","ab_strategy":"increase_t0_download","index":"18","strategy":"2~default~CTRLIST~Rate","dest":"https://blog.csdn.net/gitblog_09719/article/details/141975642"}' data-report-query="spm=1001.2101.3001.6650.18&amp;utm_medium=distribute.wap_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-18-141975642-blog-106385923.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-18-141975642-blog-106385923.237%5Ev3%5Ewap_relevant_t0_download">继续访问</a>
+ </div>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-blog" data-url=https://blog.csdn.net/weixin_39822673/article/details/110272615 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.19","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~CTRLIST~Rate-19-110272615-blog-106385923.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392809970_12234\"}","dist_request_id":"1727392809970_12234","ab_strategy":"increase_t0_download","index":"19","strategy":"2~default~CTRLIST~Rate","dest":"https://blog.csdn.net/weixin_39822673/article/details/110272615"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=blog>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a>
+ <div class=left>
+ <em>9008</em><em>刷机</em>教程oppo_手机黑砖9006/<em>9008</em>救砖教程 通用救砖模式<em>刷机</em>修复方法
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class="text active">
+ [闽南网]很多喜欢<em>刷机</em>的朋友经常会遇到手机<em>刷机</em>失败无法开机的问题，今天小编为大家带来的是手机黑砖9006/<em>9008</em>救砖教程，这篇教程对大部分黑砖机应该都有效。所谓黑砖机，通俗来讲就是不管怎么按都没有反应的机器，但是你连接电脑，电脑有反应，就代表你的机器可能还有救。第一步，连上电脑，打开设备管理器，你会看见端口那里有个以9006/<em>9008</em>结束的东西(如果没有就按住音量+和电源键再连接，直到9006/...
+ </a>
+ <a class=flag data-type=blog data-href=https://blog.csdn.net/weixin_39822673/article/details/110272615 href=https://blog.csdn.net/weixin_39822673/article/details/110272615 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.19","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~CTRLIST~Rate-19-110272615-blog-106385923.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1727392809970_12234\"}","dist_request_id":"1727392809970_12234","ab_strategy":"increase_t0_download","index":"19","strategy":"2~default~CTRLIST~Rate","dest":"https://blog.csdn.net/weixin_39822673/article/details/110272615"}' data-report-query="spm=1001.2101.3001.6650.19&amp;utm_medium=distribute.wap_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-19-110272615-blog-106385923.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-19-110272615-blog-106385923.237%5Ev3%5Ewap_relevant_t0_download">继续访问</a>
+ </div>
+ </div>
+ </div>
+ </dl>
+ </div>
+ </div>
+ 
+ <div id=operate class=clearfix>
+ <div class="clearfix content-box">
+ <div class="operate_write operate_common floatL">
+ <span class=comment-bt-write>
+ <span class=enter_text><img class=operate_img src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/writeIcon@2x.png>写评论</span>
+ <img class=comment-sofa-flag src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/pc/img/commentFlag@2x.png>
+ </span>
+ <span class=operate_write_box>
+ <img class=operate_img src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/comment@2x.png>
+ <span class=count>
+ 14
+ </span>
+ </span>
+ </div>
+ <div class="collect-btn operate_add operate_common floatL">
+ <span class=operate_collect_box>
+ <span class=uncollect>
+ <img class=operate_img src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/uncollect@2x.png>
+ </span>
+ <span class=collect>
+ <img class=operate_img src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/collect@2x.png>
+ </span>
+ <span class=count>
+ 222
+ </span>
+ </span>
+ </div>
+ <div class="like-btn operate_heart operate_common floatL" data-dest=https://blog.csdn.net/lance666/article/details/106385923>
+ <span class=operate_heart_box>
+ <span class=unheart>
+ <img class=operate_img src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/unheart@2x.png>
+ </span>
+ <span class=heart>
+ <img class=operate_img src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/heart@2x.png>
+ </span>
+ <span class=count>
+ 31
+ </span>
+ </span>
+ </div>
+ <div class="unlike-btn operate_steplike operate_common floatL">
+ <span class=operate_heart_box>
+ <span class=stepunlike>
+ <img class=operate_img src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/stepUnLike.png>
+ </span>
+ <span class=steplike>
+ <img class=operate_img src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/stepLike.png>
+ </span>
+ <span class=count>
+ 踩
+ </span>
+ </span>
+ </div>
+ <div class="share-btn operate_share operate_common floatL">
+ <a>
+ <span class=operate_share_box>
+ <img class=operate_img src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/unshare@2x.png>
+ <span class=count>分享</span>
+ </span>
+ </a>
+ </div>
+ </div>
+ </div>
+</div>
+ <div id=prompt>
+ 
+ <span>文章收藏成功</span>
+ </div>
+ <div class="app-shadowbox wap-shadowbox" data-type=view>
+ <div class=app-box>
+ <div class=pos-box>
+ <div class=tip-massege>前往CSDN APP阅读全文</div>
+ <div class=tip-text>CSDN APP记录你的成长</div>
+ <a class="app-bt-cance read_more_btn close-icon" data-report-click='{"spm":"1001.2101.3001.9529"}'>
+ <img src=data:, alt data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/closeBt.png>
+ </a>
+ <div class="button-box button-box-new w-100p">
+ <a class="app-bt-sure open_app_channelCode" id=wap_open_app_btn data-channelcode=blog_1592384106 data-channelabid=293_exp1 data-report-click='{"spm":"1001.2101.3001.9530"}' data-name=a data-href="csdnapp://web?url=https://blog.csdn.net/lance666/article/details/106385923">前往APP</a>
+ </div>
+ </div>
+ </div>
+ </div>
+ <div class="wap-shadowbox qr-weixin-box">
+ <div class=app-box>
+ <div class=tip-massege>微信小程序收藏浏览更方便</div>
+ <div class=routine-box-img> <img src=data:, alt data-sf-original-src></div>
+ <div class=routine-box-text>
+ <span>截图/长按 </span>保存本地，用微信扫码打开
+ </div>
+ <img class=close src=data:, alt data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/closeBt.png>
+ </div>
+ </div>
+ <div class="small-shadowbox wap-shadowbox">
+ <div class=app-box>
+ <div class=tip-massege>进入小程序随时浏览/收藏技术文章</div>
+ <div class="button-box button-box-new">
+ <a class=app-ab-cance data-report-click='{"spm":"1001.2101.3001.9400"}'>取消</a>
+ <a class=app-bt-sure data-report-click='{"spm":"1001.2101.3001.9401"}'>立即前往</a>
+ </div>
+ <img class=close src=data:, alt data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/closeBt.png>
+ </div>
+ </div>
+ <div class="wap-shadowbox ab-app-shadowbox">
+ <div class="app-box active">
+ <a class="app-bt-cance read_more_btn close-icon" id=ab-app-shadowbox-close data-report-view='{"spm":"1001.2101.3001.9672"}' data-report-click='{"spm":"1001.2101.3001.9672"}'>
+ <img src=data:, alt data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/closeBt.png>
+ </a>
+ <div class=tip-massege>需要前往CSDN APP登录即可继续互动</div>
+ <div class="button-box button-box-new w-100p">
+ <a class="app-bt-sure open_app_channelCode app-bt-sure-btn-new" id=wap_open_app_btn data-channelcode=1663655995 data-report-view='{"spm":"1001.2101.3001.8335"}' data-report-click='{"spm":"1001.2101.3001.8335"}' data-name=a data-href="csdnapp://web?url=https://blog.csdn.net/lance666/article/details/106385923">前往APP</a>
+ </div>
+ </div>
+ </div>
+ <div class="comment-shadowbox wap-shadowbox">
+ <div class=comment-write-box>
+ <div class=write-comment-container>
+ <textarea name class=write-comment-content id=writeComment placeholder="请发表有价值的评论， 博客评论不欢迎灌水，良好的社区氛围需大家一起维护。"></textarea>
+ <div id=formRewardBox class=comment-reward-box>
+ <a class=btn-remove-reward></a>
+ <div class=form-reward-box>
+ <div class=info>
+ 成就一亿技术人!
+ </div>
+ <div class=price-info>
+ 拼手气红包<span class=price>6.0元</span>
+ </div>
+ </div>
+ </div>
+ </div>
+ <div class=comment-write-bt>
+ <a class=write-redEnvolope>
+ <img class=comment-operate-img data-url=https://csdnimg.cn/release/blogv2/dist/pc/img/ src=data:, alt=红包 data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/pc/img/commentReward.png>
+ </a>
+ <a class=write-bt-sure data-report-click='{"spm":"1001.2101.3001.7867","mod":"1589175530_002"}' data-report-view='{"spm":"1001.2101.3001.7867","mod":"1589175530_002"}'>发送</a>
+ </div>
+ <div class=comment-rewarddialog-box>
+ <div class=form-box>
+ <div class=title-box>
+ 发红包
+ <a class=btn-form-close></a>
+ </div>
+ <form id=commentRewardForm>
+ <div class=ipt-box>
+ <label for=txtName>祝福语</label>
+ <div class=ipt-btn-box>
+ <input type=text name=name id=txtName autocomplete=off maxlength=50>
+ <a class="btn-ipt btn-random"></a>
+ </div>
+ <p class=notice>请填写红包祝福语或标题</p>
+ </div>
+ <div class=ipt-box>
+ <label for=txtSendAmount>红包数量</label>
+ <div class=ipt-txt-box>
+ <input type=text name=sendAmount maxlength=4 id=txtSendAmount placeholder=请填写红包数量(最小10个) autocomplete=off>
+ <span class=after-txt>个</span>
+ </div>
+ <p class=notice>红包个数最小为10个</p>
+ </div>
+ <div class=ipt-box>
+ <label for=txtMoney>
+ <div class=balance-info-box>
+ <div class=balance-info>
+ 您的钱包余额 <span class=red><span class=balance></span>元</span>
+ <a href=https://i.csdn.net/#/wallet/balance/recharge class=link-charge target=_blank>前往充值<img class=origin-plan-icon src=data:, alt data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/arrowRight.png></a>
+ </div>
+ </div>
+ </label>
+ <div class="ipt-txt-box error">
+ <input type=text name=money maxlength=5 id=txtMoney placeholder=请填写总金额(最低5元) autocomplete=off>
+ <span class=after-txt>元</span>
+ </div>
+ <p class=notice>红包金额最低5元</p>
+ </div>
+ <div class=opt-box>
+ <div class=pay-info>
+ ¥<span class=price></span>
+ </div>
+ <button type=button class="ml8 btn-submit" disabled>发红包</button>
+ <p class=remark>未领取的红包，将于96小时后发起退款</p>
+ </div>
+ </form>
+ </div>
+ </div>
+ </div>
+ </div>
+ <div class=redEnvolope id=redEnvolope>
+ <div class=env-box>
+ <div class=env-container>
+ <div class=pre-open id=preOpen>
+ <div class=top>
+ <header>
+ <img class=clearTpaErr :src=redpacketAuthor.avatar alt>
+ <div class=author>成就一亿技术人!</div>
+ </header>
+ <div class=bot-icon></div>
+ </div>
+ <footer>
+ <div class="red-openbtn open-start"></div>
+ <div class=tip>
+ 领取后你会自动成为博主和红包主的粉丝
+ <a class=rule target=_blank>规则</a>
+ </div>
+ </footer>
+ </div>
+ <div class=opened id=opened>
+ <div class=bot-icon>
+ <header>
+ <a class=creatorUrl href=https://blog.csdn.net/lance666/article/details/106385923 target=_blank>
+ <img class=clearTpaErr src=data:, alt data-sf-original-src=https://profile-avatar.csdnimg.cn/default.jpg!2>
+ </a>
+ <div class=author>
+ <div class=tt>hope_wisdom</div> 发出的红包
+ </div>
+ </header>
+ </div>
+ <div class=receive-box>
+ <header></header>
+ <div class=receive-list>
+ </div>
+ </div>
+ </div>
+ </div>
+ <div class=close-btn></div>
+ </div>
+ </div>
+ <div class="weixin-shadowbox wap-shadowbox">
+ <div class="guide-box guide-box-new">
+ <div class=topic>前往CSDN APP阅读全文</div>
+ <div class=tip>阅读体验更佳</div>
+ <div class="csdn-box item-box">
+ <div class=item><img class=app-img src=data:, alt data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/csdnIcon@2x.png></div>
+ <div class=item>
+ <div class=item-content>
+ <p class=title>CSDN</p>
+ <p class=text>成就一亿技术人</p>
+ </div>
+ </div>
+ <div class=item><a class="open-app open-app-csdn open_app_channelCode" data-channelcode=1661743049 data-url=https://blog.csdn.net/lance666/article/details/106385923 data-href="csdnapp://web?url=https://blog.csdn.net/lance666/article/details/106385923" data-report-view='{"spm":"1001.2101.3001.8331"}' data-report-click='{"spm":"1001.2101.3001.8331"}'>前往</a></div>
+ </div>
+ <div class="weixin-box item-box">
+ <div class="item item-display-none item-chrome"><img class=app-img src=data:, alt data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/chromeIcon@2x.png></div>
+ <div class=item>
+ <div class=item-content>浏览器</div>
+ </div>
+ <div class=item><a class="open-app open-app-weixin" data-report-view='{"spm":"1001.2101.3001.8332"}' data-report-click='{"spm":"1001.2101.3001.8332"}'>继续</a></div>
+ </div>
+ </div>
+ </div>
+ <div class="share-shadowbox wap-shadowbox">
+ <div class=share-box>
+ <div class=tit>分享</div>
+ <div class=text></div>
+ <a class=share-bt-tip data-report-click='{"spm":"1001.2101.3001.7872"}'>复制分享链接</a>
+ <img class=close src=data:, alt data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/closeBt.png>
+ </div>
+ </div>
+ 
+ <div class=ios-shadowbox>
+ <div class=ios-box>
+ <div class=tip-massege>请升级应用版本</div>
+ <div class=button-box>
+ <a id=cancelBt class=bt-cancel>取消</a>
+ <a id=upBt class=bt-cancel href="itms-apps://itunes.apple.com/cn/app/id1437086352?mt=8">立即升级</a>
+ </div>
+ </div>
+ </div>
+ <div class=feed-Sign-weixin>
+ <p class=open_app_channelCode id=feed-open-app-btn data-channelabid=252_exp1 data-href="csdnapp://web?url=https://blog.csdn.net/lance666/article/details/106385923" data-report-view='{"spm":"1001.2101.3001.9397"}' data-report-click='{"spm":"1001.2101.3001.9397"}'>APP 内打开 </p>
+ </div>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+<script data-template-shadow-root>(()=>{document.currentScript.remove();processNode(document);function processNode(node){node.querySelectorAll("template[shadowrootmode]").forEach(element=>{let shadowRoot = element.parentElement.shadowRoot;if (!shadowRoot) {try {shadowRoot=element.parentElement.attachShadow({mode:element.getAttribute("shadowrootmode"),delegatesFocus:element.getAttribute("shadowrootdelegatesfocus")!=null,clonable:element.getAttribute("shadowrootclonable")!=null,serializable:element.getAttribute("shadowrootserializable")!=null});shadowRoot.innerHTML=element.innerHTML;element.remove()} catch (error) {} if (shadowRoot) {processNode(shadowRoot)}}})}})()</script>
