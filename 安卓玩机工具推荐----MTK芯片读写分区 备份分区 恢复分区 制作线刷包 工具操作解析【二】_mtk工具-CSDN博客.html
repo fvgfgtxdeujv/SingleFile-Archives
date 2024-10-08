@@ -1,0 +1,895 @@
+<!DOCTYPE html> <html><!--
+ Page saved with SingleFile 
+ url: https://blog.csdn.net/u011283906/article/details/136822713?spm=1001.2014.3001.5502 
+ saved date: Wed Oct 09 2024 07:22:45 GMT+0800 (中国标准时间)
+--><meta charset=utf-8>
+<meta http-equiv=X-UA-Compatible content="IE=Edge">
+<meta name=viewport content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name=apple-mobile-web-app-status-bar-style content=black>
+<meta name=report content='{"pid": "blog", "spm":"1001.2101"}'>
+<meta name=applicable-device content=mobile>
+<meta http-equiv=Cache-Control content=no-transform>
+<meta http-equiv=Cache-Control content=no-siteapp>
+<meta content=yes name=apple-mobile-web-app-capable>
+<meta content=black name=apple-mobile-web-app-status-bar-style>
+<meta content="telephone=no" name=format-detection>
+<meta content="email=no" name=format-detection>
+<meta name=csdn-baidu-search content='{"autorun":true,"install":true,"keyword":"mtk工具"}'>
+<title>安卓玩机工具推荐----MTK芯片读写分区 备份分区 恢复分区 制作线刷包 工具操作解析【二】_mtk工具-CSDN博客</title>
+<meta name=description content=文章浏览阅读1.9k次，点赞18次，收藏24次。此类教程的初衷是让一些有兴趣的友友可以简介参考一些工具的具体使用方法。工具在好。具体还是在于使用者。了解基本常识。了解工具基础原理和基本步骤。_mtk工具>
+<link rel=canonical href=https://blog.csdn.net/u011283906/article/details/136822713>
+<link rel=apple-touch-icon sizes=57x57 href=data:, data-sf-original-href=https://csdnimg.cn/release/blogv2/dist/mobile/img/touch-icon-iphone-57.png>
+<link rel=apple-touch-icon sizes=114x114 href=data:, data-sf-original-href=https://csdnimg.cn/release/blogv2/dist/mobile/img/touch-icon-iphone-114.png>
+<link rel=apple-touch-icon sizes=72x72 href=data:, data-sf-original-href=https://csdnimg.cn/release/blogv2/dist/mobile/img/touch-icon-iphone-72.png>
+<link rel=apple-touch-icon sizes=144x144 href=data:, data-sf-original-href=https://csdnimg.cn/release/blogv2/dist/mobile/img/touch-icon-iphone-144.png>
+<link rel=apple-touch-icon sizes=120x120 href=data:, data-sf-original-href=https://csdnimg.cn/release/blogv2/dist/mobile/img/touch-icon-iphone-120.png>
+<script type=application/ld+json>{"@context":"https://ziyuan.baidu.com/contexts/cambrian.jsonld","@id":"https://blog.csdn.net/u011283906/article/details/136822713","appid":"1638831770136827","pubDate":"2024-03-18T21:36:49","title":"安卓玩机工具推荐----MTK芯片读写分区 备份分区 恢复分区 制作线刷包 工具操作解析【二】_mtk工具-CSDN博客","upDate":"2024-03-25T09:59:21"}</script>
+<meta name=referrer content=no-referrer><link href=data:, rel="shortcut icon" type=image/x-icon data-sf-original-href=https://g.csdnimg.cn/static/logo/favicon32.ico><meta http-equiv=content-security-policy content="default-src 'none'; font-src 'self' data:; img-src 'self' data:; style-src 'unsafe-inline'; media-src 'self' data:; script-src 'unsafe-inline' data:; object-src 'self' data:; frame-src 'self' data:;"><style>img[src="data:,"],source[src="data:,"]{display:none!important}</style></head>
+<body>
+ 
+<div id=main>
+<div class=aside-header-fixed>
+ <div class=aside-left>
+ <img class=iconfont src=data:, alt data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/iconLeftArrow.png>
+ <img class=portrait src=data:, alt data-sf-original-src=https://profile-avatar.csdnimg.cn/4cd05d41967b42d295a8f82f1dbb0244_u011283906.jpg!1>
+ <span>安卓机器</span>
+ </div>
+ <div class=aside-right>
+ <a class=unfollow id=detailFollowNew data-id=136822713>已关注</a>
+ </div>
+</div>
+ <div class=a_d_1></div>
+ 
+ 
+ 
+ 
+ <div id=article class=margin_sides>
+ <h1 class=article_title id=articleContentId>
+ <span class=tit>安卓玩机工具推荐----MTK芯片读写分区 备份分区 恢复分区 制作线刷包 工具操作解析【二】</span>
+ <span class="article-type type-1 float-none">原创</span>
+ </h1>
+ <div class=creat-time-box>
+ <div class=creat-time-box-up-time><span>已于&nbsp;2024-03-25 11:46:58&nbsp;修改</span></div>
+ <span class=creat-time><img class=creat-time-img src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/renewal.png> <span>2024-03-25 09:59:21</span></span>
+ <div class=reading-collections-box>
+ <p class=blog-wap-reading>
+ <img class=have-heart-img src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/wap-articleReadEyes2.png> 
+ 阅读量<span class=text>1.9k</span>
+ </p>
+ <p class=blog-wap-reading>
+ <img class="article-collect-img un-collect-status" src=data:, alt data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/wap-tobarCollect2.png>
+ <img class="article-collect-img collect-status" src=data:, alt data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/wap-tobarCollect2-act.png>
+ 收藏<span class=text id=blogReadingNum>
+ 24
+ </span>
+ </p>
+ </div>
+ <span class=have-heart-count>
+ <img class=have-heart-img src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/hotHeart.png> 
+ 18赞
+ </span>
+ </div>
+ <div class="article_info clearfix">
+ <div class="top_user_mod clearfix">
+ <div class="top_user_info floatL clearfix">
+ <dl>
+ <dt class=floatL>
+ <a href=https://blog.csdn.net/u011283906 target=_blank rel=noopener class="clearfix top_user_info_a">
+ <img class=avatar src=data:, alt data-sf-original-src=https://profile-avatar.csdnimg.cn/4cd05d41967b42d295a8f82f1dbb0244_u011283906.jpg!1>
+ </a>
+ </dt>
+ <dd class=floatL>
+ <p class=line-nick-name> 
+ <span class="nick_name odd-overhidden">安卓机器</span>
+ 
+ <img class=identity-icon src=data:, data-sf-original-src=https://csdnimg.cn/identity/blog7.png>
+ 
+ 
+ </p>
+ <p class=line-detaile>
+ <span class=code_years>码龄11年</span>
+ </p>
+ </dd> 
+ <a class=unfollow id=detailFollow data-id=7982622 data-report-view='{"spm":"1001.2101.3001.8391"}'>已关注</a>
+ </dl>
+ </div>
+ </div>
+ </div> 
+ <div class=baidu_pl id=csdn-previewimg-box>
+ <div class=article_content>
+ <div id=content_views class="htmledit_views clearfix">
+ 
+ <p><a class=link-info href=https://blog.csdn.net/u011283906/article/details/136475267 title="安卓玩机工具推荐----MTK芯片读写分区 备份分区 恢复分区 制作线刷包 工具操作解析">安卓玩机工具推荐----MTK芯片读写分区 备份分区 恢复分区 制作线刷包 工具操作解析</a></p> 
+<p><img alt src=data:, data-sf-original-src=https://i-blog.csdnimg.cn/blog_migrate/ee4e27204c1acad7b9cd48bf9497ee4b.png></p> 
+<h2><span>往期回顾</span></h2> 
+<p><strong>上期分别讲解了下mtk芯片生成线刷包所需要的一些工具中的步骤说明。今天再来讲解一下另外一款工具的具体操作步骤。对于小品牌或未有固件的mtk芯片类机型玩机有一定的辅助作用。可以参考。</strong></p> 
+<p><strong>此类教程的初衷是让一些有兴趣的友友可以简介参考一些工具的具体使用方法。工具在好。具体还是在于使用者。了解基本常识。了解工具基础原理和基本步骤。</strong></p> 
+<h2><span><strong>先来简单说下工具的具体功能</strong></span></h2> 
+<p><span><strong>工具下载：</strong></span><a href=https://download.csdn.net/download/u011283906/89028477 title=https://download.csdn.net/download/u011283906/89028477>https://download.csdn.net/download/u011283906/89028477</a></p> 
+<p><strong>可以让mtk芯片机型读取分区表。读取后备份分区。檫除分区。另外还可以备份基带nv。檫除基带nv。格式化data分区。檫除FRP账号。高通刷写固件和高通去除账号等等功能。<span>此教程只针对mtk芯片备份分区来简单说明。其他功能自测</span>。此工具是国外手机维修加密狗附带的一个插件。有些功能阉割了。但mtk 分区类功能操作正常。使用的友友可以断网测试。</strong></p> 
+<p><strong>此款工具的优点在于进入BROM模式读取分区操作比较直观</strong></p> 
+<p><img alt height=520 src=data:, width=994 data-sf-original-src=https://i-blog.csdnimg.cn/blog_migrate/991054cb8bf21c0faf6c5a6e16a9d8c7.png></p> 
+<h2><span>读取mtk分区表</span></h2> 
+<p><strong>先来演示下如何读取分区表。联机驱动安装和电脑系统插件环境安装这边在不多做阐述。这些都是操作的前提。前面很多博文有说明。另外机型不同 触发进入BROM模式的按键也不同。一般为关机黑屏状态下</strong></p> 
+<p><span><strong>01--音量上键按住链接数据线</strong></span></p> 
+<p><span><strong>02--音量下键按住链接数据线</strong></span></p> 
+<p><span><strong>03--音量上+下键按住链接数据线</strong></span></p> 
+<p><span><strong>04--拆机短接触点进入【mtk机型也有短接触点的】</strong></span></p> 
+<p><strong>以mtk 6765芯片机型做演示，打开工具点击工具的Connect Device按钮。此时工具处于等待链接端口状态。然后关机状态按住音量上键。链接数据线，触发端口进行读取。看演示动画</strong></p> 
+<p><img alt src=data:, data-sf-original-src=https://i-blog.csdnimg.cn/blog_migrate/6bb42b6dd9888d5ca4fdf0d72665d5a5.gif></p> 
+<p><strong>可以很轻松读取到当前机型的各个分区。链接后工具界面上方会出现联机端口</strong></p> 
+<h2><span>备份分区_READ</span></h2> 
+<p><strong>备份单分区和全分区的操作大同小异。这边演示下备份单分区的操作。全分区备份类似。当读取到全分区后。我们可以选择备份分区，选择你要备份的单分区或者全分区。点击READ按钮即可跳处一个选择存储路径文件夹的窗口。选择好后备份开始</strong></p> 
+<p><img alt src=data:, data-sf-original-src=https://i-blog.csdnimg.cn/blog_migrate/c72ec91bfe5a021b5d636265554aa60c.gif></p> 
+<p><strong>可以清楚的看到已经备份好了选择的分区。</strong></p> 
+<h2><span>檫除分区_ERASE</span></h2> 
+<p><strong>例如有些机型重写串码需要檫除当前的基带才可以。那么你可以选择对应的分区进行檫除操作。选择檫除前友情建议先备份。以免出现不可逆的操作。点击你要檫除的分区，然后点击工具的ERASE按钮即可直接檫除。下方演示是檫除了userdata用户数据分区。可以用于一些机型清除屏幕锁等操作</strong></p> 
+<p><img alt src=data:, data-sf-original-src=https://i-blog.csdnimg.cn/blog_migrate/55ba55d166213f034dcde0f222980a45.gif></p> 
+<p><strong>此工具不会备份perloader分区。需要借助其他工具备份。可以参考以前的博文。</strong></p> 
+<h2><span>功能区</span></h2> 
+<p><strong>功能区里面的可以参考</strong></p> 
+<p><img alt height=312 src=data:, width=648 data-sf-original-src=https://i-blog.csdnimg.cn/blog_migrate/5a65893c1f337a67216eabbdb84db091.png></p> 
+<h2><span>备份基带nv操作</span></h2> 
+<p><strong>点击功能区的backup nv按钮会跳处一个备份存储文件夹窗口。选择好存储路径后即可正常备份</strong></p> 
+<p><img alt src=data:, data-sf-original-src=https://i-blog.csdnimg.cn/blog_migrate/22f9a74941710aacbc6308f0fe4bc919.gif></p> 
+<p><strong>如果机型已经在读取分区表状态下那么直接点击即可备份基带分区。如果手机处于没有联机状态。选择好备份路径直接按上面方法联机操作即可</strong></p> 
+<p><strong>演示下如何重新联机备份基带分区</strong></p> 
+<p><img alt src=data:, data-sf-original-src=https://i-blog.csdnimg.cn/blog_migrate/9048f01ab68cf1e699a66e53d0a9b719.gif></p> 
+<p><strong>其他功能选项操作也是一样的性质。还是那句话。能备份的尽量先备份在进行其他操作。</strong></p> 
+<h2><span>高通区操作释义</span></h2> 
+<p><strong>顾名思义。加载高通引导文件后进入9008模式进行对应的操作</strong></p> 
+<p><img alt height=449 src=data:, width=581 data-sf-original-src=https://i-blog.csdnimg.cn/blog_migrate/57a6a06a64760e709d3e1dccbd873320.png></p> 
+<h2><span><strong>总结：</strong></span></h2> 
+<p><strong>mtk分区这类工具很多。各有所长。都是进入mtk的BROM模式里进行读写操作的。明白其原理 一通百通。任何的读写操作都有几率影响手机的正常运行。操作需要谨慎。</strong></p> 
+<p><img alt src=data:, data-sf-original-src=https://i-blog.csdnimg.cn/blog_migrate/16cf7547a9b1c9ac1b7d916cba85dc0a.png></p>
+ </div>
+ <div>
+ <div id=treeSkill></div>
+ </div>
+ <div id=blogExtensionBox class=blog-extension-box></div>
+ 
+ 
+ </div>
+ </div>
+ <div class=readall_box data-report-view='{"mod":"popu_376","dest":"https://blog.csdn.net/u011283906/article/details/136822713"}' data-report-click='{"mod":"popu_376","dest":"https://blog.csdn.net/u011283906/article/details/136822713"}'>
+ <div class=read_more_mask></div>
+ <div class="btn_mod active">
+ 
+ <a class=btn_open_app_prompt_box id=read_focus_open>
+ <span>展开全文</span>
+ 
+ </a>
+ 
+ </div> 
+ </div> 
+ 
+ 
+ </div>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ <div class=spec_space></div>
+ <div class=add-firstAd>
+ <div id=kp_box_511 data-pid=511><iframe frameborder=0 width=100% height=75px scrolling=no data-sf-original-src="https://kunpeng-sc.csdnimg.cn/?timestamp=1645783940/#/preview/1186374?positionId=511&amp;adBlockFlag=0&amp;adId=1060555&amp;queryWord=%E5%AE%89%E5%8D%93%E7%8E%A9%E6%9C%BA%E5%B7%A5%E5%85%B7%E6%8E%A8%E8%8D%90----MTK%E8%8A%AF%E7%89%87%E8%AF%BB%E5%86%99%E5%88%86%E5%8C%BA%20%E5%A4%87%E4%BB%BD%E5%88%86%E5%8C%BA%20%E6%81%A2%E5%A4%8D%E5%88%86%E5%8C%BA%20%E5%88%B6%E4%BD%9C%E7%BA%BF%E5%88%B7%E5%8C%85%20%E5%B7%A5%E5%85%B7%E6%93%8D%E4%BD%9C%E8%A7%A3%E6%9E%90%E3%80%90%E4%BA%8C%E3%80%91&amp;spm=1001.2101.3001.4621&amp;articleId=136822713" sandbox="allow-popups allow-top-navigation allow-top-navigation-by-user-activation allow-scripts allow-same-origin allow-modals allow-popups allow-downloads allow-pointer-lock allow-presentation" srcdoc="<!DOCTYPE html> <html><meta charset=utf-8><meta name=viewport content=&quot;width=device-width,initial-scale=1&quot;><meta name=renderer content=webkit><meta name=force-rendering content=webkit><meta name=publish content=&quot;2019-07-22 18:23:00&quot;><meta http-equiv=X-UA-Compatible content=&quot;IE=Edge,chrome=1&quot;><meta name=report content='{&quot;pid&quot;:&quot;i&quot;,&quot;disabled&quot;:true}'><meta name=referrer content=no-referrer><meta http-equiv=content-security-policy content=&quot;default-src 'none'; font-src 'self' data:; img-src 'self' data:; style-src 'unsafe-inline'; media-src 'self' data:; script-src 'unsafe-inline' data:; object-src 'self' data:; frame-src 'self' data:;&quot;><style>img[src=&quot;data:,&quot;],source[src=&quot;data:,&quot;]{display:none!important}</style><body><div id=app></div><!--[if lt IE 9]>
+<script>window.location.href=&quot;https://g.csdnimg.cn/browser_upgrade/1.0.2/index.html&quot;;</script>
+<![endif]--><!--[if gte IE 9]>
+<script src=&quot;https://g.csdnimg.cn/browser_upgrade/1.0.2/browser_upgrade.js&quot;></script>
+<![endif]-->"></iframe><img class=pre-img-lasy data-src="https://kunyu.csdn.net/1.png?p=511&amp;adBlockFlag=0&amp;adId=1060555&amp;a=1060555&amp;c=1186374&amp;k=安卓玩机工具推荐----MTK芯片读写分区 备份分区 恢复分区 制作线刷包 工具操作解析【二】&amp;spm=1001.2101.3001.4621&amp;articleId=136822713&amp;d=1&amp;t=1&amp;u=0b05708001f24deba86ec4a6c3e1f00a"></div>
+ </div>
+ <div class=spec_space></div>
+ 
+ 
+ <div id=comment>
+ </div>
+ <div class="spec_space spec_space_hide"></div>
+ 
+ <div id=recommend>
+ <div class=recommend_list>
+ <dl></dl>
+ <dl class="container-fluid container-fluid-flex container-download" data-url=https://download.csdn.net/download/weixin_44323752/10886739 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.1","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~CTRLIST~Paid-1-10886739-blog-136822713.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1728429765891_55798\"}","dist_request_id":"1728429765891_55798","ab_strategy":"increase_t0_download","index":"1","strategy":"2~default~CTRLIST~Paid","dest":"https://download.csdn.net/download/weixin_44323752/10886739"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=download>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a href=https://download.csdn.net/download/weixin_44323752/10886739 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.1","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~CTRLIST~Paid-1-10886739-blog-136822713.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1728429765891_55798\"}","dist_request_id":"1728429765891_55798","ab_strategy":"increase_t0_download","index":"1","strategy":"2~default~CTRLIST~Paid","dest":"https://download.csdn.net/download/weixin_44323752/10886739"}' data-report-query="spm=1001.2101.3001.6650.1&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7ECTRLIST%7EPaid-1-10886739-blog-136822713.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7ECTRLIST%7EPaid-1-10886739-blog-136822713.237%5Ev3%5Ewap_relevant_t0_download">
+ <div class=left>
+ <em>mtk</em>刷机<em>工具</em>
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class=text href=https://download.csdn.net/download/weixin_44323752/10886739 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.1","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~CTRLIST~Paid-1-10886739-blog-136822713.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1728429765891_55798\"}","dist_request_id":"1728429765891_55798","ab_strategy":"increase_t0_download","index":"1","strategy":"2~default~CTRLIST~Paid","dest":"https://download.csdn.net/download/weixin_44323752/10886739"}' data-report-query="spm=1001.2101.3001.6650.1&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7ECTRLIST%7EPaid-1-10886739-blog-136822713.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7ECTRLIST%7EPaid-1-10886739-blog-136822713.237%5Ev3%5Ewap_relevant_t0_download">
+ <em>mtk</em>平台下载<em>工具</em>，可以随时更新<em>mtk</em>平台的手机rom，注：必须由厂商提供系统资源包
+ </a>
+ </div>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-blog" data-url=https://blog.csdn.net/gitblog_00067/article/details/136798155 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.2","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~CTRLIST~Rate-2-136798155-blog-136822713.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1728429765891_55798\"}","dist_request_id":"1728429765891_55798","ab_strategy":"increase_t0_download","index":"2","strategy":"2~default~CTRLIST~Rate","dest":"https://blog.csdn.net/gitblog_00067/article/details/136798155"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=blog>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a>
+ <div class=left>
+ <em>MTK</em>-Tools: 功能强大的联发科<em>芯片</em><em>工具</em>箱
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class="text active">
+ <em>MTK</em>-Tools: 功能强大的联发科<em>芯片</em><em>工具</em>箱
+<em>MTK</em>-Tools 是一款专为联发科（MediaTek）<em>芯片</em>设计的多功能<em>工具</em>箱，旨在帮助用户轻松处理与联发科设备相关的一系列问题。通过 <em>MTK</em>-Tools，您可以执行各种<em>操作</em>，例如刷机、解锁 Bootloader、<em>备份</em>数据等。
+用途
+<em>MTK</em>-Tools 可以用于以下场景：
+刷机：支持将第三方固件刷入联发科设备。
+解锁 Bootloader：安全地...
+ </a>
+ <a class=flag data-type=blog data-href=https://blog.csdn.net/gitblog_00067/article/details/136798155 href=https://blog.csdn.net/gitblog_00067/article/details/136798155 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.2","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~CTRLIST~Rate-2-136798155-blog-136822713.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1728429765891_55798\"}","dist_request_id":"1728429765891_55798","ab_strategy":"increase_t0_download","index":"2","strategy":"2~default~CTRLIST~Rate","dest":"https://blog.csdn.net/gitblog_00067/article/details/136798155"}' data-report-query="spm=1001.2101.3001.6650.2&amp;utm_medium=distribute.wap_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-2-136798155-blog-136822713.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-2-136798155-blog-136822713.237%5Ev3%5Ewap_relevant_t0_download">继续访问</a>
+ </div>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-blog" data-url=https://longzhiye.blog.csdn.net/article/details/134055771 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.3","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~YuanLiJiHua~Position-3-134055771-blog-136822713.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1728429765891_55798\"}","dist_request_id":"1728429765891_55798","ab_strategy":"increase_t0_download","index":"3","strategy":"2~default~YuanLiJiHua~Position","dest":"https://longzhiye.blog.csdn.net/article/details/134055771"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=blog>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a>
+ <div class=left>
+ <span class=tag>最新发布</span>
+ android10.0(Q) <em>MTK</em> 6765 user版本打开root权限
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class="text active">
+ 相比较 Android8.1、9.0 而言，Android10.0 版本 的 root变得相当麻烦，10.0 中引入了动态<em>分区</em>机制，同样的要想完全 adb root，需要 fastboot 解锁，然后关闭 verity 才能 adb remount 成功。我尝试和之前一样修改 fstab.in.mt6765 中的 ro 和 rw 初始值，容易导致无法正常开机，在这耗费了很长时间，就暂时先跳过吧，apk root 是 ok的。
+ </a>
+ <a class=flag data-type=blog data-href=https://longzhiye.blog.csdn.net/article/details/134055771 href=https://longzhiye.blog.csdn.net/article/details/134055771 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.3","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~YuanLiJiHua~Position-3-134055771-blog-136822713.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1728429765891_55798\"}","dist_request_id":"1728429765891_55798","ab_strategy":"increase_t0_download","index":"3","strategy":"2~default~YuanLiJiHua~Position","dest":"https://longzhiye.blog.csdn.net/article/details/134055771"}' data-report-query="spm=1001.2101.3001.6650.3&amp;utm_medium=distribute.wap_relevant.none-task-blog-2%7Edefault%7EYuanLiJiHua%7EPosition-3-134055771-blog-136822713.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-blog-2%7Edefault%7EYuanLiJiHua%7EPosition-3-134055771-blog-136822713.237%5Ev3%5Ewap_relevant_t0_download">继续访问</a>
+ </div>
+ </div>
+ <div class=right-img-box>
+ <a class=recommend-img>
+ <img src=data:, alt data-sf-original-src=https://img-blog.csdnimg.cn/e1406c65f9794d9bafbdd3877e944940.png>
+ </a>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-download" data-url=https://download.csdn.net/download/qq_24425241/8264723 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.4","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~BlogCommendFromBaidu~Rate-4-8264723-blog-136822713.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1728429765891_55798\"}","dist_request_id":"1728429765891_55798","ab_strategy":"increase_t0_download","index":"4","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://download.csdn.net/download/qq_24425241/8264723"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=download>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a href=https://download.csdn.net/download/qq_24425241/8264723 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.4","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~BlogCommendFromBaidu~Rate-4-8264723-blog-136822713.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1728429765891_55798\"}","dist_request_id":"1728429765891_55798","ab_strategy":"increase_t0_download","index":"4","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://download.csdn.net/download/qq_24425241/8264723"}' data-report-query="spm=1001.2101.3001.6650.4&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EBlogCommendFromBaidu%7ERate-4-8264723-blog-136822713.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EBlogCommendFromBaidu%7ERate-4-8264723-blog-136822713.237%5Ev3%5Ewap_relevant_t0_download">
+ <div class=left>
+ 联发科刷机<em>工具</em>
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class=text href=https://download.csdn.net/download/qq_24425241/8264723 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.4","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~BlogCommendFromBaidu~Rate-4-8264723-blog-136822713.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1728429765891_55798\"}","dist_request_id":"1728429765891_55798","ab_strategy":"increase_t0_download","index":"4","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://download.csdn.net/download/qq_24425241/8264723"}' data-report-query="spm=1001.2101.3001.6650.4&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EBlogCommendFromBaidu%7ERate-4-8264723-blog-136822713.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EBlogCommendFromBaidu%7ERate-4-8264723-blog-136822713.237%5Ev3%5Ewap_relevant_t0_download">
+ 联发科<em>芯片</em>（cpu）手机基本都可用此<em>工具</em>刷机
+ </a>
+ </div>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-blog" data-url=https://jinxinxin.blog.csdn.net/article/details/125201191 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.5","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-5-125201191-blog-136822713.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1728429765891_55798\"}","dist_request_id":"1728429765891_55798","ab_strategy":"increase_t0_download","index":"5","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://jinxinxin.blog.csdn.net/article/details/125201191"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=blog>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a>
+ <div class=left>
+ <em>MTK</em>基于GAT<em>工具</em>和SpOffineDebugSuite<em>工具</em> dump 抓取和<em>解析</em>
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class="text active">
+ <em>MTK</em>基于GAT<em>工具</em>和SpOffineDebugSuite<em>工具</em> dump 抓取和<em>解析</em>
+双击
+实例
+ </a>
+ <a class=flag data-type=blog data-href=https://jinxinxin.blog.csdn.net/article/details/125201191 href=https://jinxinxin.blog.csdn.net/article/details/125201191 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.5","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-5-125201191-blog-136822713.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1728429765891_55798\"}","dist_request_id":"1728429765891_55798","ab_strategy":"increase_t0_download","index":"5","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://jinxinxin.blog.csdn.net/article/details/125201191"}' data-report-query="spm=1001.2101.3001.6650.5&amp;utm_medium=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-5-125201191-blog-136822713.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-5-125201191-blog-136822713.237%5Ev3%5Ewap_relevant_t0_download">继续访问</a>
+ </div>
+ </div>
+ <div class=right-img-box>
+ <a class=recommend-img>
+ <img src=data:, alt data-sf-original-src=https://img-blog.csdnimg.cn/2ba17f338e7e41089830dc829e846dd5.png>
+ </a>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-blog" data-url=https://blog.csdn.net/u011283906/article/details/137773408 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.6","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-6-137773408-blog-136822713.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1728429765891_55798\"}","dist_request_id":"1728429765891_55798","ab_strategy":"increase_t0_download","index":"6","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://blog.csdn.net/u011283906/article/details/137773408"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=blog>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a>
+ <div class=left>
+ <em>安卓</em><em>玩机</em><em>工具</em><em>推荐</em><em>----</em><em>MTK</em> 高通<em>芯片</em>机型 免权限刷机 <em>备份</em>基带 去除锁类<em>工具</em><em>操作</em>步骤<em>解析</em>
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class="text active">
+ 它可以刷写高通<em>芯片</em> <em>mtk</em><em>芯片</em>固件。可以<em>备份</em><em>mtk</em>基带<em>分区</em>和<em>恢复</em>基带<em>分区</em>。带<em>mtk</em>刷写免权限。可以去除一些机型的用户锁【例如用户忘记手机锁屏密码类】以及去除机型的FRP锁等等
+<em>工具</em>对于私人用户遇到一些手机故障 例如忘记密码锁 想<em>备份</em>基带<em>分区</em> 刷机等等都可以通过它来解决。
+ </a>
+ <a class=flag data-type=blog data-href=https://blog.csdn.net/u011283906/article/details/137773408 href=https://blog.csdn.net/u011283906/article/details/137773408 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.6","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-6-137773408-blog-136822713.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1728429765891_55798\"}","dist_request_id":"1728429765891_55798","ab_strategy":"increase_t0_download","index":"6","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://blog.csdn.net/u011283906/article/details/137773408"}' data-report-query="spm=1001.2101.3001.6650.6&amp;utm_medium=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-6-137773408-blog-136822713.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-6-137773408-blog-136822713.237%5Ev3%5Ewap_relevant_t0_download">继续访问</a>
+ </div>
+ </div>
+ <div class=right-img-box>
+ <a class=recommend-img>
+ <img src=data:, alt data-sf-original-src=https://img-blog.csdnimg.cn/direct/2483d63e1c824b81a180b4e631bd03f2.png>
+ </a>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-blog" data-url=https://blog.csdn.net/u011283906/article/details/136475267 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.7","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-7-136475267-blog-136822713.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1728429765891_55798\"}","dist_request_id":"1728429765891_55798","ab_strategy":"increase_t0_download","index":"7","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://blog.csdn.net/u011283906/article/details/136475267"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=blog>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a>
+ <div class=left>
+ <em>安卓</em><em>玩机</em><em>工具</em><em>推荐</em><em>----</em><em>MTK</em><em>芯片</em><em>读写</em><em>分区</em> <em>备份</em><em>分区</em> <em>恢复</em><em>分区</em> <em>制作</em><em>线刷包</em> <em>工具</em><em>操作</em><em>解析</em>【一】
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class="text active">
+ 前面做了两期教程。分别<em>解析</em>了下ADB端口与高通9008端口<em>备份</em><em>分区</em>一些基础的常识，那么对于<em>MTK</em><em>芯片</em>如何无固件<em>备份</em><em>分区</em>和<em>制作</em><em>线刷包</em>呢。前面对于<em>MTK</em><em>芯片</em>也做过一些教程。
+ </a>
+ <a class=flag data-type=blog data-href=https://blog.csdn.net/u011283906/article/details/136475267 href=https://blog.csdn.net/u011283906/article/details/136475267 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.7","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-7-136475267-blog-136822713.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1728429765891_55798\"}","dist_request_id":"1728429765891_55798","ab_strategy":"increase_t0_download","index":"7","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://blog.csdn.net/u011283906/article/details/136475267"}' data-report-query="spm=1001.2101.3001.6650.7&amp;utm_medium=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-7-136475267-blog-136822713.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-7-136475267-blog-136822713.237%5Ev3%5Ewap_relevant_t0_download">继续访问</a>
+ </div>
+ </div>
+ <div class=right-img-box>
+ <a class=recommend-img>
+ <img src=data:, alt data-sf-original-src=https://img-blog.csdnimg.cn/direct/2483d63e1c824b81a180b4e631bd03f2.png>
+ </a>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-blog" data-url=https://devpress.csdn.net/v1/article/detail/130321808 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.8","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~activity-8-130321808-blog-136822713.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1728429765891_55798\"}","dist_request_id":"1728429765891_55798","ab_strategy":"increase_t0_download","index":"8","strategy":"2~default~BlogCommendFromBaidu~activity","dest":"https://devpress.csdn.net/v1/article/detail/130321808"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=blog>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a>
+ <div class=left>
+ <em>玩机</em>搞机<em>----</em><em>mtk</em><em>芯片</em>机型 另类<em>制作</em><em>备份</em><em>线刷包</em>的方式 <em>读写</em><em>分区</em>等等
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class="text active">
+ 前面分享了几期高通和<em>mtk</em><em>芯片</em>机型<em>备份</em>字库的几种方法教程。这些针对与很多没有<em>线刷包</em>资源的手机机型<em>玩机</em><em>操作</em>。前面对接一个友商的<em>mtk</em><em>芯片</em>杂牌机。和另外一个国外<em>mtk</em><em>芯片</em>级都是来<em>制作</em><em>线刷包</em>。因为，这些机型没有固件流出。而同一批机型中<em>安卓</em>版本高低不固定。支持的资源也就不同，所以需求导出<em>分区</em>进行<em>二</em>次刷写。
+ </a>
+ <a class=flag data-type=blog data-href=https://devpress.csdn.net/v1/article/detail/130321808 href=https://devpress.csdn.net/v1/article/detail/130321808 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.8","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~activity-8-130321808-blog-136822713.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1728429765891_55798\"}","dist_request_id":"1728429765891_55798","ab_strategy":"increase_t0_download","index":"8","strategy":"2~default~BlogCommendFromBaidu~activity","dest":"https://devpress.csdn.net/v1/article/detail/130321808"}' data-report-query="spm=1001.2101.3001.6650.8&amp;utm_medium=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7Eactivity-8-130321808-blog-136822713.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7Eactivity-8-130321808-blog-136822713.237%5Ev3%5Ewap_relevant_t0_download">继续访问</a>
+ </div>
+ </div>
+ <div class=right-img-box>
+ <a class=recommend-img>
+ <img src=data:, alt data-sf-original-src=https://img-blog.csdnimg.cn/f32c5ca96c8c4e46a1786cfec61aa100.png>
+ </a>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-download" data-url=https://download.csdn.net/download/u011283906/89244501 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.9","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-9-89244501-blog-136822713.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1728429765891_55798\"}","dist_request_id":"1728429765891_55798","ab_strategy":"increase_t0_download","index":"9","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/u011283906/89244501"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=download>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a href=https://download.csdn.net/download/u011283906/89244501 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.9","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-9-89244501-blog-136822713.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1728429765891_55798\"}","dist_request_id":"1728429765891_55798","ab_strategy":"increase_t0_download","index":"9","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/u011283906/89244501"}' data-report-query="spm=1001.2101.3001.6650.9&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-9-89244501-blog-136822713.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-9-89244501-blog-136822713.237%5Ev3%5Ewap_relevant_t0_download">
+ <div class=left>
+ <em>MTK</em><em>芯片</em><em>读写</em><em>分区</em> <em>制作</em><em>线刷包</em>去除锁类-<em>推荐</em><em>工具</em>
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class=text href=https://download.csdn.net/download/u011283906/89244501 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.9","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-9-89244501-blog-136822713.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1728429765891_55798\"}","dist_request_id":"1728429765891_55798","ab_strategy":"increase_t0_download","index":"9","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/u011283906/89244501"}' data-report-query="spm=1001.2101.3001.6650.9&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-9-89244501-blog-136822713.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-9-89244501-blog-136822713.237%5Ev3%5Ewap_relevant_t0_download">
+ 资源说明： 请参考博文了解<em>工具</em>具体功能 ... 没有基础常识和<em>操作</em>能力弱的友友请谨慎下载 资源有可复制性。下载后不支持退。请知悉 需要一定刷机常识和<em>玩机</em>基础的友友<em>操作</em>
+ </a>
+ </div>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-download" data-url=https://download.csdn.net/download/u011283906/87719165 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.10","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-10-87719165-blog-136822713.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1728429765891_55798\"}","dist_request_id":"1728429765891_55798","ab_strategy":"increase_t0_download","index":"10","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/u011283906/87719165"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=download>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a href=https://download.csdn.net/download/u011283906/87719165 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.10","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-10-87719165-blog-136822713.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1728429765891_55798\"}","dist_request_id":"1728429765891_55798","ab_strategy":"increase_t0_download","index":"10","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/u011283906/87719165"}' data-report-query="spm=1001.2101.3001.6650.10&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-10-87719165-blog-136822713.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-10-87719165-blog-136822713.237%5Ev3%5Ewap_relevant_t0_download">
+ <div class=left>
+ <em>MTK</em><em>芯片</em>机型线刷免授权解锁修复NV 固件转换 <em>读取</em><em>分区</em> <em>制作</em><em>线刷包</em><em>工具</em>双版
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class=text href=https://download.csdn.net/download/u011283906/87719165 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.10","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-10-87719165-blog-136822713.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1728429765891_55798\"}","dist_request_id":"1728429765891_55798","ab_strategy":"increase_t0_download","index":"10","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/u011283906/87719165"}' data-report-query="spm=1001.2101.3001.6650.10&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-10-87719165-blog-136822713.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-10-87719165-blog-136822713.237%5Ev3%5Ewap_relevant_t0_download">
+ 1<em>----</em><em>mtk</em><em>芯片</em>机型线刷免权限 2<em>----</em>未绕授权的时候，<em>mtk</em>端口不稳定，绕授权后端口会稳定下来。明白的都明白 3<em>----</em><em>备份</em>Preloader<em>分区</em>用于给其他<em>工具</em>使用，这个相当于高通的引导 4<em>----</em><em>备份</em> 清除nv<em>分区</em>信息 5<em>----</em>分解...
+ </a>
+ </div>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-download" data-url=https://download.csdn.net/download/u011283906/87719893 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.11","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-11-87719893-blog-136822713.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1728429765891_55798\"}","dist_request_id":"1728429765891_55798","ab_strategy":"increase_t0_download","index":"11","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/u011283906/87719893"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=download>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a href=https://download.csdn.net/download/u011283906/87719893 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.11","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-11-87719893-blog-136822713.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1728429765891_55798\"}","dist_request_id":"1728429765891_55798","ab_strategy":"increase_t0_download","index":"11","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/u011283906/87719893"}' data-report-query="spm=1001.2101.3001.6650.11&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-11-87719893-blog-136822713.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-11-87719893-blog-136822713.237%5Ev3%5Ewap_relevant_t0_download">
+ <div class=left>
+ <em>MTK</em><em>芯片</em>机型 <em>读写</em><em>分区</em> <em>玩机</em><em>工具</em>
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class=text href=https://download.csdn.net/download/u011283906/87719893 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.11","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-11-87719893-blog-136822713.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1728429765891_55798\"}","dist_request_id":"1728429765891_55798","ab_strategy":"increase_t0_download","index":"11","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/u011283906/87719893"}' data-report-query="spm=1001.2101.3001.6650.11&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-11-87719893-blog-136822713.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-11-87719893-blog-136822713.237%5Ev3%5Ewap_relevant_t0_download">
+ 资源说明; 1---<em>mtk</em><em>芯片</em>机型专用 2---可以<em>读写</em><em>分区</em> 檫除<em>分区</em> ...5---<em>工具</em>是进入<em>mtk</em><em>芯片</em>的brom模式里<em>操作</em>的。 6---<em>工具</em>需要一定<em>操作</em>能力和动手能力的友友 7<em>----</em><em>工具</em>最好在w10下使用 具体可以参考教程贴演示图 ...
+ </a>
+ </div>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-download" data-url=https://download.csdn.net/download/u011283906/85927654 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.12","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-12-85927654-blog-136822713.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1728429765891_55798\"}","dist_request_id":"1728429765891_55798","ab_strategy":"increase_t0_download","index":"12","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/u011283906/85927654"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=download>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a href=https://download.csdn.net/download/u011283906/85927654 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.12","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-12-85927654-blog-136822713.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1728429765891_55798\"}","dist_request_id":"1728429765891_55798","ab_strategy":"increase_t0_download","index":"12","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/u011283906/85927654"}' data-report-query="spm=1001.2101.3001.6650.12&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-12-85927654-blog-136822713.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-12-85927654-blog-136822713.237%5Ev3%5Ewap_relevant_t0_download">
+ <div class=left>
+ <em>mtk</em>提取字库<em>工具</em>+线刷平台SP_Flash_Tool
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class=text href=https://download.csdn.net/download/u011283906/85927654 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.12","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-12-85927654-blog-136822713.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1728429765891_55798\"}","dist_request_id":"1728429765891_55798","ab_strategy":"increase_t0_download","index":"12","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/u011283906/85927654"}' data-report-query="spm=1001.2101.3001.6650.12&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-12-85927654-blog-136822713.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-12-85927654-blog-136822713.237%5Ev3%5Ewap_relevant_t0_download">
+ <em>mtk</em>提取字库<em>工具</em>+线刷...辅助<em>工具</em>提取<em>mtk</em><em>芯片</em>机型 <em>备份</em>全字库 提取preloader<em>分区</em>等等 需要一定的刷机常识和<em>操作</em>能力 参考教程 https://blog.csdn.net/u011283906/article/details/125635253?spm=1001.2014.3001.5501
+ </a>
+ </div>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-download" data-url=https://download.csdn.net/download/weixin_42676678/25910838 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.13","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-13-25910838-blog-136822713.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1728429765891_55798\"}","dist_request_id":"1728429765891_55798","ab_strategy":"increase_t0_download","index":"13","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/weixin_42676678/25910838"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=download>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a href=https://download.csdn.net/download/weixin_42676678/25910838 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.13","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-13-25910838-blog-136822713.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1728429765891_55798\"}","dist_request_id":"1728429765891_55798","ab_strategy":"increase_t0_download","index":"13","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/weixin_42676678/25910838"}' data-report-query="spm=1001.2101.3001.6650.13&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-13-25910838-blog-136822713.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-13-25910838-blog-136822713.237%5Ev3%5Ewap_relevant_t0_download">
+ <div class=left>
+ Android 增加一个<em>分区</em>配置指南 V1.00_rk系统新增<em>分区</em>_android_
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class=text href=https://download.csdn.net/download/weixin_42676678/25910838 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.13","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-13-25910838-blog-136822713.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1728429765891_55798\"}","dist_request_id":"1728429765891_55798","ab_strategy":"increase_t0_download","index":"13","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/weixin_42676678/25910838"}' data-report-query="spm=1001.2101.3001.6650.13&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-13-25910838-blog-136822713.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-13-25910838-blog-136822713.237%5Ev3%5Ewap_relevant_t0_download">
+ 在Android系统中，<em>分区</em>是管理<em>操作</em>系统和数据存储的关键部分。每个<em>分区</em>都有特定的功能，例如系统<em>分区</em>存储核心OS组件，用户<em>分区</em>则保存用户数据和应用程序。本文档“Android 增加一个<em>分区</em>配置指南 V1.00_rk系统新增<em>分区</em>...
+ </a>
+ </div>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-blog" data-url=https://jichun29.blog.csdn.net/article/details/135384146 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.14","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-14-135384146-blog-136822713.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1728429765891_55798\"}","dist_request_id":"1728429765891_55798","ab_strategy":"increase_t0_download","index":"14","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://jichun29.blog.csdn.net/article/details/135384146"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=blog>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a>
+ <div class=left>
+ [Windows] 联发科秒开bl一键版（<em>mtk</em>）
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class="text active">
+ 不是所有的联发科都可 天机 8000 8100 9000等不行已知 天机820 天机1000 <em>mtk</em> G90t 天机800 可以其余自己测试 除了新款均可下载软件 （是个压缩包需要解压）打开软件 打上驱动 驱动需要打上 vcom和usbdk库 以及OPPO售后驱动驱动我会发一键安装版本，到时候拿到手 之后解压到一个文件夹 运行install-all_x64.bat即可x86的电脑就选x86的那个脚本运行start.bat脚本选择第一个（unlock bootloader） 即可。
+ </a>
+ <a class=flag data-type=blog data-href=https://jichun29.blog.csdn.net/article/details/135384146 href=https://jichun29.blog.csdn.net/article/details/135384146 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.14","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-14-135384146-blog-136822713.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1728429765891_55798\"}","dist_request_id":"1728429765891_55798","ab_strategy":"increase_t0_download","index":"14","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://jichun29.blog.csdn.net/article/details/135384146"}' data-report-query="spm=1001.2101.3001.6650.14&amp;utm_medium=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-14-135384146-blog-136822713.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-14-135384146-blog-136822713.237%5Ev3%5Ewap_relevant_t0_download">继续访问</a>
+ </div>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-blog" data-url=https://blog.csdn.net/sandform/article/details/51683899 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.15","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-15-51683899-blog-136822713.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1728429765891_55798\"}","dist_request_id":"1728429765891_55798","ab_strategy":"increase_t0_download","index":"15","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://blog.csdn.net/sandform/article/details/51683899"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=blog>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a>
+ <div class=left>
+ 【<em>MTK</em>官方<em>工具</em>】最好用的<em>MTK</em>官方<em>工具</em>
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class="text active">
+ 【<em>MTK</em>官方<em>工具</em>】最好用的<em>MTK</em>官方<em>工具</em>
+需要的同鞋请回原文下载
+ </a>
+ <a class=flag data-type=blog data-href=https://blog.csdn.net/sandform/article/details/51683899 href=https://blog.csdn.net/sandform/article/details/51683899 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.15","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-15-51683899-blog-136822713.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1728429765891_55798\"}","dist_request_id":"1728429765891_55798","ab_strategy":"increase_t0_download","index":"15","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://blog.csdn.net/sandform/article/details/51683899"}' data-report-query="spm=1001.2101.3001.6650.15&amp;utm_medium=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-15-51683899-blog-136822713.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-15-51683899-blog-136822713.237%5Ev3%5Ewap_relevant_t0_download">继续访问</a>
+ </div>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-blog" data-url=https://devpress.csdn.net/v1/article/detail/132650558 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.16","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~activity-16-132650558-blog-136822713.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1728429765891_55798\"}","dist_request_id":"1728429765891_55798","ab_strategy":"increase_t0_download","index":"16","strategy":"2~default~BlogCommendFromBaidu~activity","dest":"https://devpress.csdn.net/v1/article/detail/132650558"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=blog>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a>
+ <div class=left>
+ 小度音响 小众<em>安卓</em>手机 个别车机等系列<em>mtk</em><em>芯片</em>刷机 修改 导出系统 root等<em>操作</em><em>解析</em>
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class="text active">
+ 也许你不做修改重新打包在写入机型里。都不一定可以正常开机。这里面涉及到很多加密解密问题。可以参考我部分博文。另外机型不同 版本不同 格式不同 <em>安卓</em>版本不同其<em>操作</em>方法也略有不同。这个<em>工具</em>支持早期<em>安卓</em>6 7 8 9等机型兼容性较好。对于新版个别机型super<em>分区</em>支持率不好。需要<em>工具</em>的友友请谨慎下载。但这里要说明一个问题。只要把提取的包或者官方包的<em>分区</em>解包<em>操作</em>。哪怕你不做任何修改在打包。原则上都是第三方包了。分解完成，你就可以修改了。至于你是要删减<em>操作</em>还是添加。或者修改boot 或者合并odex都可以，
+ </a>
+ <a class=flag data-type=blog data-href=https://devpress.csdn.net/v1/article/detail/132650558 href=https://devpress.csdn.net/v1/article/detail/132650558 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.16","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~activity-16-132650558-blog-136822713.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1728429765891_55798\"}","dist_request_id":"1728429765891_55798","ab_strategy":"increase_t0_download","index":"16","strategy":"2~default~BlogCommendFromBaidu~activity","dest":"https://devpress.csdn.net/v1/article/detail/132650558"}' data-report-query="spm=1001.2101.3001.6650.16&amp;utm_medium=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7Eactivity-16-132650558-blog-136822713.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7Eactivity-16-132650558-blog-136822713.237%5Ev3%5Ewap_relevant_t0_download">继续访问</a>
+ </div>
+ </div>
+ <div class=right-img-box>
+ <a class=recommend-img>
+ <img src=data:, alt data-sf-original-src=https://img-blog.csdnimg.cn/img_convert/3901205d7b6d4e41a0fc5a4f1510419c.png>
+ </a>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-blog" data-url=https://blog.csdn.net/blogercn/article/details/4871221 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.17","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-17-4871221-blog-136822713.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1728429765891_55798\"}","dist_request_id":"1728429765891_55798","ab_strategy":"increase_t0_download","index":"17","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://blog.csdn.net/blogercn/article/details/4871221"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=blog>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a>
+ <div class=left>
+ <em>MTK</em>模拟器调试指南
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class="text active">
+ 前篇文章介绍了手机调试的TRACE技巧,<em>MTK</em>手机调试是比较简单的,除了打TRACE,找ASSERT,分析DUMP外,剩下的就是经验了,有经验的人看到现象就能猜到问题出在什么地方,简单看一下TRACE只是为了确认自己的猜测.初涉此道的朋友往往需要时间,慢慢积累经验.要达到熟练,就需要有空的时候多读多研究代码.熟练的掌握了代码,解决问题就会熟能生巧.<em>MTK</em>的模拟器调试说没技巧也是对的,说有技巧也
+ </a>
+ <a class=flag data-type=blog data-href=https://blog.csdn.net/blogercn/article/details/4871221 href=https://blog.csdn.net/blogercn/article/details/4871221 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.17","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-17-4871221-blog-136822713.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1728429765891_55798\"}","dist_request_id":"1728429765891_55798","ab_strategy":"increase_t0_download","index":"17","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://blog.csdn.net/blogercn/article/details/4871221"}' data-report-query="spm=1001.2101.3001.6650.17&amp;utm_medium=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-17-4871221-blog-136822713.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-17-4871221-blog-136822713.237%5Ev3%5Ewap_relevant_t0_download">继续访问</a>
+ </div>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-blog" data-url=https://blog.csdn.net/gitblog_00081/article/details/138177658 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.18","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-18-138177658-blog-136822713.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1728429765891_55798\"}","dist_request_id":"1728429765891_55798","ab_strategy":"increase_t0_download","index":"18","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://blog.csdn.net/gitblog_00081/article/details/138177658"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=blog>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a>
+ <div class=left>
+ 探索<em>MTK</em>Client：一款强大的联发科<em>芯片</em>调试<em>工具</em>
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class="text active">
+ 探索<em>MTK</em>Client：一款强大的联发科<em>芯片</em>调试<em>工具</em>
+ <em>mtk</em>client<em>MTK</em> reverse engineering and flash tool项目地址:https://gitcode.com/gh_mirrors/mt/<em>mtk</em>client 项目简介
+是一个开源项目，由开发者Bkerler创建，主要针对联发科（Mediatek）<em>芯片</em>设备的诊断和调试。它提供了一个直观的图形化界面，使得对联发科...
+ </a>
+ <a class=flag data-type=blog data-href=https://blog.csdn.net/gitblog_00081/article/details/138177658 href=https://blog.csdn.net/gitblog_00081/article/details/138177658 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.18","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-18-138177658-blog-136822713.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1728429765891_55798\"}","dist_request_id":"1728429765891_55798","ab_strategy":"increase_t0_download","index":"18","strategy":"2~default~BlogCommendFromBaidu~Rate","dest":"https://blog.csdn.net/gitblog_00081/article/details/138177658"}' data-report-query="spm=1001.2101.3001.6650.18&amp;utm_medium=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-18-138177658-blog-136822713.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-18-138177658-blog-136822713.237%5Ev3%5Ewap_relevant_t0_download">继续访问</a>
+ </div>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-download" data-url=https://download.csdn.net/download/lin819048/11395674 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.19","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-19-11395674-blog-136822713.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1728429765891_55798\"}","dist_request_id":"1728429765891_55798","ab_strategy":"increase_t0_download","index":"19","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/lin819048/11395674"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=download>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a href=https://download.csdn.net/download/lin819048/11395674 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.19","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-19-11395674-blog-136822713.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1728429765891_55798\"}","dist_request_id":"1728429765891_55798","ab_strategy":"increase_t0_download","index":"19","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/lin819048/11395674"}' data-report-query="spm=1001.2101.3001.6650.19&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-19-11395674-blog-136822713.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-19-11395674-blog-136822713.237%5Ev3%5Ewap_relevant_t0_download">
+ <div class=left>
+ 添加新<em>分区</em>FDRAM并挂载到根目录.zip
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class=text href=https://download.csdn.net/download/lin819048/11395674 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.19","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-19-11395674-blog-136822713.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1728429765891_55798\"}","dist_request_id":"1728429765891_55798","ab_strategy":"increase_t0_download","index":"19","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/lin819048/11395674"}' data-report-query="spm=1001.2101.3001.6650.19&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-19-11395674-blog-136822713.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-19-11395674-blog-136822713.237%5Ev3%5Ewap_relevant_t0_download">
+ 对于<em>MTK</em>（MediaTek）平台的设备，尤其是Android 9.0及其以上版本，系统架构和管理方式的更新使得传统添加<em>分区</em>和挂载的方法发生了变化。本教程将以“添加新<em>分区</em>FDRAM并挂载到根目录”为主题，详细解释在MT6761平台上...
+ </a>
+ </div>
+ </div>
+ </div>
+ </dl>
+ <dl class="container-fluid container-fluid-flex container-download" data-url=https://download.csdn.net/download/wang_liangliang/3184491 data-report-view='{"ab":"new","spm":"1001.2101.3001.6650.20","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-20-3184491-blog-136822713.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1728429765891_55798\"}","dist_request_id":"1728429765891_55798","ab_strategy":"increase_t0_download","index":"20","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/wang_liangliang/3184491"}'>
+ <div class="recommend-jump-app open_app_channelCode" data-type=download>
+ <div class=app-open-box>
+ <h4 class=recommend_title>
+ <a href=https://download.csdn.net/download/wang_liangliang/3184491 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.20","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-20-3184491-blog-136822713.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1728429765891_55798\"}","dist_request_id":"1728429765891_55798","ab_strategy":"increase_t0_download","index":"20","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/wang_liangliang/3184491"}' data-report-query="spm=1001.2101.3001.6650.20&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-20-3184491-blog-136822713.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-20-3184491-blog-136822713.237%5Ev3%5Ewap_relevant_t0_download">
+ <div class=left>
+ mw6208e-8208量产<em>工具</em>1.2.1.0
+ </div>
+ </a>
+ </h4>
+ <div class=desc>
+ <a class=text href=https://download.csdn.net/download/wang_liangliang/3184491 target=_self data-report-click='{"ab":"new","spm":"1001.2101.3001.6650.20","mod":"popu_36","extra":"{\"utm_medium\":\"distribute.wap_relevant.none-task-download-2~default~OPENSEARCH~Rate-20-3184491-blog-136822713.237^v3^wap_relevant_t0_download\",\"dist_request_id\":\"1728429765891_55798\"}","dist_request_id":"1728429765891_55798","ab_strategy":"increase_t0_download","index":"20","strategy":"2~default~OPENSEARCH~Rate","dest":"https://download.csdn.net/download/wang_liangliang/3184491"}' data-report-query="spm=1001.2101.3001.6650.20&amp;utm_medium=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-20-3184491-blog-136822713.237%5Ev3%5Ewap_relevant_t0_download&amp;depth_1-utm_source=distribute.wap_relevant.none-task-download-2%7Edefault%7EOPENSEARCH%7ERate-20-3184491-blog-136822713.237%5Ev3%5Ewap_relevant_t0_download">
+ "mw6208e-8208量产<em>工具</em>1.2.1.0"是一款专为迈科威(<em>MTK</em>, MediaTek)主控<em>芯片</em>MW6208E和MW8208设计的固件升级与批量生产的软件<em>工具</em>。这款<em>工具</em>主要用于闪存设备的修复、格式化、初始化以及性能优化，确保设备在大规模生产...
+ </a>
+ </div>
+ </div>
+ </div>
+ </dl>
+ </div>
+ </div>
+ 
+ <div id=operate class=clearfix>
+ <div class="clearfix content-box">
+ <div class="operate_write operate_common floatL">
+ <span class=comment-bt-write>
+ <span class=enter_text><img class=operate_img src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/writeIcon@2x.png>写评论</span>
+ <img class=comment-sofa-flag src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/pc/img/commentFlag@2x.png>
+ </span>
+ <span class=operate_write_box>
+ <img class=operate_img src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/comment@2x.png>
+ <span class=count>
+ 评论
+ </span>
+ </span>
+ </div>
+ <div class="collect-btn operate_add operate_common floatL">
+ <span class=operate_collect_box>
+ <span class=uncollect>
+ <img class=operate_img src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/uncollect@2x.png>
+ </span>
+ <span class=collect>
+ <img class=operate_img src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/collect@2x.png>
+ </span>
+ <span class=count>
+ 24
+ </span>
+ </span>
+ </div>
+ <div class="like-btn operate_heart operate_common floatL" data-dest=https://blog.csdn.net/u011283906/article/details/136822713>
+ <span class=operate_heart_box>
+ <span class=unheart>
+ <img class=operate_img src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/unheart@2x.png>
+ </span>
+ <span class=heart>
+ <img class=operate_img src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/heart@2x.png>
+ </span>
+ <span class=count>
+ 18
+ </span>
+ </span>
+ </div>
+ <div class="unlike-btn operate_steplike operate_common floatL">
+ <span class=operate_heart_box>
+ <span class=stepunlike>
+ <img class=operate_img src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/stepUnLike.png>
+ </span>
+ <span class=steplike>
+ <img class=operate_img src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/stepLike.png>
+ </span>
+ <span class=count>
+ 踩
+ </span>
+ </span>
+ </div>
+ <div class="share-btn operate_share operate_common floatL">
+ <a>
+ <span class=operate_share_box>
+ <img class=operate_img src=data:, data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/unshare@2x.png>
+ <span class=count>分享</span>
+ </span>
+ </a>
+ </div>
+ </div>
+ </div>
+</div>
+ <div id=prompt>
+ 
+ <span>文章收藏成功</span>
+ </div>
+ <div class="app-shadowbox wap-shadowbox" data-type=view>
+ <div class=app-box>
+ <div class=pos-box>
+ <div class=tip-massege>前往CSDN APP阅读全文</div>
+ <div class=tip-text>CSDN APP记录你的成长</div>
+ <a class="app-bt-cance read_more_btn close-icon" data-report-click='{"spm":"1001.2101.3001.9529"}'>
+ <img src=data:, alt data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/closeBt.png>
+ </a>
+ <div class="button-box button-box-new w-100p">
+ <a class="app-bt-sure open_app_channelCode" id=wap_open_app_btn data-channelcode=blog_1592384106 data-channelabid=293_exp1 data-report-click='{"spm":"1001.2101.3001.9530"}' data-name=a data-href="csdnapp://web?url=https://blog.csdn.net/u011283906/article/details/136822713">前往APP</a>
+ </div>
+ </div>
+ </div>
+ </div>
+ <div class="wap-shadowbox qr-weixin-box">
+ <div class=app-box>
+ <div class=tip-massege>微信小程序收藏浏览更方便</div>
+ <div class=routine-box-img> <img src=data:, alt data-sf-original-src></div>
+ <div class=routine-box-text>
+ <span>截图/长按 </span>保存本地，用微信扫码打开
+ </div>
+ <img class=close src=data:, alt data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/closeBt.png>
+ </div>
+ </div>
+ <div class="small-shadowbox wap-shadowbox">
+ <div class=app-box>
+ <div class=tip-massege>进入小程序随时浏览/收藏技术文章</div>
+ <div class="button-box button-box-new">
+ <a class=app-ab-cance data-report-click='{"spm":"1001.2101.3001.9400"}'>取消</a>
+ <a class=app-bt-sure data-report-click='{"spm":"1001.2101.3001.9401"}'>立即前往</a>
+ </div>
+ <img class=close src=data:, alt data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/closeBt.png>
+ </div>
+ </div>
+ <div class="wap-shadowbox ab-app-shadowbox">
+ <div class="app-box active">
+ <a class="app-bt-cance read_more_btn close-icon" id=ab-app-shadowbox-close data-report-view='{"spm":"1001.2101.3001.9672"}' data-report-click='{"spm":"1001.2101.3001.9672"}'>
+ <img src=data:, alt data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/closeBt.png>
+ </a>
+ <div class=tip-massege>需要前往CSDN APP登录即可继续互动</div>
+ <div class="button-box button-box-new w-100p">
+ <a class="app-bt-sure open_app_channelCode app-bt-sure-btn-new" id=wap_open_app_btn data-channelcode=1663655995 data-report-view='{"spm":"1001.2101.3001.8335"}' data-report-click='{"spm":"1001.2101.3001.8335"}' data-name=a data-href="csdnapp://web?url=https://blog.csdn.net/u011283906/article/details/136822713">前往APP</a>
+ </div>
+ </div>
+ </div>
+ <div class="comment-shadowbox wap-shadowbox">
+ <div class=comment-write-box>
+ <div class=write-comment-container>
+ <textarea name class=write-comment-content id=writeComment placeholder="请发表有价值的评论， 博客评论不欢迎灌水，良好的社区氛围需大家一起维护。"></textarea>
+ <div id=formRewardBox class=comment-reward-box>
+ <a class=btn-remove-reward></a>
+ <div class=form-reward-box>
+ <div class=info>
+ 成就一亿技术人!
+ </div>
+ <div class=price-info>
+ 拼手气红包<span class=price>6.0元</span>
+ </div>
+ </div>
+ </div>
+ </div>
+ <div class=comment-write-bt>
+ <a class=write-redEnvolope>
+ <img class=comment-operate-img data-url=https://csdnimg.cn/release/blogv2/dist/pc/img/ src=data:, alt=红包 data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/pc/img/commentReward.png>
+ </a>
+ <a class=write-bt-sure data-report-click='{"spm":"1001.2101.3001.7867","mod":"1589175530_002"}' data-report-view='{"spm":"1001.2101.3001.7867","mod":"1589175530_002"}'>发送</a>
+ </div>
+ <div class=comment-rewarddialog-box>
+ <div class=form-box>
+ <div class=title-box>
+ 发红包
+ <a class=btn-form-close></a>
+ </div>
+ <form id=commentRewardForm>
+ <div class=ipt-box>
+ <label for=txtName>祝福语</label>
+ <div class=ipt-btn-box>
+ <input type=text name=name id=txtName autocomplete=off maxlength=50>
+ <a class="btn-ipt btn-random"></a>
+ </div>
+ <p class=notice>请填写红包祝福语或标题</p>
+ </div>
+ <div class=ipt-box>
+ <label for=txtSendAmount>红包数量</label>
+ <div class=ipt-txt-box>
+ <input type=text name=sendAmount maxlength=4 id=txtSendAmount placeholder=请填写红包数量(最小10个) autocomplete=off>
+ <span class=after-txt>个</span>
+ </div>
+ <p class=notice>红包个数最小为10个</p>
+ </div>
+ <div class=ipt-box>
+ <label for=txtMoney>
+ <div class=balance-info-box>
+ <div class=balance-info>
+ 您的钱包余额 <span class=red><span class=balance></span>元</span>
+ <a href=https://i.csdn.net/#/wallet/balance/recharge class=link-charge target=_blank>前往充值<img class=origin-plan-icon src=data:, alt data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/arrowRight.png></a>
+ </div>
+ </div>
+ </label>
+ <div class="ipt-txt-box error">
+ <input type=text name=money maxlength=5 id=txtMoney placeholder=请填写总金额(最低5元) autocomplete=off>
+ <span class=after-txt>元</span>
+ </div>
+ <p class=notice>红包金额最低5元</p>
+ </div>
+ <div class=opt-box>
+ <div class=pay-info>
+ ¥<span class=price></span>
+ </div>
+ <button type=button class="ml8 btn-submit" disabled>发红包</button>
+ <p class=remark>未领取的红包，将于96小时后发起退款</p>
+ </div>
+ </form>
+ </div>
+ </div>
+ </div>
+ </div>
+ <div class=redEnvolope id=redEnvolope>
+ <div class=env-box>
+ <div class=env-container>
+ <div class=pre-open id=preOpen>
+ <div class=top>
+ <header>
+ <img class=clearTpaErr :src=redpacketAuthor.avatar alt>
+ <div class=author>成就一亿技术人!</div>
+ </header>
+ <div class=bot-icon></div>
+ </div>
+ <footer>
+ <div class="red-openbtn open-start"></div>
+ <div class=tip>
+ 领取后你会自动成为博主和红包主的粉丝
+ <a class=rule target=_blank>规则</a>
+ </div>
+ </footer>
+ </div>
+ <div class=opened id=opened>
+ <div class=bot-icon>
+ <header>
+ <a class=creatorUrl href="https://blog.csdn.net/u011283906/article/details/136822713?spm=1001.2014.3001.5502" target=_blank>
+ <img class=clearTpaErr src=data:, alt data-sf-original-src=https://profile-avatar.csdnimg.cn/default.jpg!2>
+ </a>
+ <div class=author>
+ <div class=tt>hope_wisdom</div> 发出的红包
+ </div>
+ </header>
+ </div>
+ <div class=receive-box>
+ <header></header>
+ <div class=receive-list>
+ </div>
+ </div>
+ </div>
+ </div>
+ <div class=close-btn></div>
+ </div>
+ </div>
+ <div class="weixin-shadowbox wap-shadowbox">
+ <div class="guide-box guide-box-new">
+ <div class=topic>前往CSDN APP阅读全文</div>
+ <div class=tip>阅读体验更佳</div>
+ <div class="csdn-box item-box">
+ <div class=item><img class=app-img src=data:, alt data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/csdnIcon@2x.png></div>
+ <div class=item>
+ <div class=item-content>
+ <p class=title>CSDN</p>
+ <p class=text>成就一亿技术人</p>
+ </div>
+ </div>
+ <div class=item><a class="open-app open-app-csdn open_app_channelCode" data-channelcode=1661743049 data-url=https://blog.csdn.net/u011283906/article/details/136822713 data-href="csdnapp://web?url=https://blog.csdn.net/u011283906/article/details/136822713" data-report-view='{"spm":"1001.2101.3001.8331"}' data-report-click='{"spm":"1001.2101.3001.8331"}'>前往</a></div>
+ </div>
+ <div class="weixin-box item-box">
+ <div class="item item-display-none item-chrome"><img class=app-img src=data:, alt data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/chromeIcon@2x.png></div>
+ <div class=item>
+ <div class=item-content>浏览器</div>
+ </div>
+ <div class=item><a class="open-app open-app-weixin" data-report-view='{"spm":"1001.2101.3001.8332"}' data-report-click='{"spm":"1001.2101.3001.8332"}'>继续</a></div>
+ </div>
+ </div>
+ </div>
+ <div class="share-shadowbox wap-shadowbox">
+ <div class=share-box>
+ <div class=tit>分享</div>
+ <div class=text></div>
+ <a class=share-bt-tip data-report-click='{"spm":"1001.2101.3001.7872"}'>复制分享链接</a>
+ <img class=close src=data:, alt data-sf-original-src=https://csdnimg.cn/release/blogv2/dist/mobile/img/closeBt.png>
+ </div>
+ </div>
+ 
+ <div class=ios-shadowbox>
+ <div class=ios-box>
+ <div class=tip-massege>请升级应用版本</div>
+ <div class=button-box>
+ <a id=cancelBt class=bt-cancel>取消</a>
+ <a id=upBt class=bt-cancel href="itms-apps://itunes.apple.com/cn/app/id1437086352?mt=8">立即升级</a>
+ </div>
+ </div>
+ </div>
+ <div class=feed-Sign-weixin>
+ <p class=open_app_channelCode id=feed-open-app-btn data-channelabid=252_exp1 data-href="csdnapp://web?url=https://blog.csdn.net/u011283906/article/details/136822713" data-report-view='{"spm":"1001.2101.3001.9397"}' data-report-click='{"spm":"1001.2101.3001.9397"}'>APP 内打开 </p>
+ </div>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+<script data-template-shadow-root>(()=>{document.currentScript.remove();processNode(document);function processNode(node){node.querySelectorAll("template[shadowrootmode]").forEach(element=>{let shadowRoot = element.parentElement.shadowRoot;if (!shadowRoot) {try {shadowRoot=element.parentElement.attachShadow({mode:element.getAttribute("shadowrootmode"),delegatesFocus:element.getAttribute("shadowrootdelegatesfocus")!=null,clonable:element.getAttribute("shadowrootclonable")!=null,serializable:element.getAttribute("shadowrootserializable")!=null});shadowRoot.innerHTML=element.innerHTML;element.remove()} catch (error) {} if (shadowRoot) {processNode(shadowRoot)}}})}})()</script>
